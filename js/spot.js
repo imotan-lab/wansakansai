@@ -9,7 +9,7 @@
   const spotId = params.get('id');
 
   if (!spotId) {
-    container.innerHTML = '<div class="empty-state"><div class="icon">❓</div><p>スポットが指定されていません</p></div>';
+    container.innerHTML = '<div class="empty-state"><p>スポットが指定されていません</p></div>';
     return;
   }
 
@@ -18,7 +18,7 @@
     const spot = spots.find(s => s.id === spotId);
 
     if (!spot) {
-      container.innerHTML = '<div class="empty-state"><div class="icon">😢</div><p>スポットが見つかりませんでした</p></div>';
+      container.innerHTML = '<div class="empty-state"><p>スポットが見つかりませんでした</p></div>';
       return;
     }
 
@@ -38,30 +38,30 @@
     }
 
     // Build info rows
-    const visitedBadge = spot.visited ? '<span class="tag tag-visited" style="margin-left:8px;font-size:0.8rem;">✅ 実訪問済み</span>' : '';
+    const visitedBadge = spot.visited ? '<span class="tag tag-visited" style="margin-left:8px;font-size:0.8rem;">実訪問済み</span>' : '';
 
-    const categoryLabel = spot.category === 'park' ? '🌳 公園' : '🚶 散歩スポット';
+    const categoryLabel = spot.category === 'park' ? '公園' : '散歩スポット';
 
     const dogSizeText = [];
-    if (spot.dogSize.small) dogSizeText.push('🐕 小型犬OK');
-    if (spot.dogSize.large) dogSizeText.push('🐕‍🦺 大型犬OK');
+    if (spot.dogSize.small) dogSizeText.push('小型犬OK');
+    if (spot.dogSize.large) dogSizeText.push('大型犬OK');
 
-    let parkingText = '❌ なし';
+    let parkingText = 'なし';
     if (spot.parking.available) {
-      parkingText = spot.parking.free ? '🅿️ あり（無料）' : '🅿️ あり（有料）';
+      parkingText = spot.parking.free ? 'あり（無料）' : 'あり（有料）';
     }
 
-    let toiletText = '❌ なし';
+    let toiletText = 'なし';
     if (spot.toilet.available) {
-      toiletText = spot.toilet.western ? '🚻 あり（洋式）' : '🚻 あり（和式）';
+      toiletText = spot.toilet.western ? 'あり（洋式）' : 'あり（和式）';
     }
 
-    let dogRunText = '❌ なし';
+    let dogRunText = 'なし';
     if (spot.dogRun.available) {
-      dogRunText = spot.dogRun.free ? '🐾 あり（無料）' : '🐾 あり（有料）';
+      dogRunText = spot.dogRun.free ? 'あり（無料）' : 'あり（有料）';
     }
 
-    let admissionText = spot.admission.free ? '🆓 無料' : `💰 有料（${spot.admission.fee || ''})`;
+    let admissionText = spot.admission.free ? '無料' : `有料（${spot.admission.fee || ''})`;
 
     const mapQuery = encodeURIComponent(spot.name + ' ' + spot.address);
 
@@ -69,7 +69,7 @@
       <div class="spot-detail">
         <div class="spot-detail-header">
           <h1>${spot.name}${visitedBadge}</h1>
-          <p class="address">📍 ${spot.address}</p>
+          <p class="address">${spot.address}</p>
         </div>
         <div class="spot-detail-body">
           <iframe
@@ -93,7 +93,7 @@
 
           ${spot.remarks ? `
             <div class="detail-remarks">
-              <h3>📝 備考・犬連れでのポイント</h3>
+              <h3>備考・犬連れでのポイント</h3>
               <p>${spot.remarks}</p>
             </div>
           ` : ''}
@@ -101,6 +101,6 @@
       </div>
     `;
   } catch (e) {
-    container.innerHTML = '<div class="empty-state"><div class="icon">⚠️</div><p>データの読み込みに失敗しました</p></div>';
+    container.innerHTML = '<div class="empty-state"><p>データの読み込みに失敗しました</p></div>';
   }
 })();

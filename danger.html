@@ -13,7 +13,7 @@
 <body>
 
   <main class="main-content">
-    <h1 class="page-title">⚠️ 危険情報</h1>
+    <h1 class="page-title">危険情報</h1>
     <p class="page-desc">関西エリアで報告された犬に関する危険情報（毒餌・事故など）を掲載しています。お散歩の際はご注意ください。</p>
 
     <div class="ad-slot">広告スペース</div>
@@ -37,7 +37,7 @@
         if (dangers.length === 0) {
           container.innerHTML = `
             <div class="danger-empty">
-              <p>✅ 現在、報告されている危険情報はありません。</p>
+              <p>現在、報告されている危険情報はありません。</p>
               <p style="margin-top:8px;font-size:0.85rem;">危険な情報を見かけた場合は、お問い合わせページからご報告ください。</p>
             </div>
           `;
@@ -53,7 +53,7 @@
           });
           return `
             <div class="danger-card">
-              <p class="danger-card-date">📅 ${dateStr}</p>
+              <p class="danger-card-date">${dateStr}</p>
               <p class="danger-card-location">${d.location}</p>
               <span class="danger-card-type">${d.type}</span>
               <p class="danger-card-desc">${d.description}</p>

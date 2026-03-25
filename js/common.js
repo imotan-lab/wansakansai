@@ -17,7 +17,7 @@ function renderHeader(activePage) {
   header.innerHTML = `
     <div class="header-inner">
       <a href="${base}index.html" class="site-logo">
-        <span class="logo-icon">🐕</span>
+        <span class="logo-icon"></span>
         <span>
           犬阪んさい
           <span class="logo-sub">わんさかんさい</span>
