@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="犬阪んさいへのお問い合わせ。スポット情報の修正依頼や危険情報の報告など。">
+  <title>お問い合わせ - 犬阪んさい</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <main class="main-content">
+    <div class="static-page">
+      <h1>お問い合わせ</h1>
+      <p>スポット情報の修正・追加のご依頼、危険情報のご報告、その他ご意見・ご感想がございましたら、以下のフォームよりお気軽にお問い合わせください。</p>
+
+      <div class="contact-form-wrapper">
+        <!-- Googleフォームを埋め込む場所 -->
+        <!-- 下記のsrc="..."をご自身のGoogleフォームURLに置き換えてください -->
+        <div id="formPlaceholder" style="text-align:center;padding:40px 20px;background:var(--color-bg);border-radius:8px;margin-top:16px;">
+          <p style="font-size:1.2rem;margin-bottom:8px;">📝</p>
+          <p style="color:var(--color-text-light);font-size:0.9rem;">Googleフォームを設定すると、ここにお問い合わせフォームが表示されます。</p>
+          <p style="color:var(--color-text-light);font-size:0.78rem;margin-top:8px;">（contact.html内のiframeのsrcにGoogleフォームのURLを設定してください）</p>
+        </div>
+        <!--
+        <iframe
+          src="YOUR_GOOGLE_FORM_URL_HERE"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+        >読み込んでいます…</iframe>
+        -->
+      </div>
+    </div>
+  </main>
+
+  <script src="js/common.js"></script>
+  <script>
+    renderHeader('contact');
+    renderFooter();
+  </script>
+</body>
+</html>

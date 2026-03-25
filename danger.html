@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="関西エリアの犬に関する危険情報（毒餌・事故など）を日付付きでお知らせします。">
+  <title>危険情報 - 犬阪んさい</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <main class="main-content">
+    <h1 class="page-title">⚠️ 危険情報</h1>
+    <p class="page-desc">関西エリアで報告された犬に関する危険情報（毒餌・事故など）を掲載しています。お散歩の際はご注意ください。</p>
+
+    <div class="ad-slot">広告スペース</div>
+
+    <div class="danger-list" id="dangerList">
+      <div class="loading-spinner">読み込み中...</div>
+    </div>
+  </main>
+
+  <script src="js/common.js"></script>
+  <script>
+    (async function () {
+      renderHeader('danger');
+      renderFooter();
+
+      const container = document.getElementById('dangerList');
+
+      try {
+        const dangers = await loadJSON('data/dangers.json');
+
+        if (dangers.length === 0) {
+          container.innerHTML = `
+            <div class="danger-empty">
+              <p>✅ 現在、報告されている危険情報はありません。</p>
+              <p style="margin-top:8px;font-size:0.85rem;">危険な情報を見かけた場合は、お問い合わせページからご報告ください。</p>
+            </div>
+          `;
+          return;
+        }
+
+        // Sort by date descending
+        dangers.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+        container.innerHTML = dangers.map(d => {
+          const dateStr = new Date(d.date).toLocaleDateString('ja-JP', {
+            year: 'numeric', month: 'long', day: 'numeric'
+          });
+          return `
+            <div class="danger-card">
+              <p class="danger-card-date">📅 ${dateStr}</p>
+              <p class="danger-card-location">${d.location}</p>
+              <span class="danger-card-type">${d.type}</span>
+              <p class="danger-card-desc">${d.description}</p>
+            </div>
+          `;
+        }).join('');
+      } catch (e) {
+        container.innerHTML = '<div class="danger-empty"><p>データの読み込みに失敗しました</p></div>';
+      }
+    })();
+  </script>
+</body>
+</html>
