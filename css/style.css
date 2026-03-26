@@ -202,34 +202,34 @@ img {
   color: var(--color-text-light);
 }
 
-/* ===== Sort ===== */
-.sort-section {
+/* ===== Prefecture Buttons ===== */
+.pref-section {
   display: flex;
-  align-items: center;
-  gap: 10px;
+  flex-wrap: wrap;
+  gap: 8px;
   margin-bottom: 20px;
 }
 
-.sort-label {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--color-text-light);
-  white-space: nowrap;
-}
-
-.sort-select {
-  padding: 8px 12px;
+.pref-btn {
+  padding: 8px 16px;
   border: 2px solid var(--color-border);
-  border-radius: var(--radius-sm);
+  border-radius: 50px;
   font-size: 0.85rem;
   font-family: inherit;
   color: var(--color-text);
   background: var(--color-bg-card);
   cursor: pointer;
+  transition: all 0.2s;
 }
 
-.sort-select:focus {
-  outline: none;
+.pref-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.pref-btn.active {
+  background: var(--color-primary);
+  color: #fff;
   border-color: var(--color-primary);
 }
 

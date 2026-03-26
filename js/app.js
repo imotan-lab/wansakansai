@@ -1,4 +1,4 @@
-// ===== Top Page: GPS, Filter, Spot List =====
+// ===== Top Page: GPS, Prefecture Filter, Spot List =====
 
 (async function () {
   renderHeader('home');
@@ -7,40 +7,69 @@
   const spots = await loadJSON('data/spots.json');
   let userLat = null;
   let userLng = null;
+  let activePref = null; // null = all
+
   const spotList = document.getElementById('spotList');
   const spotCount = document.getElementById('spotCount');
   const btnGps = document.getElementById('btnGps');
   const gpsStatus = document.getElementById('gpsStatus');
-  const sortSelect = document.getElementById('sortSelect');
+  const prefSection = document.getElementById('prefSection');
 
-  // Prefecture order for sorting
-  const prefOrder = ['大阪府', '京都府', '兵庫県', '奈良県', '滋賀県', '和歌山県'];
+  // Prefecture list
+  const prefList = ['大阪府', '京都府', '兵庫県', '奈良県', '滋賀県', '和歌山県'];
 
   function getPrefecture(address) {
-    for (const pref of prefOrder) {
+    for (const pref of prefList) {
       if (address.startsWith(pref)) return pref;
     }
     return 'その他';
+  }
+
+  // Build prefecture buttons from actual data
+  function buildPrefButtons() {
+    const prefCounts = {};
+    spots.forEach(s => {
+      const pref = getPrefecture(s.address);
+      prefCounts[pref] = (prefCounts[pref] || 0) + 1;
+    });
+
+    // "すべて" button
+    let html = `<button class="pref-btn active" data-pref="">すべて(${spots.length})</button>`;
+    prefList.forEach(pref => {
+      if (prefCounts[pref]) {
+        const shortName = pref.replace(/[府県]$/, '');
+        html += `<button class="pref-btn" data-pref="${pref}">${shortName}(${prefCounts[pref]})</button>`;
+      }
+    });
+
+    prefSection.innerHTML = html;
+
+    // Add click events
+    prefSection.querySelectorAll('.pref-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        prefSection.querySelectorAll('.pref-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activePref = btn.dataset.pref || null;
+        renderSpots();
+      });
+    });
   }
 
   // ===== Render spots =====
   function renderSpots() {
     let filtered = [...spots];
 
-    const sortMode = sortSelect.value;
+    // Filter by prefecture
+    if (activePref) {
+      filtered = filtered.filter(s => getPrefecture(s.address) === activePref);
+    }
 
-    // Sort by distance if GPS available and sort mode is gps
-    if (sortMode === 'gps' && userLat !== null && userLng !== null) {
+    // Sort by distance if GPS available
+    if (userLat !== null && userLng !== null) {
       filtered.forEach(s => {
         s._distance = calcDistance(userLat, userLng, s.lat, s.lng);
       });
       filtered.sort((a, b) => a._distance - b._distance);
-    } else if (sortMode === 'prefecture') {
-      filtered.sort((a, b) => {
-        const pa = prefOrder.indexOf(getPrefecture(a.address));
-        const pb = prefOrder.indexOf(getPrefecture(b.address));
-        return (pa === -1 ? 999 : pa) - (pb === -1 ? 999 : pb);
-      });
     }
 
     spotCount.textContent = `${filtered.length} 件のスポット`;
@@ -49,7 +78,7 @@
       spotList.innerHTML = `
         <div class="empty-state">
           <div class="icon"></div>
-          <p>条件に合うスポットが見つかりませんでした</p>
+          <p>この地域のスポットはまだありません</p>
         </div>
       `;
       return;
@@ -99,14 +128,6 @@
         btnGps.classList.remove('loading');
         btnGps.textContent = '現在地を更新';
         gpsStatus.textContent = '現在地を取得しました。近い順に並べ替えました。';
-        // Add GPS sort option if not already present
-        if (!sortSelect.querySelector('option[value="gps"]')) {
-          const opt = document.createElement('option');
-          opt.value = 'gps';
-          opt.textContent = '現在地から近い順';
-          sortSelect.insertBefore(opt, sortSelect.firstChild);
-        }
-        sortSelect.value = 'gps';
         renderSpots();
       },
       (err) => {
@@ -122,11 +143,7 @@
     );
   });
 
-  // ===== Sort =====
-  sortSelect.addEventListener('change', () => {
-    renderSpots();
-  });
-
-  // Initial render
+  // Build buttons & initial render
+  buildPrefButtons();
   renderSpots();
 })();
