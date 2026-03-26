@@ -7,31 +7,14 @@
   const spots = await loadJSON('data/spots.json');
   let userLat = null;
   let userLng = null;
-  let activeFilters = new Set();
-
   const spotList = document.getElementById('spotList');
   const spotCount = document.getElementById('spotCount');
   const btnGps = document.getElementById('btnGps');
   const gpsStatus = document.getElementById('gpsStatus');
-  const filterToggle = document.getElementById('filterToggle');
-  const filterBody = document.getElementById('filterBody');
-  const filterReset = document.getElementById('filterReset');
-  const filterChips = document.querySelectorAll('.filter-chip');
 
   // ===== Render spots =====
   function renderSpots() {
     let filtered = [...spots];
-
-    // Apply filters
-    if (activeFilters.has('parkingYes')) {
-      filtered = filtered.filter(s => s.parking.available);
-    }
-    if (activeFilters.has('parkingFree')) {
-      filtered = filtered.filter(s => s.parking.available && s.parking.free);
-    }
-    if (activeFilters.has('toiletYes')) {
-      filtered = filtered.filter(s => s.toilet.available);
-    }
 
     // Sort by distance if GPS available
     if (userLat !== null && userLng !== null) {
@@ -112,32 +95,6 @@
       },
       { enableHighAccuracy: true, timeout: 10000 }
     );
-  });
-
-  // ===== Filter =====
-  filterToggle.addEventListener('click', () => {
-    filterToggle.classList.toggle('open');
-    filterBody.classList.toggle('open');
-  });
-
-  filterChips.forEach(chip => {
-    chip.addEventListener('click', () => {
-      const filter = chip.dataset.filter;
-      if (activeFilters.has(filter)) {
-        activeFilters.delete(filter);
-        chip.classList.remove('active');
-      } else {
-        activeFilters.add(filter);
-        chip.classList.add('active');
-      }
-      renderSpots();
-    });
-  });
-
-  filterReset.addEventListener('click', () => {
-    activeFilters.clear();
-    filterChips.forEach(c => c.classList.remove('active'));
-    renderSpots();
   });
 
   // Initial render
