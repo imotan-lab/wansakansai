@@ -75,6 +75,7 @@
             <tr><th>トイレ</th><td>${toiletText}</td></tr>
             <tr><th>ドッグラン</th><td>${dogRunText}</td></tr>
             <tr><th>入場料</th><td>${admissionText}</td></tr>
+            ${spot.officialUrl ? `<tr><th>公式HP</th><td><a href="${spot.officialUrl}" target="_blank" rel="noopener noreferrer">${spot.officialUrl.replace(/^https?:\/\//, '').replace(/\/$/, '')}</a></td></tr>` : ''}
           </table>
 
           ${spot.remarks ? `
