@@ -28,7 +28,7 @@
     if (metaDesc) metaDesc.content = `${spot.name}（${spot.address}）の犬連れお出かけ情報。駐車場・トイレ・ドッグラン情報など。`;
 
     // Build info rows
-    const visitedBadge = spot.visited ? '<span class="tag tag-visited" style="margin-left:8px;font-size:0.8rem;">実訪問済み</span>' : '';
+    const visitedStamp = spot.visited ? '<img src="images/stamp-visited.png" alt="訪問済み" class="detail-visited-stamp">' : '';
 
     const dogSizeText = [];
     if (spot.dogSize.small) dogSizeText.push('小型犬OK');
@@ -56,7 +56,8 @@
     container.innerHTML = `
       <div class="spot-detail">
         <div class="spot-detail-header">
-          <h1>${spot.name}${visitedBadge}</h1>
+          <h1>${spot.name}</h1>
+          ${visitedStamp}
           <p class="address">${spot.address}</p>
         </div>
         <div class="spot-detail-body">

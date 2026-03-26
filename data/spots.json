@@ -247,7 +247,7 @@
     "barrierFree": 4,
     "dogRun": { "available": true, "free": true },
     "admission": { "free": true, "fee": "" },
-    "visited": false,
+    "visited": true,
     "remarks": "入場・駐車場・ドッグラン全て無料の三拍子。約27.9haの広大な敷地で大阪湾に面しており、晴れた日は明石海峡大橋も見える。ドッグランは小型犬エリアと中大型犬エリアの2区画、天然芝。9:00〜17:00。1年以内の混合ワクチン・狂犬病予防接種が必要。BBQ広場や海釣りテラスもあり。",
     "imageUrl": ""
   },

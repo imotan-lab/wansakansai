@@ -77,7 +77,7 @@
     if (filtered.length === 0) {
       spotList.innerHTML = `
         <div class="empty-state">
-          <div class="icon"></div>
+          <img src="images/chihuahua-notfound.png" alt="" class="empty-state-img">
           <p>この地域のスポットはまだありません</p>
         </div>
       `;
@@ -86,9 +86,8 @@
 
     spotList.innerHTML = filtered.map(s => {
       const distText = s._distance != null ? `<span class="spot-card-distance">${formatDistance(s._distance)}</span>` : '';
+      const visitedStamp = s.visited ? '<img src="images/stamp-visited.png" alt="訪問済み" class="visited-stamp">' : '';
       const tags = [];
-
-      if (s.visited) tags.push('<span class="tag tag-visited">実訪問済み</span>');
       if (s.dogSize.small) tags.push('<span class="tag">小型犬OK</span>');
       if (s.dogSize.large) tags.push('<span class="tag">大型犬OK</span>');
       if (s.parking.available) {
@@ -99,6 +98,7 @@
 
       return `
         <a href="spot.html?id=${s.id}" class="spot-card">
+          ${visitedStamp}
           <div class="spot-card-header">
             <span class="spot-card-name">${s.name}</span>
             ${distText}
