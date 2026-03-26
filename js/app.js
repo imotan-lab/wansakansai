@@ -23,23 +23,14 @@
     let filtered = [...spots];
 
     // Apply filters
-    if (activeFilters.has('dogSmall')) {
-      filtered = filtered.filter(s => s.dogSize.small);
-    }
-    if (activeFilters.has('dogLarge')) {
-      filtered = filtered.filter(s => s.dogSize.large);
-    }
-    if (activeFilters.has('park')) {
-      filtered = filtered.filter(s => s.category === 'park');
-    }
-    if (activeFilters.has('walk')) {
-      filtered = filtered.filter(s => s.category === 'walk');
-    }
     if (activeFilters.has('parkingYes')) {
       filtered = filtered.filter(s => s.parking.available);
     }
     if (activeFilters.has('parkingFree')) {
       filtered = filtered.filter(s => s.parking.available && s.parking.free);
+    }
+    if (activeFilters.has('toiletYes')) {
+      filtered = filtered.filter(s => s.toilet.available);
     }
 
     // Sort by distance if GPS available
@@ -136,16 +127,6 @@
         activeFilters.delete(filter);
         chip.classList.remove('active');
       } else {
-        // For category filters, only one at a time
-        if (filter === 'park' || filter === 'walk') {
-          activeFilters.delete('park');
-          activeFilters.delete('walk');
-          filterChips.forEach(c => {
-            if (c.dataset.filter === 'park' || c.dataset.filter === 'walk') {
-              c.classList.remove('active');
-            }
-          });
-        }
         activeFilters.add(filter);
         chip.classList.add('active');
       }
