@@ -88,8 +88,9 @@ img {
 }
 
 .site-logo .logo-icon {
-  height: 40px;
+  height: 60px;
   width: auto;
+  margin: -10px 0;
 }
 
 .site-logo .logo-sub {
@@ -365,8 +366,8 @@ img {
   position: absolute;
   top: -5px;
   right: -5px;
-  width: 120px;
-  height: 120px;
+  width: 90px;
+  height: 90px;
   opacity: 0.85;
   transform: rotate(15deg);
   pointer-events: none;
