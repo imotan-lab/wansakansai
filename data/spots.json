@@ -157,7 +157,7 @@
     "barrierFree": 4,
     "dogRun": { "available": false, "free": false },
     "admission": { "free": true, "fee": "" },
-    "visited": false,
+    "visited": true,
     "remarks": "約2.4km、約500本のメタセコイアが続く絶景並木道。四季折々の景観が楽しめ、特に秋の紅葉シーズンが人気。マキノピックランドの無料駐車場を利用（243台、24時間開放）。紅葉シーズンは混雑注意。路上駐停車は厳禁。",
     "imageUrl": ""
   },
