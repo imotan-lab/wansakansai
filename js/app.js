@@ -88,12 +88,14 @@
       const distText = s._distance != null ? `<span class="spot-card-distance">${formatDistance(s._distance)}</span>` : '';
       const visitedStamp = s.visited ? '<img src="images/stamp-visited.png" alt="訪問済み" class="visited-stamp">' : '';
       const tags = [];
-      if (s.dogSize.small) tags.push('<span class="tag">小型犬OK</span>');
-      if (s.dogSize.large) tags.push('<span class="tag">大型犬OK</span>');
       if (s.parking.available) {
         tags.push(`<span class="tag">P ${s.parking.free ? '無料' : '有料'}</span>`);
       }
-      if (s.dogRun.available) tags.push('<span class="tag">ドッグラン</span>');
+      if (s.dogRun.available) {
+        let drText = 'ドッグラン';
+        if (s.dogRun.separated) drText += '(エリア分離)';
+        tags.push(`<span class="tag">${drText}</span>`);
+      }
       if (s.admission.free) tags.push('<span class="tag">入場無料</span>');
 
       return `

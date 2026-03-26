@@ -22,7 +22,9 @@
     "barrierFree": 4,
     "dogRun": {
       "available": false,
-      "free": false
+      "free": false,
+      "detail": "",
+      "separated": false
     },
     "admission": {
       "free": true,
@@ -56,7 +58,9 @@
     "barrierFree": 4,
     "dogRun": {
       "available": true,
-      "free": true
+      "free": true,
+      "separated": true,
+      "detail": "全犬種エリア・小型犬専用エリア（8kg未満）"
     },
     "admission": {
       "free": true,
@@ -90,7 +94,9 @@
     "barrierFree": 4,
     "dogRun": {
       "available": true,
-      "free": true
+      "free": true,
+      "separated": true,
+      "detail": "小型犬エリア・中大型犬エリア"
     },
     "admission": {
       "free": true,
@@ -124,7 +130,9 @@
     "barrierFree": 3,
     "dogRun": {
       "available": true,
-      "free": true
+      "free": true,
+      "separated": true,
+      "detail": "大型犬エリア・小型犬エリア"
     },
     "admission": {
       "free": false,
@@ -158,7 +166,9 @@
     "barrierFree": 3,
     "dogRun": {
       "available": false,
-      "free": false
+      "free": false,
+      "detail": "",
+      "separated": false
     },
     "admission": {
       "free": true,
@@ -192,7 +202,9 @@
     "barrierFree": 4,
     "dogRun": {
       "available": true,
-      "free": true
+      "free": true,
+      "separated": false,
+      "detail": "2箇所、犬種サイズ制限なし"
     },
     "admission": {
       "free": true,
@@ -226,7 +238,9 @@
     "barrierFree": 4,
     "dogRun": {
       "available": false,
-      "free": false
+      "free": false,
+      "detail": "",
+      "separated": false
     },
     "admission": {
       "free": false,
@@ -260,7 +274,9 @@
     "barrierFree": 2,
     "dogRun": {
       "available": false,
-      "free": false
+      "free": false,
+      "detail": "",
+      "separated": false
     },
     "admission": {
       "free": true,
@@ -294,7 +310,9 @@
     "barrierFree": 4,
     "dogRun": {
       "available": false,
-      "free": false
+      "free": false,
+      "detail": "",
+      "separated": false
     },
     "admission": {
       "free": true,
@@ -328,7 +346,9 @@
     "barrierFree": 2,
     "dogRun": {
       "available": true,
-      "free": true
+      "free": true,
+      "separated": true,
+      "detail": "大型犬用・小中型犬用"
     },
     "admission": {
       "free": false,
@@ -362,7 +382,9 @@
     "barrierFree": 4,
     "dogRun": {
       "available": true,
-      "free": true
+      "free": true,
+      "separated": true,
+      "detail": "小型犬エリア（体高40cm未満・10kg以下）・中大型犬エリア"
     },
     "admission": {
       "free": true,
@@ -396,7 +418,9 @@
     "barrierFree": 3,
     "dogRun": {
       "available": true,
-      "free": true
+      "free": true,
+      "separated": true,
+      "detail": "2エリアに分離"
     },
     "admission": {
       "free": true,
@@ -430,7 +454,9 @@
     "barrierFree": 2,
     "dogRun": {
       "available": false,
-      "free": false
+      "free": false,
+      "detail": "",
+      "separated": false
     },
     "admission": {
       "free": true,
@@ -464,7 +490,9 @@
     "barrierFree": 4,
     "dogRun": {
       "available": true,
-      "free": true
+      "free": true,
+      "separated": true,
+      "detail": "小型犬エリア・中大型犬エリア"
     },
     "admission": {
       "free": true,
@@ -498,7 +526,9 @@
     "barrierFree": 4,
     "dogRun": {
       "available": true,
-      "free": true
+      "free": true,
+      "separated": true,
+      "detail": "小型犬エリア・フリースペース"
     },
     "admission": {
       "free": true,
@@ -532,7 +562,9 @@
     "barrierFree": 4,
     "dogRun": {
       "available": true,
-      "free": true
+      "free": true,
+      "separated": false,
+      "detail": "小型犬専用（10kg以下）"
     },
     "admission": {
       "free": true,
@@ -566,7 +598,9 @@
     "barrierFree": 4,
     "dogRun": {
       "available": false,
-      "free": false
+      "free": false,
+      "detail": "",
+      "separated": false
     },
     "admission": {
       "free": true,
@@ -600,7 +634,9 @@
     "barrierFree": 2,
     "dogRun": {
       "available": false,
-      "free": false
+      "free": false,
+      "detail": "",
+      "separated": false
     },
     "admission": {
       "free": true,
@@ -634,7 +670,9 @@
     "barrierFree": 4,
     "dogRun": {
       "available": true,
-      "free": false
+      "free": false,
+      "separated": false,
+      "detail": ""
     },
     "admission": {
       "free": true,
@@ -668,7 +706,9 @@
     "barrierFree": 4,
     "dogRun": {
       "available": false,
-      "free": false
+      "free": false,
+      "detail": "",
+      "separated": false
     },
     "admission": {
       "free": true,

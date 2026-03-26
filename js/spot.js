@@ -30,10 +30,6 @@
     // Build info rows
     const visitedStamp = spot.visited ? '<img src="images/stamp-visited.png" alt="訪問済み" class="detail-visited-stamp">' : '';
 
-    const dogSizeText = [];
-    if (spot.dogSize.small) dogSizeText.push('小型犬OK');
-    if (spot.dogSize.large) dogSizeText.push('大型犬OK');
-
     let parkingText = 'なし';
     if (spot.parking.available) {
       parkingText = spot.parking.free ? 'あり（無料）' : 'あり（有料）';
@@ -47,6 +43,7 @@
     let dogRunText = 'なし';
     if (spot.dogRun.available) {
       dogRunText = spot.dogRun.free ? 'あり（無料）' : 'あり（有料）';
+      if (spot.dogRun.detail) dogRunText += `　${spot.dogRun.detail}`;
     }
 
     let admissionText = spot.admission.free ? '無料' : `有料（${spot.admission.fee || ''})`;
@@ -70,7 +67,6 @@
           ></iframe>
 
           <table class="detail-table">
-            <tr><th>犬のサイズ</th><td>${dogSizeText.join('　') || '情報なし'}</td></tr>
             <tr><th>駐車場</th><td>${parkingText}</td></tr>
             <tr><th>トイレ</th><td>${toiletText}</td></tr>
             <tr><th>ドッグラン</th><td>${dogRunText}</td></tr>
