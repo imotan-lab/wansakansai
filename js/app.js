@@ -11,17 +11,36 @@
   const spotCount = document.getElementById('spotCount');
   const btnGps = document.getElementById('btnGps');
   const gpsStatus = document.getElementById('gpsStatus');
+  const sortSelect = document.getElementById('sortSelect');
+
+  // Prefecture order for sorting
+  const prefOrder = ['大阪府', '京都府', '兵庫県', '奈良県', '滋賀県', '和歌山県'];
+
+  function getPrefecture(address) {
+    for (const pref of prefOrder) {
+      if (address.startsWith(pref)) return pref;
+    }
+    return 'その他';
+  }
 
   // ===== Render spots =====
   function renderSpots() {
     let filtered = [...spots];
 
-    // Sort by distance if GPS available
-    if (userLat !== null && userLng !== null) {
+    const sortMode = sortSelect.value;
+
+    // Sort by distance if GPS available and sort mode is gps
+    if (sortMode === 'gps' && userLat !== null && userLng !== null) {
       filtered.forEach(s => {
         s._distance = calcDistance(userLat, userLng, s.lat, s.lng);
       });
       filtered.sort((a, b) => a._distance - b._distance);
+    } else if (sortMode === 'prefecture') {
+      filtered.sort((a, b) => {
+        const pa = prefOrder.indexOf(getPrefecture(a.address));
+        const pb = prefOrder.indexOf(getPrefecture(b.address));
+        return (pa === -1 ? 999 : pa) - (pb === -1 ? 999 : pb);
+      });
     }
 
     spotCount.textContent = `${filtered.length} 件のスポット`;
@@ -38,11 +57,9 @@
 
     spotList.innerHTML = filtered.map(s => {
       const distText = s._distance != null ? `<span class="spot-card-distance">${formatDistance(s._distance)}</span>` : '';
-      const categoryLabel = s.category === 'park' ? '公園' : '散歩スポット';
       const tags = [];
 
       if (s.visited) tags.push('<span class="tag tag-visited">実訪問済み</span>');
-      tags.push(`<span class="tag tag-category">${categoryLabel}</span>`);
       if (s.dogSize.small) tags.push('<span class="tag">小型犬OK</span>');
       if (s.dogSize.large) tags.push('<span class="tag">大型犬OK</span>');
       if (s.parking.available) {
@@ -82,6 +99,14 @@
         btnGps.classList.remove('loading');
         btnGps.textContent = '現在地を更新';
         gpsStatus.textContent = '現在地を取得しました。近い順に並べ替えました。';
+        // Add GPS sort option if not already present
+        if (!sortSelect.querySelector('option[value="gps"]')) {
+          const opt = document.createElement('option');
+          opt.value = 'gps';
+          opt.textContent = '現在地から近い順';
+          sortSelect.insertBefore(opt, sortSelect.firstChild);
+        }
+        sortSelect.value = 'gps';
         renderSpots();
       },
       (err) => {
@@ -95,6 +120,11 @@
       },
       { enableHighAccuracy: true, timeout: 10000 }
     );
+  });
+
+  // ===== Sort =====
+  sortSelect.addEventListener('change', () => {
+    renderSpots();
   });
 
   // Initial render
