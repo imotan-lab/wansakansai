@@ -88,7 +88,7 @@ img {
 }
 
 .site-logo .logo-icon {
-  height: 80px;
+  height: 40px;
   width: auto;
 }
 
@@ -363,10 +363,10 @@ img {
 
 .visited-stamp {
   position: absolute;
-  top: -10px;
-  right: -10px;
-  width: 240px;
-  height: 240px;
+  top: -5px;
+  right: -5px;
+  width: 120px;
+  height: 120px;
   opacity: 0.85;
   transform: rotate(15deg);
   pointer-events: none;
