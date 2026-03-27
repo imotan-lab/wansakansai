@@ -862,5 +862,29 @@
     "remarks": "大阪市の中心部にある都心のオアシス。バラ園が有名で春と秋が見頃。堂島川と土佐堀川に挟まれた水辺の遊歩道が犬の散歩に最適。電車アクセスが良く（なにわ橋駅直結）、車なしでも行ける。周辺にコインパーキングあり。",
     "imageUrl": "",
     "officialUrl": "https://www.city.osaka.lg.jp/kensetsu/page/0000015813.html"
+  },
+  {
+    "id": "chikatsu-asuka-fudoki",
+    "name": "近つ飛鳥風土記の丘",
+    "address": "大阪府南河内郡河南町大字東山299",
+    "lat": 34.5167,
+    "lng": 135.6203,
+    "category": "walk",
+    "dogSize": { "small": true, "large": true },
+    "parking": { "available": true, "free": true },
+    "toilet": { "available": true, "western": true },
+    "stairs": 3,
+    "barrierFree": 2,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": { "free": true, "fee": "" },
+    "visited": true,
+    "remarks": "102基の古墳が保存された29haの史跡公園。無料駐車場あり（管理棟横30台・博物館80台）。春は梅・桜、秋は紅葉が楽しめる。展望台からは淡路島まで見える。起伏のある遊歩道でハイキング気分を味わえる。博物館内はペット不可。9:30〜17:00、月曜休園。",
+    "imageUrl": "",
+    "officialUrl": "https://chikatsu-asuka.jp/fudokinooka/"
   }
 ]
