@@ -23,12 +23,12 @@ function renderHeader(activePage) {
           <span class="logo-sub">わんさかんさい</span>
         </span>
       </a>
-      <button class="hamburger" aria-label="メニューを開く">☰</button>
       <nav>
         <ul class="nav-menu">
           ${nav.map(n => `<li><a href="${n.href}" class="${activePage === n.id ? 'active' : ''}">${n.label}</a></li>`).join('')}
         </ul>
       </nav>
+      <button class="hamburger" aria-label="メニューを開く">☰</button>
     </div>
   `;
 
