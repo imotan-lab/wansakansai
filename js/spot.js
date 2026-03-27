@@ -53,10 +53,8 @@
     container.className = '';
     container.innerHTML = `
       <div class="spot-detail">
-        <div class="spot-detail-title">
-          <h1>${spot.name}</h1>
-          ${visitedStamp}
-        </div>
+        ${visitedStamp}
+        <h1 class="spot-detail-title">${spot.name}</h1>
         <p class="spot-detail-address">${spot.address}</p>
 
         <iframe

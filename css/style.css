@@ -450,28 +450,25 @@ img {
 /* ===== Spot Detail ===== */
 .spot-detail {
   width: 100%;
+  position: relative;
 }
 
 .spot-detail-title {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 4px;
-}
-
-.spot-detail-title h1 {
   font-size: 1.4rem;
   color: var(--color-primary);
   line-height: 1.4;
+  margin-bottom: 4px;
 }
 
 .detail-visited-stamp {
+  position: absolute;
+  top: 0;
+  right: 0;
   width: 56px;
   height: 56px;
-  flex-shrink: 0;
   opacity: 0.9;
   transform: rotate(10deg);
+  pointer-events: none;
 }
 
 .spot-detail-address {
@@ -811,8 +808,9 @@ img {
     font-size: 1.25rem;
   }
 
-  .spot-detail-title h1 {
+  .spot-detail-title {
     font-size: 1.2rem;
+    padding-right: 60px;
   }
 
   .detail-info-label {
