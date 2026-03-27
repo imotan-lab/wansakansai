@@ -27,7 +27,7 @@
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) metaDesc.content = `${spot.name}（${spot.address}）の犬連れお出かけ情報。駐車場・トイレ・ドッグラン情報など。`;
 
-    // Build info rows
+    // Build info
     const visitedStamp = spot.visited ? '<img src="images/stamp-visited.png" alt="訪問済み" class="detail-visited-stamp">' : '';
 
     let parkingText = 'なし';
@@ -43,44 +43,60 @@
     let dogRunText = 'なし';
     if (spot.dogRun.available) {
       dogRunText = spot.dogRun.free ? 'あり（無料）' : 'あり（有料）';
-      if (spot.dogRun.detail) dogRunText += `　${spot.dogRun.detail}`;
+      if (spot.dogRun.detail) dogRunText += ` / ${spot.dogRun.detail}`;
     }
 
     let admissionText = spot.admission.free ? '無料' : `有料（${spot.admission.fee || ''})`;
 
     const mapQuery = encodeURIComponent(spot.name + ' ' + spot.address);
 
+    container.className = '';
     container.innerHTML = `
       <div class="spot-detail">
-        <div class="spot-detail-header">
+        <div class="spot-detail-title">
           <h1>${spot.name}</h1>
           ${visitedStamp}
-          <p class="address">${spot.address}</p>
         </div>
-        <div class="spot-detail-body">
-          <iframe
-            class="spot-map"
-            src="https://maps.google.co.jp/maps?q=${mapQuery}&output=embed&z=15"
-            allowfullscreen
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          ></iframe>
+        <p class="spot-detail-address">${spot.address}</p>
 
-          <table class="detail-table">
-            <tr><th>駐車場</th><td>${parkingText}</td></tr>
-            <tr><th>トイレ</th><td>${toiletText}</td></tr>
-            <tr><th>ドッグラン</th><td>${dogRunText}</td></tr>
-            <tr><th>入場料</th><td>${admissionText}</td></tr>
-            ${spot.officialUrl ? `<tr><th>公式HP</th><td><a href="${spot.officialUrl}" target="_blank" rel="noopener noreferrer">${spot.officialUrl.replace(/^https?:\/\//, '').replace(/\/$/, '')}</a></td></tr>` : ''}
-          </table>
+        <iframe
+          class="spot-map"
+          src="https://maps.google.co.jp/maps?q=${mapQuery}&output=embed&z=15"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
 
-          ${spot.remarks ? `
-            <div class="detail-remarks">
-              <h3>備考・犬連れでのポイント</h3>
-              <p>${spot.remarks}</p>
-            </div>
-          ` : ''}
+        <div class="detail-info-list">
+          <div class="detail-info-item">
+            <span class="detail-info-label">駐車場</span>
+            <span class="detail-info-value">${parkingText}</span>
+          </div>
+          <div class="detail-info-item">
+            <span class="detail-info-label">トイレ</span>
+            <span class="detail-info-value">${toiletText}</span>
+          </div>
+          <div class="detail-info-item">
+            <span class="detail-info-label">ドッグラン</span>
+            <span class="detail-info-value">${dogRunText}</span>
+          </div>
+          <div class="detail-info-item">
+            <span class="detail-info-label">入場料</span>
+            <span class="detail-info-value">${admissionText}</span>
+          </div>
+          ${spot.officialUrl ? `
+          <div class="detail-info-item">
+            <span class="detail-info-label">公式HP</span>
+            <span class="detail-info-value"><a href="${spot.officialUrl}" target="_blank" rel="noopener noreferrer">${spot.officialUrl.replace(/^https?:\/\//, '').replace(/\/$/, '')}</a></span>
+          </div>` : ''}
         </div>
+
+        ${spot.remarks ? `
+          <div class="detail-remarks">
+            <h3>備考・犬連れでのポイント</h3>
+            <p>${spot.remarks}</p>
+          </div>
+        ` : ''}
       </div>
     `;
   } catch (e) {
