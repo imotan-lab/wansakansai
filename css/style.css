@@ -449,11 +449,7 @@ img {
 
 /* ===== Spot Detail ===== */
 .spot-detail {
-  background: var(--color-bg-card);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-card);
   overflow: hidden;
-  max-width: 100%;
   width: 100%;
 }
 
@@ -462,6 +458,8 @@ img {
   color: #fff;
   padding: 24px 20px;
   position: relative;
+  border-radius: var(--radius);
+  margin-bottom: 20px;
 }
 
 .detail-visited-stamp {
@@ -485,7 +483,7 @@ img {
 }
 
 .spot-detail-body {
-  padding: 20px;
+  padding: 0;
 }
 
 .spot-map {
