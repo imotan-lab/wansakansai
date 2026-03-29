@@ -15,15 +15,13 @@
   const gpsStatus = document.getElementById('gpsStatus');
   const prefSection = document.getElementById('prefSection');
 
-  // Prefecture list
-  const prefList = ['大阪府', '京都府', '兵庫県', '奈良県', '滋賀県', '和歌山県'];
-
+  // Extract prefecture list from spot data
   function getPrefecture(address) {
-    for (const pref of prefList) {
-      if (address.startsWith(pref)) return pref;
-    }
-    return 'その他';
+    const m = address.match(/^(.+?[都道府県])/);
+    return m ? m[1] : 'その他';
   }
+
+  const prefList = [...new Set(spots.map(s => getPrefecture(s.address)))].filter(p => p !== 'その他');
 
   // Build prefecture buttons from actual data
   function buildPrefButtons() {

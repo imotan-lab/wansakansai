@@ -4,13 +4,17 @@ function getBasePath() {
   return '';
 }
 
+// Site navigation definition (single source of truth)
+const SITE_NAV = [
+  { href: 'index.html', label: 'スポット検索', id: 'home' },
+  { href: 'danger.html', label: '危険情報', id: 'danger' },
+  { href: 'privacy.html', label: 'プライバシーポリシー', id: 'privacy', footerOnly: true },
+  { href: 'contact.html', label: 'お問い合わせ', id: 'contact' },
+];
+
 function renderHeader(activePage) {
   const base = getBasePath();
-  const nav = [
-    { href: `${base}index.html`, label: 'スポット検索', id: 'home' },
-    { href: `${base}danger.html`, label: '危険情報', id: 'danger' },
-    { href: `${base}contact.html`, label: 'お問い合わせ', id: 'contact' },
-  ];
+  const headerNav = SITE_NAV.filter(n => !n.footerOnly);
 
   const header = document.createElement('header');
   header.className = 'site-header';
@@ -25,7 +29,7 @@ function renderHeader(activePage) {
       </a>
       <nav>
         <ul class="nav-menu">
-          ${nav.map(n => `<li><a href="${n.href}" class="${activePage === n.id ? 'active' : ''}">${n.label}</a></li>`).join('')}
+          ${headerNav.map(n => `<li><a href="${base}${n.href}" class="${activePage === n.id ? 'active' : ''}">${n.label}</a></li>`).join('')}
         </ul>
       </nav>
       <button class="hamburger" aria-label="メニューを開く">☰</button>
@@ -49,10 +53,7 @@ function renderFooter() {
   footer.className = 'site-footer';
   footer.innerHTML = `
     <div class="footer-nav">
-      <a href="${base}index.html">スポット検索</a>
-      <a href="${base}danger.html">危険情報</a>
-      <a href="${base}privacy.html">プライバシーポリシー</a>
-      <a href="${base}contact.html">お問い合わせ</a>
+      ${SITE_NAV.map(n => `<a href="${base}${n.href}">${n.label}</a>`).join('')}
     </div>
     <p>&copy; 2026 犬阪んさい All rights reserved.</p>
   `;
