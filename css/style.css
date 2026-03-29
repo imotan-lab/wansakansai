@@ -669,6 +669,12 @@ img {
   margin-bottom: 24px;
 }
 
+.page-desc-note {
+  font-size: 0.8rem;
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
 .danger-list {
   display: grid;
   gap: 16px;
