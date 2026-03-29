@@ -99,6 +99,13 @@
           </div>
         ` : ''}
 
+        <div class="share-buttons">
+          <span class="share-label">シェア</span>
+          <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(spot.name + ' - 犬阪んさい')}&url=${encodeURIComponent(window.location.href)}" target="_blank" rel="noopener noreferrer" class="share-btn share-x">X</a>
+          <a href="https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(window.location.href)}" target="_blank" rel="noopener noreferrer" class="share-btn share-line">LINE</a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}" target="_blank" rel="noopener noreferrer" class="share-btn share-fb">Facebook</a>
+        </div>
+
         ${(() => {
           const related = dangers.filter(d => {
             const text = d.location + d.description;

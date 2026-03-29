@@ -600,6 +600,51 @@ img {
   background: var(--color-primary);
 }
 
+/* ===== Share Buttons ===== */
+.share-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-border);
+}
+
+.share-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-text-light);
+}
+
+.share-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 14px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border-radius: 50px;
+  color: #fff;
+  transition: opacity 0.2s;
+}
+
+.share-btn:hover {
+  opacity: 0.8;
+  color: #fff;
+}
+
+.share-x {
+  background: #000;
+}
+
+.share-line {
+  background: #06C755;
+}
+
+.share-fb {
+  background: #1877F2;
+}
+
 /* ===== Spot Detail: Danger Alert ===== */
 .detail-danger-alert {
   margin-top: 20px;
