@@ -339,22 +339,40 @@ img {
 
 /* ===== Danger Banner ===== */
 .danger-banner {
-  display: block;
-  text-align: center;
-  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 20px;
   margin-bottom: 20px;
-  background: #FDF2F0;
+  background: linear-gradient(135deg, #FDF2F0 0%, #FBE8E4 100%);
   border: 1px solid #E8C4BE;
+  border-left: 4px solid var(--color-danger);
   border-radius: var(--radius-sm);
   color: var(--color-danger);
   font-size: 0.9rem;
   font-weight: 600;
-  transition: background 0.2s;
+  transition: all 0.2s;
+  box-shadow: 0 1px 3px rgba(192, 57, 43, 0.08);
+}
+
+.danger-banner::before {
+  content: "\26A0";
+  font-size: 1.1rem;
+}
+
+.danger-banner::after {
+  content: "\203A";
+  font-size: 1.2rem;
+  margin-left: auto;
+  opacity: 0.5;
 }
 
 .danger-banner:hover {
-  background: #F9E0DA;
+  background: linear-gradient(135deg, #FBE8E4 0%, #F9DDD7 100%);
   color: var(--color-danger);
+  box-shadow: 0 2px 6px rgba(192, 57, 43, 0.15);
+  transform: translateY(-1px);
 }
 
 /* ===== Spot Count ===== */
