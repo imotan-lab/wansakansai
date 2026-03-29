@@ -17,23 +17,41 @@
   const prefSection = document.getElementById('prefSection');
   const filterSection = document.getElementById('filterSection');
 
-  // Tag filter definitions (data-driven)
-  const FILTERS = [
-    { id: 'parking-free', label: '駐車場無料', test: s => s.parking.available && s.parking.free },
-    { id: 'parking-paid', label: '駐車場有料', test: s => s.parking.available && !s.parking.free },
-    { id: 'parking-none', label: '駐車場なし', test: s => !s.parking.available },
-    { id: 'dogrun', label: 'ドッグランあり', test: s => s.dogRun.available },
-    { id: 'admission-free', label: '入場無料', test: s => s.admission.free },
-    { id: 'admission-paid', label: '入場有料', test: s => !s.admission.free },
-    { id: 'toilet', label: 'トイレあり', test: s => s.toilet.available },
-    { id: 'sakura', label: '桜', test: s => (s.tags || []).includes('sakura') },
-    { id: 'koyo', label: '紅葉', test: s => (s.tags || []).includes('koyo') },
+  // Tag filter definitions (data-driven, grouped)
+  const FILTER_GROUPS = [
+    { label: '駐車場', filters: [
+      { id: 'parking-free', label: '無料', test: s => s.parking.available && s.parking.free },
+      { id: 'parking-paid', label: '有料', test: s => s.parking.available && !s.parking.free },
+      { id: 'parking-none', label: 'なし', test: s => !s.parking.available },
+    ]},
+    { label: '施設', filters: [
+      { id: 'dogrun', label: 'ドッグラン', test: s => s.dogRun.available },
+      { id: 'toilet', label: 'トイレ', test: s => s.toilet.available },
+    ]},
+    { label: '料金', filters: [
+      { id: 'admission-free', label: '入場無料', test: s => s.admission.free },
+      { id: 'admission-paid', label: '入場有料', test: s => !s.admission.free },
+    ]},
+    { label: '季節', filters: [
+      { id: 'sakura', label: '桜', test: s => (s.tags || []).includes('sakura') },
+      { id: 'koyo', label: '紅葉', test: s => (s.tags || []).includes('koyo') },
+    ]},
   ];
 
+  // Flat list for filtering logic
+  const FILTERS = FILTER_GROUPS.flatMap(g => g.filters);
+
   function buildFilterButtons() {
-    filterSection.innerHTML = FILTERS.map(f =>
-      `<button class="filter-btn" data-filter="${f.id}">${f.label}</button>`
-    ).join('');
+    filterSection.innerHTML = FILTER_GROUPS.map(g => `
+      <div class="filter-group">
+        <span class="filter-group-label">${g.label}</span>
+        <div class="filter-group-btns">
+          ${g.filters.map(f =>
+            `<button class="filter-btn" data-filter="${f.id}">${f.label}</button>`
+          ).join('')}
+        </div>
+      </div>
+    `).join('');
 
     filterSection.querySelectorAll('.filter-btn').forEach(btn => {
       btn.addEventListener('click', () => {
