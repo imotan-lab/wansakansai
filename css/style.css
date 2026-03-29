@@ -873,8 +873,9 @@ img {
   padding: 80px 20px;
 }
 
-.page-404 .icon {
-  font-size: 4rem;
+.page-404-img {
+  width: 160px;
+  height: auto;
   margin-bottom: 16px;
 }
 
