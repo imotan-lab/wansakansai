@@ -794,7 +794,7 @@ img {
 
 .contact-form-wrapper iframe {
   width: 100%;
-  min-height: 600px;
+  min-height: 1200px;
   border: none;
   border-radius: var(--radius-sm);
 }
