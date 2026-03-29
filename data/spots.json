@@ -1054,5 +1054,77 @@
     "remarks": "2024年オープンのJR大阪駅直結の新スポット。うめきた公園はリード着用または抱きかかえでペットOK。都心の芝生広場で犬と過ごせる。グランフロント大阪に隣接し買い物にも便利。周辺に大型駐車場多数（有料）。",
     "imageUrl": "",
     "officialUrl": "https://www.grandgreen-osaka.com/"
+  },
+  {
+    "id": "minoo-park",
+    "name": "箕面公園（箕面大滝）",
+    "address": "大阪府箕面市箕面公園1-18",
+    "lat": 34.8528,
+    "lng": 135.4701,
+    "category": "walk",
+    "dogSize": { "small": true, "large": true },
+    "parking": { "available": true, "free": false },
+    "toilet": { "available": true, "western": true },
+    "stairs": 3,
+    "barrierFree": 2,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": { "free": true, "fee": "" },
+    "visited": false,
+    "remarks": "「日本の滝百選」箕面大滝がある自然豊かな公園。滝道は約2.8kmの渓流沿い遊歩道。犬はリード着用で散歩OK。秋の紅葉が特に美しい。野生のサルが出没するため犬から目を離さないこと（食べ物を見せない）。駐車場は大日駐車場が1回1,000円。阪急「箕面」駅から徒歩5分。",
+    "imageUrl": "",
+    "officialUrl": "https://www.mino-park.jp/"
+  },
+  {
+    "id": "tsurumi-ryokuchi",
+    "name": "鶴見緑地",
+    "address": "大阪府大阪市鶴見区緑地公園2-163",
+    "lat": 34.7078,
+    "lng": 135.5789,
+    "category": "walk",
+    "dogSize": { "small": true, "large": true },
+    "parking": { "available": true, "free": false },
+    "toilet": { "available": true, "western": true },
+    "stairs": 1,
+    "barrierFree": 4,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": { "free": true, "fee": "" },
+    "visited": false,
+    "remarks": "1990年花博の跡地を整備した約126haの広大な公園。風車の丘、大芝生広場など犬との散歩に最適。バラ園やハナミズキ通りなど四季の花が楽しめる。咲くやこの花館はペット不可。地下鉄「鶴見緑地」駅徒歩すぐ。駐車場は20分100円。",
+    "imageUrl": "",
+    "officialUrl": "https://www.tsurumi-ryokuchi.jp/"
+  },
+  {
+    "id": "yamada-ike-park",
+    "name": "山田池公園",
+    "address": "大阪府枚方市山田池公園1-1",
+    "lat": 34.8064,
+    "lng": 135.6711,
+    "category": "walk",
+    "dogSize": { "small": true, "large": true },
+    "parking": { "available": true, "free": false },
+    "toilet": { "available": true, "western": true },
+    "stairs": 2,
+    "barrierFree": 3,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": { "free": true, "fee": "" },
+    "visited": false,
+    "remarks": "約73haの広大な府営公園。山田池を中心に花木園、水生花園、芝生広場がある。春は桜とツツジ、夏はアジサイ、秋は紅葉と四季を通して楽しめる。散歩コースが複数あり、犬連れの利用者が多い。駐車場は1時間400円（土日祝は上限1,100円）。",
+    "imageUrl": "",
+    "officialUrl": "https://yamadaike.osaka-park.or.jp/"
   }
 ]
