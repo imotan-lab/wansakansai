@@ -404,10 +404,10 @@ img {
 
 .visited-stamp {
   position: absolute;
-  bottom: -8px;
-  right: -8px;
-  width: 72px;
-  height: 72px;
+  bottom: -10px;
+  right: -10px;
+  width: 88px;
+  height: 88px;
   opacity: 0.85;
   transform: rotate(15deg);
   pointer-events: none;
@@ -415,10 +415,10 @@ img {
 
 @media (max-width: 768px) {
   .visited-stamp {
-    width: 56px;
-    height: 56px;
-    bottom: -6px;
-    right: -6px;
+    width: 72px;
+    height: 72px;
+    bottom: -8px;
+    right: -8px;
   }
 }
 
@@ -439,6 +439,7 @@ img {
   font-size: 1.05rem;
   font-weight: 700;
   color: var(--color-text);
+  padding-right: 60px;
 }
 
 .spot-card-distance {
@@ -497,17 +498,19 @@ img {
   color: var(--color-primary);
   line-height: 1.4;
   margin-bottom: 4px;
+  padding-right: 70px;
 }
 
 .detail-visited-stamp {
   position: absolute;
-  top: 0;
-  right: 0;
-  width: 56px;
-  height: 56px;
+  top: -12px;
+  right: -12px;
+  width: 80px;
+  height: 80px;
   opacity: 0.9;
   transform: rotate(10deg);
   pointer-events: none;
+  z-index: 1;
 }
 
 .spot-detail-address {
@@ -931,7 +934,7 @@ img {
 
   .spot-detail-title {
     font-size: 1.2rem;
-    padding-right: 60px;
+    padding-right: 70px;
   }
 
   .detail-info-label {
