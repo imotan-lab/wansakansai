@@ -21,6 +21,7 @@
   const FILTERS = [
     { id: 'parking-free', label: '駐車場無料', test: s => s.parking.available && s.parking.free },
     { id: 'parking-paid', label: '駐車場有料', test: s => s.parking.available && !s.parking.free },
+    { id: 'parking-none', label: '駐車場なし', test: s => !s.parking.available },
     { id: 'dogrun', label: 'ドッグランあり', test: s => s.dogRun.available },
     { id: 'admission-free', label: '入場無料', test: s => s.admission.free },
     { id: 'admission-paid', label: '入場有料', test: s => !s.admission.free },
