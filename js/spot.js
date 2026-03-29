@@ -116,8 +116,8 @@
                   <p>${d.description}</p>
                 </div>
               `).join('')}
-              <a href="danger.html" class="detail-danger-more">危険情報の一覧を見る</a>
             </div>
+            <a href="danger.html" class="detail-danger-more">危険情報の一覧を見る</a>
           `;
         })()}
       </div>
