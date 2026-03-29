@@ -652,6 +652,32 @@ img {
   line-height: 1.6;
 }
 
+.danger-card-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #f0e0dc;
+}
+
+.danger-spot-link {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 50px;
+  background: var(--color-bg);
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  transition: all 0.2s;
+}
+
+.danger-spot-link:hover {
+  background: var(--color-primary);
+  color: #fff;
+}
+
 .danger-empty {
   text-align: center;
   padding: 40px 20px;

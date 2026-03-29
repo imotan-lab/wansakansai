@@ -34,7 +34,10 @@
       const container = document.getElementById('dangerList');
 
       try {
-        const dangers = await loadJSON('data/dangers.json');
+        const [dangers, spots] = await Promise.all([
+          loadJSON('data/dangers.json'),
+          loadJSON('data/spots.json')
+        ]);
 
         if (dangers.length === 0) {
           container.innerHTML = `
@@ -46,6 +49,12 @@
           return;
         }
 
+        // Find matching spots for a danger entry
+        function findRelatedSpots(danger) {
+          const text = danger.location + danger.description;
+          return spots.filter(s => text.includes(s.name));
+        }
+
         // Sort by date descending
         dangers.sort((a, b) => new Date(b.date) - new Date(a.date));
 
@@ -53,12 +62,19 @@
           const dateStr = new Date(d.date).toLocaleDateString('ja-JP', {
             year: 'numeric', month: 'long', day: 'numeric'
           });
+          const related = findRelatedSpots(d);
+          const linksHtml = related.length > 0
+            ? `<div class="danger-card-links">${related.map(s =>
+                `<a href="spot.html?id=${s.id}" class="danger-spot-link">${s.name}</a>`
+              ).join('')}</div>`
+            : '';
           return `
             <div class="danger-card">
               <p class="danger-card-date">${dateStr}</p>
               <p class="danger-card-location">${d.location}</p>
               <span class="danger-card-type">${d.type}</span>
               <p class="danger-card-desc">${d.description}</p>
+              ${linksHtml}
             </div>
           `;
         }).join('');
