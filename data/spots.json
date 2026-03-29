@@ -213,7 +213,10 @@
     "visited": false,
     "remarks": "入場料・駐車場・ドッグラン全て無料。ドッグランは2箇所、犬種サイズ制限なし。園内リード着用で散歩可能。果樹園エリアはペット不可。テラス席犬同伴OKのレストランあり。駐車場とトイレは24時間利用可。",
     "imageUrl": "",
-    "officialUrl": "https://fruit-flowerpark.jp/"
+    "officialUrl": "https://fruit-flowerpark.jp/",
+    "aliases": [
+      "神戸フルーツ・フラワーパーク大沢"
+    ]
   },
   {
     "id": "akashi-kaikyo-park",
@@ -321,7 +324,11 @@
     "visited": true,
     "remarks": "約2.4km、約500本のメタセコイアが続く絶景並木道。四季折々の景観が楽しめ、特に秋の紅葉シーズンが人気。マキノピックランドの無料駐車場を利用（243台、24時間開放）。紅葉シーズンは混雑注意。路上駐停車は厳禁。",
     "imageUrl": "",
-    "officialUrl": "https://pic-land.com/"
+    "officialUrl": "https://pic-land.com/",
+    "aliases": [
+      "マキノ メタセコイア並木",
+      "マキノピックランド"
+    ]
   },
   {
     "id": "biwako-valley",
@@ -465,7 +472,10 @@
     "visited": false,
     "remarks": "東京ドーム10個分の広大な自然園地。無料駐車場162台。池や湿地、ハイキングコースが整備されており犬と自然散策が楽しめる。山道が多いため歩きやすい靴推奨。夏場でも木陰が多く涼しい。冬季は閉園時間が早まる場合あり。",
     "imageUrl": "",
-    "officialUrl": "https://o-wonderforest.com/muroike/"
+    "officialUrl": "https://o-wonderforest.com/muroike/",
+    "aliases": [
+      "むろいけ園地"
+    ]
   },
   {
     "id": "umi-fureai-hiroba",
@@ -726,9 +736,18 @@
     "lat": 34.8953,
     "lng": 135.5478,
     "category": "park",
-    "dogSize": { "small": true, "large": true },
-    "parking": { "available": true, "free": true },
-    "toilet": { "available": true, "western": true },
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
     "stairs": 2,
     "barrierFree": 3,
     "dogRun": {
@@ -737,7 +756,10 @@
       "separated": false,
       "detail": "アジリティ設備あり（ゲートボール場兼用）"
     },
-    "admission": { "free": true, "fee": "" },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
     "visited": false,
     "remarks": "竜王山のふもとにある自然豊かな公園。無料駐車場122台。ドッグランは2箇所ありアジリティ設備もあるが、ゲートボール場と兼用のため予約が入っている場合は利用不可。利用前に竜王山荘フロントで手続きが必要。7:00〜19:00、年末年始休園。新名神茨木千堤寺ICから約5分。",
     "imageUrl": "",
@@ -750,9 +772,18 @@
     "lat": 34.4847,
     "lng": 135.4173,
     "category": "park",
-    "dogSize": { "small": true, "large": true },
-    "parking": { "available": true, "free": false },
-    "toilet": { "available": true, "western": true },
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
     "stairs": 2,
     "barrierFree": 3,
     "dogRun": {
@@ -761,7 +792,10 @@
       "separated": false,
       "detail": "1エリア580平米（奇数日:小型犬/偶数日:中大型犬）"
     },
-    "admission": { "free": true, "fee": "" },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
     "visited": false,
     "remarks": "2023年3月オープンの無料ドッグラン。約580平米、土地面。足洗い場あり。奇数日は小型犬専用、偶数日は中大型犬専用の日替わり制。管理人不在・接種証の確認なし。駐車場67台（最初の1時間無料、以降1時間100円）。桜シーズンは駐車料金変動あり。",
     "imageUrl": "",
@@ -774,9 +808,18 @@
     "lat": 34.4536,
     "lng": 135.5678,
     "category": "park",
-    "dogSize": { "small": true, "large": false },
-    "parking": { "available": true, "free": true },
-    "toilet": { "available": true, "western": true },
+    "dogSize": {
+      "small": true,
+      "large": false
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
     "stairs": 1,
     "barrierFree": 4,
     "dogRun": {
@@ -785,11 +828,18 @@
       "separated": false,
       "detail": "中小型犬専用（体高50cm以下）"
     },
-    "admission": { "free": true, "fee": "" },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
     "visited": false,
     "remarks": "道の駅併設の無料ドッグラン「くろまろドッグパーク」。体高50cm以下の中小型犬のみ利用可。無料駐車場約300台。テラス席で犬同伴の食事も可能。夏は石川での川遊びも人気。9:00〜18:00。混合ワクチン・狂犬病ワクチン接種が利用条件。",
     "imageUrl": "",
-    "officialUrl": "https://kuromaro.com/"
+    "officialUrl": "https://kuromaro.com/",
+    "aliases": [
+      "くろまろの郷",
+      "奥河内くろまろの郷"
+    ]
   },
   {
     "id": "rinku-ice-park-dogrun",
@@ -798,9 +848,18 @@
     "lat": 34.4097,
     "lng": 135.2853,
     "category": "park",
-    "dogSize": { "small": true, "large": true },
-    "parking": { "available": true, "free": false },
-    "toilet": { "available": true, "western": true },
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
     "stairs": 1,
     "barrierFree": 4,
     "dogRun": {
@@ -809,7 +868,10 @@
       "separated": true,
       "detail": "小型犬エリア・大型犬エリア"
     },
-    "admission": { "free": true, "fee": "" },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
     "visited": false,
     "remarks": "泉佐野市営の無料ドッグラン。小型犬エリアと大型犬エリアの2区画。9:00〜21:00。事前登録不要。狂犬病予防接種済みであること。駐車場は最初30分無料、以降120分まで300円、以降60分300円加算。りんくうタウン駅から徒歩圏内。",
     "imageUrl": "",
@@ -822,9 +884,18 @@
     "lat": 34.7453,
     "lng": 135.6342,
     "category": "park",
-    "dogSize": { "small": true, "large": true },
-    "parking": { "available": true, "free": true },
-    "toilet": { "available": true, "western": true },
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
     "stairs": 1,
     "barrierFree": 4,
     "dogRun": {
@@ -833,7 +904,10 @@
       "separated": false,
       "detail": "奇数日:10kg未満/偶数日:10kg以上（日替わり制）"
     },
-    "admission": { "free": true, "fee": "" },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
     "visited": false,
     "remarks": "2025年10月に打上川治水緑地から移転リニューアルした無料ドッグラン。6:00〜19:00。奇数日は10kg未満、偶数日は10kg以上の日替わり制。無料駐車場あり（開門時間は公式HP確認）。約45,000平米の広い公園内にアスレチック広場や散策路もあり。",
     "imageUrl": "",
@@ -844,11 +918,20 @@
     "name": "中之島公園",
     "address": "大阪府大阪市北区中之島1",
     "lat": 34.6937,
-    "lng": 135.5100,
+    "lng": 135.51,
     "category": "walk",
-    "dogSize": { "small": true, "large": true },
-    "parking": { "available": true, "free": false },
-    "toilet": { "available": true, "western": true },
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
     "stairs": 1,
     "barrierFree": 4,
     "dogRun": {
@@ -857,7 +940,10 @@
       "separated": false,
       "detail": ""
     },
-    "admission": { "free": true, "fee": "" },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
     "visited": false,
     "remarks": "大阪市の中心部にある都心のオアシス。バラ園が有名で春と秋が見頃。堂島川と土佐堀川に挟まれた水辺の遊歩道が犬の散歩に最適。電車アクセスが良く（なにわ橋駅直結）、車なしでも行ける。周辺にコインパーキングあり。",
     "imageUrl": "",
@@ -870,9 +956,18 @@
     "lat": 34.5167,
     "lng": 135.6203,
     "category": "walk",
-    "dogSize": { "small": true, "large": true },
-    "parking": { "available": true, "free": true },
-    "toilet": { "available": true, "western": true },
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
     "stairs": 3,
     "barrierFree": 2,
     "dogRun": {
@@ -881,7 +976,10 @@
       "separated": false,
       "detail": ""
     },
-    "admission": { "free": true, "fee": "" },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
     "visited": true,
     "remarks": "102基の古墳が保存された29haの史跡公園。無料駐車場あり（管理棟横30台・博物館80台）。春は梅・桜、秋は紅葉が楽しめる。展望台からは淡路島まで見える。起伏のある遊歩道でハイキング気分を味わえる。博物館内はペット不可。9:30〜17:00、月曜休園。",
     "imageUrl": "",
@@ -894,9 +992,18 @@
     "lat": 34.3847,
     "lng": 135.2731,
     "category": "park",
-    "dogSize": { "small": true, "large": true },
-    "parking": { "available": true, "free": false },
-    "toilet": { "available": true, "western": true },
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
     "stairs": 1,
     "barrierFree": 4,
     "dogRun": {
@@ -905,11 +1012,18 @@
       "separated": false,
       "detail": "サークル型ドッグラン（エリア分離なし）"
     },
-    "admission": { "free": true, "fee": "" },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
     "visited": false,
     "remarks": "全長約2kmのビーチサイド公園。無料ドッグランあり（広さは小さめ、扉は一重なので脱走注意）。海を眺めながら散歩できる。テラス席犬同伴OKの飲食店あり。駐車場は有料（サザンぴあで400円以上買い物で90分無料）。入園料無料。",
     "imageUrl": "",
-    "officialUrl": "https://sennanlongpark.com/"
+    "officialUrl": "https://sennanlongpark.com/",
+    "aliases": [
+      "SENNAN LONG PARK",
+      "泉南りんくう公園"
+    ]
   },
   {
     "id": "suminoe-park",
@@ -918,9 +1032,18 @@
     "lat": 34.6167,
     "lng": 135.4747,
     "category": "park",
-    "dogSize": { "small": true, "large": true },
-    "parking": { "available": true, "free": false },
-    "toilet": { "available": true, "western": true },
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
     "stairs": 1,
     "barrierFree": 4,
     "dogRun": {
@@ -929,7 +1052,10 @@
       "separated": true,
       "detail": "小型犬・中大型犬の優先時間制（奇数日/偶数日で入替）"
     },
-    "admission": { "free": true, "fee": "" },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
     "visited": false,
     "remarks": "大阪市内の無料ドッグラン。犬種別の優先時間あり（専用時間は午前9:40〜10:40、午後15:00〜16:00）。二重扉で安全。水飲み場・ドッグトイレあり。10〜4月は8:30〜17:00、5〜9月は6:30〜19:00。四つ橋線「住之江公園」駅徒歩約10分。",
     "imageUrl": "",
@@ -942,9 +1068,18 @@
     "lat": 34.8489,
     "lng": 135.6267,
     "category": "walk",
-    "dogSize": { "small": true, "large": true },
-    "parking": { "available": true, "free": false },
-    "toilet": { "available": true, "western": true },
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
     "stairs": 1,
     "barrierFree": 4,
     "dogRun": {
@@ -953,7 +1088,10 @@
       "separated": false,
       "detail": "GRASS DOG&CAT内（有料・10kg未満・屋根付き人工芝）"
     },
-    "admission": { "free": true, "fee": "" },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
     "visited": false,
     "remarks": "甲子園約5個分（約21ha）の広大な公園。弥生時代の遺跡がある。リード着用で園内散歩OK（芝生エリアは犬立入禁止）。有料ドッグランはGRASS DOG&CAT店内（10:00〜19:00、10kg未満）。テラス席犬同伴OKの飲食店4店舗。JR高槻駅徒歩13分。駐車場1日最大800円。",
     "imageUrl": "",
@@ -966,9 +1104,18 @@
     "lat": 34.6937,
     "lng": 135.5098,
     "category": "walk",
-    "dogSize": { "small": true, "large": true },
-    "parking": { "available": false, "free": false },
-    "toilet": { "available": true, "western": true },
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": false,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
     "stairs": 1,
     "barrierFree": 4,
     "dogRun": {
@@ -977,7 +1124,10 @@
       "separated": false,
       "detail": ""
     },
-    "admission": { "free": true, "fee": "" },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
     "visited": false,
     "remarks": "大阪市の都心部にある水辺の散歩スポット。バラ園が有名で春・秋が見頃。リード着用で犬と散歩OK。テラス席犬同伴OKのレストランあり（小型犬2頭まで）。専用駐車場なし、周辺コインパーキング利用。地下鉄「なにわ橋」駅すぐ。",
     "imageUrl": "",
@@ -990,9 +1140,18 @@
     "lat": 34.6828,
     "lng": 135.4892,
     "category": "walk",
-    "dogSize": { "small": true, "large": true },
-    "parking": { "available": false, "free": false },
-    "toilet": { "available": true, "western": true },
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": false,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
     "stairs": 1,
     "barrierFree": 4,
     "dogRun": {
@@ -1001,7 +1160,10 @@
       "separated": false,
       "detail": ""
     },
-    "admission": { "free": true, "fee": "" },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
     "visited": false,
     "remarks": "東西約800m、南北約150mの大阪市内有数の都市公園。バラ園やケヤキ並木があり四季折々に楽しめる。犬の散歩をしている人が多く、都心部のお散歩スポットとして人気。専用駐車場なし、周辺コインパーキング利用。地下鉄「本町」駅徒歩5分。",
     "imageUrl": "",
@@ -1014,9 +1176,18 @@
     "lat": 34.6114,
     "lng": 135.5193,
     "category": "walk",
-    "dogSize": { "small": true, "large": true },
-    "parking": { "available": true, "free": false },
-    "toilet": { "available": true, "western": true },
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
     "stairs": 1,
     "barrierFree": 4,
     "dogRun": {
@@ -1025,7 +1196,10 @@
       "separated": false,
       "detail": ""
     },
-    "admission": { "free": true, "fee": "" },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
     "visited": false,
     "remarks": "周囲約2.8kmのランニングコースがあり犬との散歩にも最適。長居植物園（有料）はペット不可だが、公園内は自由に散歩可能。ヤンマースタジアムやキンチョウスタジアムがある。地下鉄「長居」駅すぐ。駐車場は30分200円〜。",
     "imageUrl": "",
@@ -1038,9 +1212,18 @@
     "lat": 34.7045,
     "lng": 135.4934,
     "category": "walk",
-    "dogSize": { "small": true, "large": true },
-    "parking": { "available": true, "free": false },
-    "toilet": { "available": true, "western": true },
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
     "stairs": 1,
     "barrierFree": 5,
     "dogRun": {
@@ -1049,11 +1232,18 @@
       "separated": false,
       "detail": ""
     },
-    "admission": { "free": true, "fee": "" },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
     "visited": false,
     "remarks": "2024年オープンのJR大阪駅直結の新スポット。うめきた公園はリード着用または抱きかかえでペットOK。都心の芝生広場で犬と過ごせる。グランフロント大阪に隣接し買い物にも便利。周辺に大型駐車場多数（有料）。",
     "imageUrl": "",
-    "officialUrl": "https://www.grandgreen-osaka.com/"
+    "officialUrl": "https://www.grandgreen-osaka.com/",
+    "aliases": [
+      "うめきた公園",
+      "グラングリーン大阪"
+    ]
   },
   {
     "id": "minoo-park",
@@ -1062,9 +1252,18 @@
     "lat": 34.8528,
     "lng": 135.4701,
     "category": "walk",
-    "dogSize": { "small": true, "large": true },
-    "parking": { "available": true, "free": false },
-    "toilet": { "available": true, "western": true },
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
     "stairs": 3,
     "barrierFree": 2,
     "dogRun": {
@@ -1073,11 +1272,18 @@
       "separated": false,
       "detail": ""
     },
-    "admission": { "free": true, "fee": "" },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
     "visited": false,
     "remarks": "「日本の滝百選」箕面大滝がある自然豊かな公園。滝道は約2.8kmの渓流沿い遊歩道。犬はリード着用で散歩OK。秋の紅葉が特に美しい。野生のサルが出没するため犬から目を離さないこと（食べ物を見せない）。駐車場は大日駐車場が1回1,000円。阪急「箕面」駅から徒歩5分。",
     "imageUrl": "",
-    "officialUrl": "https://www.mino-park.jp/"
+    "officialUrl": "https://www.mino-park.jp/",
+    "aliases": [
+      "箕面公園",
+      "箕面大滝"
+    ]
   },
   {
     "id": "tsurumi-ryokuchi",
@@ -1086,9 +1292,18 @@
     "lat": 34.7078,
     "lng": 135.5789,
     "category": "walk",
-    "dogSize": { "small": true, "large": true },
-    "parking": { "available": true, "free": false },
-    "toilet": { "available": true, "western": true },
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
     "stairs": 1,
     "barrierFree": 4,
     "dogRun": {
@@ -1097,7 +1312,10 @@
       "separated": false,
       "detail": ""
     },
-    "admission": { "free": true, "fee": "" },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
     "visited": false,
     "remarks": "1990年花博の跡地を整備した約126haの広大な公園。風車の丘、大芝生広場など犬との散歩に最適。バラ園やハナミズキ通りなど四季の花が楽しめる。咲くやこの花館はペット不可。地下鉄「鶴見緑地」駅徒歩すぐ。駐車場は20分100円。",
     "imageUrl": "",
@@ -1110,9 +1328,18 @@
     "lat": 34.8064,
     "lng": 135.6711,
     "category": "walk",
-    "dogSize": { "small": true, "large": true },
-    "parking": { "available": true, "free": false },
-    "toilet": { "available": true, "western": true },
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
     "stairs": 2,
     "barrierFree": 3,
     "dogRun": {
@@ -1121,7 +1348,10 @@
       "separated": false,
       "detail": ""
     },
-    "admission": { "free": true, "fee": "" },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
     "visited": false,
     "remarks": "約73haの広大な府営公園。山田池を中心に花木園、水生花園、芝生広場がある。春は桜とツツジ、夏はアジサイ、秋は紅葉と四季を通して楽しめる。散歩コースが複数あり、犬連れの利用者が多い。駐車場は1時間400円（土日祝は上限1,100円）。",
     "imageUrl": "",
@@ -1134,9 +1364,18 @@
     "lat": 34.7832,
     "lng": 135.5309,
     "category": "walk",
-    "dogSize": { "small": true, "large": true },
-    "parking": { "available": true, "free": true },
-    "toilet": { "available": true, "western": true },
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
     "stairs": 2,
     "barrierFree": 3,
     "dogRun": {
@@ -1145,7 +1384,10 @@
       "separated": false,
       "detail": ""
     },
-    "admission": { "free": true, "fee": "" },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
     "visited": false,
     "remarks": "約8.4haの総合公園。池や遊歩道があり犬の散歩に人気の穴場スポット。無料駐車場44台（吹田市立博物館と共用）。トイレ3か所（多目的トイレあり）。瓦窯跡などの史跡も見どころ。JR岸辺駅から徒歩20分。",
     "imageUrl": "",
@@ -1158,9 +1400,18 @@
     "lat": 34.8536,
     "lng": 135.5212,
     "category": "park",
-    "dogSize": { "small": true, "large": true },
-    "parking": { "available": true, "free": true },
-    "toilet": { "available": true, "western": true },
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
     "stairs": 2,
     "barrierFree": 3,
     "dogRun": {
@@ -1169,7 +1420,10 @@
       "separated": false,
       "detail": ""
     },
-    "admission": { "free": true, "fee": "" },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
     "visited": false,
     "remarks": "約52,000平米の広い公園。芝生広場が広くペットOK。無料駐車場33台（9:00〜17:00）。70mのローラーすべり台が目玉。大阪モノレール彩都西駅から徒歩5分。",
     "imageUrl": "",
