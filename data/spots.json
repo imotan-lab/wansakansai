@@ -1126,5 +1126,53 @@
     "remarks": "約73haの広大な府営公園。山田池を中心に花木園、水生花園、芝生広場がある。春は桜とツツジ、夏はアジサイ、秋は紅葉と四季を通して楽しめる。散歩コースが複数あり、犬連れの利用者が多い。駐車場は1時間400円（土日祝は上限1,100円）。",
     "imageUrl": "",
     "officialUrl": "https://yamadaike.osaka-park.or.jp/"
+  },
+  {
+    "id": "shikinzan-park",
+    "name": "紫金山公園",
+    "address": "大阪府吹田市岸部北4丁目",
+    "lat": 34.7832,
+    "lng": 135.5309,
+    "category": "walk",
+    "dogSize": { "small": true, "large": true },
+    "parking": { "available": true, "free": true },
+    "toilet": { "available": true, "western": true },
+    "stairs": 2,
+    "barrierFree": 3,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": { "free": true, "fee": "" },
+    "visited": false,
+    "remarks": "約8.4haの総合公園。池や遊歩道があり犬の散歩に人気の穴場スポット。無料駐車場44台（吹田市立博物館と共用）。トイレ3か所（多目的トイレあり）。瓦窯跡などの史跡も見どころ。JR岸辺駅から徒歩20分。",
+    "imageUrl": "",
+    "officialUrl": "https://www.city.suita.osaka.jp/sangyo/1018152/1018167/1018168/1009796.html"
+  },
+  {
+    "id": "saito-nishi-park",
+    "name": "彩都西公園",
+    "address": "大阪府茨木市彩都やまぶき1-3",
+    "lat": 34.8536,
+    "lng": 135.5212,
+    "category": "park",
+    "dogSize": { "small": true, "large": true },
+    "parking": { "available": true, "free": true },
+    "toilet": { "available": true, "western": true },
+    "stairs": 2,
+    "barrierFree": 3,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": { "free": true, "fee": "" },
+    "visited": false,
+    "remarks": "約52,000平米の広い公園。芝生広場が広くペットOK。無料駐車場33台（9:00〜17:00）。70mのローラーすべり台が目玉。大阪モノレール彩都西駅から徒歩5分。",
+    "imageUrl": "",
+    "officialUrl": "https://www.city.ibaraki.osaka.jp/kikou/kensetsu/koen/menu/koenshokai/kouen_ryokuchi/saitonisi.html"
   }
 ]
