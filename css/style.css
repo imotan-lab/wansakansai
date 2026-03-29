@@ -211,30 +211,7 @@ img {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 20px;
-}
-
-.pref-btn {
-  padding: 8px 16px;
-  border: 2px solid var(--color-border);
-  border-radius: 50px;
-  font-size: 0.85rem;
-  font-family: inherit;
-  color: var(--color-text);
-  background: var(--color-bg-card);
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.pref-btn:hover {
-  border-color: var(--color-primary);
-  color: var(--color-primary);
-}
-
-.pref-btn.active {
-  background: var(--color-primary);
-  color: #fff;
-  border-color: var(--color-primary);
+  margin-bottom: 12px;
 }
 
 /* ===== Filter Buttons ===== */

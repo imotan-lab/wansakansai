@@ -7,7 +7,7 @@
   const spots = await loadJSON('data/spots.json');
   let userLat = null;
   let userLng = null;
-  let activePref = null; // null = all
+  const activePrefs = new Set();
   const activeFilters = new Set();
 
   const spotList = document.getElementById('spotList');
@@ -60,23 +60,23 @@
       prefCounts[pref] = (prefCounts[pref] || 0) + 1;
     });
 
-    // "すべて" button
-    let html = `<button class="pref-btn active" data-pref="">すべて(${spots.length})</button>`;
-    prefList.forEach(pref => {
-      if (prefCounts[pref]) {
+    prefSection.innerHTML = prefList
+      .filter(pref => prefCounts[pref])
+      .map(pref => {
         const shortName = pref.replace(/[府県]$/, '');
-        html += `<button class="pref-btn" data-pref="${pref}">${shortName}(${prefCounts[pref]})</button>`;
-      }
-    });
+        return `<button class="filter-btn" data-pref="${pref}">${shortName}(${prefCounts[pref]})</button>`;
+      }).join('');
 
-    prefSection.innerHTML = html;
-
-    // Add click events
-    prefSection.querySelectorAll('.pref-btn').forEach(btn => {
+    prefSection.querySelectorAll('.filter-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        prefSection.querySelectorAll('.pref-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        activePref = btn.dataset.pref || null;
+        const pref = btn.dataset.pref;
+        if (activePrefs.has(pref)) {
+          activePrefs.delete(pref);
+          btn.classList.remove('active');
+        } else {
+          activePrefs.add(pref);
+          btn.classList.add('active');
+        }
         renderSpots();
       });
     });
@@ -87,8 +87,8 @@
     let filtered = [...spots];
 
     // Filter by prefecture
-    if (activePref) {
-      filtered = filtered.filter(s => getPrefecture(s.address) === activePref);
+    if (activePrefs.size > 0) {
+      filtered = filtered.filter(s => activePrefs.has(getPrefecture(s.address)));
     }
 
     // Filter by tags
