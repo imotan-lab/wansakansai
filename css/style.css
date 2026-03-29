@@ -379,7 +379,21 @@ img {
 .spot-count {
   font-size: 0.85rem;
   color: var(--color-text-light);
+  margin-bottom: 4px;
+}
+
+.spot-legend {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.78rem;
+  color: var(--color-text-light);
   margin-bottom: 12px;
+}
+
+.legend-stamp {
+  width: 20px;
+  height: 20px;
 }
 
 /* ===== Spot Cards ===== */
