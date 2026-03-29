@@ -16,7 +16,7 @@
 (function() {
   const BASE_URL = 'https://imotan-lab.github.io/wansakansai/';
   const siteName = '犬阪んさい';
-  const ogImage = BASE_URL + 'images/logo-chihuahua.png';
+  const ogImage = BASE_URL + 'images/ogp.png';
   const title = document.title;
   const desc = document.querySelector('meta[name="description"]');
   const description = desc ? desc.content : '';
