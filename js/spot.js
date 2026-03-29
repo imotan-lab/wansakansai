@@ -105,6 +105,7 @@
             return text.includes(spot.name);
           });
           if (related.length === 0) return '';
+          related.sort((a, b) => new Date(b.date) - new Date(a.date));
           return `
             <div class="detail-danger-alert">
               <h3>このスポットに関する危険情報</h3>
