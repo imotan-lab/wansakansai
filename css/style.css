@@ -873,15 +873,7 @@ img {
 
 /* ===== Ad Placeholder ===== */
 .ad-slot {
-  background: var(--color-bg);
-  border: 1px dashed var(--color-border);
-  border-radius: var(--radius-sm);
-  padding: 20px;
-  text-align: center;
-  color: var(--color-text-light);
-  font-size: 0.75rem;
-  margin: 20px 0;
-  min-height: 90px;
+  display: none;
   display: flex;
   align-items: center;
   justify-content: center;
