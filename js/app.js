@@ -8,12 +8,41 @@
   let userLat = null;
   let userLng = null;
   let activePref = null; // null = all
+  const activeFilters = new Set();
 
   const spotList = document.getElementById('spotList');
   const spotCount = document.getElementById('spotCount');
   const btnGps = document.getElementById('btnGps');
   const gpsStatus = document.getElementById('gpsStatus');
   const prefSection = document.getElementById('prefSection');
+  const filterSection = document.getElementById('filterSection');
+
+  // Tag filter definitions (data-driven)
+  const FILTERS = [
+    { id: 'parking-free', label: '駐車場無料', test: s => s.parking.available && s.parking.free },
+    { id: 'dogrun', label: 'ドッグランあり', test: s => s.dogRun.available },
+    { id: 'admission-free', label: '入場無料', test: s => s.admission.free },
+  ];
+
+  function buildFilterButtons() {
+    filterSection.innerHTML = FILTERS.map(f =>
+      `<button class="filter-btn" data-filter="${f.id}">${f.label}</button>`
+    ).join('');
+
+    filterSection.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.dataset.filter;
+        if (activeFilters.has(id)) {
+          activeFilters.delete(id);
+          btn.classList.remove('active');
+        } else {
+          activeFilters.add(id);
+          btn.classList.add('active');
+        }
+        renderSpots();
+      });
+    });
+  }
 
   // Extract prefecture list from spot data
   function getPrefecture(address) {
@@ -60,6 +89,13 @@
     // Filter by prefecture
     if (activePref) {
       filtered = filtered.filter(s => getPrefecture(s.address) === activePref);
+    }
+
+    // Filter by tags
+    if (activeFilters.size > 0) {
+      filtered = filtered.filter(s =>
+        [...activeFilters].every(id => FILTERS.find(f => f.id === id).test(s))
+      );
     }
 
     // Sort by distance if GPS available
@@ -145,5 +181,6 @@
 
   // Build buttons & initial render
   buildPrefButtons();
+  buildFilterButtons();
   renderSpots();
 })();
