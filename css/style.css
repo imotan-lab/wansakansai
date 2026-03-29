@@ -597,6 +597,62 @@ img {
   background: var(--color-primary);
 }
 
+/* ===== Spot Detail: Danger Alert ===== */
+.detail-danger-alert {
+  margin-top: 20px;
+  padding: 16px;
+  background: linear-gradient(135deg, #FDF2F0 0%, #FBE8E4 100%);
+  border: 1px solid #E8C4BE;
+  border-left: 4px solid var(--color-danger);
+  border-radius: var(--radius-sm);
+}
+
+.detail-danger-alert h3 {
+  font-size: 0.9rem;
+  color: var(--color-danger);
+  margin-bottom: 12px;
+}
+
+.detail-danger-item {
+  padding: 10px 0;
+  border-bottom: 1px solid #f0e0dc;
+}
+
+.detail-danger-item:last-of-type {
+  border-bottom: none;
+}
+
+.detail-danger-item p {
+  font-size: 0.82rem;
+  color: var(--color-text-light);
+  line-height: 1.6;
+  margin-top: 4px;
+}
+
+.detail-danger-date {
+  font-size: 0.75rem;
+  color: var(--color-danger);
+  margin-left: 6px;
+}
+
+.detail-danger-more {
+  display: block;
+  text-align: center;
+  margin-top: 12px;
+  padding: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-danger);
+  border: 1px solid var(--color-danger);
+  border-radius: var(--radius-sm);
+  transition: all 0.2s;
+}
+
+.detail-danger-more:hover {
+  background: var(--color-danger);
+  color: #fff;
+}
+
 /* ===== Danger Page ===== */
 .page-title {
   font-size: 1.3rem;

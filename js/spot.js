@@ -14,7 +14,10 @@
   }
 
   try {
-    const spots = await loadJSON('data/spots.json');
+    const [spots, dangers] = await Promise.all([
+      loadJSON('data/spots.json'),
+      loadJSON('data/dangers.json')
+    ]);
     const spot = spots.find(s => s.id === spotId);
 
     if (!spot) {
@@ -95,6 +98,27 @@
             <p>${spot.remarks}</p>
           </div>
         ` : ''}
+
+        ${(() => {
+          const related = dangers.filter(d => {
+            const text = d.location + d.description;
+            return text.includes(spot.name);
+          });
+          if (related.length === 0) return '';
+          return `
+            <div class="detail-danger-alert">
+              <h3>このスポットに関する危険情報</h3>
+              ${related.map(d => `
+                <div class="detail-danger-item">
+                  <span class="danger-card-type">${d.type}</span>
+                  <span class="detail-danger-date">${d.date}</span>
+                  <p>${d.description}</p>
+                </div>
+              `).join('')}
+              <a href="danger.html" class="detail-danger-more">危険情報の一覧を見る</a>
+            </div>
+          `;
+        })()}
       </div>
     `;
   } catch (e) {
