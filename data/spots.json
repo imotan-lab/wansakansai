@@ -740,46 +740,6 @@
     ]
   },
   {
-    "id": "yamada-ike-park",
-    "name": "山田池公園",
-    "address": "大阪府枚方市山田池公園1-1",
-    "lat": 34.8053,
-    "lng": 135.6761,
-    "category": "walk",
-    "dogSize": {
-      "small": true,
-      "large": true
-    },
-    "parking": {
-      "available": true,
-      "free": false
-    },
-    "toilet": {
-      "available": true,
-      "western": true
-    },
-    "stairs": 1,
-    "barrierFree": 4,
-    "dogRun": {
-      "available": false,
-      "free": false,
-      "detail": "",
-      "separated": false
-    },
-    "admission": {
-      "free": true,
-      "fee": ""
-    },
-    "visited": false,
-    "remarks": "四季折々の花木が美しい大阪府営の大型公園。山田池の周囲を一周できる遊歩道があり犬の散歩コースとして人気。駐車場は1時間以内無料、以降1時間200円程度。BBQ広場や遊具広場もあり。",
-    "imageUrl": "",
-    "officialUrl": "https://yamadaike.osaka-park.or.jp/",
-    "tags": [
-      "sakura",
-      "koyo"
-    ]
-  },
-  {
     "id": "ninchoji-sports-park",
     "name": "忍頂寺スポーツ公園",
     "address": "大阪府茨木市忍頂寺1049",
@@ -1160,43 +1120,6 @@
     "remarks": "甲子園約5個分（約21ha）の広大な公園。弥生時代の遺跡がある。リード着用で園内散歩OK（芝生エリアは犬立入禁止）。有料ドッグランはGRASS DOG&CAT店内（10:00〜19:00、10kg未満）。テラス席犬同伴OKの飲食店4店舗。JR高槻駅徒歩13分。駐車場1日最大800円。",
     "imageUrl": "",
     "officialUrl": "https://www.seibu-la.co.jp/park/ama-sitepark/",
-    "tags": []
-  },
-  {
-    "id": "nakanoshima-park",
-    "name": "中之島公園",
-    "address": "大阪府大阪市北区中之島1",
-    "lat": 34.6937,
-    "lng": 135.5098,
-    "category": "walk",
-    "dogSize": {
-      "small": true,
-      "large": true
-    },
-    "parking": {
-      "available": false,
-      "free": false
-    },
-    "toilet": {
-      "available": true,
-      "western": true
-    },
-    "stairs": 1,
-    "barrierFree": 4,
-    "dogRun": {
-      "available": false,
-      "free": false,
-      "separated": false,
-      "detail": ""
-    },
-    "admission": {
-      "free": true,
-      "fee": ""
-    },
-    "visited": false,
-    "remarks": "大阪市の都心部にある水辺の散歩スポット。バラ園が有名で春・秋が見頃。リード着用で犬と散歩OK。テラス席犬同伴OKのレストランあり（小型犬2頭まで）。専用駐車場なし、周辺コインパーキング利用。地下鉄「なにわ橋」駅すぐ。",
-    "imageUrl": "",
-    "officialUrl": "",
     "tags": []
   },
   {

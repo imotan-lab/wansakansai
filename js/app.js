@@ -109,7 +109,10 @@
       filtered.sort((a, b) => a._distance - b._distance);
     }
 
-    spotCount.textContent = `${filtered.length} 件のスポット`;
+    const isFiltered = activePrefs.size > 0 || activeFilters.size > 0;
+    spotCount.textContent = isFiltered
+      ? `${filtered.length} 件のスポット（全${spots.length}件中）`
+      : `${filtered.length} 件のスポット`;
 
     if (filtered.length === 0) {
       spotList.innerHTML = `
@@ -123,7 +126,7 @@
 
     spotList.innerHTML = filtered.map(s => {
       const distText = s._distance != null ? `<span class="spot-card-distance">${formatDistance(s._distance)}</span>` : '';
-      const visitedStamp = s.visited ? '<img src="images/stamp-visited.png" alt="訪問済み" class="visited-stamp">' : '';
+      const visitedStamp = s.visited ? '<img src="images/stamp-visited.png" alt="運営が実際に訪問済み" class="visited-stamp">' : '';
       const tags = [];
       if (s.parking.available) {
         tags.push(`<span class="tag">P ${s.parking.free ? '無料' : '有料'}</span>`);

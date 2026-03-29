@@ -31,7 +31,7 @@
     if (metaDesc) metaDesc.content = `${spot.name}（${spot.address}）の犬連れお出かけ情報。駐車場・トイレ・ドッグラン情報など。`;
 
     // Build info
-    const visitedStamp = spot.visited ? '<img src="images/stamp-visited.png" alt="訪問済み" class="detail-visited-stamp">' : '';
+    const visitedStamp = spot.visited ? '<img src="images/stamp-visited.png" alt="運営が実際に訪問済み" class="detail-visited-stamp">' : '';
 
     let parkingText = 'なし';
     if (spot.parking.available) {
