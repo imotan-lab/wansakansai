@@ -931,7 +931,9 @@ img {
 
   .nav-menu a {
     padding: 10px 12px;
+    margin: 2px 0;
     font-size: 0.9rem;
+    border-radius: var(--radius-sm);
   }
 
   .hero h1 {
