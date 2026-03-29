@@ -102,7 +102,7 @@
         ${(() => {
           const related = dangers.filter(d => {
             const text = d.location + d.description;
-            return text.includes(spot.name);
+            return spotNameMatchesText(spot.name, text);
           });
           if (related.length === 0) return '';
           related.sort((a, b) => new Date(b.date) - new Date(a.date));

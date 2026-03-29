@@ -82,3 +82,26 @@ async function loadJSON(path) {
   if (!res.ok) throw new Error(`Failed to load ${path}`);
   return res.json();
 }
+
+// Spot-Danger matching: check if a spot name appears in text
+// Also tries shorter name without common prefixes like "道の駅"
+function spotNameMatchesText(spotName, text) {
+  if (text.includes(spotName)) return true;
+  const prefixes = ['道の駅 ', '道の駅　', '大阪府民の森 ', '大阪府民の森　'];
+  for (const p of prefixes) {
+    if (spotName.startsWith(p)) {
+      const short = spotName.slice(p.length);
+      if (short.length >= 3 && text.includes(short)) return true;
+    }
+  }
+  // Extract parenthesized parts from spot name as aliases
+  const paren = spotName.match(/[（(](.+?)[）)]/);
+  if (paren && paren[1].length >= 3 && text.includes(paren[1])) return true;
+  // Reverse check: split text by separators and see if any segment is part of the spot name
+  // e.g. "くろまろの郷" in text matches "奥河内くろまろの郷" in spot name
+  const segments = text.split(/[・、，,（）()／/\s]+/);
+  for (const seg of segments) {
+    if (seg.length >= 4 && spotName.includes(seg)) return true;
+  }
+  return false;
+}

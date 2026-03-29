@@ -52,7 +52,7 @@
         // Find matching spots for a danger entry
         function findRelatedSpots(danger) {
           const text = danger.location + danger.description;
-          return spots.filter(s => text.includes(s.name));
+          return spots.filter(s => spotNameMatchesText(s.name, text));
         }
 
         // Sort by date descending
