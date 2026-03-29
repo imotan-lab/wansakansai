@@ -12,6 +12,38 @@
   gtag('config', GA_ID);
 })();
 
+// ===== OGP Meta Tags =====
+(function() {
+  const BASE_URL = 'https://imotan-lab.github.io/wansakansai/';
+  const siteName = '犬阪んさい';
+  const ogImage = BASE_URL + 'images/logo-chihuahua.png';
+  const title = document.title;
+  const desc = document.querySelector('meta[name="description"]');
+  const description = desc ? desc.content : '';
+  const url = window.location.href;
+
+  const tags = {
+    'og:type': 'website',
+    'og:site_name': siteName,
+    'og:title': title,
+    'og:description': description,
+    'og:url': url,
+    'og:image': ogImage,
+    'og:locale': 'ja_JP',
+    'twitter:card': 'summary',
+    'twitter:title': title,
+    'twitter:description': description,
+    'twitter:image': ogImage,
+  };
+
+  Object.entries(tags).forEach(([key, value]) => {
+    const meta = document.createElement('meta');
+    meta.setAttribute(key.startsWith('twitter:') ? 'name' : 'property', key);
+    meta.content = value;
+    document.head.appendChild(meta);
+  });
+})();
+
 // ===== Common: Header & Footer Injection =====
 
 function getBasePath() {
