@@ -60,7 +60,7 @@
 
         container.innerHTML = dangers.map(d => {
           const dateStr = new Date(d.date).toLocaleDateString('ja-JP', {
-            year: 'numeric', month: 'long', day: 'numeric'
+            year: 'numeric', month: 'long'
           });
           const related = findRelatedSpots(d);
           const linksHtml = related.length > 0
