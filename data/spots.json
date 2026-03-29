@@ -33,7 +33,11 @@
     "visited": false,
     "remarks": "広さ約105.6haの都市公園。天守閣内はペット不可だが、園内の屋外エリアはリード着用で自由に散策可能。JO-TERRACE OSAKAにはテラス席犬同伴OKの飲食店あり。イベント開催日は駐車場が混雑するため事前確認推奨。",
     "imageUrl": "",
-    "officialUrl": "https://www.osakacastlepark.jp/"
+    "officialUrl": "https://www.osakacastlepark.jp/",
+    "tags": [
+      "sakura",
+      "koyo"
+    ]
   },
   {
     "id": "fukakita-ryokuchi",
@@ -69,7 +73,8 @@
     "visited": false,
     "remarks": "24時間365日利用可能な無料ドッグラン。全犬種エリアと小型犬専用エリア（8kg未満）の2箇所あり。小型犬エリアは高架下で雨天でも利用可。無人管理のため接種証の確認なし（接種は自己管理）。治水緑地のため大雨時は閉鎖の場合あり。駐車場は最初の1時間400円。",
     "imageUrl": "",
-    "officialUrl": "https://fukakitaryokuchi.jp/"
+    "officialUrl": "https://fukakitaryokuchi.jp/",
+    "tags": []
   },
   {
     "id": "hamadera-park",
@@ -105,7 +110,10 @@
     "visited": false,
     "remarks": "2023年4月に無料ドッグランが開設。小型犬エリア約100平米、中大型犬エリア約400平米。松の木陰があり快適。ボールやディスクの持ち込みは禁止。利用には管理事務所での事前登録が必要（犬鑑札・狂犬病予防注射済票・5種以上の混合ワクチン接種証明書を持参）。ドッグランに近い第3駐車場の利用が便利。駐車場は1時間390円。",
     "imageUrl": "",
-    "officialUrl": "https://hamadera.osaka-park.or.jp/"
+    "officialUrl": "https://hamadera.osaka-park.or.jp/",
+    "tags": [
+      "sakura"
+    ]
   },
   {
     "id": "arashiyama-takao-parkway",
@@ -141,7 +149,10 @@
     "visited": false,
     "remarks": "パークウエイ通行料にドッグラン・駐車場代が含まれる。大型犬エリアと小型犬エリアに分かれ、アジリティ設備あり。展望台やBBQコーナーもリード着用でペットOK。JAF割引で1,500円。12〜3月は9:00〜18:00。二輪車125cc以下は通行不可。",
     "imageUrl": "",
-    "officialUrl": "https://www.parkway-hankyu.com/facilities/dog-run/"
+    "officialUrl": "https://www.parkway-hankyu.com/facilities/dog-run/",
+    "tags": [
+      "koyo"
+    ]
   },
   {
     "id": "nara-park",
@@ -177,7 +188,11 @@
     "visited": false,
     "remarks": "野生の鹿が多数生息するため、必ず短めのリードを着用し犬から目を離さないこと。9〜11月は雄鹿の発情期で気が荒くなるため特に注意。東大寺大仏殿は抱っこ・キャリーで犬OK。登大路駐車場は1日1,000円。",
     "imageUrl": "",
-    "officialUrl": "https://www3.pref.nara.jp/park/"
+    "officialUrl": "https://www3.pref.nara.jp/park/",
+    "tags": [
+      "sakura",
+      "koyo"
+    ]
   },
   {
     "id": "kobe-fruit-flower-park",
@@ -216,7 +231,8 @@
     "officialUrl": "https://fruit-flowerpark.jp/",
     "aliases": [
       "神戸フルーツ・フラワーパーク大沢"
-    ]
+    ],
+    "tags": []
   },
   {
     "id": "akashi-kaikyo-park",
@@ -252,7 +268,8 @@
     "visited": false,
     "remarks": "四季折々の花が咲く広大な国営公園。リード着用またはケージで入園可。屋内施設やレストラン内、スワンボートはペット不可。65歳以上はシルバー料金210円。駐車場は普通車500円。冬季は16:00閉園。",
     "imageUrl": "",
-    "officialUrl": "https://awaji-kaikyopark.kkr.mlit.go.jp/"
+    "officialUrl": "https://awaji-kaikyopark.kkr.mlit.go.jp/",
+    "tags": []
   },
   {
     "id": "wakayama-castle",
@@ -288,7 +305,10 @@
     "visited": false,
     "remarks": "徳川御三家の城。公園内はリード着用で散歩可能。天守閣は全身が入るキャリーバッグ利用で犬も入場可（天守閣入場料：大人410円）。公園内の動物園は無料。天守までの坂道・階段がやや多い。駐車場は1時間200円。",
     "imageUrl": "",
-    "officialUrl": "https://wakayamajo.jp/"
+    "officialUrl": "https://wakayamajo.jp/",
+    "tags": [
+      "sakura"
+    ]
   },
   {
     "id": "makino-metasequoia",
@@ -328,6 +348,9 @@
     "aliases": [
       "マキノ メタセコイア並木",
       "マキノピックランド"
+    ],
+    "tags": [
+      "koyo"
     ]
   },
   {
@@ -364,7 +387,8 @@
     "visited": false,
     "remarks": "標高1,100mの高原リゾート。5〜10月のグリーンシーズンのみペット入場可（冬季スキーシーズンは不可）。山頂に無料ドッグランあり（大型犬用と小中型犬用に分離）。ロープウェイはケージ（貸し出しあり）利用が必要。琵琶湖の絶景を一望できる。",
     "imageUrl": "",
-    "officialUrl": "https://www.biwako-valley.com/"
+    "officialUrl": "https://www.biwako-valley.com/",
+    "tags": []
   },
   {
     "id": "hirakata-tobu-park",
@@ -400,7 +424,8 @@
     "visited": false,
     "remarks": "2015年開園の比較的新しい公園。無料駐車場90台（普通車84台）。全面芝生の無料ドッグランは小型犬エリア（体高40cm未満・10kg以下）と中大型犬エリアに分離。開園9:00〜18:00、年中無休。接種証の提示義務なし（狂犬病・5種以上のワクチン接種は自己管理）。住宅地から離れた静かなロケーション。",
     "imageUrl": "",
-    "officialUrl": "https://www.city.hirakata.osaka.jp/0000049238.html"
+    "officialUrl": "https://www.city.hirakata.osaka.jp/0000049238.html",
+    "tags": []
   },
   {
     "id": "saito-nanairo-park",
@@ -436,7 +461,8 @@
     "visited": false,
     "remarks": "丘陵地の自然地形を活かした公園。無料駐車場（約120台）・無料ドッグラン完備。ドッグランは小型犬エリア（100平米）と中大型犬エリア（470平米）の2区画。大阪平野を一望できる展望広場が魅力。利用時間9:00〜19:00。登録不要・接種証の提示不要。ドッグラン内は斜面が多く砂地のため、暑い日や足腰の弱い犬は注意。日陰がないので夏場は要注意。",
     "imageUrl": "",
-    "officialUrl": "https://www.city.minoh.lg.jp/midori/kouennsyoukai/saitonanairo.html"
+    "officialUrl": "https://www.city.minoh.lg.jp/midori/kouennsyoukai/saitonanairo.html",
+    "tags": []
   },
   {
     "id": "muroike-enchi",
@@ -475,6 +501,9 @@
     "officialUrl": "https://o-wonderforest.com/muroike/",
     "aliases": [
       "むろいけ園地"
+    ],
+    "tags": [
+      "koyo"
     ]
   },
   {
@@ -511,7 +540,8 @@
     "visited": true,
     "remarks": "入場・駐車場・ドッグラン全て無料の三拍子。通称うみふれ。約27.9haの広大な敷地で大阪湾に面しており、晴れた日は明石海峡大橋も見える。ドッグランは小型犬エリアと中大型犬エリアの2区画、天然芝。9:00〜17:00。接種証明書の提示不要。BBQ広場や海釣りテラスもあり。",
     "imageUrl": "",
-    "officialUrl": "https://www.city.sakai.lg.jp/shisei/toshi/rinkai/umifureai/index.html"
+    "officialUrl": "https://www.city.sakai.lg.jp/shisei/toshi/rinkai/umifureai/index.html",
+    "tags": []
   },
   {
     "id": "hanazono-chuo-park",
@@ -547,7 +577,10 @@
     "visited": false,
     "remarks": "24時間利用可能な無料ドッグラン。小型犬エリアとフリースペースの2区画。花園ラグビー場に隣接し、桜の広場や花菖蒲池もある。接種証の確認なし（狂犬病・混合ワクチン接種は自己管理）。駐車場は最初の30分無料、以降1時間200円。",
     "imageUrl": "",
-    "officialUrl": "https://hanazono-centralparks-hos.com/"
+    "officialUrl": "https://hanazono-centralparks-hos.com/",
+    "tags": [
+      "sakura"
+    ]
   },
   {
     "id": "oizumi-ryokuchi",
@@ -583,7 +616,10 @@
     "visited": false,
     "remarks": "大阪四大緑地のひとつで約95ha。約200種32万本の花木があり四季折々に楽しめる。2023年11月オープンの無料ドッグランは10kg以下の小型犬専用。ラン内に水道1箇所、屋根付きベンチあり。駐車場は1時間390円〜。BBQ広場もあり。",
     "imageUrl": "",
-    "officialUrl": "https://oizumi.osaka-park.or.jp/"
+    "officialUrl": "https://oizumi.osaka-park.or.jp/",
+    "tags": [
+      "sakura"
+    ]
   },
   {
     "id": "hattori-ryokuchi",
@@ -619,7 +655,10 @@
     "visited": false,
     "remarks": "大阪府内最大の公園（約126ha、甲子園球場約35個分）。北大阪急行「緑地公園」駅から徒歩5分と電車アクセスも良好。芝生広場が複数あり犬とのびのび散歩できる。都市緑化植物園はペット不可。駐車場は最初の1時間390円〜。「日本の都市公園100選」にも選出。",
     "imageUrl": "",
-    "officialUrl": "https://hattori-ryokuchi.com/"
+    "officialUrl": "https://hattori-ryokuchi.com/",
+    "tags": [
+      "sakura"
+    ]
   },
   {
     "id": "settsu-kyo-park",
@@ -655,7 +694,11 @@
     "visited": false,
     "remarks": "大阪とは思えない本格的な渓谷。春は桜（約230本）、夏は川遊びとホタル、秋は紅葉と四季を通して楽しめる。上の口から下の口まで約4kmのハイキングコース。駐車場は1回1,000円。冬季（12月中旬〜3月中旬）は駐車場閉鎖の場合あり。",
     "imageUrl": "",
-    "officialUrl": "https://www.city.takatsuki.osaka.jp/soshiki/54/5519.html"
+    "officialUrl": "https://www.city.takatsuki.osaka.jp/soshiki/54/5519.html",
+    "tags": [
+      "sakura",
+      "koyo"
+    ]
   },
   {
     "id": "tonbo-ike-park",
@@ -691,7 +734,10 @@
     "visited": false,
     "remarks": "甲子園球場約13.8個分の広大な敷地。バラ園、あじさい園、大芝生広場など四季の花が楽しめる。公園散策は無料。2024年11月オープンの有料ドッグラン「WAN-TO」は関西最大級（約4,000平米天然芝）。小型犬専用エリアと中大型犬優先エリアあり。利用にはWan!Passアプリでの事前登録とワクチン・狂犬病接種証明書の登録が必要。料金は平日500円、土日祝1,500円（会員割引あり）。駐車場は平日300円/日、土日祝600円/日。",
     "imageUrl": "",
-    "officialUrl": "https://tonboike-osakap.com/"
+    "officialUrl": "https://tonboike-osakap.com/",
+    "tags": [
+      "sakura"
+    ]
   },
   {
     "id": "yamada-ike-park",
@@ -727,7 +773,11 @@
     "visited": false,
     "remarks": "四季折々の花木が美しい大阪府営の大型公園。山田池の周囲を一周できる遊歩道があり犬の散歩コースとして人気。駐車場は1時間以内無料、以降1時間200円程度。BBQ広場や遊具広場もあり。",
     "imageUrl": "",
-    "officialUrl": "https://yamadaike.osaka-park.or.jp/"
+    "officialUrl": "https://yamadaike.osaka-park.or.jp/",
+    "tags": [
+      "sakura",
+      "koyo"
+    ]
   },
   {
     "id": "ninchoji-sports-park",
@@ -763,7 +813,8 @@
     "visited": false,
     "remarks": "竜王山のふもとにある自然豊かな公園。無料駐車場122台。ドッグランは2箇所ありアジリティ設備もあるが、ゲートボール場と兼用のため予約が入っている場合は利用不可。利用前に竜王山荘フロントで手続きが必要。7:00〜19:00、年末年始休園。新名神茨木千堤寺ICから約5分。",
     "imageUrl": "",
-    "officialUrl": "https://cs-plaza.co.jp/ninchoji/facility/sportpark"
+    "officialUrl": "https://cs-plaza.co.jp/ninchoji/facility/sportpark",
+    "tags": []
   },
   {
     "id": "kurotoriyama-park",
@@ -799,7 +850,10 @@
     "visited": false,
     "remarks": "2023年3月オープンの無料ドッグラン。約580平米、土地面。足洗い場あり。奇数日は小型犬専用、偶数日は中大型犬専用の日替わり制。管理人不在・接種証の確認なし。駐車場67台（最初の1時間無料、以降1時間100円）。桜シーズンは駐車料金変動あり。",
     "imageUrl": "",
-    "officialUrl": "https://www.city.osaka-izumi.lg.jp/kakukano/dezainbu/kouenryokuti/osirase/18315.html"
+    "officialUrl": "https://www.city.osaka-izumi.lg.jp/kakukano/dezainbu/kouenryokuti/osirase/18315.html",
+    "tags": [
+      "sakura"
+    ]
   },
   {
     "id": "kuromaro-no-sato",
@@ -839,7 +893,8 @@
     "aliases": [
       "くろまろの郷",
       "奥河内くろまろの郷"
-    ]
+    ],
+    "tags": []
   },
   {
     "id": "rinku-ice-park-dogrun",
@@ -875,7 +930,8 @@
     "visited": false,
     "remarks": "泉佐野市営の無料ドッグラン。小型犬エリアと大型犬エリアの2区画。9:00〜21:00。事前登録不要。狂犬病予防接種済みであること。駐車場は最初30分無料、以降120分まで300円、以降60分300円加算。りんくうタウン駅から徒歩圏内。",
     "imageUrl": "",
-    "officialUrl": "https://www.city.izumisano.lg.jp/kakuka/seicyou/omotenasi/menu/rinkuicepark/11274.html"
+    "officialUrl": "https://www.city.izumisano.lg.jp/kakuka/seicyou/omotenasi/menu/rinkuicepark/11274.html",
+    "tags": []
   },
   {
     "id": "minami-neyagawa-park",
@@ -911,7 +967,8 @@
     "visited": false,
     "remarks": "2025年10月に打上川治水緑地から移転リニューアルした無料ドッグラン。6:00〜19:00。奇数日は10kg未満、偶数日は10kg以上の日替わり制。無料駐車場あり（開門時間は公式HP確認）。約45,000平米の広い公園内にアスレチック広場や散策路もあり。",
     "imageUrl": "",
-    "officialUrl": "https://nsjc.or.jp/sitei/minamineyagawapark/"
+    "officialUrl": "https://nsjc.or.jp/sitei/minamineyagawapark/",
+    "tags": []
   },
   {
     "id": "nakanoshima-park",
@@ -947,7 +1004,8 @@
     "visited": false,
     "remarks": "大阪市の中心部にある都心のオアシス。バラ園が有名で春と秋が見頃。堂島川と土佐堀川に挟まれた水辺の遊歩道が犬の散歩に最適。電車アクセスが良く（なにわ橋駅直結）、車なしでも行ける。周辺にコインパーキングあり。",
     "imageUrl": "",
-    "officialUrl": "https://www.city.osaka.lg.jp/kensetsu/page/0000015813.html"
+    "officialUrl": "https://www.city.osaka.lg.jp/kensetsu/page/0000015813.html",
+    "tags": []
   },
   {
     "id": "chikatsu-asuka-fudoki",
@@ -983,7 +1041,11 @@
     "visited": true,
     "remarks": "102基の古墳が保存された29haの史跡公園。無料駐車場あり（管理棟横30台・博物館80台）。春は梅・桜、秋は紅葉が楽しめる。展望台からは淡路島まで見える。起伏のある遊歩道でハイキング気分を味わえる。博物館内はペット不可。9:30〜17:00、月曜休園。",
     "imageUrl": "",
-    "officialUrl": "https://chikatsu-asuka.jp/fudokinooka/"
+    "officialUrl": "https://chikatsu-asuka.jp/fudokinooka/",
+    "tags": [
+      "sakura",
+      "koyo"
+    ]
   },
   {
     "id": "sennan-long-park",
@@ -1023,7 +1085,8 @@
     "aliases": [
       "SENNAN LONG PARK",
       "泉南りんくう公園"
-    ]
+    ],
+    "tags": []
   },
   {
     "id": "suminoe-park",
@@ -1059,7 +1122,8 @@
     "visited": false,
     "remarks": "大阪市内の無料ドッグラン。犬種別の優先時間あり（専用時間は午前9:40〜10:40、午後15:00〜16:00）。二重扉で安全。水飲み場・ドッグトイレあり。10〜4月は8:30〜17:00、5〜9月は6:30〜19:00。四つ橋線「住之江公園」駅徒歩約10分。",
     "imageUrl": "",
-    "officialUrl": ""
+    "officialUrl": "",
+    "tags": []
   },
   {
     "id": "ama-site-park",
@@ -1095,7 +1159,8 @@
     "visited": false,
     "remarks": "甲子園約5個分（約21ha）の広大な公園。弥生時代の遺跡がある。リード着用で園内散歩OK（芝生エリアは犬立入禁止）。有料ドッグランはGRASS DOG&CAT店内（10:00〜19:00、10kg未満）。テラス席犬同伴OKの飲食店4店舗。JR高槻駅徒歩13分。駐車場1日最大800円。",
     "imageUrl": "",
-    "officialUrl": "https://www.seibu-la.co.jp/park/ama-sitepark/"
+    "officialUrl": "https://www.seibu-la.co.jp/park/ama-sitepark/",
+    "tags": []
   },
   {
     "id": "nakanoshima-park",
@@ -1131,7 +1196,8 @@
     "visited": false,
     "remarks": "大阪市の都心部にある水辺の散歩スポット。バラ園が有名で春・秋が見頃。リード着用で犬と散歩OK。テラス席犬同伴OKのレストランあり（小型犬2頭まで）。専用駐車場なし、周辺コインパーキング利用。地下鉄「なにわ橋」駅すぐ。",
     "imageUrl": "",
-    "officialUrl": ""
+    "officialUrl": "",
+    "tags": []
   },
   {
     "id": "utsubo-park",
@@ -1167,7 +1233,8 @@
     "visited": false,
     "remarks": "東西約800m、南北約150mの大阪市内有数の都市公園。バラ園やケヤキ並木があり四季折々に楽しめる。犬の散歩をしている人が多く、都心部のお散歩スポットとして人気。専用駐車場なし、周辺コインパーキング利用。地下鉄「本町」駅徒歩5分。",
     "imageUrl": "",
-    "officialUrl": ""
+    "officialUrl": "",
+    "tags": []
   },
   {
     "id": "nagai-park",
@@ -1203,7 +1270,10 @@
     "visited": false,
     "remarks": "周囲約2.8kmのランニングコースがあり犬との散歩にも最適。長居植物園（有料）はペット不可だが、公園内は自由に散歩可能。ヤンマースタジアムやキンチョウスタジアムがある。地下鉄「長居」駅すぐ。駐車場は30分200円〜。",
     "imageUrl": "",
-    "officialUrl": "https://nagaipark.com/"
+    "officialUrl": "https://nagaipark.com/",
+    "tags": [
+      "sakura"
+    ]
   },
   {
     "id": "grand-green-osaka",
@@ -1243,7 +1313,8 @@
     "aliases": [
       "うめきた公園",
       "グラングリーン大阪"
-    ]
+    ],
+    "tags": []
   },
   {
     "id": "minoo-park",
@@ -1283,6 +1354,9 @@
     "aliases": [
       "箕面公園",
       "箕面大滝"
+    ],
+    "tags": [
+      "koyo"
     ]
   },
   {
@@ -1319,7 +1393,10 @@
     "visited": false,
     "remarks": "1990年花博の跡地を整備した約126haの広大な公園。風車の丘、大芝生広場など犬との散歩に最適。バラ園やハナミズキ通りなど四季の花が楽しめる。咲くやこの花館はペット不可。地下鉄「鶴見緑地」駅徒歩すぐ。駐車場は20分100円。",
     "imageUrl": "",
-    "officialUrl": "https://www.tsurumi-ryokuchi.jp/"
+    "officialUrl": "https://www.tsurumi-ryokuchi.jp/",
+    "tags": [
+      "sakura"
+    ]
   },
   {
     "id": "yamada-ike-park",
@@ -1355,7 +1432,11 @@
     "visited": false,
     "remarks": "約73haの広大な府営公園。山田池を中心に花木園、水生花園、芝生広場がある。春は桜とツツジ、夏はアジサイ、秋は紅葉と四季を通して楽しめる。散歩コースが複数あり、犬連れの利用者が多い。駐車場は1時間400円（土日祝は上限1,100円）。",
     "imageUrl": "",
-    "officialUrl": "https://yamadaike.osaka-park.or.jp/"
+    "officialUrl": "https://yamadaike.osaka-park.or.jp/",
+    "tags": [
+      "sakura",
+      "koyo"
+    ]
   },
   {
     "id": "shikinzan-park",
@@ -1391,7 +1472,8 @@
     "visited": false,
     "remarks": "約8.4haの総合公園。池や遊歩道があり犬の散歩に人気の穴場スポット。無料駐車場44台（吹田市立博物館と共用）。トイレ3か所（多目的トイレあり）。瓦窯跡などの史跡も見どころ。JR岸辺駅から徒歩20分。",
     "imageUrl": "",
-    "officialUrl": "https://www.city.suita.osaka.jp/sangyo/1018152/1018167/1018168/1009796.html"
+    "officialUrl": "https://www.city.suita.osaka.jp/sangyo/1018152/1018167/1018168/1009796.html",
+    "tags": []
   },
   {
     "id": "saito-nishi-park",
@@ -1427,6 +1509,325 @@
     "visited": false,
     "remarks": "約52,000平米の広い公園。芝生広場が広くペットOK。無料駐車場33台（9:00〜17:00）。70mのローラーすべり台が目玉。大阪モノレール彩都西駅から徒歩5分。",
     "imageUrl": "",
-    "officialUrl": "https://www.city.ibaraki.osaka.jp/kikou/kensetsu/koen/menu/koenshokai/kouen_ryokuchi/saitonisi.html"
+    "officialUrl": "https://www.city.ibaraki.osaka.jp/kikou/kensetsu/koen/menu/koenshokai/kouen_ryokuchi/saitonisi.html",
+    "tags": []
+  },
+  {
+    "id": "fureai-ryokuchi",
+    "name": "ふれあい緑地（服部ビオパーク）",
+    "aliases": [
+      "ふれあい緑地",
+      "服部ビオパーク"
+    ],
+    "address": "大阪府豊中市服部西町5丁目",
+    "lat": 34.77,
+    "lng": 135.436,
+    "category": "park",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 1,
+    "barrierFree": 4,
+    "dogRun": {
+      "available": true,
+      "free": true,
+      "separated": true,
+      "detail": "小型犬エリア・中大型犬エリアの2区画"
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "tags": [],
+    "remarks": "大阪国際空港近くで飛行機が頭上を飛ぶ。無料ドッグラン（小型犬・中大型犬の2エリア）あり。駐車場は3か所（北61台・中央82台・南94台）、入庫後30分無料、以後30分100円。",
+    "imageUrl": "",
+    "officialUrl": "https://www.city.toyonaka.osaka.jp/shisetsu/koen/seibu/fureairyokuchi.html"
+  },
+  {
+    "id": "satsukiyama-park",
+    "name": "五月山公園",
+    "address": "大阪府池田市綾羽2-5-33",
+    "lat": 34.826,
+    "lng": 135.434,
+    "category": "walk",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 3,
+    "barrierFree": 2,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "tags": [
+      "sakura",
+      "koyo"
+    ],
+    "remarks": "標高315mの五月山の麓から中腹に広がる公園。8つのハイキングコースと4つの展望台。桜・ツツジ・紅葉の名所。五月山動物園（無料）はペット不可。駐車場は30分無料、以後1時間300円。",
+    "imageUrl": "",
+    "officialUrl": "https://www.ikedashi-kanko.jp/spot/recommend-spot01"
+  },
+  {
+    "id": "daisen-park",
+    "name": "大仙公園",
+    "address": "大阪府堺市堺区百舌鳥夕雲町2丁204",
+    "lat": 34.5568,
+    "lng": 135.4878,
+    "category": "walk",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 1,
+    "barrierFree": 4,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "tags": [
+      "sakura"
+    ],
+    "remarks": "仁徳天皇陵古墳に隣接する約38万平米の公園。「日本の歴史公園100選」。日本庭園・博物館はペット不可。駐車場は2時間200円、最大600円。JR「百舌鳥駅」徒歩5分。",
+    "imageUrl": "",
+    "officialUrl": "https://www.city.sakai.lg.jp/kurashi/koen/shokai/daisenkouen.html"
+  },
+  {
+    "id": "yahataya-park",
+    "name": "八幡屋公園",
+    "address": "大阪府大阪市港区田中3-1-40",
+    "lat": 34.6605,
+    "lng": 135.4472,
+    "category": "park",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 1,
+    "barrierFree": 4,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "tags": [],
+    "remarks": "約12.4haの都市公園。海遊館が近い。芝生広場・多目的広場あり。駐車場は118台、平日30分200円・最大600円。地下鉄中央線「朝潮橋駅」直結。",
+    "imageUrl": "",
+    "officialUrl": "https://www.yahataya-park.jp/"
+  },
+  {
+    "id": "ohasu-park",
+    "name": "大蓮公園",
+    "aliases": [
+      "おおはす公園"
+    ],
+    "address": "大阪府堺市南区若松台2丁5",
+    "lat": 34.4915,
+    "lng": 135.5106,
+    "category": "walk",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 1,
+    "barrierFree": 3,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "tags": [],
+    "remarks": "約15万平米の風致公園。大蓮池が中心。カフェ併設。駐車場は15分無料、以後60分200円、最大500円。",
+    "imageUrl": "",
+    "officialUrl": "https://www.city.sakai.lg.jp/kurashi/koen/shokai/oohasu.html"
+  },
+  {
+    "id": "sumiyoshi-park",
+    "name": "住吉公園",
+    "address": "大阪府大阪市住之江区浜口東1-1-13",
+    "lat": 34.6128,
+    "lng": 135.49,
+    "category": "walk",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": false,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 1,
+    "barrierFree": 4,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "tags": [
+      "sakura"
+    ],
+    "remarks": "明治6年開設、大阪で最も歴史のある府営公園。住吉大社に隣接。「汐かけ横丁」（飲食店16店舗）がオープン。専用駐車場なし。南海本線「住吉大社駅」すぐ。",
+    "imageUrl": "",
+    "officialUrl": "https://www.toshi-kouen.jp/staticpages/index.php/sumiyoshi_top"
+  },
+  {
+    "id": "kyuhoji-ryokuchi",
+    "name": "久宝寺緑地",
+    "address": "大阪府八尾市西久宝寺323",
+    "lat": 34.63,
+    "lng": 135.5782,
+    "category": "park",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 1,
+    "barrierFree": 4,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "tags": [
+      "sakura"
+    ],
+    "remarks": "北・中・東の3エリアからなる広大な府営公園。犬用トイレ設置あり。駐車場は4か所、1時間390円、最大1,350円。JR「久宝寺駅」徒歩15分。",
+    "imageUrl": "",
+    "officialUrl": "https://kyuhoji-ryokuchi.jp/"
+  },
+  {
+    "id": "kurondo-enchi",
+    "name": "大阪府民の森 くろんど園地",
+    "aliases": [
+      "くろんど園地",
+      "くろんど池"
+    ],
+    "address": "大阪府交野市大字私部3192-1",
+    "lat": 34.768,
+    "lng": 135.692,
+    "category": "walk",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 3,
+    "barrierFree": 2,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "tags": [
+      "koyo"
+    ],
+    "remarks": "金剛生駒紀泉国定公園内。ハイキングコース充実。リード着用必須、施設内（建物内）はペット不可。無料駐車場あり。火曜休園。9:00-17:00。",
+    "imageUrl": "",
+    "officialUrl": "https://o-wonderforest.com/kurondo/"
   }
 ]

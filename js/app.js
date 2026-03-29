@@ -22,6 +22,8 @@
     { id: 'parking-free', label: '駐車場無料', test: s => s.parking.available && s.parking.free },
     { id: 'dogrun', label: 'ドッグランあり', test: s => s.dogRun.available },
     { id: 'admission-free', label: '入場無料', test: s => s.admission.free },
+    { id: 'sakura', label: '桜', test: s => (s.tags || []).includes('sakura') },
+    { id: 'koyo', label: '紅葉', test: s => (s.tags || []).includes('koyo') },
   ];
 
   function buildFilterButtons() {
