@@ -1752,5 +1752,368 @@
     "remarks": "金剛生駒紀泉国定公園内。ハイキングコース充実。リード着用必須、施設内（建物内）はペット不可。無料駐車場あり。火曜休園。9:00-17:00。",
     "imageUrl": "",
     "officialUrl": "https://o-wonderforest.com/kurondo/"
+  },
+  {
+    "id": "otsu-nagisa-park",
+    "name": "大津湖岸なぎさ公園",
+    "address": "滋賀県大津市由美浜",
+    "lat": 35.0065,
+    "lng": 135.8636,
+    "category": "walk",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 1,
+    "barrierFree": 5,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "detail": "",
+      "separated": false
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "琵琶湖沿い約4.8km続く6つのエリアからなる湖岸公園。琵琶湖を眺めながらの散歩に最適。駐車場は30分まで無料、以降30分ごとに100円（1日最大1,000円）。なぎさのテラスにはテラス席犬同伴OKのカフェ・レストランあり。",
+    "imageUrl": "",
+    "officialUrl": "https://otsukoen.org/",
+    "aliases": [
+      "なぎさ公園"
+    ],
+    "tags": []
+  },
+  {
+    "id": "yabase-kihan-park",
+    "name": "矢橋帰帆島公園",
+    "address": "滋賀県草津市矢橋町字帰帆2108",
+    "lat": 35.0033,
+    "lng": 135.9494,
+    "category": "park",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 1,
+    "barrierFree": 4,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "detail": "",
+      "separated": false
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "琵琶湖の人工島に広がる公園。広い芝生広場や湖畔の散歩道があり犬連れに人気。リード着用で散歩可。駐車場は約500台で無料。開園時間は6:00〜21:30。",
+    "imageUrl": "",
+    "officialUrl": "https://hikari-g.com/kihan/",
+    "aliases": [
+      "帰帆島公園",
+      "矢橋帰帆島"
+    ],
+    "tags": []
+  },
+  {
+    "id": "rokuha-park",
+    "name": "草津市立ロクハ公園",
+    "address": "滋賀県草津市追分7-11-2",
+    "lat": 34.9919,
+    "lng": 135.9564,
+    "category": "park",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 2,
+    "barrierFree": 3,
+    "dogRun": {
+      "available": true,
+      "free": false,
+      "detail": "有料・事前会員登録制。7〜8月は利用不可。",
+      "separated": false
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "広さ約1.5万平方mの多目的広場がある大型公園。ドッグランは有料で事前の会員登録が必要（7〜8月は休止）。デイキャンプの森やアスレチック遊具も充実。",
+    "imageUrl": "",
+    "officialUrl": "https://www.park-698.net/",
+    "aliases": [
+      "ロクハ公園"
+    ],
+    "tags": []
+  },
+  {
+    "id": "houkoen-nagahama",
+    "name": "豊公園",
+    "address": "滋賀県長浜市公園町1325",
+    "lat": 35.3847,
+    "lng": 136.2706,
+    "category": "walk",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 2,
+    "barrierFree": 3,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "detail": "",
+      "separated": false
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "長浜城跡に広がる公園。日本さくら名所100選に選ばれ、約550本の桜が咲く。琵琶湖沿いの散歩道もあり眺望良好。駐車場は3時間まで無料、以降有料（最大1,000円）。",
+    "imageUrl": "",
+    "officialUrl": "https://www.city.nagahama.lg.jp/0000000230.html",
+    "aliases": [
+      "長浜城跡公園"
+    ],
+    "tags": [
+      "sakura"
+    ]
+  },
+  {
+    "id": "shozakai-park",
+    "name": "庄堺公園",
+    "address": "滋賀県彦根市開出今町",
+    "lat": 35.2563,
+    "lng": 136.2287,
+    "category": "park",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 1,
+    "barrierFree": 4,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "detail": "",
+      "separated": false
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "約2,000平方mに24種類・約1,200本のバラが咲くバラ園が有名。見頃は5〜6月と10〜11月。ハナショウブ園もあり。入園無料・駐車場100台無料・24時間開放。",
+    "imageUrl": "",
+    "officialUrl": "https://www.biwako-visitors.jp/spot/detail/10518/",
+    "aliases": [
+      "庄堺公園バラ園"
+    ],
+    "tags": []
+  },
+  {
+    "id": "togei-no-mori",
+    "name": "滋賀県立陶芸の森",
+    "address": "滋賀県甲賀市信楽町勅旨2188-7",
+    "lat": 34.8689,
+    "lng": 136.0478,
+    "category": "walk",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 2,
+    "barrierFree": 3,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "detail": "",
+      "separated": false
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "信楽焼をテーマにした都市公園。広い芝生広場でピクニックも可。屋外はリード着用で犬連れOK（建物内は不可）。信楽焼のたぬき像など撮影スポットが豊富。駐車場無料。",
+    "imageUrl": "",
+    "officialUrl": "https://www.sccp.jp/",
+    "aliases": [
+      "陶芸の森"
+    ],
+    "tags": []
+  },
+  {
+    "id": "zeze-castle-park",
+    "name": "膳所城跡公園",
+    "address": "滋賀県大津市本丸町7",
+    "lat": 34.9938,
+    "lng": 135.8784,
+    "category": "walk",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 1,
+    "barrierFree": 4,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "detail": "",
+      "separated": false
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "琵琶湖畔の城跡公園。ソメイヨシノやヤマザクラなど約150本の桜が咲く名所。駐車場は20台・無料。24時間開放。琵琶湖に突き出した地形で湖畔の景色が美しい。",
+    "imageUrl": "",
+    "officialUrl": "https://www.biwako-visitors.jp/spot/detail/802/",
+    "aliases": [
+      "膳所城址公園"
+    ],
+    "tags": [
+      "sakura"
+    ]
+  },
+  {
+    "id": "kurokabe-square",
+    "name": "黒壁スクエア",
+    "address": "滋賀県長浜市元浜町12-38",
+    "lat": 35.3816,
+    "lng": 136.2694,
+    "category": "walk",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 1,
+    "barrierFree": 4,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "detail": "",
+      "separated": false
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "レトロな街並みが残る観光エリア。北国街道沿いを犬と散策できる。一部店舗はカート・抱っこで入店可。96カフェのテラス席は犬同伴OK。周辺にコインパーキング多数。",
+    "imageUrl": "",
+    "officialUrl": "https://www.kurokabe.co.jp/",
+    "aliases": [],
+    "tags": []
+  },
+  {
+    "id": "taga-taisha",
+    "name": "多賀大社",
+    "address": "滋賀県犬上郡多賀町多賀604",
+    "lat": 35.2274,
+    "lng": 136.2892,
+    "category": "walk",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 2,
+    "barrierFree": 3,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "detail": "",
+      "separated": false
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "「お多賀さん」の愛称で親しまれる古社。境内はリード着用・マナーパンツ着用で犬連れ参拝可（建物内は不可）。ペットお守りも販売。無料駐車場あり（徒歩5分）。",
+    "imageUrl": "",
+    "officialUrl": "https://www.tagataisya.or.jp/",
+    "aliases": [
+      "お多賀さん"
+    ],
+    "tags": []
   }
 ]
