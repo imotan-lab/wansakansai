@@ -65,6 +65,7 @@
 
 ## 作業フロー
 - コード変更後は必ず git commit → git push する
+- **スポットを追加・削除したら** `python generate_sitemap.py` を実行してsitemap.xmlを再生成してからコミットすること
 - プッシュ後はデプロイ完了を待ち、本番サイト https://imotan-lab.github.io/wansakansai/ を確認する
 - 本番確認はプレビューツールのヘッドレスブラウザで行う（Chromeに干渉しない）
   - preview_startでローカルサーバー起動 → preview_evalで本番URLにナビゲート → preview_screenshotで確認
