@@ -2519,5 +2519,879 @@
       "白崎海岸"
     ],
     "tags": []
+  },
+  {
+    "id": "kataonanami-park",
+    "name": "片男波公園",
+    "address": "和歌山県和歌山市和歌浦中3-4-28",
+    "lat": 34.1797,
+    "lng": 135.1569,
+    "category": "park",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 1,
+    "barrierFree": 4,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "detail": "",
+      "separated": false
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "万葉集にも詠まれた和歌の浦に面した海浜公園。砂浜・松林・野鳥の池など自然が豊か。犬連れ散歩可。駐車場無料。",
+    "imageUrl": "",
+    "officialUrl": "https://www.city.wakayama.wakayama.jp/",
+    "aliases": [
+      "片男波海水浴場"
+    ],
+    "tags": []
+  },
+  {
+    "id": "shimin-no-mori-park",
+    "name": "和歌山市森林公園 市民の森",
+    "address": "和歌山県和歌山市深山600-1",
+    "lat": 34.2764,
+    "lng": 135.2037,
+    "category": "walk",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": false
+    },
+    "stairs": 2,
+    "barrierFree": 2,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "detail": "",
+      "separated": false
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "和歌山市北部の山中にある自然豊かな森林公園。ハイキングコースあり。犬連れ散策可。駐車場無料。",
+    "imageUrl": "",
+    "officialUrl": "https://www.city.wakayama.wakayama.jp/",
+    "aliases": [
+      "市民の森"
+    ],
+    "tags": []
+  },
+  {
+    "id": "oike-yuen",
+    "name": "大池遊園",
+    "address": "和歌山県紀の川市貴志川町長山",
+    "lat": 34.2447,
+    "lng": 135.4022,
+    "category": "park",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 1,
+    "barrierFree": 3,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "detail": "",
+      "separated": false
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "池の周囲に約700本の桜が咲く和歌山県屈指の花見スポット。ボート乗り場・遊具あり。犬連れ散策可。駐車場無料（桜まつり期間は有料）。",
+    "imageUrl": "",
+    "officialUrl": "https://www.city.kinokawa.lg.jp/",
+    "aliases": [],
+    "tags": [
+      "sakura"
+    ]
+  },
+  {
+    "id": "koyasan-okunoin",
+    "name": "高野山 奥之院参道",
+    "address": "和歌山県伊都郡高野町高野山550",
+    "lat": 34.2145,
+    "lng": 135.5951,
+    "category": "walk",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 2,
+    "barrierFree": 2,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "detail": "",
+      "separated": false
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "弘法大師が眠る霊場・高野山の奥之院参道（一の橋〜御廟橋）。杉の古木と20万基以上の墓碑が並ぶ厳かな石畳。リードありの犬連れ可（御廟橋より先は不可）。駐車場無料あり。",
+    "imageUrl": "",
+    "officialUrl": "https://www.koyasan.or.jp/",
+    "aliases": [
+      "奥之院",
+      "高野山奥の院"
+    ],
+    "tags": []
+  },
+  {
+    "id": "michinoeki-kaki-kudoyama",
+    "name": "道の駅 柿の郷くどやま",
+    "address": "和歌山県伊都郡九度山町入郷5-5",
+    "lat": 34.2936,
+    "lng": 135.5576,
+    "category": "park",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 1,
+    "barrierFree": 4,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "detail": "",
+      "separated": false
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "九度山・真田の里の玄関口。広い芝生スペースでリード散歩可。特産の九度山柿や農産物直売所あり。駐車場119台・無料。",
+    "imageUrl": "",
+    "officialUrl": "https://www.kudoyama-kanko.jp/",
+    "aliases": [
+      "柿の郷くどやま"
+    ],
+    "tags": []
+  },
+  {
+    "id": "michinoeki-manyo-sato",
+    "name": "道の駅 紀の川万葉の里",
+    "address": "和歌山県伊都郡かつらぎ町窪487-2",
+    "lat": 34.2827,
+    "lng": 135.4934,
+    "category": "park",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 1,
+    "barrierFree": 4,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "detail": "",
+      "separated": false
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "紀の川沿いに位置する道の駅。万葉集ゆかりの地。河川敷沿いの散歩コースあり、犬連れOK。駐車場85台・無料。",
+    "imageUrl": "",
+    "officialUrl": "https://www.town.katsuragi.wakayama.jp/",
+    "aliases": [
+      "万葉の里"
+    ],
+    "tags": []
+  },
+  {
+    "id": "senjojiki",
+    "name": "千畳敷",
+    "address": "和歌山県西牟婁郡白浜町852-7",
+    "lat": 33.7007,
+    "lng": 135.3557,
+    "category": "walk",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 2,
+    "barrierFree": 2,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "detail": "",
+      "separated": false
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "白浜を代表する景勝地。波に侵食された砂岩の大岩盤が広がる海岸で、犬連れ散策可。夕日の絶景スポットとしても有名。駐車場無料。",
+    "imageUrl": "",
+    "officialUrl": "https://www.nankishirahama.jp/",
+    "aliases": [],
+    "tags": []
+  },
+  {
+    "id": "kizeppukyo",
+    "name": "奇絶峡",
+    "address": "和歌山県田辺市上秋津4392",
+    "lat": 33.7616,
+    "lng": 135.4358,
+    "category": "walk",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": false
+    },
+    "stairs": 2,
+    "barrierFree": 2,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "detail": "",
+      "separated": false
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "切り立った断崖と清流が続く渓谷。不動の滝・磨崖仏あり。紅葉の名所としても有名。犬連れ散策可。駐車場無料。",
+    "imageUrl": "",
+    "officialUrl": "https://www.tanabe.lg.jp/",
+    "aliases": [],
+    "tags": [
+      "koyo"
+    ]
+  },
+  {
+    "id": "ougigahama-park",
+    "name": "扇ヶ浜公園",
+    "address": "和歌山県田辺市扇ヶ浜2",
+    "lat": 33.7329,
+    "lng": 135.3714,
+    "category": "park",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 1,
+    "barrierFree": 4,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "detail": "",
+      "separated": false
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "田辺湾に面した海岸公園。噴水・芝生広場・遊歩道が整備されており、犬連れ散歩に最適。駐車場406台・有料。",
+    "imageUrl": "",
+    "officialUrl": "https://www.tanabe.lg.jp/",
+    "aliases": [],
+    "tags": []
+  },
+  {
+    "id": "shinjo-sogo-park",
+    "name": "新庄総合公園",
+    "address": "和歌山県田辺市たきない町3558-1",
+    "lat": 33.7363,
+    "lng": 135.3769,
+    "category": "park",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 1,
+    "barrierFree": 3,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "detail": "",
+      "separated": false
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "約23haの広大な公園。自然遊歩道・展望台・芝生広場など充実。犬連れ散策可。駐車場無料。",
+    "imageUrl": "",
+    "officialUrl": "https://www.tanabe.lg.jp/",
+    "aliases": [],
+    "tags": []
+  },
+  {
+    "id": "gomadanzan-forest-park",
+    "name": "護摩壇山森林公園",
+    "address": "和歌山県田辺市龍神村龍神1020",
+    "lat": 34.0583,
+    "lng": 135.6319,
+    "category": "walk",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 2,
+    "barrierFree": 2,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "detail": "",
+      "separated": false
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "和歌山最高峰・護摩壇山（1372m）に近い高原の森林公園。道の駅ごまさんスカイタワー併設。ブナやヒメシャラの原生林を犬連れで散策可。駐車場無料。",
+    "imageUrl": "",
+    "officialUrl": "https://www.town.ryujin.wakayama.jp/",
+    "aliases": [
+      "ごまさんスカイタワー",
+      "龍神スカイライン"
+    ],
+    "tags": [
+      "koyo"
+    ]
+  },
+  {
+    "id": "michinoeki-shimizu",
+    "name": "道の駅 しみず",
+    "address": "和歌山県有田郡有田川町大字清水607",
+    "lat": 34.0356,
+    "lng": 135.3286,
+    "category": "park",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 1,
+    "barrierFree": 4,
+    "dogRun": {
+      "available": true,
+      "free": true,
+      "detail": "無料のドッグランあり。",
+      "separated": false
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "有田川上流に位置する山間の道の駅。無料ドッグランあり。BBQ・コテージ施設も併設。農産物直売所で地元の梅・柑橘類など購入可。駐車場110台・無料。",
+    "imageUrl": "",
+    "officialUrl": "https://www.aridagawa-kanko.jp/",
+    "aliases": [
+      "道の駅しみず"
+    ],
+    "tags": []
+  },
+  {
+    "id": "washigamine-cosmos-park",
+    "name": "鷲ヶ峰コスモスパーク",
+    "address": "和歌山県有田郡有田川町長谷244-2",
+    "lat": 34.0647,
+    "lng": 135.3099,
+    "category": "walk",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": false
+    },
+    "stairs": 2,
+    "barrierFree": 1,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "detail": "",
+      "separated": false
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "山頂（標高約400m）に広がる展望公園。秋にはコスモスが一面に咲き乱れる絶景スポット。360度パノラマで夜景も楽しめる。犬連れ散策可。駐車場無料。",
+    "imageUrl": "",
+    "officialUrl": "https://www.aridagawa-kanko.jp/",
+    "aliases": [
+      "鷲ヶ峰"
+    ],
+    "tags": []
+  },
+  {
+    "id": "gobo-sogo-park",
+    "name": "御坊総合公園",
+    "address": "和歌山県御坊市塩屋町南塩屋1123",
+    "lat": 33.8979,
+    "lng": 135.1609,
+    "category": "park",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 1,
+    "barrierFree": 3,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "detail": "",
+      "separated": false
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "御坊市の大規模スポーツ・レクリエーション公園。広い芝生と遊歩道で犬連れ散歩可。駐車場250台・無料。",
+    "imageUrl": "",
+    "officialUrl": "https://www.city.gobo.wakayama.jp/",
+    "aliases": [],
+    "tags": []
+  },
+  {
+    "id": "kometsugu-park",
+    "name": "小目津公園",
+    "address": "和歌山県日高郡みなべ町山内355",
+    "lat": 33.7745,
+    "lng": 135.2858,
+    "category": "park",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": false
+    },
+    "stairs": 2,
+    "barrierFree": 2,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "detail": "",
+      "separated": false
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "みなべ町の海岸に面した芝生公園。磯遊びも楽しめる。梅の産地・みなべ町の観光拠点にも近い。犬連れ散策可。駐車場無料。",
+    "imageUrl": "",
+    "officialUrl": "https://www.town.minabe.lg.jp/",
+    "aliases": [],
+    "tags": []
+  },
+  {
+    "id": "hashiguiiwa",
+    "name": "橋杭岩",
+    "address": "和歌山県東牟婁郡串本町鬮野川1549-8",
+    "lat": 33.6069,
+    "lng": 135.8278,
+    "category": "walk",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 1,
+    "barrierFree": 3,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "detail": "",
+      "separated": false
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "国の天然記念物。大小40余りの奇岩が約850mにわたり連なる絶景。日の出スポットとしても有名。道の駅くしもと橋杭岩に隣接。犬連れ散策可。駐車場無料。",
+    "imageUrl": "",
+    "officialUrl": "https://www.town.kushimoto.wakayama.jp/",
+    "aliases": [
+      "橋杭岩海水浴場"
+    ],
+    "tags": []
+  },
+  {
+    "id": "shiono-misaki-bouro",
+    "name": "潮岬 望楼の芝",
+    "address": "和歌山県東牟婁郡串本町潮岬2927",
+    "lat": 33.4374,
+    "lng": 135.7666,
+    "category": "walk",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 1,
+    "barrierFree": 4,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "detail": "",
+      "separated": false
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "本州最南端の岬に広がる約10万㎡の芝生広場。360度の大パノラマで太平洋を一望。風が強い日も多いが開放感抜群。犬連れ散策可。駐車場無料。",
+    "imageUrl": "",
+    "officialUrl": "https://www.town.kushimoto.wakayama.jp/",
+    "aliases": [
+      "潮岬",
+      "本州最南端"
+    ],
+    "tags": []
+  },
+  {
+    "id": "kozagawa-ichimaiwa",
+    "name": "古座川の一枚岩",
+    "address": "和歌山県東牟婁郡古座川町相瀬290",
+    "lat": 33.6062,
+    "lng": 135.7248,
+    "category": "walk",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": false
+    },
+    "stairs": 1,
+    "barrierFree": 3,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "detail": "",
+      "separated": false
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "国の天然記念物。高さ約100m・幅約500mの巨大な一枚岩が古座川のほとりにそびえる。川沿いの遊歩道を犬連れで散策可。駐車場無料。",
+    "imageUrl": "",
+    "officialUrl": "https://www.kozagawa-kanko.jp/",
+    "aliases": [
+      "一枚岩"
+    ],
+    "tags": []
+  },
+  {
+    "id": "kumano-kodo-daimonzaka",
+    "name": "熊野古道 大門坂",
+    "address": "和歌山県東牟婁郡那智勝浦町那智山",
+    "lat": 33.674,
+    "lng": 135.9003,
+    "category": "walk",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 3,
+    "barrierFree": 1,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "detail": "",
+      "separated": false
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "那智大社への参詣道。苔むした石畳が続く熊野古道の中でも特に美しい区間。樹齢800年以上の杉の巨木が並ぶ。犬連れで歩行可（那智大社境内は要確認）。駐車場無料。",
+    "imageUrl": "",
+    "officialUrl": "https://www.nachikan.jp/",
+    "aliases": [
+      "大門坂",
+      "熊野古道大門坂"
+    ],
+    "tags": []
+  },
+  {
+    "id": "jofuku-park",
+    "name": "徐福公園",
+    "address": "和歌山県新宮市徐福1-4-24",
+    "lat": 33.7295,
+    "lng": 135.996,
+    "category": "park",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 1,
+    "barrierFree": 4,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "detail": "",
+      "separated": false
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "秦の始皇帝の命を受けた徐福が不老不死の薬を求めて新宮に上陸したという伝説の地。中国風の楼門が特徴的な公園。犬連れ散策可。駐車場無料。",
+    "imageUrl": "",
+    "officialUrl": "https://www.city.shingu.lg.jp/",
+    "aliases": [],
+    "tags": []
+  },
+  {
+    "id": "tankakujo-park",
+    "name": "丹鶴城公園",
+    "address": "和歌山県新宮市丹鶴3-2-1",
+    "lat": 33.7281,
+    "lng": 135.9884,
+    "category": "park",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 2,
+    "barrierFree": 2,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "detail": "",
+      "separated": false
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "新宮城跡（丹鶴城）に整備された公園。約235本の桜が咲く花見スポット。熊野川と新宮の街並みを見渡せる高台。犬連れ散策可。駐車場無料。",
+    "imageUrl": "",
+    "officialUrl": "https://www.city.shingu.lg.jp/",
+    "aliases": [
+      "新宮城跡"
+    ],
+    "tags": [
+      "sakura"
+    ]
+  },
+  {
+    "id": "kuroshio-park",
+    "name": "黒潮公園",
+    "address": "和歌山県新宮市三輪崎3000",
+    "lat": 33.7145,
+    "lng": 135.9773,
+    "category": "park",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 1,
+    "barrierFree": 3,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "detail": "",
+      "separated": false
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "熊野灘に面した松林の公園。砂浜と松並木が続く散歩道あり。静かな環境で犬連れ散策に適している。駐車場無料。",
+    "imageUrl": "",
+    "officialUrl": "https://www.city.shingu.lg.jp/",
+    "aliases": [],
+    "tags": []
   }
 ]
