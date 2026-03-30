@@ -149,6 +149,7 @@
     spotList.innerHTML = filtered.map(s => {
       const distText = s._distance != null ? `<span class="spot-card-distance">${formatDistance(s._distance)}</span>` : '';
       const visitedStamp = s.visited ? '<img src="images/stamp-visited.png" alt="運営が実際に訪問済み" class="visited-stamp">' : '';
+      const favClass = isFavorite(s.id) ? ' active' : '';
       const tags = [];
       if (s.parking.available) {
         tags.push(`<span class="tag">P ${s.parking.free ? '無料' : '有料'}</span>`);
@@ -165,7 +166,10 @@
           ${visitedStamp}
           <div class="spot-card-header">
             <span class="spot-card-name">${s.name}</span>
-            ${distText}
+            <div class="spot-card-right">
+              ${distText}
+              <button class="fav-btn${favClass}" data-id="${s.id}" aria-label="お気に入り">&#9829;</button>
+            </div>
           </div>
           <p class="spot-card-address">${s.address}</p>
           <div class="spot-card-tags">${tags.join('')}</div>
@@ -205,6 +209,16 @@
       },
       { enableHighAccuracy: true, timeout: 10000 }
     );
+  });
+
+  // Favorite button (event delegation)
+  spotList.addEventListener('click', (e) => {
+    const favBtn = e.target.closest('.fav-btn');
+    if (!favBtn) return;
+    e.preventDefault();
+    const id = favBtn.dataset.id;
+    const isNowFav = toggleFavorite(id);
+    favBtn.classList.toggle('active', isNowFav);
   });
 
   // Build buttons & initial render

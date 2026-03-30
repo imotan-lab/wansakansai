@@ -53,6 +53,7 @@ function getBasePath() {
 // Site navigation definition (single source of truth)
 const SITE_NAV = [
   { href: 'index.html', label: 'スポット検索', id: 'home' },
+  { href: 'favorites.html', label: 'お気に入り', id: 'favorites' },
   { href: 'danger.html', label: '危険情報', id: 'danger' },
   { href: 'privacy.html', label: 'プライバシーポリシー', id: 'privacy', footerOnly: true },
   { href: 'contact.html', label: 'お問い合わせ', id: 'contact' },
@@ -128,6 +129,30 @@ async function loadJSON(path) {
   const res = await fetch(path);
   if (!res.ok) throw new Error(`Failed to load ${path}`);
   return res.json();
+}
+
+// ===== Favorites (localStorage) =====
+function getFavorites() {
+  try {
+    return new Set(JSON.parse(localStorage.getItem('wansakan_favorites') || '[]'));
+  } catch {
+    return new Set();
+  }
+}
+
+function toggleFavorite(spotId) {
+  const favs = getFavorites();
+  if (favs.has(spotId)) {
+    favs.delete(spotId);
+  } else {
+    favs.add(spotId);
+  }
+  localStorage.setItem('wansakan_favorites', JSON.stringify([...favs]));
+  return favs.has(spotId);
+}
+
+function isFavorite(spotId) {
+  return getFavorites().has(spotId);
 }
 
 // Spot-Danger matching: check if spot name or any alias appears in text

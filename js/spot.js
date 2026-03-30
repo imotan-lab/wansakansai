@@ -53,12 +53,17 @@
 
     const mapQuery = encodeURIComponent(spot.name + ' ' + spot.address);
 
+    const isFav = isFavorite(spot.id);
+
     container.className = '';
     container.innerHTML = `
       <div class="spot-detail">
         ${visitedStamp}
         <h1 class="spot-detail-title">${spot.name}</h1>
         <p class="spot-detail-address">${spot.address}</p>
+        <button class="detail-fav-btn${isFav ? ' active' : ''}" id="detailFavBtn">
+          &#9829; ${isFav ? 'お気に入り済み' : 'お気に入りに追加'}
+        </button>
 
         <iframe
           class="spot-map"
@@ -129,6 +134,36 @@
         })()}
       </div>
     `;
+    // Favorite button
+    const favBtn = document.getElementById('detailFavBtn');
+    favBtn.addEventListener('click', () => {
+      const isNow = toggleFavorite(spot.id);
+      favBtn.textContent = `♥ ${isNow ? 'お気に入り済み' : 'お気に入りに追加'}`;
+      favBtn.classList.toggle('active', isNow);
+    });
+
+    // Nearby spots
+    const nearby = spots
+      .filter(s => s.id !== spot.id)
+      .map(s => ({ ...s, _distance: calcDistance(spot.lat, spot.lng, s.lat, s.lng) }))
+      .sort((a, b) => a._distance - b._distance)
+      .slice(0, 3);
+
+    if (nearby.length > 0) {
+      const nearbyEl = document.createElement('div');
+      nearbyEl.className = 'nearby-spots';
+      nearbyEl.innerHTML = `
+        <h3>近くのスポット</h3>
+        ${nearby.map(s => `
+          <a href="spot.html?id=${s.id}" class="nearby-spot-card">
+            <span class="nearby-spot-name">${s.name}</span>
+            <span class="nearby-spot-dist">${formatDistance(s._distance)}</span>
+          </a>
+        `).join('')}
+      `;
+      container.querySelector('.spot-detail').appendChild(nearbyEl);
+    }
+
   } catch (e) {
     container.innerHTML = '<div class="empty-state"><p>データの読み込みに失敗しました</p></div>';
   }

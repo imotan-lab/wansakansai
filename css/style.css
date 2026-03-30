@@ -379,7 +379,37 @@ img {
   font-size: 1.05rem;
   font-weight: 700;
   color: var(--color-text);
-  padding-right: 60px;
+  flex: 1;
+  min-width: 0;
+}
+
+.spot-card-right {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  margin-left: 8px;
+}
+
+/* ===== Favorite Button (spot card) ===== */
+.fav-btn {
+  background: none;
+  border: none;
+  font-size: 1.15rem;
+  cursor: pointer;
+  color: var(--color-border);
+  padding: 2px 4px;
+  line-height: 1;
+  transition: color 0.15s, transform 0.1s;
+}
+
+.fav-btn:hover {
+  color: #E05555;
+  transform: scale(1.2);
+}
+
+.fav-btn.active {
+  color: #E05555;
 }
 
 .spot-card-distance {
@@ -456,7 +486,84 @@ img {
 .spot-detail-address {
   font-size: 0.85rem;
   color: var(--color-text-light);
+  margin-bottom: 12px;
+}
+
+/* ===== Favorite Button (spot detail) ===== */
+.detail-fav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   margin-bottom: 20px;
+  padding: 7px 18px;
+  border: 2px solid var(--color-border);
+  border-radius: 50px;
+  background: none;
+  font-size: 0.85rem;
+  font-family: inherit;
+  color: var(--color-text-light);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.detail-fav-btn:hover {
+  border-color: #E05555;
+  color: #E05555;
+}
+
+.detail-fav-btn.active {
+  border-color: #E05555;
+  color: #E05555;
+  background: #FFF0F0;
+}
+
+/* ===== Nearby Spots ===== */
+.nearby-spots {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-border);
+}
+
+.nearby-spots h3 {
+  font-size: 0.9rem;
+  color: var(--color-primary);
+  margin-bottom: 12px;
+}
+
+.nearby-spot-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  margin-bottom: 8px;
+  transition: all 0.2s;
+  color: inherit;
+}
+
+.nearby-spot-card:last-child {
+  margin-bottom: 0;
+}
+
+.nearby-spot-card:hover {
+  border-color: var(--color-primary);
+  color: inherit;
+  box-shadow: var(--shadow-card);
+}
+
+.nearby-spot-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.nearby-spot-dist {
+  font-size: 0.82rem;
+  color: var(--color-accent);
+  font-weight: 600;
+  white-space: nowrap;
+  margin-left: 8px;
 }
 
 .spot-map {
