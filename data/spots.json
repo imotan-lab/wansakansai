@@ -2115,5 +2115,123 @@
       "お多賀さん"
     ],
     "tags": []
+  },
+  {
+    "id": "biwako-hakodateyama",
+    "name": "びわこ箱館山",
+    "address": "滋賀県高島市今津町日置前",
+    "lat": 35.4297,
+    "lng": 136.0028,
+    "category": "park",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 2,
+    "barrierFree": 3,
+    "dogRun": {
+      "available": true,
+      "free": true,
+      "detail": "小中型犬・大型犬の2区画に分離。無料。",
+      "separated": true
+    },
+    "admission": {
+      "free": false,
+      "fee": "大人2,500円、こども1,200円、ペット700円（ゴンドラ往復込み）"
+    },
+    "visited": false,
+    "remarks": "標高690mの山頂から琵琶湖を一望できる自然リゾート。無料ドッグランあり（小中型犬・大型犬2区画）。ゴンドラは小型犬のみ通常乗車可（中大型犬は別途要確認）。グリーンシーズン（春〜秋）のみ犬連れ入場可。駐車場は1,000円/日。",
+    "imageUrl": "",
+    "officialUrl": "https://www.hakodateyama.com/green/",
+    "aliases": [
+      "箱館山"
+    ],
+    "tags": []
+  },
+  {
+    "id": "blumenooka",
+    "name": "滋賀農業公園ブルーメの丘",
+    "address": "滋賀県蒲生郡日野町西大路843",
+    "lat": 35.0218,
+    "lng": 136.1654,
+    "category": "park",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 2,
+    "barrierFree": 3,
+    "dogRun": {
+      "available": true,
+      "free": true,
+      "detail": "大型犬・小型犬・貸切の3エリア。無料。",
+      "separated": true
+    },
+    "admission": {
+      "free": false,
+      "fee": "大人1,500円、小人800円（犬の入園料別途）"
+    },
+    "visited": false,
+    "remarks": "四季折々の花・動物ふれあい・アスレチックが楽しめる農業公園。無料ドッグランは3エリア（大型犬・小型犬・貸切区画）完備。混合ワクチン・狂犬病ワクチンの接種証明書（1年以内）の持参が必須。駐車場は約2,000台で無料。",
+    "imageUrl": "",
+    "officialUrl": "https://www.blumenooka.jp/",
+    "aliases": [
+      "ブルーメの丘"
+    ],
+    "tags": []
+  },
+  {
+    "id": "ojiyama-sports-park",
+    "name": "皇子山総合運動公園",
+    "address": "滋賀県大津市御陵町4-1",
+    "lat": 35.0188,
+    "lng": 135.8541,
+    "category": "park",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 2,
+    "barrierFree": 3,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "detail": "",
+      "separated": false
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "陸上競技場・野球場・体育館を備える総合運動公園。広い緑地エリアで散歩できる。JR湖西線「大津京駅」から徒歩約5分。駐車場無料。",
+    "imageUrl": "",
+    "officialUrl": "https://www.city.otsu.lg.jp/soshiki/035/1809/g/koen/koen/1387446075873.html",
+    "aliases": [],
+    "tags": []
   }
 ]
