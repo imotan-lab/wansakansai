@@ -3393,5 +3393,46 @@
     "officialUrl": "https://www.city.shingu.lg.jp/",
     "aliases": [],
     "tags": []
+  },
+  {
+    "id": "kurosawa-farm",
+    "name": "黒沢牧場",
+    "address": "和歌山県海南市上谷603",
+    "lat": 34.1299,
+    "lng": 135.2938,
+    "category": "park",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 1,
+    "barrierFree": 3,
+    "dogRun": {
+      "available": true,
+      "free": false,
+      "detail": "小型犬エリア（10kg未満）とフリーエリアの2区画。入場料のみで利用可（追加料金なし）。ワクチン証明書必要。火・水定休。",
+      "separated": true
+    },
+    "admission": {
+      "free": false,
+      "fee": "大人400円・子供200円（3歳〜中学生）"
+    },
+    "visited": false,
+    "remarks": "和歌山・海南市の牧場。動物とのふれあい・乗馬体験なども楽しめる。ドッグランは小型犬（10kg未満）とフリーエリアの2区画分離。入場料のみで利用可。営業9:00〜17:00、年中無休（悪天候除く）。駐車場600台・無料。",
+    "imageUrl": "",
+    "officialUrl": "https://9638farm.com/",
+    "aliases": [
+      "黒澤牧場",
+      "黒沢ハイランド"
+    ],
+    "tags": []
   }
 ]
