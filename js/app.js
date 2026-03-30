@@ -160,6 +160,9 @@
         tags.push(`<span class="tag">${drText}</span>`);
       }
       if (s.admission.free) tags.push('<span class="tag">入場無料</span>');
+      if ((s.tags || []).includes('sakura')) tags.push('<span class="tag tag-feature">桜</span>');
+      if ((s.tags || []).includes('koyo')) tags.push('<span class="tag tag-feature">紅葉</span>');
+      if ((s.tags || []).includes('water')) tags.push('<span class="tag tag-feature">水遊び</span>');
 
       return `
         <a href="spot.html?id=${s.id}" class="spot-card">

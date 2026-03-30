@@ -451,6 +451,12 @@ img {
   font-weight: 600;
 }
 
+.tag-feature {
+  background: #F0F8EC;
+  color: #5A8A3A;
+  border-color: #B8D9A0;
+}
+
 .tag-category {
   background: var(--color-accent);
   color: #fff;
