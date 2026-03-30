@@ -32,9 +32,10 @@
       { id: 'admission-free', label: '入場無料', test: s => s.admission.free },
       { id: 'admission-paid', label: '入場有料', test: s => !s.admission.free },
     ]},
-    { label: '季節', filters: [
+    { label: '特徴', filters: [
       { id: 'sakura', label: '桜', test: s => (s.tags || []).includes('sakura') },
       { id: 'koyo', label: '紅葉', test: s => (s.tags || []).includes('koyo') },
+      { id: 'water', label: '水遊び', test: s => (s.tags || []).includes('water') },
     ]},
   ];
 
