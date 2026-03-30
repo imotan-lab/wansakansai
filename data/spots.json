@@ -101,7 +101,7 @@
       "available": true,
       "free": true,
       "separated": true,
-      "detail": "小型犬エリア・中大型犬エリア"
+      "detail": "小型犬エリア（体高50cm以下）・中大型犬エリアの2区画"
     },
     "admission": {
       "free": true,
@@ -218,8 +218,8 @@
     "dogRun": {
       "available": true,
       "free": true,
-      "separated": false,
-      "detail": "2箇所、犬種サイズ制限なし"
+      "separated": true,
+      "detail": "小型犬優先エリアとフリーエリア（中大型犬可）の2区画。フェンスで分離。"
     },
     "admission": {
       "free": true,
@@ -382,7 +382,7 @@
     },
     "admission": {
       "free": false,
-      "fee": "ロープウェイ往復 大人3,500円、犬1頭500円（ケージ利用）"
+      "fee": "ロープウェイ往復 大人4,000円、犬1頭500円（ケージ利用）"
     },
     "visited": false,
     "remarks": "標高1,100mの高原リゾート。5〜10月のグリーンシーズンのみペット入場可（冬季スキーシーズンは不可）。山頂に無料ドッグランあり（大型犬用と小中型犬用に分離）。ロープウェイはケージ（貸し出しあり）利用が必要。琵琶湖の絶景を一望できる。",
@@ -415,7 +415,7 @@
       "available": true,
       "free": true,
       "separated": true,
-      "detail": "小型犬エリア（体高40cm未満・10kg以下）・中大型犬エリア"
+      "detail": "小型犬エリア（体高40cm未満・体重概ね10kg未満）・中大型犬エリアの2区画"
     },
     "admission": {
       "free": true,
@@ -467,7 +467,7 @@
   {
     "id": "muroike-enchi",
     "name": "大阪府民の森 むろいけ園地",
-    "address": "大阪府四條畷市大字逢阪459-2",
+    "address": "大阪府四條畷市大字逢阪458-2",
     "lat": 34.7358,
     "lng": 135.6738,
     "category": "walk",
@@ -726,7 +726,7 @@
       "available": true,
       "free": false,
       "separated": true,
-      "detail": "小型犬専用エリア・中大型犬優先エリア（WAN-TO）"
+      "detail": "小型犬専用エリア・中大型犬優先エリアの2区画（WAN-TO）。ビジター料金: 平日600円/頭、土日祝1,600円/頭。2025年12月改定。"
     },
     "admission": {
       "free": true,
@@ -884,7 +884,7 @@
       "available": true,
       "free": true,
       "separated": true,
-      "detail": "小型犬エリア・大型犬エリア"
+      "detail": "小型犬エリア（7kg未満）・大型犬エリアの2区画"
     },
     "admission": {
       "free": true,
@@ -968,7 +968,9 @@
     "remarks": "大阪市の中心部にある都心のオアシス。バラ園が有名で春と秋が見頃。堂島川と土佐堀川に挟まれた水辺の遊歩道が犬の散歩に最適。電車アクセスが良く（なにわ橋駅直結）、車なしでも行ける。周辺にコインパーキングあり。",
     "imageUrl": "",
     "officialUrl": "https://www.city.osaka.lg.jp/kensetsu/page/0000015813.html",
-    "tags": []
+    "tags": [
+      "sakura"
+    ]
   },
   {
     "id": "chikatsu-asuka-fudoki",
@@ -1075,8 +1077,8 @@
     "dogRun": {
       "available": true,
       "free": true,
-      "separated": true,
-      "detail": "小型犬・中大型犬の優先時間制（奇数日/偶数日で入替）"
+      "separated": false,
+      "detail": "1エリア・時間帯優先制（奇数日:小型犬優先/偶数日:中大型犬優先）。2024年10月より利用登録制・初回登録料1頭500円（利用料は無料）。"
     },
     "admission": {
       "free": true,
@@ -1282,7 +1284,8 @@
       "箕面大滝"
     ],
     "tags": [
-      "koyo"
+      "koyo",
+      "sakura"
     ]
   },
   {
@@ -1307,10 +1310,10 @@
     "stairs": 1,
     "barrierFree": 4,
     "dogRun": {
-      "available": false,
+      "available": true,
       "free": false,
-      "separated": false,
-      "detail": ""
+      "separated": true,
+      "detail": "大阪鶴見緑地パートナードッグタウン（有料・S/M/L 3エリア）。新規登録300円+利用料500円/頭・回。新規登録は土日祝のみ要予約。"
     },
     "admission": {
       "free": true,
@@ -2148,7 +2151,7 @@
     },
     "admission": {
       "free": false,
-      "fee": "大人2,500円、こども1,200円、ペット700円（ゴンドラ往復込み）"
+      "fee": "大人2,600円、こども1,300円、ペット700円（ゴンドラ往復込み）"
     },
     "visited": false,
     "remarks": "標高690mの山頂から琵琶湖を一望できる自然リゾート。無料ドッグランあり（小中型犬・大型犬2区画）。ゴンドラは小型犬のみ通常乗車可（中大型犬は別途要確認）。グリーンシーズン（春〜秋）のみ犬連れ入場可。駐車場は1,000円/日。",
@@ -2188,7 +2191,7 @@
     },
     "admission": {
       "free": false,
-      "fee": "大人1,500円、小人800円（犬の入園料別途）"
+      "fee": "大人1,500円、小人800円、犬500円"
     },
     "visited": false,
     "remarks": "四季折々の花・動物ふれあい・アスレチックが楽しめる農業公園。無料ドッグランは3エリア（大型犬・小型犬・貸切区画）完備。混合ワクチン・狂犬病ワクチンの接種証明書（1年以内）の持参が必須。駐車場は約2,000台で無料。",
@@ -2388,8 +2391,8 @@
     "dogRun": {
       "available": true,
       "free": true,
-      "detail": "砂地エリアと芝生エリアの2区画。犬種制限なし。無料。",
-      "separated": false
+      "detail": "大型犬エリア・小型犬エリア・第3エリアの3区画。犬種サイズ別に分離。無料。",
+      "separated": true
     },
     "admission": {
       "free": true,
@@ -2533,7 +2536,7 @@
     },
     "parking": {
       "available": true,
-      "free": true
+      "free": false
     },
     "toilet": {
       "available": true,
@@ -2552,7 +2555,7 @@
       "fee": ""
     },
     "visited": false,
-    "remarks": "万葉集にも詠まれた和歌の浦に面した海浜公園。砂浜・松林・野鳥の池など自然が豊か。犬連れ散歩可。駐車場無料。",
+    "remarks": "万葉集にも詠まれた和歌の浦に面した海浜公園。砂浜・松林・野鳥の池など自然が豊か。犬連れ散歩可。駐車場有料（1時間100円、当日最大400円。7・8月は1,000円/日）。",
     "imageUrl": "",
     "officialUrl": "https://www.city.wakayama.wakayama.jp/",
     "aliases": [
@@ -2632,7 +2635,7 @@
       "fee": ""
     },
     "visited": false,
-    "remarks": "池の周囲に約700本の桜が咲く和歌山県屈指の花見スポット。ボート乗り場・遊具あり。犬連れ散策可。駐車場無料（桜まつり期間は有料）。",
+    "remarks": "池の周囲に約700本の桜が咲く和歌山県屈指の花見スポット。ボート乗り場・遊具あり。犬連れ散策可。駐車場通常無料（桜まつり期間3月下旬〜4月上旬は有料）。",
     "imageUrl": "",
     "officialUrl": "https://www.city.kinokawa.lg.jp/",
     "aliases": [],
@@ -2918,7 +2921,7 @@
   {
     "id": "gomadanzan-forest-park",
     "name": "護摩壇山森林公園",
-    "address": "和歌山県田辺市龍神村龍神1020",
+    "address": "和歌山県田辺市龍神村龍神918-61",
     "lat": 34.0583,
     "lng": 135.6319,
     "category": "walk",
@@ -3392,7 +3395,9 @@
     "imageUrl": "",
     "officialUrl": "https://www.city.shingu.lg.jp/",
     "aliases": [],
-    "tags": []
+    "tags": [
+      "sakura"
+    ]
   },
   {
     "id": "kurosawa-farm",
