@@ -2232,6 +2232,91 @@
     "imageUrl": "",
     "officialUrl": "https://www.city.otsu.lg.jp/soshiki/035/1809/g/koen/koen/1387446075873.html",
     "aliases": [],
-    "tags": []
+    "tags": [
+      "sakura"
+    ]
+  },
+  {
+    "id": "hachiman-park",
+    "name": "八幡公園",
+    "address": "滋賀県近江八幡市宮内町",
+    "lat": 35.1239,
+    "lng": 136.0979,
+    "category": "walk",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 2,
+    "barrierFree": 3,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "detail": "",
+      "separated": false
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "約500本のソメイヨシノが咲く近江八幡の桜名所。日没後は八幡堀のライトアップも楽しめる（18時〜21時）。豊臣秀次ゆかりの地で歴史的な街並みも見どころ。駐車場無料。",
+    "imageUrl": "",
+    "officialUrl": "https://www.omi8.com/spot/detail_1229.html",
+    "aliases": [],
+    "tags": [
+      "sakura"
+    ]
+  },
+  {
+    "id": "ayukawa-senbonzakura",
+    "name": "鮎河の千本桜（うぐい川公園）",
+    "address": "滋賀県甲賀市土山町鮎河",
+    "lat": 34.8568,
+    "lng": 136.1921,
+    "category": "walk",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": false
+    },
+    "stairs": 1,
+    "barrierFree": 4,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "detail": "",
+      "separated": false
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "鈴鹿山系の麓、うぐい川沿いに1,000本以上の桜が咲く景勝地。犬連れOKで川遊びも可。駐車場は開花期間中のみ有料（普通車500円の桜保全環境協力金）。浅い川辺は小型犬でも歩ける。",
+    "imageUrl": "",
+    "officialUrl": "https://koka-kanko.org/see/ayukawanosenbonzakura/",
+    "aliases": [
+      "鮎河千本桜",
+      "うぐい川公園"
+    ],
+    "tags": [
+      "sakura"
+    ]
   }
 ]
