@@ -57,7 +57,7 @@
 - GitHub CLIの操作（リポジトリ作成、Pages設定等）
 - ローカルサーバーの起動・停止
 - Webブラウザ操作（プレビュー確認）
-- Chrome（MCP）でのサイト確認は自由に行ってOK
+- Chrome（MCP）でのサイト確認は自由に行ってOK。使い終わったらタブを閉じること
 
 ## 公開URL
 - GitHub Pages: https://imotan-lab.github.io/wansakansai/
@@ -82,9 +82,10 @@
 - 写真に人が写っている場合はPythonで顔検出＆ぼかし処理を行う
 
 ## 危険情報（data/dangers.json）
-- 毎日自動更新あり（毎日 AM0:05 JST、リモートエージェントで実行）
-- トリガーID: trig_01P99nejNKkymiirUC8BpUJn
-- 管理画面: https://claude.ai/code/scheduled/trig_01P99nejNKkymiirUC8BpUJn
+- 毎日自動更新あり（毎日 PM9:00 JST、ローカルスケジュールタスクで実行）
+- タスクID: wansakansai-danger-update
+- 実行後にメール通知（send_notify.py wansakansai）
+- 旧リモートトリガー（trig_01P99nejNKkymiirUC8BpUJn）は一時停止済み
 - 情報源: 自治体公式サイト + SNS（X、Instagram、Threads）
 - SNS情報は「SNS上の報告」等と明記し、公式情報と区別する
 - 1件だけの未確認情報は掲載しない（複数アカウントからの報告があるもののみ）
