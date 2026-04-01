@@ -85,6 +85,8 @@
 - 毎日自動更新あり（毎日 PM9:00 JST、ローカルスケジュールタスクで実行）
 - タスクID: wansakansai-danger-update
 - 実行後にメール通知（send_notify.py wansakansai）
+- ログ: C:\Users\imao_\.claude\logs\wansakansai_YYYY-MM-DD.log（7日分保持）
+- Dropboxバックアップ: C:\Users\imao_\今電 Dropbox\今電　今尾笙夢\Claude_backup\自動タスク\wansakansai-danger-update\
 - 旧リモートトリガー（trig_01P99nejNKkymiirUC8BpUJn）は一時停止済み
 - 情報源: 自治体公式サイト + SNS（X、Instagram、Threads）
 - SNS情報は「SNS上の報告」等と明記し、公式情報と区別する
