@@ -186,7 +186,7 @@
       "fee": ""
     },
     "visited": false,
-    "remarks": "野生の鹿が多数生息するため、必ず短めのリードを着用し犬から目を離さないこと。9〜11月は雄鹿の発情期で気が荒くなるため特に注意。東大寺大仏殿は抱っこ・キャリーで犬OK。登大路駐車場は1日1,000円。",
+    "remarks": "東大寺・春日大社を含む広大な都市公園。鹿が約1,200頭生息。犬はリード必須で散歩可能だが、鹿との接触に十分注意が必要（驚いた鹿による事故実績あり）。春日大社境内は犬の参入禁止。今後規制強化の動きあり。",
     "imageUrl": "",
     "officialUrl": "https://www3.pref.nara.jp/park/",
     "tags": [
@@ -1235,7 +1235,7 @@
       "fee": ""
     },
     "visited": false,
-    "remarks": "2024年オープンのJR大阪駅直結の新スポット。うめきた公園はリード着用または抱きかかえでペットOK。都心の芝生広場で犬と過ごせる。グランフロント大阪に隣接し買い物にも便利。周辺に大型駐車場多数（有料）。",
+    "remarks": "2024年オープンのJR大阪駅直結の新スポット。うめきた公園はリード着用または抱きかかえでペットOK。芝生・植栽・噴水内は犬立入禁止（舗装路のみ可、ステッププラザの芝生は例外的にペット可）。都心で気軽に犬と過ごせるスポット。",
     "imageUrl": "",
     "officialUrl": "https://www.grandgreen-osaka.com/",
     "aliases": [
@@ -1518,7 +1518,7 @@
       "sakura",
       "koyo"
     ],
-    "remarks": "標高315mの五月山の麓から中腹に広がる公園。8つのハイキングコースと4つの展望台。桜・ツツジ・紅葉の名所。五月山動物園（無料）はペット不可。駐車場は30分無料、以後1時間300円。",
+    "remarks": "標高315mの五月山の麓から中腹に広がる公園。8つのハイキングコースと4つの展望台。桜・ツツジ・紅葉の名所。五月山動物園（無料）はペット不可。駐車場は30分無料、以後1時間300円。五月山動物園は犬不可。",
     "imageUrl": "",
     "officialUrl": "https://www.ikedashi-kanko.jp/spot/recommend-spot01"
   },
@@ -2762,44 +2762,6 @@
     "aliases": [
       "万葉の里"
     ],
-    "tags": []
-  },
-  {
-    "id": "senjojiki",
-    "name": "千畳敷",
-    "address": "和歌山県西牟婁郡白浜町852-7",
-    "lat": 33.7007,
-    "lng": 135.3557,
-    "category": "walk",
-    "dogSize": {
-      "small": true,
-      "large": true
-    },
-    "parking": {
-      "available": true,
-      "free": true
-    },
-    "toilet": {
-      "available": true,
-      "western": true
-    },
-    "stairs": 2,
-    "barrierFree": 2,
-    "dogRun": {
-      "available": false,
-      "free": false,
-      "detail": "",
-      "separated": false
-    },
-    "admission": {
-      "free": true,
-      "fee": ""
-    },
-    "visited": false,
-    "remarks": "白浜を代表する景勝地。波に侵食された砂岩の大岩盤が広がる海岸で、犬連れ散策可。夕日の絶景スポットとしても有名。駐車場無料。",
-    "imageUrl": "",
-    "officialUrl": "https://www.nankishirahama.jp/",
-    "aliases": [],
     "tags": []
   },
   {
