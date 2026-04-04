@@ -97,6 +97,10 @@
           </div>` : ''}
         </div>
 
+        ${(spot.tags || []).includes('small-dog-only') ? `
+          <div class="detail-warn">小型犬のみ入場可（大型犬は要確認）</div>
+        ` : ''}
+
         ${spot.remarks ? `
           <div class="detail-remarks">
             <h3>備考・犬連れでのポイント</h3>

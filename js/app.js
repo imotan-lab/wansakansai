@@ -36,6 +36,7 @@
       { id: 'sakura', label: '桜', test: s => (s.tags || []).includes('sakura') },
       { id: 'koyo', label: '紅葉', test: s => (s.tags || []).includes('koyo') },
       { id: 'water', label: '水遊び', test: s => (s.tags || []).includes('water') },
+      { id: 'small-dog-only', label: '小型犬のみ', test: s => (s.tags || []).includes('small-dog-only') },
     ]},
   ];
 
@@ -163,6 +164,7 @@
       if ((s.tags || []).includes('sakura')) tags.push('<span class="tag tag-feature">桜</span>');
       if ((s.tags || []).includes('koyo')) tags.push('<span class="tag tag-feature">紅葉</span>');
       if ((s.tags || []).includes('water')) tags.push('<span class="tag tag-feature">水遊び</span>');
+      if ((s.tags || []).includes('small-dog-only')) tags.push('<span class="tag tag-warn">小型犬のみ</span>');
 
       return `
         <a href="spot.html?id=${s.id}" class="spot-card">
