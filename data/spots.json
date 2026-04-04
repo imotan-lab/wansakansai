@@ -3474,38 +3474,6 @@
     "officialUrl": "https://m-koura.jp/"
   },
   {
-    "id": "shirahige-jinja",
-    "name": "白鬚神社",
-    "address": "滋賀県高島市鵜川215",
-    "lat": 35.274634,
-    "lng": 136.011314,
-    "parking": {
-      "available": true,
-      "free": true
-    },
-    "toilet": {
-      "available": true,
-      "western": false
-    },
-    "dogRun": {
-      "available": false,
-      "free": false,
-      "separated": false,
-      "detail": ""
-    },
-    "admission": {
-      "free": true,
-      "fee": ""
-    },
-    "visited": false,
-    "tags": [],
-    "aliases": [
-      "白髭神社"
-    ],
-    "remarks": "琵琶湖に浮かぶ大鳥居が絶景の近江最古の神社。犬はリード着用で境内散策可（建物内は不可）。国道161号沿い。トイレは和式のみの情報あり。",
-    "officialUrl": "http://shirahigejinja.com/"
-  },
-  {
     "id": "mitsui-outlet-shiga-ryuo",
     "name": "三井アウトレットパーク 滋賀竜王",
     "address": "滋賀県蒲生郡竜王町大字薬師1178-694",
@@ -3841,40 +3809,6 @@
     "officialUrl": "https://www.heijo-park.jp/"
   },
   {
-    "id": "hari-terrace",
-    "name": "道の駅針T・R・S",
-    "address": "奈良県奈良市針町345",
-    "lat": 34.5972,
-    "lng": 136.0008,
-    "parking": {
-      "available": true,
-      "free": true
-    },
-    "toilet": {
-      "available": true,
-      "western": true
-    },
-    "dogRun": {
-      "available": false,
-      "free": false,
-      "separated": false,
-      "detail": ""
-    },
-    "admission": {
-      "free": true,
-      "fee": ""
-    },
-    "visited": false,
-    "tags": [],
-    "aliases": [
-      "針テラス",
-      "針TRS",
-      "道の駅針テラス"
-    ],
-    "remarks": "名阪国道沿いの西日本最大級の道の駅。駐車場約500台（無料）。直売所・フードコート・レストラン等充実。犬連れでの施設外散策可。建物内はペット不可。",
-    "officialUrl": "https://hari-trs.com/"
-  },
-  {
     "id": "ikoma-sanroku-park",
     "name": "生駒山麓公園",
     "address": "奈良県生駒市俵口町2088",
@@ -4068,7 +4002,7 @@
     "aliases": [
       "飛鳥歴史公園"
     ],
-    "remarks": "高松塚・石舞台・甘樫丘・祝戸・キトラ古墳の5地区からなる国営公園（総面積約60ha）。リード（2m以内）着用で犬の散策可能。建物内はペット不可。公園内駐車場は無料。周辺の村営駐車場は有料の場合あり。",
+    "remarks": "高松塚・石舞台・甘樫丘・祝戸・キトラ古墳の5地区からなる国営公園（総面積約60ha）。小型犬のみリード（2m以内）着用で散策可との情報あり（大型犬は要確認）。建物内はペット不可。公園内駐車場は無料。周辺の村営駐車場は有料の場合あり。",
     "officialUrl": "https://www.asuka-park.jp/"
   },
   {
