@@ -4071,5 +4071,813 @@
     "aliases": [],
     "remarks": "世界遺産の神社でペット参拝OK。宮司が犬連れ大歓迎を公言。書院内も抱っこで拝観可能（書院拝観料：大人600円）。犬の健康長寿祈願・七五三のご祈祷も可能（要予約）。ペット用お守りあり。境内から「一目千本」の桜の絶景。専用駐車場は約5台と少ないため吉野山駐車場の利用推奨。",
     "officialUrl": "https://www.yoshimizu-shrine.com/"
+  },
+  {
+    "id": "kyoto-gyoen",
+    "name": "京都御苑",
+    "address": "京都府京都市上京区京都御苑3",
+    "lat": 35.024757,
+    "lng": 135.763946,
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "tags": [
+      "sakura",
+      "koyo"
+    ],
+    "aliases": [
+      "京都御所",
+      "御所"
+    ],
+    "remarks": "約65haの広大な国民公園。犬はリード必須（ロングリード不可）。京都御所内は宮内庁管轄のためペット不可。中立売休憩所のテラス席は犬OK。駐車場は中立売（131台）・清和院（81台）の2箇所、3時間800円。",
+    "officialUrl": "https://fng.or.jp/kyoto/"
+  },
+  {
+    "id": "tetsugaku-no-michi",
+    "name": "哲学の道",
+    "address": "京都府京都市左京区銀閣寺町付近〜若王子町付近",
+    "lat": 35.0273,
+    "lng": 135.796838,
+    "parking": {
+      "available": false,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "tags": [
+      "sakura",
+      "koyo"
+    ],
+    "aliases": [],
+    "remarks": "琵琶湖疏水分線沿い約1.5kmの散歩道。車両進入禁止で犬の散歩に最適。銀閣寺〜南禅寺を結ぶ。専用駐車場なし（周辺コインパーキング利用）。",
+    "officialUrl": "https://tetsugakunomichi.jp/"
+  },
+  {
+    "id": "kamogawa-park",
+    "name": "鴨川公園",
+    "address": "京都府京都市北区出雲路松ノ下町",
+    "lat": 35.041846,
+    "lng": 135.763057,
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "tags": [
+      "sakura",
+      "water"
+    ],
+    "aliases": [
+      "鴨川河川敷",
+      "鴨川デルタ",
+      "出町柳"
+    ],
+    "remarks": "鴨川の河川敷を整備した公園。出町柳の鴨川デルタ付近は浅瀬で犬の水遊びも可能。リード必須。下鴨神社・糺の森にも近い。周辺コインパーキング利用推奨。",
+    "officialUrl": "https://www.pref.kyoto.jp/koen-annai/kamo.html"
+  },
+  {
+    "id": "takaraike-park",
+    "name": "宝が池公園",
+    "address": "京都府京都市左京区上高野流田町8",
+    "lat": 35.058011,
+    "lng": 135.790273,
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "tags": [
+      "sakura",
+      "koyo"
+    ],
+    "aliases": [
+      "宝ヶ池公園",
+      "宝ヶ池"
+    ],
+    "remarks": "周囲約1.5kmの宝ヶ池を中心とした自然公園。犬はリード着用で園路を散歩可能（芝生広場・植樹帯は犬不可）。子どもの楽園エリアもペット不可。駐車場30分100円。",
+    "officialUrl": "https://www.city.kyoto.lg.jp/kensetu/page/0000082746.html"
+  },
+  {
+    "id": "byodoin",
+    "name": "平等院",
+    "address": "京都府宇治市宇治蓮華116",
+    "lat": 34.890138,
+    "lng": 135.807764,
+    "parking": {
+      "available": false,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": false,
+      "fee": "大人600円、中高生400円、小学生300円"
+    },
+    "visited": false,
+    "tags": [
+      "sakura",
+      "koyo"
+    ],
+    "aliases": [
+      "平等院鳳凰堂",
+      "宇治平等院"
+    ],
+    "remarks": "世界遺産。庭園のみ犬連れ拝観可（リード必須）。鳳凰堂内部・ミュージアム鳳翔館はペット不可。専用駐車場なし（宇治駐車場700円等を利用）。",
+    "officialUrl": "https://www.byodoin.or.jp/"
+  },
+  {
+    "id": "keihanna-park",
+    "name": "けいはんな記念公園",
+    "address": "京都府相楽郡精華町精華台6-1",
+    "lat": 34.746982,
+    "lng": 135.776982,
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "tags": [
+      "water"
+    ],
+    "aliases": [
+      "けいはんな公園"
+    ],
+    "remarks": "無料区域（広場・谷あい）のみ犬同伴可。水景園（有料）とビジターセンターはペット不可。谷あいの小川で水遊び可能。駐車場400円。9:00-17:00。",
+    "officialUrl": "https://keihanna-park.net/"
+  },
+  {
+    "id": "kasagi-camp",
+    "name": "笠置キャンプ場",
+    "address": "京都府相楽郡笠置町笠置",
+    "lat": 34.754031,
+    "lng": 135.937255,
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": false
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": false,
+      "fee": "日帰り：大人500円、小学生300円"
+    },
+    "visited": false,
+    "tags": [
+      "sakura",
+      "water"
+    ],
+    "aliases": [
+      "笠置河原"
+    ],
+    "remarks": "木津川沿いの河原キャンプ場。犬連れOK（リード短め）。予約不要・24時間入場可。車の場内乗り入れ可（約300台）。トイレは簡易水洗（トイレットペーパーなし）。桜の名所。",
+    "officialUrl": "https://kankou-kasagi.com/kasagi-camp/"
+  },
+  {
+    "id": "kameoka-sports-park",
+    "name": "亀岡運動公園",
+    "address": "京都府亀岡市曽我部町穴太土渕33-1",
+    "lat": 35.006013,
+    "lng": 135.534958,
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "tags": [
+      "sakura"
+    ],
+    "aliases": [
+      "亀岡運動公園さくら公園"
+    ],
+    "remarks": "広大な敷地にスポーツ施設・広場・ウォーキングロードを備えた公園。犬の散歩に人気（リード必須）。駐車場約705台無料。秋は隣接の夢コスモス園（別料金・犬OK・ドッグランあり）も楽しめる。",
+    "officialUrl": "https://park-kameoka.jp/"
+  },
+  {
+    "id": "michinoeki-kyotanba-ajimunosato",
+    "name": "道の駅 京丹波 味夢の里",
+    "address": "京都府船井郡京丹波町曽根深シノ65-1",
+    "lat": 35.155995,
+    "lng": 135.41615,
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": true,
+      "free": true,
+      "separated": false,
+      "detail": "全犬種共用エリア。9:00-17:00。犬用シャワー・水飲み場・リードフック付きベンチあり。"
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "tags": [],
+    "aliases": [
+      "味夢の里",
+      "京丹波PA"
+    ],
+    "remarks": "京都縦貫道・京丹波PA併設の道の駅。無料ドッグランあり（エリア分離なし）。高速道路・一般道の両方からアクセス可。テラス席はペット同伴OK。",
+    "officialUrl": "https://ajim.info/"
+  },
+  {
+    "id": "miyama-kayabuki-no-sato",
+    "name": "美山かやぶきの里",
+    "address": "京都府南丹市美山町北",
+    "lat": 35.316434,
+    "lng": 135.617245,
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "tags": [
+      "koyo"
+    ],
+    "aliases": [
+      "かやぶきの里",
+      "美山"
+    ],
+    "remarks": "国の重要伝統的建造物群保存地区。39棟の茅葺き屋根の集落を犬連れで散策可能（リード必須）。現役の住居地のため車両乗り入れ禁止。駐車場500円。秋の紅葉、冬の雪景色が見事。",
+    "officialUrl": "https://kayabukinosato.jp/"
+  },
+  {
+    "id": "fuminmori-hiyoshi",
+    "name": "京都府立府民の森ひよし",
+    "address": "京都府南丹市日吉町天若上ノ所25",
+    "lat": 35.137478,
+    "lng": 135.52969,
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": true,
+      "free": false,
+      "separated": true,
+      "detail": "約7,000平米。小型犬エリア（10kg以下）・中大型犬エリア・フリーエリアの3区分。1頭510円（要確認、600円の情報もあり）。"
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "tags": [],
+    "aliases": [
+      "府民の森ひよし"
+    ],
+    "remarks": "天若湖畔に広がる森林公園。約7,000平米の広大なドッグランは小型犬・中大型犬・フリーの3エリアに分離。キャンプ場・キャビンも併設。駐車場無料。",
+    "officialUrl": "https://forest-hiyoshi.jp/"
+  },
+  {
+    "id": "tango-oukoku-shoku-no-miyako",
+    "name": "丹後王国「食のみやこ」",
+    "address": "京都府京丹後市弥栄町鳥取123",
+    "lat": 35.674305,
+    "lng": 135.068474,
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": true,
+      "free": false,
+      "separated": true,
+      "detail": "約2,300平米。小型犬専用エリアとフリーエリアの2区分。1頭500円（時間制限なし）。9:30-16:30。"
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "tags": [],
+    "aliases": [
+      "丹後王国",
+      "道の駅丹後王国"
+    ],
+    "remarks": "西日本最大級の道の駅。園内はペット同伴可（小動物園エリアは不可）。ドッグラン（約2,300平米）は小型犬エリアとフリーエリアに分離。テラス席で犬と食事可能。駐車場約520台無料。",
+    "officialUrl": "https://tangooukoku.com/"
+  },
+  {
+    "id": "hitokura-park",
+    "name": "兵庫県立一庫公園",
+    "address": "兵庫県川西市国崎字知明1-6",
+    "lat": 34.9078,
+    "lng": 135.3933,
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "tags": [
+      "koyo"
+    ],
+    "aliases": [
+      "一庫公園"
+    ],
+    "remarks": "一庫ダム湖畔に広がる水辺・丘・山の3ゾーンで構成される自然公園。リード着用で散策可能。丘の駐車場（74台）と湖畔の駐車場（76台）の2箇所あり。秋の紅葉が美しい。",
+    "officialUrl": "https://hitokura-park.com/"
+  },
+  {
+    "id": "denspo-dogrun",
+    "name": "北神戸田園スポーツ公園（でんスポ）",
+    "address": "兵庫県神戸市北区有野町二郎753-1",
+    "lat": 34.8465,
+    "lng": 135.2227,
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": true,
+      "free": false,
+      "separated": false,
+      "detail": "天然芝540平米。年間登録料500円/頭。狂犬病予防注射済証・3種以上ワクチン接種証明書が必要。事前登録必須。"
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "tags": [],
+    "aliases": [
+      "でんスポ",
+      "北神戸田園スポーツ公園"
+    ],
+    "remarks": "神戸市営のスポーツ公園内にある天然芝ドッグラン。駐車場は平日2時間無料・以降有料、土日祝は1時間200円〜（上限500円）。ドッグラン利用には事務所での事前登録が必要（受付9時-17時）。",
+    "officialUrl": "https://www.denspo.com/facility/dogrun/"
+  },
+  {
+    "id": "awaji-hanasajiki",
+    "name": "あわじ花さじき",
+    "address": "兵庫県淡路市楠本2805-7",
+    "lat": 34.5994,
+    "lng": 135.0003,
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "tags": [],
+    "aliases": [
+      "花さじき"
+    ],
+    "remarks": "明石海峡・大阪湾を背景に四季の花畑が広がる県立公園。入場無料、駐車場200円/回。リード短く保持で犬同伴OK。花さじきテラス館内はペット不可。春は菜の花、秋はコスモスが見頃。",
+    "officialUrl": "https://awajihanasajiki.jp/"
+  },
+  {
+    "id": "awajishima-park",
+    "name": "兵庫県立淡路島公園",
+    "address": "兵庫県淡路市楠本2425-2",
+    "lat": 34.5893,
+    "lng": 135.0167,
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "tags": [
+      "sakura"
+    ],
+    "aliases": [
+      "淡路島公園"
+    ],
+    "remarks": "約150haの広大な県立公園。無料駐車場9箇所（計337台）。リード着用で犬同伴可。アトラクションや屋内施設はペット不可。芝生広場が広く犬の散歩に最適。淡路SAから直結。春は桜の名所。",
+    "officialUrl": "https://www.hyogo-park.or.jp/awajishima/"
+  },
+  {
+    "id": "ako-kaihin-park",
+    "name": "兵庫県立赤穂海浜公園",
+    "address": "兵庫県赤穂市御崎1857-5",
+    "lat": 34.7319,
+    "lng": 134.3697,
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "tags": [],
+    "aliases": [
+      "赤穂海浜公園"
+    ],
+    "remarks": "瀬戸内海に面した塩田跡地の都市公園。入園無料、駐車場500円/回。無料エリアのみペット同伴可（リード必須）。広い芝生広場や遊歩道あり。火曜定休。",
+    "officialUrl": "https://www.hyogo-park.or.jp/akokaihin/"
+  },
+  {
+    "id": "ako-picnic-park",
+    "name": "赤穂ピクニック公園",
+    "address": "兵庫県赤穂市御崎314-4",
+    "lat": 34.7279,
+    "lng": 134.3774,
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": true,
+      "free": true,
+      "separated": true,
+      "detail": "中大型犬用と小型犬用に分離。面積約625平米、フェンス高さ1.5m。犬専用水飲み場・リードフック完備。8:30-18:00（10-3月は-17:00）。"
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "tags": [],
+    "aliases": [
+      "ピクニック公園"
+    ],
+    "remarks": "赤穂市運営の無料ドッグラン併設公園。駐車場50台無料。園内から瀬戸内海を一望できる。元牧場跡地を整備した緑豊かな公園。",
+    "officialUrl": "https://www.city.ako.lg.jp/kensetsu/kouen/dogrun.html"
+  },
+  {
+    "id": "michinoeki-chikusa",
+    "name": "道の駅 ちくさ",
+    "address": "兵庫県宍粟市千種町下河野745-5",
+    "lat": 35.1349,
+    "lng": 134.46,
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": true,
+      "free": false,
+      "separated": true,
+      "detail": "テニスコート10面分の広さ。小型犬優先エリア（人工芝）あり。ノーリードOK。利用料金は要確認。"
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "tags": [
+      "water"
+    ],
+    "aliases": [
+      "ちくさ"
+    ],
+    "remarks": "「わんこと楽しむ」がコンセプトの犬連れ特化型道の駅。ドッグラン・ドッグカフェ併設。デイキャンプ場では川遊びも可能。営業時間9:00-16:00。",
+    "officialUrl": "https://mitinoekichikusa.wixsite.com/home"
+  },
+  {
+    "id": "shirotopia-park",
+    "name": "シロトピア記念公園",
+    "address": "兵庫県姫路市本町68",
+    "lat": 34.8415,
+    "lng": 134.6932,
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "tags": [
+      "sakura"
+    ],
+    "aliases": [
+      "シロトピア"
+    ],
+    "remarks": "姫路城の北側に位置する芝生公園（約1.2ha）。犬連れ散歩OK。姫路城を望みながらの散策が楽しめる。城の北駐車場が隣接（最初30分無料・以降有料）。春は桜が美しい。",
+    "officialUrl": "https://www.city.himeji.lg.jp/kanko/0000004650.html"
+  },
+  {
+    "id": "maiko-park",
+    "name": "県立舞子公園",
+    "address": "兵庫県神戸市垂水区東舞子町2051",
+    "lat": 34.6309,
+    "lng": 135.0287,
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "tags": [],
+    "aliases": [
+      "舞子公園"
+    ],
+    "remarks": "明石海峡大橋のたもとにある兵庫県最古の県立公園。リード着用で犬同伴OK。駐車場は1時間200円（上限1,000円）。明石海峡の大パノラマが楽しめる。JR舞子駅から徒歩5分。建物内はペット不可。",
+    "officialUrl": "https://hyogo-maikopark.jp/"
+  },
+  {
+    "id": "mikiyama-forest-park",
+    "name": "兵庫県立三木山森林公園",
+    "address": "兵庫県三木市福井字三木山2465-1",
+    "lat": 34.7947,
+    "lng": 134.9772,
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "tags": [
+      "koyo"
+    ],
+    "aliases": [
+      "三木山森林公園"
+    ],
+    "remarks": "甲子園球場約20倍（約80万平米）の広大な森林公園。入園・駐車場ともに無料。犬連れの利用者が多い。愛犬のお散歩マナー教室も定期開催。水曜定休。秋は紅葉が美しい。",
+    "officialUrl": "https://mikiyama.net/"
+  },
+  {
+    "id": "shiawasenomura",
+    "name": "しあわせの村",
+    "address": "兵庫県神戸市北区しあわせの村1-1",
+    "lat": 34.7104,
+    "lng": 135.1321,
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "tags": [],
+    "aliases": [],
+    "remarks": "花と緑あふれる総合福祉ゾーン。公園エリアのみリード着用でペット同伴可（キャンプ場・トリム園地・テニスコートはペット不可）。駐車場1日500円（条件付き無料あり）。三宮から車で約25分。",
+    "officialUrl": "https://shiawasenomura.org/"
+  },
+  {
+    "id": "amagasaki-mori-ryokuchi",
+    "name": "兵庫県立尼崎の森中央緑地",
+    "address": "兵庫県尼崎市扇町33-4",
+    "lat": 34.709,
+    "lng": 135.4063,
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "tags": [],
+    "aliases": [
+      "尼崎の森中央緑地",
+      "尼崎の森"
+    ],
+    "remarks": "県立公園最大級の大芝生広場を持つ都市緑地。入園・駐車場（約1,000台）ともに無料。広大な芝生で犬の散歩に最適。9:00-17:00、年末年始休園。",
+    "officialUrl": "https://www.hyogo-park.or.jp/amagasaki/"
   }
 ]
