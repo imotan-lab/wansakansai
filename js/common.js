@@ -15,7 +15,7 @@
 // ===== OGP Meta Tags =====
 (function() {
   const BASE_URL = 'https://imotan-lab.github.io/wansakansai/';
-  const siteName = '犬阪んさい';
+  const siteName = 'わんさかんさい';
   const ogImage = BASE_URL + 'images/ogp.png';
   const title = document.title;
   const desc = document.querySelector('meta[name="description"]');
@@ -70,7 +70,7 @@ function renderHeader(activePage) {
       <a href="${base}index.html" class="site-logo">
         <img src="${base}images/logo-chihuahua.png" alt="" class="logo-icon">
         <span>
-          犬阪んさい
+          わんさかんさい
           <span class="logo-sub">わんさかんさい</span>
         </span>
       </a>
@@ -102,7 +102,7 @@ function renderFooter() {
     <div class="footer-nav">
       ${SITE_NAV.map(n => `<a href="${base}${n.href}">${n.label}</a>`).join('')}
     </div>
-    <p>&copy; 2026 犬阪んさい All rights reserved.</p>
+    <p>&copy; 2026 わんさかんさい All rights reserved.</p>
   `;
   document.body.appendChild(footer);
 }

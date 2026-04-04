@@ -26,7 +26,7 @@
     }
 
     // Update page title
-    document.title = `${spot.name} - 犬阪んさい`;
+    document.title = `${spot.name} - わんさかんさい`;
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) metaDesc.content = `${spot.name}（${spot.address}）の犬連れお出かけ情報。駐車場・トイレ・ドッグラン情報など。`;
 
@@ -110,7 +110,7 @@
 
         <div class="share-buttons">
           <span class="share-label">シェア</span>
-          <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(spot.name + ' - 犬阪んさい')}&url=${encodeURIComponent(window.location.href)}" target="_blank" rel="noopener noreferrer" class="share-btn share-x">X</a>
+          <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(spot.name + ' - わんさかんさい')}&url=${encodeURIComponent(window.location.href)}" target="_blank" rel="noopener noreferrer" class="share-btn share-x">X</a>
           <a href="https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(window.location.href)}" target="_blank" rel="noopener noreferrer" class="share-btn share-line">LINE</a>
           <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}" target="_blank" rel="noopener noreferrer" class="share-btn share-fb">Facebook</a>
         </div>
