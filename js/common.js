@@ -69,10 +69,7 @@ function renderHeader(activePage) {
     <div class="header-inner">
       <a href="${base}index.html" class="site-logo">
         <img src="${base}images/logo-chihuahua.png" alt="" class="logo-icon">
-        <span>
-          わんさかんさい
-          <span class="logo-sub">わんさかんさい</span>
-        </span>
+        <span>わんさかんさい</span>
       </a>
       <nav>
         <ul class="nav-menu">
