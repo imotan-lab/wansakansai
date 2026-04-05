@@ -478,6 +478,73 @@ img {
 }
 
 /* ===== Spot Detail ===== */
+.spot-gallery {
+  margin-bottom: 16px;
+}
+
+.spot-gallery-main {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.spot-gallery-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.gallery-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery-nav:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.gallery-prev { left: 8px; }
+.gallery-next { right: 8px; }
+
+.spot-gallery-thumbs {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  overflow-x: auto;
+}
+
+.spot-gallery-thumb {
+  width: 72px;
+  height: 54px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  opacity: 0.5;
+  border: 2px solid transparent;
+  transition: opacity 0.2s, border-color 0.2s;
+}
+
+.spot-gallery-thumb:hover {
+  opacity: 0.8;
+}
+
+.spot-gallery-thumb.active {
+  opacity: 1;
+  border-color: var(--color-primary);
+}
+
 .spot-detail {
   width: 100%;
   position: relative;
@@ -491,12 +558,16 @@ img {
   padding-right: 70px;
 }
 
+.spot-detail-header {
+  position: relative;
+}
+
 .detail-visited-stamp {
   position: absolute;
-  top: -12px;
-  right: -12px;
-  width: 80px;
-  height: 80px;
+  top: -8px;
+  right: 0;
+  width: 64px;
+  height: 64px;
   opacity: 0.9;
   transform: rotate(10deg);
   pointer-events: none;

@@ -55,11 +55,36 @@
 
     const isFav = isFavorite(spot.id);
 
+    // Build gallery
+    const images = spot.images || (spot.imageUrl ? [spot.imageUrl] : []);
+    let galleryHtml = '';
+    if (images.length > 0) {
+      galleryHtml = `
+        <div class="spot-gallery">
+          <div class="spot-gallery-main">
+            <img src="${images[0]}" alt="${spot.name}" class="spot-gallery-img" id="galleryMainImg">
+            ${images.length > 1 ? `
+              <button class="gallery-nav gallery-prev" id="galleryPrev">&lt;</button>
+              <button class="gallery-nav gallery-next" id="galleryNext">&gt;</button>
+            ` : ''}
+          </div>
+          ${images.length > 1 ? `
+            <div class="spot-gallery-thumbs">
+              ${images.map((img, i) => `<img src="${img}" alt="" class="spot-gallery-thumb${i === 0 ? ' active' : ''}" data-index="${i}">`).join('')}
+            </div>
+          ` : ''}
+        </div>
+      `;
+    }
+
     container.className = '';
     container.innerHTML = `
       <div class="spot-detail">
-        ${visitedStamp}
-        <h1 class="spot-detail-title">${spot.name}</h1>
+        ${galleryHtml}
+        <div class="spot-detail-header">
+          ${visitedStamp}
+          <h1 class="spot-detail-title">${spot.name}</h1>
+        </div>
         <p class="spot-detail-address">${spot.address}</p>
         <button class="detail-fav-btn${isFav ? ' active' : ''}" id="detailFavBtn">
           &#9829; ${isFav ? 'お気に入り済み' : 'お気に入りに追加'}
@@ -138,6 +163,25 @@
         })()}
       </div>
     `;
+    // Gallery controls
+    if (images.length > 1) {
+      let currentIndex = 0;
+      const mainImg = document.getElementById('galleryMainImg');
+      const thumbs = container.querySelectorAll('.spot-gallery-thumb');
+      const prevBtn = document.getElementById('galleryPrev');
+      const nextBtn = document.getElementById('galleryNext');
+
+      function showImage(index) {
+        currentIndex = index;
+        mainImg.src = images[index];
+        thumbs.forEach((t, i) => t.classList.toggle('active', i === index));
+      }
+
+      prevBtn.addEventListener('click', () => showImage((currentIndex - 1 + images.length) % images.length));
+      nextBtn.addEventListener('click', () => showImage((currentIndex + 1) % images.length));
+      thumbs.forEach(t => t.addEventListener('click', () => showImage(Number(t.dataset.index))));
+    }
+
     // Favorite button
     const favBtn = document.getElementById('detailFavBtn');
     favBtn.addEventListener('click', () => {
