@@ -32,7 +32,7 @@
 - OGPタグ設置済み（画像: images/ogp.png）
 - ads.txt設置済み（pub-IDはAdSense申請時に設定）
 - 広告枠（ad-slot）はdisplay:noneで非表示中、AdSense導入時に有効化する
-- ドメイン取得は未実施（取得後にCNAME設定・AdSense申請）
+- 独自ドメイン: wansakansai.com（お名前.comで取得済み、CNAME設定済み）
 
 ## スポットデータ項目
 名前、住所、GPS座標、駐車場、トイレ（洋式/和式）、ドッグラン（エリア分離有無・詳細）、入場料、`visited`フラグ（実訪問済みマーク）、`aliases`（別名リスト、危険情報との照合に使用）、`tags`（汎用タグ配列: sakura, koyoなど）、備考、公式URL
@@ -60,13 +60,13 @@
 - Chrome（MCP）でのサイト確認は自由に行ってOK。使い終わったらタブを閉じること
 
 ## 公開URL
-- GitHub Pages: https://imotan-lab.github.io/wansakansai/
-- 独自ドメイン: wansakansai.com（ドメイン取得後にCNAME再設定）
+- 独自ドメイン: https://wansakansai.com（メイン）
+- GitHub Pages: https://imotan-lab.github.io/wansakansai/（独自ドメインにリダイレクト）
 
 ## 作業フロー
 - コード変更後は必ず git commit → git push する
 - **スポットを追加・削除したら** `python generate_sitemap.py` を実行してsitemap.xmlを再生成してからコミットすること
-- プッシュ後はデプロイ完了を待ち、本番サイト https://imotan-lab.github.io/wansakansai/ を確認する
+- プッシュ後はデプロイ完了を待ち、本番サイト https://wansakansai.com を確認する
 - 本番確認はプレビューツールのヘッドレスブラウザで行う（Chromeに干渉しない）
   - preview_startでローカルサーバー起動 → preview_evalで本番URLにナビゲート → preview_screenshotで確認
 - 確認結果を報告し、ユーザーにも確認してもらう
@@ -80,6 +80,8 @@
 - 写真は横向き（16:9）メインで撮影推奨（縦でも使える）
 - 写真をまとめて渡してもらい、Claudeが良いものを選んでサイトに反映する
 - 写真に人が写っている場合はPythonで顔検出＆ぼかし処理を行う
+- 顔ぼかしスクリプト: blur_faces.py（YuNet DNN使用、モデルファイルは C:/Users/oh_so/face_detection_yunet.onnx）
+- YuNetは誤検出があるため、ぼかし後の結果を必ず目視確認すること（木の枝や影を顔と誤検出する場合がある）
 
 ## 危険情報（data/dangers.json）
 - 毎日自動更新あり（毎日 PM9:00 JST、ローカルスケジュールタスクで実行）
@@ -129,6 +131,27 @@
 - [ ] `aliases`に通称・略称・別名が漏れていないか
 - [ ] `visited`フラグが正しいか（実訪問済みならtrue）
 - [ ] `officialUrl`が正しいか（公式サイトまたは公式観光情報サイト）
+
+## スポット写真
+- spots.jsonの`images`フィールドに複数画像パスを配列で指定（`imageUrl`は1枚目と同じ値）
+- 画像は `images/spots/{スポットID}/` に配置
+- スポット詳細ページにギャラリー表示あり（矢印ナビ + サムネイル切替）
+- Web用リサイズ: 幅1200px、JPEG品質82〜85
+
+## ブログ
+- 記事ページ: `blog/` ディレクトリに個別HTMLで配置
+- ブログ用画像: `images/blog/{記事スラッグ}/` に配置
+- 下書き: `blog/drafts/` にMarkdownで保存
+- 現在1記事作成済み（近つ飛鳥の桜、未公開・リンクなし）
+- ブログの正式導入（ナビ追加、記事一覧ページ、スポットとの連携）は未実施
+
+## ドメイン移行時のTODO
+独自ドメイン（wansakansai.com）のHTTPS有効化後に以下を対応:
+- [ ] GitHub PagesでHTTPS強制を有効化（`gh api repos/imotan-lab/wansakansai/pages -X PUT -F https_enforced=true`）
+- [ ] Search Consoleに wansakansai.com を新しいプロパティとして追加
+- [ ] sitemap.xmlのURL確認・再送信
+- [ ] 旧URL（imotan-lab.github.io/wansakansai）からのリダイレクト動作確認
+- [ ] 表示崩れがないかHTTPSで確認
 
 ## 注意事項
 - uchidokoroフォルダ・ファイルには絶対に触れないこと
