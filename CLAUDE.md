@@ -27,15 +27,27 @@
 
 ## SEO・収益化
 - Google Analytics設置済み（G-NPGCWSCZGB）
-- Google Search Console登録済み（metaタグ認証）
+- Google Search Console登録済み（metaタグ認証 + HTMLファイル認証）
+  - 旧プロパティ: https://imotan-lab.github.io/wansakansai/
+  - 新プロパティ: http://wansakansai.com/（2026-04-06追加、HTMLファイル認証）
+  - HTTPS有効化後に https://wansakansai.com/ も追加すること
 - sitemap.xml / robots.txt 設置済み
+- sitemap.xmlのベースURLはwansakansai.com（generate_sitemap.pyのBASE_URL）
 - OGPタグ設置済み（画像: images/ogp.png）
 - ads.txt設置済み（pub-IDはAdSense申請時に設定）
 - 広告枠（ad-slot）はdisplay:noneで非表示中、AdSense導入時に有効化する
-- 独自ドメイン: wansakansai.com（お名前.comで取得済み、CNAME設定済み）
+- 独自ドメイン: wansakansai.com（お名前.comで取得済み、Aレコード+AAAAレコード設定済み）
 
 ## スポットデータ項目
-名前、住所、GPS座標、駐車場、トイレ（洋式/和式）、ドッグラン（エリア分離有無・詳細）、入場料、`visited`フラグ（実訪問済みマーク）、`aliases`（別名リスト、危険情報との照合に使用）、`tags`（汎用タグ配列: sakura, koyoなど）、備考、公式URL
+名前、住所、GPS座標、駐車場、トイレ（洋式/和式）、ドッグラン（エリア分離有無・詳細）、入場料、`visited`フラグ（実訪問済みマーク）、`aliases`（別名リスト、検索・危険情報照合に使用。ひらがな読み・略称・通称を含む）、`tags`（汎用タグ配列: sakura, koyoなど）、備考、公式URL
+
+## スポット名検索
+- トップページの危険情報バナー下に検索入力欄を配置
+- name, aliases, addressを対象に部分一致検索
+- カタカナ⇔ひらがな自動変換、記号（中黒・ハイフン・スペース）無視
+- 既存フィルター（都道府県・タグ）と組み合わせ可能
+- デバウンス200msでリアルタイム検索
+- 全129スポットにひらがな読みをaliasesに登録済み（pykakasiで生成、手動修正済み）
 
 ## フィルター機能
 - 都道府県・条件タグの2段構成、いずれもトグル式（複数選択可、AND条件）
@@ -143,15 +155,19 @@
 - ブログ用画像: `images/blog/{記事スラッグ}/` に配置
 - 下書き: `blog/drafts/` にMarkdownで保存
 - 現在1記事作成済み（近つ飛鳥の桜、未公開・リンクなし）
+- **ブログ記事は家PCのローカルにのみ存在（未コミット）。次回家PC作業時にcommit & pushすること**
 - ブログの正式導入（ナビ追加、記事一覧ページ、スポットとの連携）は未実施
 
 ## ドメイン移行時のTODO
-独自ドメイン（wansakansai.com）のHTTPS有効化後に以下を対応:
-- [ ] GitHub PagesでHTTPS強制を有効化（`gh api repos/imotan-lab/wansakansai/pages -X PUT -F https_enforced=true`）
-- [ ] Search Consoleに wansakansai.com を新しいプロパティとして追加
-- [ ] sitemap.xmlのURL確認・再送信
-- [ ] 旧URL（imotan-lab.github.io/wansakansai）からのリダイレクト動作確認
-- [ ] 表示崩れがないかHTTPSで確認
+独自ドメイン（wansakansai.com）の移行作業。SSL証明書発行待ち（2026-04-06時点）。
+- [x] DNS Aレコード設定（GitHub Pages IP x4）
+- [x] DNS AAAAレコード設定（GitHub Pages IPv6 x4、2026-04-06追加）
+- [x] Search Consoleに http://wansakansai.com を新しいプロパティとして追加（HTMLファイル認証）
+- [x] sitemap.xmlのURLをwansakansai.comに更新・送信（133件）
+- [x] 旧URL（imotan-lab.github.io/wansakansai）からのリダイレクト動作確認（301）
+- [ ] **SSL証明書の発行を待ってHTTPS強制を有効化**（APIコマンド: `curl -s -X PUT -H "Authorization: token ..." -d '{"https_enforced":true}' https://api.github.com/repos/imotan-lab/wansakansai/pages`）
+- [ ] HTTPSでの表示崩れ確認
+- [ ] Search Consoleに https://wansakansai.com/ プロパティも追加
 
 ## 注意事項
 - uchidokoroフォルダ・ファイルには絶対に触れないこと
