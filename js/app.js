@@ -9,6 +9,7 @@
   let userLng = null;
   const activePrefs = new Set();
   const activeFilters = new Set();
+  let activeSearch = '';
 
   const spotList = document.getElementById('spotList');
   const spotCount = document.getElementById('spotCount');
@@ -16,6 +17,45 @@
   const gpsStatus = document.getElementById('gpsStatus');
   const prefSection = document.getElementById('prefSection');
   const filterSection = document.getElementById('filterSection');
+  const searchInput = document.getElementById('spotSearch');
+  const searchClear = document.getElementById('searchClear');
+
+  // カタカナ→ひらがな変換
+  function kataToHira(str) {
+    return str.replace(/[\u30A1-\u30F6]/g, ch =>
+      String.fromCharCode(ch.charCodeAt(0) - 0x60)
+    );
+  }
+
+  // 検索用の正規化（カタカナ→ひらがな、記号除去、小文字化）
+  function normalizeForSearch(str) {
+    return kataToHira(str.toLowerCase()).replace(/[・\-\s　]/g, '');
+  }
+
+  // 検索マッチング（name, aliases, addressを対象）
+  function matchesSearch(spot, query) {
+    const q = normalizeForSearch(query);
+    const fields = [spot.name, ...(spot.aliases || []), spot.address];
+    return fields.some(f => normalizeForSearch(f).includes(q));
+  }
+
+  // 検索入力のデバウンス
+  let searchTimer = null;
+  searchInput.addEventListener('input', () => {
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(() => {
+      activeSearch = searchInput.value.trim();
+      searchClear.style.display = activeSearch ? 'block' : 'none';
+      renderSpots();
+    }, 200);
+  });
+
+  searchClear.addEventListener('click', () => {
+    searchInput.value = '';
+    activeSearch = '';
+    searchClear.style.display = 'none';
+    renderSpots();
+  });
 
   // Tag filter definitions (data-driven, grouped)
   const FILTER_GROUPS = [
@@ -124,6 +164,11 @@
       );
     }
 
+    // Filter by search query
+    if (activeSearch) {
+      filtered = filtered.filter(s => matchesSearch(s, activeSearch));
+    }
+
     // Sort by distance if GPS available
     if (userLat !== null && userLng !== null) {
       filtered.forEach(s => {
@@ -132,7 +177,7 @@
       filtered.sort((a, b) => a._distance - b._distance);
     }
 
-    const isFiltered = activePrefs.size > 0 || activeFilters.size > 0;
+    const isFiltered = activePrefs.size > 0 || activeFilters.size > 0 || activeSearch;
     spotCount.textContent = isFiltered
       ? `${filtered.length} 件のスポット（全${spots.length}件中）`
       : `${filtered.length} 件のスポット`;
