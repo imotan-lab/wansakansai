@@ -5,7 +5,7 @@ spots.jsonからsitemap.xmlを自動生成するスクリプト。
 import json
 from datetime import date
 
-BASE_URL = "https://imotan-lab.github.io/wansakansai"
+BASE_URL = "https://wansakansai.com"
 TODAY = date.today().isoformat()
 
 with open('data/spots.json', 'r', encoding='utf-8') as f:
