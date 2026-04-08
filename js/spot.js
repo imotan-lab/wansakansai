@@ -129,7 +129,7 @@
         ${spot.remarks ? `
           <div class="detail-remarks">
             <h3>備考・犬連れでのポイント</h3>
-            <p>${spot.remarks}</p>
+            <p>${spot.remarks.replace(/。/g, '。<br>')}</p>
           </div>
         ` : ''}
 
