@@ -25,10 +25,31 @@
       return;
     }
 
-    // Update page title
+    // Update page title & SEO meta
     document.title = `${spot.name} - わんさかんさい`;
+    const spotUrl = `https://wansakansai.com/spot.html?id=${spot.id}`;
+    const spotDesc = `${spot.name}（${spot.address}）の犬連れお出かけ情報。駐車場・トイレ・ドッグラン情報など。`;
     const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) metaDesc.content = `${spot.name}（${spot.address}）の犬連れお出かけ情報。駐車場・トイレ・ドッグラン情報など。`;
+    if (metaDesc) metaDesc.content = spotDesc;
+    // canonical
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) canonical.href = spotUrl;
+    // OGP
+    const ogUpdates = { 'og:title': `${spot.name} - わんさかんさい`, 'og:description': spotDesc, 'og:url': spotUrl };
+    for (const [prop, val] of Object.entries(ogUpdates)) {
+      const el = document.querySelector(`meta[property="${prop}"]`);
+      if (el) el.content = val;
+    }
+    // JSON-LD
+    const jsonLd = document.createElement('script');
+    jsonLd.type = 'application/ld+json';
+    jsonLd.textContent = JSON.stringify({
+      '@context': 'https://schema.org', '@type': 'Place',
+      name: spot.name, address: { '@type': 'PostalAddress', addressRegion: spot.address },
+      geo: { '@type': 'GeoCoordinates', latitude: spot.lat, longitude: spot.lng },
+      url: spotUrl
+    });
+    document.head.appendChild(jsonLd);
 
     // Build info
     const visitedStamp = spot.visited ? '<img src="images/stamp-visited.png" alt="運営が実際に訪問済み" class="detail-visited-stamp">' : '';
