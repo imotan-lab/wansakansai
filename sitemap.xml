@@ -798,4 +798,40 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://wansakansai.com/spot.html?id=everyones-cafe</loc>
+    <lastmod>2026-04-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://wansakansai.com/spot.html?id=hotel-biwadog</loc>
+    <lastmod>2026-04-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://wansakansai.com/spot.html?id=kabata-resort</loc>
+    <lastmod>2026-04-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://wansakansai.com/spot.html?id=oogoya</loc>
+    <lastmod>2026-04-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://wansakansai.com/spot.html?id=dog-cafe-three-c</loc>
+    <lastmod>2026-04-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://wansakansai.com/spot.html?id=and-f-cafe</loc>
+    <lastmod>2026-04-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>

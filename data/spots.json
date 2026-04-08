@@ -2228,7 +2228,9 @@
     "aliases": [
       "くろかべすくえあ"
     ],
-    "tags": []
+    "tags": [
+      "rain"
+    ]
   },
   {
     "id": "taga-taisha",
@@ -3656,7 +3658,9 @@
       "fee": ""
     },
     "visited": false,
-    "tags": [],
+    "tags": [
+      "rain"
+    ],
     "aliases": [
       "三井アウトレット滋賀竜王",
       "アウトレット竜王",
@@ -5090,5 +5094,227 @@
     ],
     "remarks": "県立公園最大級の大芝生広場を持つ都市緑地。入園・駐車場（約1,000台）ともに無料。広大な芝生で犬の散歩に最適。9:00-17:00、年末年始休園。",
     "officialUrl": "https://www.hyogo-park.or.jp/amagasaki/"
+  },
+  {
+    "id": "everyones-cafe",
+    "name": "Every one's cafe",
+    "address": "滋賀県米原市磯1551",
+    "lat": 35.314686,
+    "lng": 136.265081,
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": true,
+      "free": false,
+      "separated": false,
+      "detail": "屋外 + 室内ドッグラン完備。室内は冷暖房・空気清浄機付き。小型～中型犬向け"
+    },
+    "admission": {
+      "free": false,
+      "fee": "ドッグラン: 平日900円～/土日祝1,200円～"
+    },
+    "visited": false,
+    "tags": [
+      "rain"
+    ],
+    "aliases": [
+      "エブリワンズカフェ",
+      "えぶりわんずかふぇ"
+    ],
+    "remarks": "琵琶湖を一望できる2階の室内ドッグランが魅力。冷暖房完備で雨天・真夏・真冬でも快適。1階はカフェでテイクアウト持ち込み可。ドッグラン料金は屋外/室内/セットの3段階。定休日: 木曜。営業時間: 10:00～日没。",
+    "imageUrl": "",
+    "images": [],
+    "officialUrl": "https://www.facebook.com/everyonescafe/"
+  },
+  {
+    "id": "hotel-biwadog",
+    "name": "ホテルビワドッグ",
+    "address": "滋賀県彦根市新海町3260",
+    "lat": 35.216278,
+    "lng": 136.11836,
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": true,
+      "free": false,
+      "separated": true,
+      "detail": "屋外3エリア（小中型犬/フリー/大型犬、天然芝）+ 室内ドッグラン（専用フロアマット）"
+    },
+    "admission": {
+      "free": false,
+      "fee": "日帰り: 平日 大人1,000円+犬1頭1,000円、土日祝 大人1,200円+犬1頭1,200円"
+    },
+    "visited": false,
+    "tags": [
+      "rain"
+    ],
+    "aliases": [
+      "ビワドッグ",
+      "びわどっぐ",
+      "ほてるびわどっぐ"
+    ],
+    "remarks": "琵琶湖に面した約4,500坪の敷地。日帰りドッグランは屋外3エリア+室内1エリア。室内は専用フロアマットで足に優しい。日帰りでもカフェバー利用可。4月～10月 8:00～18:00、11月～3月 8:00～17:00。",
+    "imageUrl": "",
+    "images": [],
+    "officialUrl": "https://www.biwadog.co.jp/"
+  },
+  {
+    "id": "kabata-resort",
+    "name": "かばたリゾート",
+    "address": "滋賀県高島市新旭町饗庭1657",
+    "lat": 35.382076,
+    "lng": 136.034968,
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": true,
+      "free": false,
+      "separated": true,
+      "detail": "屋外500坪（小型犬/中大型犬/フリーの3区画、天然芝）+ 屋内2棟（小型犬専用・中大型犬専用、人工芝）"
+    },
+    "admission": {
+      "free": false,
+      "fee": "日帰りドッグラン: 10kg未満800円/20kg未満1,200円/20kg以上1,500円"
+    },
+    "visited": false,
+    "tags": [
+      "rain"
+    ],
+    "aliases": [
+      "かばたりぞーと"
+    ],
+    "remarks": "屋内ドッグランが2棟あり小型犬・中大型犬で分離されているのが強み。雨天でも安心して走り回れる。カフェ・レストランも全席犬OK。じゃらん口コミ4.7の高評価施設。定休日: 水曜。6月～9月 9:00～19:00、10月～5月 9:00～17:00。",
+    "imageUrl": "",
+    "images": [],
+    "officialUrl": "http://kabataresort.com/"
+  },
+  {
+    "id": "oogoya",
+    "name": "大小屋",
+    "address": "滋賀県甲賀市信楽町勅旨2349",
+    "lat": 34.88673,
+    "lng": 136.061241,
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": true,
+      "free": false,
+      "separated": false,
+      "detail": "ドッグラン利用料 1日500円+税"
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "tags": [
+      "rain"
+    ],
+    "aliases": [
+      "おおごや"
+    ],
+    "remarks": "信楽焼の複合施設。犬と一緒に陶芸体験（手びねり・電動ろくろ・絵付け）ができるのがユニーク。犬の肉球プレート体験もあり。カフェレストランにペット同伴席あり。ギャラリーショップは抱っこ/キャリーで入店可。雨の日でも陶芸・買い物で半日楽しめる。10:00～17:00、不定休。",
+    "imageUrl": "",
+    "images": [],
+    "officialUrl": "http://www.oogoya.co.jp/"
+  },
+  {
+    "id": "dog-cafe-three-c",
+    "name": "Dog cafe three C",
+    "address": "滋賀県甲賀市水口町水口6230-6",
+    "lat": 34.964536,
+    "lng": 136.162129,
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "tags": [
+      "rain"
+    ],
+    "aliases": [
+      "スリーシー",
+      "すりーしー",
+      "どっぐかふぇすりーしー"
+    ],
+    "remarks": "店内ノーリードOKの老舗ドッグカフェ。20年以上の歴史。看板犬が出迎えてくれる。犬用手作りごはんメニューあり。犬用グッズ・雑貨の買い物も楽しめる。中庭にミニドッグランがあるが雨天時は使えない。11:00～17:00、定休日: 水曜・木曜。",
+    "imageUrl": "",
+    "images": [],
+    "officialUrl": "https://three-c-dog.com/"
+  },
+  {
+    "id": "and-f-cafe",
+    "name": "and F CAFE",
+    "address": "滋賀県守山市二町町208-5",
+    "lat": 35.04605,
+    "lng": 135.979617,
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "tags": [
+      "rain"
+    ],
+    "aliases": [
+      "アンドエフカフェ",
+      "あんどえふかふぇ"
+    ],
+    "remarks": "犬連れ専用の半個室（with Dogルーム）がありノーリードOK。仕切りで区切られた個室空間で犬とゆっくりくつろげる。パフェ・ワッフル等のスイーツが評判。犬用メニューあり。2時間制・2組限定のため予約推奨。現金のみの可能性あり（要確認）。11:30～18:00、定休日: 水曜・日曜。",
+    "imageUrl": "",
+    "images": [],
+    "officialUrl": "https://www.instagram.com/cafe_andf/"
   }
 ]

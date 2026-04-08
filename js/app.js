@@ -77,6 +77,7 @@
       { id: 'koyo', label: '紅葉', test: s => (s.tags || []).includes('koyo') },
       { id: 'water', label: '水遊び', test: s => (s.tags || []).includes('water') },
       { id: 'small-dog-only', label: '小型犬のみ', test: s => (s.tags || []).includes('small-dog-only') },
+      { id: 'rain', label: '雨でもOK', test: s => (s.tags || []).includes('rain') },
     ]},
   ];
 
@@ -93,7 +94,7 @@
           ).join('')}
         </div>
       </div>
-    `).join('');
+    `).join('') + '<button class="filter-clear-btn" id="filterClearBtn" style="display:none;">クリア</button>';
 
     filterSection.querySelectorAll('.filter-btn').forEach(btn => {
       btn.addEventListener('click', () => {
@@ -107,6 +108,17 @@
         }
         renderSpots();
       });
+    });
+
+    document.getElementById('filterClearBtn').addEventListener('click', () => {
+      activeFilters.clear();
+      activePrefs.clear();
+      activeSearch = '';
+      searchInput.value = '';
+      searchClear.style.display = 'none';
+      filterSection.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      prefSection.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      renderSpots();
     });
   }
 
@@ -178,6 +190,8 @@
     }
 
     const isFiltered = activePrefs.size > 0 || activeFilters.size > 0 || activeSearch;
+    const clearBtn = document.getElementById('filterClearBtn');
+    if (clearBtn) clearBtn.style.display = isFiltered ? 'inline-block' : 'none';
     spotCount.textContent = isFiltered
       ? `${filtered.length} 件のスポット（全${spots.length}件中）`
       : `${filtered.length} 件のスポット`;
@@ -210,6 +224,7 @@
       if ((s.tags || []).includes('koyo')) tags.push('<span class="tag tag-feature">紅葉</span>');
       if ((s.tags || []).includes('water')) tags.push('<span class="tag tag-feature">水遊び</span>');
       if ((s.tags || []).includes('small-dog-only')) tags.push('<span class="tag tag-warn">小型犬のみ</span>');
+      if ((s.tags || []).includes('rain')) tags.push('<span class="tag tag-feature">雨でもOK</span>');
 
       return `
         <a href="spot.html?id=${s.id}" class="spot-card">

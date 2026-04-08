@@ -319,6 +319,24 @@ img {
   border-color: #D4A017;
 }
 
+.filter-clear-btn {
+  padding: 6px 14px;
+  border: 1px solid var(--color-text-light);
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-family: inherit;
+  color: var(--color-text-light);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-left: 4px;
+}
+
+.filter-clear-btn:hover {
+  background: var(--color-text-light);
+  color: #fff;
+}
+
 /* ===== Danger Banner ===== */
 .danger-banner {
   display: flex;
