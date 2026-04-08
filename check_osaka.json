@@ -1,0 +1,960 @@
+[
+  {
+    "id": "osaka-castle-park",
+    "name": "大阪城公園",
+    "address": "大阪府大阪市中央区大阪城1-1",
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "detail": "",
+      "separated": false
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "tags": [
+      "sakura",
+      "koyo"
+    ]
+  },
+  {
+    "id": "fukakita-ryokuchi",
+    "name": "深北緑地",
+    "address": "大阪府大東市深野北4-284",
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": true,
+      "free": true,
+      "separated": true,
+      "detail": "全犬種エリア・小型犬専用エリア（8kg未満）"
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "tags": []
+  },
+  {
+    "id": "hamadera-park",
+    "name": "浜寺公園",
+    "address": "大阪府堺市西区浜寺公園町",
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": true,
+      "free": true,
+      "separated": true,
+      "detail": "小型犬エリア・中大型犬エリア"
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "tags": [
+      "sakura"
+    ]
+  },
+  {
+    "id": "hirakata-tobu-park",
+    "name": "東部公園",
+    "address": "大阪府枚方市大字尊延寺2987-1",
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": true,
+      "free": true,
+      "separated": true,
+      "detail": "小型犬エリア（体高40cm未満・10kg以下）・中大型犬エリア"
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "tags": []
+  },
+  {
+    "id": "saito-nanairo-park",
+    "name": "彩都なないろ公園",
+    "address": "大阪府箕面市彩都粟生北2-1",
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": true,
+      "free": true,
+      "separated": true,
+      "detail": "2エリアに分離"
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "tags": []
+  },
+  {
+    "id": "muroike-enchi",
+    "name": "大阪府民の森 むろいけ園地",
+    "address": "大阪府四條畷市大字逢阪459-2",
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "detail": "",
+      "separated": false
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "tags": [
+      "koyo"
+    ]
+  },
+  {
+    "id": "umi-fureai-hiroba",
+    "name": "海とのふれあい広場",
+    "address": "大阪府堺市堺区匠町6-1",
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": true,
+      "free": true,
+      "separated": true,
+      "detail": "小型犬エリア・中大型犬エリア"
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "tags": []
+  },
+  {
+    "id": "hanazono-chuo-park",
+    "name": "花園中央公園",
+    "address": "大阪府東大阪市松原南1-1-43",
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": true,
+      "free": true,
+      "separated": true,
+      "detail": "小型犬エリア・フリースペース"
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "tags": [
+      "sakura"
+    ]
+  },
+  {
+    "id": "oizumi-ryokuchi",
+    "name": "大泉緑地",
+    "address": "大阪府堺市北区金岡町128",
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": true,
+      "free": true,
+      "separated": false,
+      "detail": "小型犬専用（10kg以下）"
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "tags": [
+      "sakura"
+    ]
+  },
+  {
+    "id": "hattori-ryokuchi",
+    "name": "服部緑地",
+    "address": "大阪府豊中市服部緑地1-1",
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "detail": "",
+      "separated": false
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "tags": [
+      "sakura"
+    ]
+  },
+  {
+    "id": "settsu-kyo-park",
+    "name": "摂津峡公園",
+    "address": "大阪府高槻市大字原地内",
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "detail": "",
+      "separated": false
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "tags": [
+      "sakura",
+      "koyo",
+      "water"
+    ]
+  },
+  {
+    "id": "tonbo-ike-park",
+    "name": "蜻蛉池公園",
+    "address": "大阪府岸和田市三ヶ山町大池尻701",
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": true,
+      "free": false,
+      "separated": true,
+      "detail": "小型犬専用エリア・中大型犬優先エリア（WAN-TO）"
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "tags": [
+      "sakura"
+    ]
+  },
+  {
+    "id": "ninchoji-sports-park",
+    "name": "忍頂寺スポーツ公園",
+    "address": "大阪府茨木市忍頂寺1049",
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": true,
+      "free": true,
+      "separated": false,
+      "detail": "アジリティ設備あり（ゲートボール場兼用）"
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "tags": []
+  },
+  {
+    "id": "kurotoriyama-park",
+    "name": "黒鳥山公園",
+    "address": "大阪府和泉市黒鳥町318",
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": true,
+      "free": true,
+      "separated": false,
+      "detail": "1エリア580平米（奇数日:小型犬/偶数日:中大型犬）"
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "tags": [
+      "sakura"
+    ]
+  },
+  {
+    "id": "kuromaro-no-sato",
+    "name": "道の駅 奥河内くろまろの郷",
+    "address": "大阪府河内長野市高向1218-1",
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": true,
+      "free": true,
+      "separated": false,
+      "detail": "中小型犬専用（体高50cm以下）"
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "tags": [
+      "water"
+    ]
+  },
+  {
+    "id": "rinku-ice-park-dogrun",
+    "name": "りんくうアイスパーク ドッグラン",
+    "address": "大阪府泉佐野市りんくう往来北1",
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": true,
+      "free": true,
+      "separated": true,
+      "detail": "小型犬エリア・大型犬エリア"
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "tags": []
+  },
+  {
+    "id": "minami-neyagawa-park",
+    "name": "南寝屋川公園",
+    "address": "大阪府寝屋川市太秦元町2",
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": true,
+      "free": true,
+      "separated": false,
+      "detail": "奇数日:10kg未満/偶数日:10kg以上（日替わり制）"
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "tags": []
+  },
+  {
+    "id": "nakanoshima-park",
+    "name": "中之島公園",
+    "address": "大阪府大阪市北区中之島1",
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "tags": []
+  },
+  {
+    "id": "chikatsu-asuka-fudoki",
+    "name": "近つ飛鳥風土記の丘",
+    "address": "大阪府南河内郡河南町大字東山299",
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "tags": [
+      "sakura",
+      "koyo"
+    ]
+  },
+  {
+    "id": "sennan-long-park",
+    "name": "泉南りんくう公園（SENNAN LONG PARK）",
+    "address": "大阪府泉南市りんくう南浜2-201",
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": true,
+      "free": true,
+      "separated": false,
+      "detail": "サークル型ドッグラン（エリア分離なし）"
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "tags": []
+  },
+  {
+    "id": "suminoe-park",
+    "name": "住之江公園",
+    "address": "大阪府大阪市住之江区南加賀屋1-1-117",
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": true,
+      "free": true,
+      "separated": true,
+      "detail": "小型犬・中大型犬の優先時間制（奇数日/偶数日で入替）"
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "tags": []
+  },
+  {
+    "id": "ama-site-park",
+    "name": "安満遺跡公園",
+    "address": "大阪府高槻市八丁畷町12-3",
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": true,
+      "free": false,
+      "separated": false,
+      "detail": "GRASS DOG&CAT内（有料・10kg未満・屋根付き人工芝）"
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "tags": []
+  },
+  {
+    "id": "utsubo-park",
+    "name": "靭公園",
+    "address": "大阪府大阪市西区靱本町2-1",
+    "parking": {
+      "available": false,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "tags": []
+  },
+  {
+    "id": "nagai-park",
+    "name": "長居公園",
+    "address": "大阪府大阪市東住吉区長居公園1-1",
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "tags": [
+      "sakura"
+    ]
+  },
+  {
+    "id": "grand-green-osaka",
+    "name": "グラングリーン大阪（うめきた公園）",
+    "address": "大阪府大阪市北区大深町1",
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "tags": []
+  },
+  {
+    "id": "minoo-park",
+    "name": "箕面公園（箕面大滝）",
+    "address": "大阪府箕面市箕面公園1-18",
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "tags": [
+      "koyo"
+    ]
+  },
+  {
+    "id": "tsurumi-ryokuchi",
+    "name": "鶴見緑地",
+    "address": "大阪府大阪市鶴見区緑地公園2-163",
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "tags": [
+      "sakura"
+    ]
+  },
+  {
+    "id": "yamada-ike-park",
+    "name": "山田池公園",
+    "address": "大阪府枚方市山田池公園1-1",
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "tags": [
+      "sakura",
+      "koyo"
+    ]
+  },
+  {
+    "id": "shikinzan-park",
+    "name": "紫金山公園",
+    "address": "大阪府吹田市岸部北4丁目",
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "tags": []
+  },
+  {
+    "id": "saito-nishi-park",
+    "name": "彩都西公園",
+    "address": "大阪府茨木市彩都やまぶき1-3",
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "tags": []
+  },
+  {
+    "id": "fureai-ryokuchi",
+    "name": "ふれあい緑地（服部ビオパーク）",
+    "address": "大阪府豊中市服部西町5丁目",
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": true,
+      "free": true,
+      "separated": true,
+      "detail": "小型犬エリア・中大型犬エリアの2区画"
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "tags": []
+  },
+  {
+    "id": "satsukiyama-park",
+    "name": "五月山公園",
+    "address": "大阪府池田市綾羽2-5-33",
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "tags": [
+      "sakura",
+      "koyo"
+    ]
+  },
+  {
+    "id": "daisen-park",
+    "name": "大仙公園",
+    "address": "大阪府堺市堺区百舌鳥夕雲町2丁204",
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "tags": [
+      "sakura"
+    ]
+  },
+  {
+    "id": "yahataya-park",
+    "name": "八幡屋公園",
+    "address": "大阪府大阪市港区田中3-1-40",
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "tags": []
+  },
+  {
+    "id": "ohasu-park",
+    "name": "大蓮公園",
+    "address": "大阪府堺市南区若松台2丁5",
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "tags": []
+  },
+  {
+    "id": "sumiyoshi-park",
+    "name": "住吉公園",
+    "address": "大阪府大阪市住之江区浜口東1-1-13",
+    "parking": {
+      "available": false,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "tags": [
+      "sakura"
+    ]
+  },
+  {
+    "id": "kyuhoji-ryokuchi",
+    "name": "久宝寺緑地",
+    "address": "大阪府八尾市西久宝寺323",
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "tags": [
+      "sakura"
+    ]
+  },
+  {
+    "id": "kurondo-enchi",
+    "name": "大阪府民の森 くろんど園地",
+    "address": "大阪府交野市大字私部3192-1",
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "tags": [
+      "koyo"
+    ]
+  }
+]

@@ -1,0 +1,103 @@
+[
+  {
+    "id": "arashiyama-takao-parkway",
+    "name": "嵐山-高雄パークウエイ ワン遊ランド",
+    "address": "京都府京都市西京区嵐山中尾下町54-4",
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": true,
+      "free": true,
+      "separated": true,
+      "detail": "大型犬エリア・小型犬エリア"
+    },
+    "admission": {
+      "free": false,
+      "fee": "通行料1,800円（軽・普通車）"
+    },
+    "tags": [
+      "koyo"
+    ]
+  },
+  {
+    "id": "nara-park",
+    "name": "奈良公園",
+    "address": "奈良県奈良市雑司町469",
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "detail": "",
+      "separated": false
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "tags": [
+      "sakura",
+      "koyo"
+    ]
+  },
+  {
+    "id": "kobe-fruit-flower-park",
+    "name": "道の駅 神戸フルーツ・フラワーパーク大沢",
+    "address": "兵庫県神戸市北区大沢町上大沢2150",
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": true,
+      "free": true,
+      "separated": false,
+      "detail": "2箇所、犬種サイズ制限なし"
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "tags": []
+  },
+  {
+    "id": "akashi-kaikyo-park",
+    "name": "国営明石海峡公園",
+    "address": "兵庫県淡路市夢舞台8-10",
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "detail": "",
+      "separated": false
+    },
+    "admission": {
+      "free": false,
+      "fee": "大人450円、中学生以下無料、犬無料"
+    },
+    "tags": []
+  }
+]
