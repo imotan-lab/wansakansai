@@ -21,21 +21,27 @@
 1. **トップページ** - GPS検索・フィルター・スポット一覧
 2. **スポット詳細** - 各スポット情報・地図・SNSシェアボタン・関連危険情報
 3. **危険情報** - 毒餌・事故情報（日付付き、毎週自動更新）
-4. **プライバシーポリシー**
-5. **お問い合わせ** - Googleフォーム埋め込み済み
-6. **404ページ** - チワワイラスト付き
+4. **このサイトについて** - 運営者情報・愛犬こつぶの紹介
+5. **プライバシーポリシー**
+6. **お問い合わせ** - Googleフォーム埋め込み済み
+7. **404ページ** - チワワイラスト付き
 
 ## SEO・収益化
 - Google Analytics設置済み（G-NPGCWSCZGB）
 - Google Search Console登録済み（metaタグ認証 + HTMLファイル認証）
   - 旧プロパティ: https://imotan-lab.github.io/wansakansai/
   - 新プロパティ: http://wansakansai.com/（2026-04-06追加、HTMLファイル認証）
-  - HTTPS有効化後に https://wansakansai.com/ も追加すること
+  - HTTPS版: https://wansakansai.com/（2026-04-08追加）
 - sitemap.xml / robots.txt 設置済み
 - sitemap.xmlのベースURLはwansakansai.com（generate_sitemap.pyのBASE_URL）
-- OGPタグ設置済み（画像: images/ogp.png）
-- ads.txt設置済み（pub-IDはAdSense申請時に設定）
-- 広告枠（ad-slot）はdisplay:noneで非表示中、AdSense導入時に有効化する
+- OGPタグ設置済み（画像: images/ogp.png）-- 各ページに静的HTML版+JSでの動的更新
+- canonical URL: 全ページに設定済み（spot.htmlはJSで動的更新）
+- JSON-LD構造化データ: index.htmlにWebSite、spot.jsでPlace（スポットごとに動的生成）
+- 画像最適化済み（ロゴ・スタンプ等をリサイズ、合計8.3MB→435KBに削減）
+- AdSense申請済み（pub-2097489177716087、2026-04-09申請、審査待ち）
+- ads.txt設置済み（pub-2097489177716087）
+- AdSenseコード: 全HTMLページのheadに設置済み
+- 広告枠（ad-slot）はdisplay:noneで非表示中、AdSense審査通過後に有効化する
 - 独自ドメイン: wansakansai.com（お名前.comで取得済み、Aレコード+AAAAレコード設定済み）
 
 ## スポットデータ項目
@@ -156,7 +162,6 @@
 - ブログ用画像: `images/blog/{記事スラッグ}/` に配置
 - 下書き: `blog/drafts/` にMarkdownで保存
 - 現在1記事作成済み（近つ飛鳥の桜、未公開・リンクなし）
-- **ブログ記事は家PCのローカルにのみ存在（未コミット）。次回家PC作業時にcommit & pushすること**
 - ブログの正式導入（ナビ追加、記事一覧ページ、スポットとの連携）は未実施
 
 ## ドメイン移行時のTODO
