@@ -159,15 +159,15 @@
 - ブログの正式導入（ナビ追加、記事一覧ページ、スポットとの連携）は未実施
 
 ## ドメイン移行時のTODO
-独自ドメイン（wansakansai.com）の移行作業。SSL証明書発行待ち（2026-04-06時点）。
+独自ドメイン（wansakansai.com）の移行作業。HTTPS有効化済み（2026-04-08完了）。
 - [x] DNS Aレコード設定（GitHub Pages IP x4）
-- [x] DNS AAAAレコード設定（GitHub Pages IPv6 x4、2026-04-06追加）
+- [x] DNS AAAAレコード設定（GitHub Pages IPv6 x4）
 - [x] Search Consoleに http://wansakansai.com を新しいプロパティとして追加（HTMLファイル認証）
 - [x] sitemap.xmlのURLをwansakansai.comに更新・送信（133件）
 - [x] 旧URL（imotan-lab.github.io/wansakansai）からのリダイレクト動作確認（301）
-- [ ] **SSL証明書の発行を待ってHTTPS強制を有効化**（APIコマンド: `curl -s -X PUT -H "Authorization: token ..." -d '{"https_enforced":true}' https://api.github.com/repos/imotan-lab/wansakansai/pages`）
-- [ ] HTTPSでの表示崩れ確認
-- [ ] Search Consoleに https://wansakansai.com/ プロパティも追加
+- [x] SSL証明書発行・HTTPS強制有効化（2026-04-08完了）
+- [x] HTTPSでの表示崩れ確認（2026-04-08確認済み、問題なし）
+- [x] Search Consoleに https://wansakansai.com/ プロパティ追加・sitemap送信（2026-04-08完了）
 
 ## 注意事項
 - uchidokoroフォルダ・ファイルには絶対に触れないこと
