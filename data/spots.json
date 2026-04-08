@@ -5316,5 +5316,236 @@
     "imageUrl": "",
     "images": [],
     "officialUrl": "https://www.instagram.com/cafe_andf/"
+  },
+  {
+    "id": "with-wan",
+    "name": "ドッグラン&カフェ With わんっ!",
+    "address": "滋賀県東近江市五個荘清水鼻町114-1",
+    "lat": 35.1253,
+    "lng": 136.1821,
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 1,
+    "barrierFree": 3,
+    "dogRun": {
+      "available": true,
+      "free": false,
+      "separated": false,
+      "detail": "会員制（入会金500円/頭）。約100坪の天然芝。ワクチン証明必須"
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "店内全席犬同伴OK。保護犬との触れ合いスペースあり（無料・回数制限なし）。犬用日替わりランチ300円。季節ごとのフォトブース・コスチューム無料レンタルあり。店内ではマナーベルト着用必須。9:00〜19:00、年中無休。",
+    "imageUrl": "",
+    "officialUrl": "https://with-wan.net/",
+    "tags": [
+      "rain"
+    ],
+    "aliases": [
+      "うぃずわん",
+      "with wan",
+      "ウィズワン"
+    ]
+  },
+  {
+    "id": "stellar-cafe",
+    "name": "保護犬カフェ STELLAR",
+    "address": "滋賀県大津市瀬田2丁目3-8 橋本ビル201",
+    "lat": 34.9576,
+    "lng": 135.9283,
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": false,
+      "western": false
+    },
+    "stairs": 1,
+    "barrierFree": 1,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "全14席ペット同伴OK、リードフリー可。保護犬が常駐しており触れ合える。小型犬〜大型犬まで対応。駐車場はビル敷地内に3台分。不定休のためInstagram(@hogokko.cafe_stellar)で営業日を確認すること。11:00〜17:00。TEL: 070-8946-3060。",
+    "imageUrl": "",
+    "officialUrl": "https://stellar.crayonsite.com/",
+    "tags": [
+      "rain"
+    ],
+    "aliases": [
+      "すてら",
+      "ステラ",
+      "STELLAR"
+    ]
+  },
+  {
+    "id": "kinoshita-ryoriten",
+    "name": "木のした料理店",
+    "address": "滋賀県大津市北比良1036-34",
+    "lat": 35.2097,
+    "lng": 135.9403,
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": false,
+      "western": false
+    },
+    "stairs": 1,
+    "barrierFree": 2,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "テラス席・店内ともに犬同伴OK（大型犬まで対応、おとなしい犬に限る）。犬種によってはテラスのみの場合あり、事前に電話で要確認。犬連れは要予約。元家具職人が営む森の中の隠れ家洋食店。ランチ11:30〜15:00（L.O.14:00）、ディナーは土曜のみ完全予約制。月火定休。TEL: 077-535-5967。",
+    "imageUrl": "",
+    "officialUrl": "",
+    "tags": [
+      "rain"
+    ],
+    "aliases": [
+      "きのしたりょうりてん"
+    ]
+  },
+  {
+    "id": "izara-cafe",
+    "name": "チョークアートCAFE&BAR 伊沙羅",
+    "address": "滋賀県彦根市本町1-7-42",
+    "lat": 35.2711,
+    "lng": 136.2089,
+    "parking": {
+      "available": false,
+      "free": false
+    },
+    "toilet": {
+      "available": false,
+      "western": false
+    },
+    "stairs": 1,
+    "barrierFree": 2,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "テラス席・店内個室ペットスペースで犬同伴OK。別館「はなれ家」はノーリード可、大型犬OK（部屋代別途：平日1,100円、土日祝2,200円）。犬連れは事前連絡必要。チョークアート体験可能（要予約）。駐車場なし、近隣有料駐車場を利用。夢京橋キャッスルロード沿い。カフェ11:00〜17:00、不定休。TEL: 0749-26-6620。",
+    "imageUrl": "",
+    "officialUrl": "http://www.hikone-izara.com/",
+    "tags": [
+      "rain"
+    ],
+    "aliases": [
+      "いざら",
+      "イザラ",
+      "伊沙羅"
+    ]
+  },
+  {
+    "id": "minori-farm",
+    "name": "みのり農園（ドッグランminori）",
+    "address": "滋賀県野洲市野田3441",
+    "lat": 35.0647,
+    "lng": 136.0214,
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": false,
+      "western": false
+    },
+    "stairs": 1,
+    "barrierFree": 2,
+    "dogRun": {
+      "available": true,
+      "free": false,
+      "separated": true,
+      "detail": "屋外3エリア（超小型犬140平米・小中型犬1130平米・中大型犬1870平米）+ 室内ドッグラン（小中型犬・中大型犬の2区分）+ プライベート3区画。共有800円/頭（時間無制限）、プライベート1,500円/区画（2時間）。ワクチン証明必須"
+    },
+    "admission": {
+      "free": false,
+      "fee": "ドッグラン800円/頭〜"
+    },
+    "visited": false,
+    "remarks": "室内ドッグランがあり雨天でも犬を遊ばせられる。犬連れいちご狩りも可能（大人3,200円〜、いちご狩りセットでドッグラン300円引き）。ヒート中・闘犬の共有エリア利用不可。営業期間は10月中旬〜5月中旬頃（夏季休業）。9:30〜16:30、木曜定休。TEL: 070-2284-4116。",
+    "imageUrl": "",
+    "officialUrl": "https://minori-farm.jp/",
+    "tags": [
+      "rain"
+    ],
+    "aliases": [
+      "みのりのうえん",
+      "ドッグランミノリ",
+      "minori farm"
+    ]
+  },
+  {
+    "id": "kutsuki-asahiya",
+    "name": "朽木旭屋",
+    "address": "滋賀県高島市朽木岩瀬40-1",
+    "lat": 35.3122,
+    "lng": 135.9047,
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": false,
+      "western": false
+    },
+    "stairs": 1,
+    "barrierFree": 2,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "別棟（インナーテラス席）で犬同伴OK。鯖寿司と石臼挽き十割そばの名店。犬にはかつお節のサービスあり。本館は犬不可。予約不可。平日10:00〜15:00（食事11:30〜14:30）、土日祝10:00〜15:30（食事11:00〜15:00）。元日休み・不定休あり。TEL: 0740-38-3011。",
+    "imageUrl": "",
+    "officialUrl": "https://www.kutukiasahiya.co.jp/",
+    "tags": [
+      "rain"
+    ],
+    "aliases": [
+      "くつきあさひや",
+      "鯖ずし朽木旭屋"
+    ]
   }
 ]
