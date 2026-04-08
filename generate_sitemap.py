@@ -16,6 +16,7 @@ static_pages = [
     {"loc": f"{BASE_URL}/danger.html",  "changefreq": "weekly",  "priority": "0.8"},
     {"loc": f"{BASE_URL}/contact.html", "changefreq": "monthly", "priority": "0.5"},
     {"loc": f"{BASE_URL}/privacy.html", "changefreq": "yearly",  "priority": "0.3"},
+    {"loc": f"{BASE_URL}/about.html",   "changefreq": "monthly", "priority": "0.5"},
 ]
 
 lines = ['<?xml version="1.0" encoding="UTF-8"?>']
