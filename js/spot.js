@@ -129,7 +129,20 @@
         ${spot.remarks ? `
           <div class="detail-remarks">
             <h3>備考・犬連れでのポイント</h3>
-            <p>${spot.remarks.replace(/。/g, '。<br>')}</p>
+            <p>${(() => {
+              const sentences = spot.remarks.split('。').filter(s => s);
+              let html = '';
+              let buffer = '';
+              for (let i = 0; i < sentences.length; i++) {
+                const s = sentences[i] + '。';
+                buffer += s;
+                if (buffer.length >= 30 || i === sentences.length - 1) {
+                  html += buffer + (i < sentences.length - 1 ? '<br>' : '');
+                  buffer = '';
+                }
+              }
+              return html;
+            })()}</p>
           </div>
         ` : ''}
 
