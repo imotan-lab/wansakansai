@@ -5547,5 +5547,113 @@
       "くつきあさひや",
       "鯖ずし朽木旭屋"
     ]
+  },
+  {
+    "id": "r-cafe",
+    "name": "R cafe",
+    "address": "滋賀県高島市安曇川町下小川934-1",
+    "lat": 35.3345,
+    "lng": 136.052,
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "tags": [
+      "rain"
+    ],
+    "aliases": [
+      "アールカフェ",
+      "あーるかふぇ",
+      "Rカフェ"
+    ],
+    "remarks": "琵琶湖畔のドッグカフェ。店内全席犬同伴OK。テラス席もあり天気の良い日は琵琶湖を眺めながら食事できる。犬用メニューあり。冬季休業の場合あり（訪問前に要確認）。営業時間は要確認。",
+    "imageUrl": "",
+    "images": [],
+    "officialUrl": ""
+  },
+  {
+    "id": "holiday-afternoon",
+    "name": "ホリデーアフタヌーン",
+    "address": "滋賀県高島市新旭町深溝",
+    "lat": 35.367,
+    "lng": 136.028,
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": true,
+      "free": false,
+      "separated": false,
+      "detail": "屋外ドッグラン。日帰り利用可。大型犬OK"
+    },
+    "admission": {
+      "free": false,
+      "fee": "宿泊料金は公式サイト参照。犬の宿泊料金は要確認"
+    },
+    "visited": false,
+    "tags": [],
+    "aliases": [
+      "ほりでーあふたぬーん"
+    ],
+    "remarks": "犬連れ専用のペンション。全室犬同伴OK。宿泊は中型犬（20kg未満）まで。ドッグランは屋外のため雨天時は利用不可。宿泊は室内で犬と過ごせるため雨の日でも快適。日帰りドッグラン利用も可能（大型犬OK）。",
+    "imageUrl": "",
+    "images": [],
+    "officialUrl": ""
+  },
+  {
+    "id": "takano-ichigo-en",
+    "name": "高野いちご園",
+    "address": "滋賀県蒲生郡竜王町山之上",
+    "lat": 35.05,
+    "lng": 136.125,
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": false,
+      "fee": "いちご狩り料金はシーズン・時期により異なる（要予約）"
+    },
+    "visited": false,
+    "tags": [
+      "rain"
+    ],
+    "aliases": [
+      "たかのいちごえん"
+    ],
+    "remarks": "ペット同伴でいちご狩りができる珍しい農園。犬同伴は第2農園のみで完全予約制。ハウス内のため雨天でもOK。シーズンは12月～5月。カート・抱っこ不要でリード着用で入園可。訪問前に必ず予約すること。",
+    "imageUrl": "",
+    "images": [],
+    "officialUrl": ""
   }
 ]
