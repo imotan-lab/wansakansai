@@ -5202,8 +5202,12 @@
       "かばたりぞーと"
     ],
     "remarks": "屋内ドッグランが2棟あり小型犬・中大型犬で分離されているのが強み。雨天・冬季でも安心して走り回れる。ワンちゃんプール（屋内）あり（貸切制・要予約、6/1〜9/30のみ営業、水深120cm、飼い主も一緒に入水）。足洗い場・シャワー完備。カフェ・レストランも全席犬OK（コーヒー500円、ランチ1,500円）。コテージ宿泊も可能。ワクチン・狂犬病予防接種証明書の提示必須。定休日: 水曜。営業時間: 6月〜9月 9:00〜19:00、10月〜5月 9:00〜17:00。",
-    "imageUrl": "",
-    "images": [],
+    "imageUrl": "images/spots/kabata-resort/1.jpg",
+    "images": [
+      "images/spots/kabata-resort/1.jpg",
+      "images/spots/kabata-resort/2.jpg",
+      "images/spots/kabata-resort/3.jpg"
+    ],
     "officialUrl": "http://kabataresort.com/"
   },
   {
@@ -5582,8 +5586,12 @@
       "Rカフェ"
     ],
     "remarks": "琵琶湖畔のドッグカフェ。店内全席犬同伴OK。テラス席もあり天気の良い日は琵琶湖を眺めながら食事できる。犬用メニューあり。冬季休業の場合あり（訪問前に要確認）。営業時間は要確認。",
-    "imageUrl": "",
-    "images": [],
+    "imageUrl": "images/spots/r-cafe/1.jpg",
+    "images": [
+      "images/spots/r-cafe/1.jpg",
+      "images/spots/r-cafe/2.jpg",
+      "images/spots/r-cafe/3.jpg"
+    ],
     "officialUrl": ""
   },
   {
@@ -5616,8 +5624,12 @@
       "ほりでーあふたぬーん"
     ],
     "remarks": "犬連れ専用のペンション。全室犬同伴OK。宿泊は中型犬（20kg未満）まで。ドッグランは屋外のため雨天時は利用不可。宿泊は室内で犬と過ごせるため雨の日でも快適。日帰りドッグラン利用も可能（大型犬OK）。",
-    "imageUrl": "",
-    "images": [],
+    "imageUrl": "images/spots/holiday-afternoon/1.jpg",
+    "images": [
+      "images/spots/holiday-afternoon/1.jpg",
+      "images/spots/holiday-afternoon/2.jpg",
+      "images/spots/holiday-afternoon/3.jpg"
+    ],
     "officialUrl": ""
   },
   {
@@ -5652,8 +5664,12 @@
       "たかのいちごえん"
     ],
     "remarks": "ペット同伴でいちご狩りができる珍しい農園。犬同伴は第2農園のみで完全予約制。ハウス内のため雨天でもOK。シーズンは12月～5月。カート・抱っこ不要でリード着用で入園可。訪問前に必ず予約すること。",
-    "imageUrl": "",
-    "images": [],
+    "imageUrl": "images/spots/takano-ichigo-en/1.jpg",
+    "images": [
+      "images/spots/takano-ichigo-en/1.jpg",
+      "images/spots/takano-ichigo-en/2.jpg",
+      "images/spots/takano-ichigo-en/3.jpg"
+    ],
     "officialUrl": ""
   },
   {
@@ -5684,7 +5700,7 @@
     },
     "visited": true,
     "remarks": "道の駅兼農業公園。駐車場無料（約200台）。園内の広大なドッグランあり（10:00〜16:00、小型犬・中大型犬エリア分離）。春はチューリップ約16,000本とネモフィラの花畑が見事（4月上旬〜中旬）、花畑エリアは犬連れOKで制限なし。ぶどう・梨・柿・桃・さつまいも等の果物狩り（ペット同伴可の体験は「ペット同伴いちご狩り」のみ公式明記）、動物ふれあい広場（ペット同伴不可）、グラウンドゴルフ、スワンボート、BBQ、パン工房あり。屋内施設（直売所・レストラン等）への犬同伴可否は要確認。営業9:00〜17:00（夏季18:00まで）、月曜休（祝日の場合は翌日）、年末年始休。",
-    "imageUrl": "",
+    "imageUrl": "images/spots/aguri-park-ryuo/1.jpg",
     "officialUrl": "https://www.aguri-p.com/",
     "tags": [],
     "aliases": [
@@ -5693,6 +5709,11 @@
       "道の駅あぐりぱーく竜王",
       "アグリパーク",
       "あぐりぱーく"
+    ],
+    "images": [
+      "images/spots/aguri-park-ryuo/1.jpg",
+      "images/spots/aguri-park-ryuo/2.jpg",
+      "images/spots/aguri-park-ryuo/3.jpg"
     ]
   }
 ]
