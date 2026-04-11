@@ -5206,7 +5206,8 @@
     "images": [
       "images/spots/kabata-resort/1.jpg",
       "images/spots/kabata-resort/2.jpg",
-      "images/spots/kabata-resort/3.jpg"
+      "images/spots/kabata-resort/3.jpg",
+      "images/spots/kabata-resort/4.jpg"
     ],
     "officialUrl": "http://kabataresort.com/"
   },
@@ -5590,7 +5591,9 @@
     "images": [
       "images/spots/r-cafe/1.jpg",
       "images/spots/r-cafe/2.jpg",
-      "images/spots/r-cafe/3.jpg"
+      "images/spots/r-cafe/3.jpg",
+      "images/spots/r-cafe/4.jpg",
+      "images/spots/r-cafe/5.jpg"
     ],
     "officialUrl": ""
   },
@@ -5671,7 +5674,8 @@
     "images": [
       "images/spots/takano-ichigo-en/1.jpg",
       "images/spots/takano-ichigo-en/2.jpg",
-      "images/spots/takano-ichigo-en/3.jpg"
+      "images/spots/takano-ichigo-en/3.jpg",
+      "images/spots/takano-ichigo-en/4.jpg"
     ],
     "officialUrl": ""
   },
@@ -5716,7 +5720,8 @@
     "images": [
       "images/spots/aguri-park-ryuo/1.jpg",
       "images/spots/aguri-park-ryuo/2.jpg",
-      "images/spots/aguri-park-ryuo/3.jpg"
+      "images/spots/aguri-park-ryuo/3.jpg",
+      "images/spots/aguri-park-ryuo/4.jpg"
     ]
   }
 ]
