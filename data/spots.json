@@ -5576,7 +5576,7 @@
       "free": true,
       "fee": ""
     },
-    "visited": false,
+    "visited": true,
     "tags": [
       "rain"
     ],
@@ -5618,7 +5618,7 @@
       "free": false,
       "fee": "宿泊料金は公式サイト参照。犬の宿泊料金は要確認"
     },
-    "visited": false,
+    "visited": true,
     "tags": [],
     "aliases": [
       "ほりでーあふたぬーん"
