@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="わんさかんさいのブログ。犬連れお出かけの訪問レポートや旅行記を写真付きで紹介。">
+  <title>ブログ - わんさかんさい</title>
+  <link rel="canonical" href="https://wansakansai.com/blog/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="../favicon.ico">
+  <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .blog-list-title {
+      font-size: 1.5rem;
+      color: var(--color-primary);
+      margin-bottom: 24px;
+    }
+    .blog-cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    @media (min-width: 640px) {
+      .blog-cards {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    .blog-card {
+      display: block;
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .blog-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+    }
+    .blog-card-img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+    }
+    .blog-card-body {
+      padding: 16px;
+    }
+    .blog-card-date {
+      font-size: 0.8rem;
+      color: var(--color-text-light);
+      margin-bottom: 4px;
+    }
+    .blog-card-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--color-primary);
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+    .blog-card-desc {
+      font-size: 0.85rem;
+      color: var(--color-text-light);
+      line-height: 1.6;
+    }
+  </style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2097489177716087" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <main class="main-content">
+    <h1 class="blog-list-title">ブログ</h1>
+
+    <div class="blog-cards">
+
+      <a href="shiga-biwako-2days.html" class="blog-card">
+        <img src="../images/blog/shiga-biwako-2days/aguri-05-tulip-front.jpg" alt="滋賀・琵琶湖西岸の犬連れ旅" class="blog-card-img">
+        <div class="blog-card-body">
+          <p class="blog-card-date">2026年4月10日〜11日</p>
+          <h2 class="blog-card-title">雨でも晴れでも楽しめた、滋賀・琵琶湖西岸1泊2日の犬連れ旅</h2>
+          <p class="blog-card-desc">R cafe、かばたリゾート、ホリデーアフタヌーン、アグリパーク竜王、高野いちご園の訪問記。</p>
+        </div>
+      </a>
+
+      <a href="chikatsu-asuka-sakura.html" class="blog-card">
+        <img src="../images/blog/chikatsu-asuka-sakura/45.jpg" alt="近つ飛鳥風土記の丘の桜" class="blog-card-img">
+        <div class="blog-card-body">
+          <p class="blog-card-date">2026年4月5日</p>
+          <h2 class="blog-card-title">近つ飛鳥風土記の丘に桜を見に行ってきた</h2>
+          <p class="blog-card-desc">駐車場、ルート、犬連れの注意点を写真付きで紹介。2週間前との桜の比較も。</p>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="ad-slot"></div>
+  </main>
+
+  <script src="../js/common.js"></script>
+  <script>
+    renderHeader('blog');
+    renderFooter();
+  </script>
+</body>
+</html>

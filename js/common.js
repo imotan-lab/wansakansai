@@ -55,6 +55,7 @@ const SITE_NAV = [
   { href: 'index.html', label: 'スポット検索', id: 'home' },
   { href: 'favorites.html', label: 'お気に入り', id: 'favorites' },
   { href: 'danger.html', label: '危険情報', id: 'danger' },
+  { href: 'blog/index.html', label: 'ブログ', id: 'blog' },
   { href: 'about.html', label: 'このサイトについて', id: 'about' },
   { href: 'privacy.html', label: 'プライバシーポリシー', id: 'privacy', footerOnly: true },
   { href: 'contact.html', label: 'お問い合わせ', id: 'contact' },
