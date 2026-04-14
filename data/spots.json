@@ -3443,7 +3443,8 @@
     },
     "parking": {
       "available": true,
-      "free": true
+      "free": false,
+      "detail": "公園利用者は1時間無料、以降200円/時（30分ごと50円）"
     },
     "toilet": {
       "available": true,
@@ -3462,9 +3463,9 @@
       "fee": ""
     },
     "visited": false,
-    "remarks": "秦の始皇帝の命を受けた徐福が不老不死の薬を求めて新宮に上陸したという伝説の地。中国風の楼門が特徴的な公園。犬連れ散策可。駐車場無料。",
+    "remarks": "秦の始皇帝の命を受けた徐福が不老不死の薬を求めて新宮に上陸したという伝説の地。中国風の楼門が特徴的な公園。犬連れ散策可。",
     "imageUrl": "",
-    "officialUrl": "https://www.city.shingu.lg.jp/",
+    "officialUrl": "https://www.shinguu.jp/spots/detail/A0005",
     "aliases": [
       "じょふくこうえん"
     ],
