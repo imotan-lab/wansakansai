@@ -5723,5 +5723,47 @@
       "images/spots/aguri-park-ryuo/2.jpg",
       "images/spots/aguri-park-ryuo/3.jpg"
     ]
+  },
+  {
+    "id": "shikinosato-yuraku",
+    "name": "四季の郷 遊楽 〜天空のリゾート 四季〜",
+    "aliases": [
+      "四季の郷遊楽",
+      "天空のリゾート四季",
+      "しきのさとゆうらく",
+      "しきのさとゆらく"
+    ],
+    "address": "和歌山県西牟婁郡白浜町堅田2399-3",
+    "lat": 33.695,
+    "lng": 135.3867,
+    "category": "",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": true,
+      "free": false,
+      "separated": false,
+      "detail": "各ドッグコテージに専用のプライベートドッグラン付き（他の犬と顔を合わせずに遊べる）"
+    },
+    "admission": {
+      "free": false,
+      "fee": "宿泊料金は1名8,782円〜。ペット追加料金: 1頭2,000円〜（2頭目以降の料金は要確認）"
+    },
+    "visited": false,
+    "remarks": "白浜の高台に佇む犬連れ専用リゾート。ドッグコテージ12棟+本館15室。各ドッグコテージに専用プライベートドッグラン付きで他の犬と顔を合わせずに遊べる。アドベンチャーワールドから車5分・徒歩15分の好立地。温泉・露天風呂・サウナ、BBQ、カフェ完備。チェックイン時に狂犬病予防接種証明書+混合ワクチン接種証明書の提示必須。サイズ制限明記なし（大型犬受入の料金区分あり）。チェックイン15:00/アウト10:00。ペット料金は情報源により差異あり、予約時に要確認。日帰りドッグラン利用は不可（宿泊者のみ利用可能）。",
+    "imageUrl": "",
+    "images": [],
+    "officialUrl": "https://www.wakayama-shikinosato.com/",
+    "tags": []
   }
 ]
