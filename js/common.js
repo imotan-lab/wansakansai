@@ -47,7 +47,19 @@
 // ===== Common: Header & Footer Injection =====
 
 function getBasePath() {
+  // サブディレクトリ（blog/等）内にいる場合は親ディレクトリを基準にする
+  const path = window.location.pathname;
+  if (path.includes('/blog/')) return '../';
   return '';
+}
+
+// ブログ内からアクセスする場合、SITE_NAVのhrefを調整する
+function resolveNavHref(href, base) {
+  // blog/index.html のようなサブディレクトリへのリンクは、blog内からは index.html になる
+  if (base === '../' && href.startsWith('blog/')) {
+    return href.replace('blog/', '');
+  }
+  return base + href;
 }
 
 // Site navigation definition (single source of truth)
@@ -75,7 +87,7 @@ function renderHeader(activePage) {
       </a>
       <nav>
         <ul class="nav-menu">
-          ${headerNav.map(n => `<li><a href="${base}${n.href}" class="${activePage === n.id ? 'active' : ''}">${n.label}</a></li>`).join('')}
+          ${headerNav.map(n => `<li><a href="${resolveNavHref(n.href, base)}" class="${activePage === n.id ? 'active' : ''}">${n.label}</a></li>`).join('')}
         </ul>
       </nav>
       <button class="hamburger" aria-label="メニューを開く">☰</button>
@@ -99,7 +111,7 @@ function renderFooter() {
   footer.className = 'site-footer';
   footer.innerHTML = `
     <div class="footer-nav">
-      ${SITE_NAV.map(n => `<a href="${base}${n.href}">${n.label}</a>`).join('')}
+      ${SITE_NAV.map(n => `<a href="${resolveNavHref(n.href, base)}">${n.label}</a>`).join('')}
     </div>
     <p>&copy; 2026 わんさかんさい All rights reserved.</p>
   `;
