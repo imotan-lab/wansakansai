@@ -78,6 +78,7 @@
       { id: 'water', label: '水遊び', test: s => (s.tags || []).includes('water') },
       { id: 'small-dog-only', label: '小型犬のみ', test: s => (s.tags || []).includes('small-dog-only') },
       { id: 'rain', label: '雨でもOK', test: s => (s.tags || []).includes('rain') },
+      { id: 'stay-only', label: '宿泊専用', test: s => (s.tags || []).includes('stay-only') },
     ]},
   ];
 
@@ -225,9 +226,11 @@
       if ((s.tags || []).includes('water')) tags.push('<span class="tag tag-feature">水遊び</span>');
       if ((s.tags || []).includes('small-dog-only')) tags.push('<span class="tag tag-warn">小型犬のみ</span>');
       if ((s.tags || []).includes('rain')) tags.push('<span class="tag tag-feature">雨でもOK</span>');
+      const isStayOnly = (s.tags || []).includes('stay-only');
+      if (isStayOnly) tags.push('<span class="tag tag-stay">宿泊専用</span>');
 
       return `
-        <a href="spot.html?id=${s.id}" class="spot-card">
+        <a href="spot.html?id=${s.id}" class="spot-card${isStayOnly ? ' spot-card-stay' : ''}">
           ${visitedStamp}
           <div class="spot-card-header">
             <span class="spot-card-name">${s.name}</span>

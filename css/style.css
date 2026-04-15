@@ -442,6 +442,11 @@ img {
   color: inherit;
 }
 
+.spot-card-stay {
+  background: #F5F0FA;
+  border-color: #D4C4E8;
+}
+
 .spot-card-header {
   display: flex;
   align-items: flex-start;
@@ -534,6 +539,11 @@ img {
   background: #FFF3E0;
   color: #E65100;
   border-color: #FFB74D;
+}
+.tag-stay {
+  background: #EEE8F5;
+  color: #5E3D8F;
+  border-color: #C4B0DE;
 }
 .detail-warn {
   background: #FFF3E0;
