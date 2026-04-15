@@ -93,6 +93,7 @@
 ## コンテンツ方針
 - スポット追加は無料で行ける場所（入場無料・駐車場無料）をメインに集める
 - 有料スポットも掲載OKだが、無料スポットを優先
+- **宿泊オンリー施設は原則掲載しない**（日帰り利用可能な施設のみOK）。ただし運営者が実際に訪問・宿泊した場所は例外的に掲載OK
 - 大阪府のスポットをメインに充実させる（他府県も掲載OKだがサブ）
 - スポット画像は自分で撮影したものを使用（ネット上の画像は著作権NG）
 - 写真は横向き（16:9）メインで撮影推奨（縦でも使える）
@@ -114,7 +115,8 @@
 - 複数サイト突き合わせ + ブログ・SNS犬連れ実績確認
 - 問題があればspots.jsonを修正してcommit & push
 - ログ: C:\Users\imao_\.claude\logs\spot_check_YYYY-MM-DD.log（7日分保持）
-- 進捗管理: C:\Users\imao_\.claude\logs\spot_check_progress.json
+- 進捗管理: C:\Users\imao_\Documents\wansakansai\spot_check_progress.json
+- ログ出力はlog.py経由。log.pyはログ名で出力先を振り分け: spot_check_*とwansakansai_*は.claude/logs/へ、それ以外はDocuments/uchidokoro/logs/へ
 
 ## 危険情報（data/dangers.json）
 - 毎日自動更新あり（毎日 PM9:00 JST、ローカルスケジュールタスクで実行）
@@ -173,11 +175,13 @@
 - Web用リサイズ: 幅1200px、JPEG品質82〜85
 
 ## ブログ
+- 記事一覧: `blog/index.html`（公開済み、ナビから遷移可能）
 - 記事ページ: `blog/` ディレクトリに個別HTMLで配置
 - ブログ用画像: `images/blog/{記事スラッグ}/` に配置
 - 下書き: `blog/drafts/` にMarkdownで保存
-- 現在1記事作成済み（近つ飛鳥の桜、未公開・リンクなし）
-- ブログの正式導入（ナビ追加、記事一覧ページ、スポットとの連携）は未実施
+- 現在2記事公開済み（近つ飛鳥の桜、滋賀・琵琶湖1泊2日旅）
+- ナビゲーション: SITE_NAVに「ブログ」追加済み（危険情報の後に配置）
+- 記事追加手順: HTMLを `blog/` に配置 → `blog/index.html` にカードを追加
 
 ## ドメイン移行時のTODO
 独自ドメイン（wansakansai.com）の移行作業。HTTPS有効化済み（2026-04-08完了）。
