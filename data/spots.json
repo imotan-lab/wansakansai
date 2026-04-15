@@ -5159,7 +5159,8 @@
     },
     "visited": false,
     "tags": [
-      "rain"
+      "rain",
+      "stay-ok"
     ],
     "aliases": [
       "ビワドッグ",
@@ -5197,7 +5198,8 @@
     },
     "visited": true,
     "tags": [
-      "rain"
+      "rain",
+      "stay-ok"
     ],
     "aliases": [
       "かばたりぞーと"
@@ -5623,7 +5625,9 @@
       "fee": "宿泊料金は公式サイト参照。犬の宿泊料金は要確認"
     },
     "visited": true,
-    "tags": [],
+    "tags": [
+      "stay-ok"
+    ],
     "aliases": [
       "ほりでーあふたぬーん"
     ],
