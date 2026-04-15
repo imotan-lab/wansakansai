@@ -78,7 +78,7 @@
       { id: 'water', label: '水遊び', test: s => (s.tags || []).includes('water') },
       { id: 'small-dog-only', label: '小型犬のみ', test: s => (s.tags || []).includes('small-dog-only') },
       { id: 'rain', label: '雨でもOK', test: s => (s.tags || []).includes('rain') },
-      { id: 'stay-ok', label: '宿泊可', test: s => (s.tags || []).includes('stay-ok') || (s.tags || []).includes('stay-only') },
+      { id: 'stay-ok', label: '宿泊可', test: s => (s.tags || []).includes('stay-ok') },
       { id: 'stay-only', label: '宿泊専用', test: s => (s.tags || []).includes('stay-only') },
     ]},
   ];
