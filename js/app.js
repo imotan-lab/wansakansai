@@ -197,6 +197,20 @@
       ? `${filtered.length} 件のスポット（全${spots.length}件中）`
       : `${filtered.length} 件のスポット`;
 
+    // 宿泊専用フィルター時の注意書き
+    let stayNote = document.getElementById('stayNote');
+    if (activeFilters.has('stay-only')) {
+      if (!stayNote) {
+        stayNote = document.createElement('p');
+        stayNote.id = 'stayNote';
+        stayNote.className = 'stay-note';
+        stayNote.textContent = '※ 宿泊専用施設は、運営者が実際に宿泊した場所のみ掲載しています';
+        spotCount.parentNode.insertBefore(stayNote, spotCount.nextSibling);
+      }
+    } else if (stayNote) {
+      stayNote.remove();
+    }
+
     if (filtered.length === 0) {
       spotList.innerHTML = `
         <div class="empty-state">

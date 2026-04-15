@@ -447,6 +447,16 @@ img {
   border-color: #D4C4E8;
 }
 
+.stay-note {
+  font-size: 0.8rem;
+  color: #5E3D8F;
+  background: #F5F0FA;
+  border: 1px solid #D4C4E8;
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  margin: 8px 0 16px;
+}
+
 .spot-card-header {
   display: flex;
   align-items: flex-start;
