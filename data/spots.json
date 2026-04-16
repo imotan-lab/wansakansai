@@ -5771,5 +5771,235 @@
     "tags": [
       "stay-only"
     ]
+  },
+  {
+    "id": "cafe-chrp",
+    "name": "cafe CHRP",
+    "aliases": [
+      "カフェチャープ",
+      "かふぇちゃーぷ",
+      "CHRP"
+    ],
+    "address": "和歌山県岩出市根来2230-5",
+    "lat": 34.2848,
+    "lng": 135.3017,
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": true,
+      "free": true,
+      "separated": true,
+      "detail": "屋外（小型犬エリア+フリー）+ 屋根付きドッグラン（雨天対応）+ プール。山の麓で景観良好"
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "tags": [
+      "rain"
+    ],
+    "remarks": "山の麓にある自然豊かなドッグカフェ。屋根付きドッグラン完備で雨でも利用可。プールもあり（夏季）。店内犬同伴OK。屋根付きドッグランはマナーベルト・パンツ着用必須。駐車場25台無料。定休日: 木曜。営業時間は情報源により差異あり（8:00〜17:00もしくは11:00〜17:00、要確認）。",
+    "imageUrl": "",
+    "images": [],
+    "officialUrl": "https://www.instagram.com/chrp.2023/"
+  },
+  {
+    "id": "cafe-anera",
+    "name": "Cafeアーネラ",
+    "aliases": [
+      "カフェアーネラ",
+      "かふぇあーねら",
+      "アーネラ"
+    ],
+    "address": "和歌山県岩出市岡田622-11",
+    "lat": 34.2683,
+    "lng": 135.3208,
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": true,
+      "free": true,
+      "separated": false,
+      "detail": "広い人工芝ドッグラン + 屋根付きテラス（雨天対応）。シャワー・リードフック・ワンコ用ゴミ箱完備"
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "tags": [
+      "rain"
+    ],
+    "remarks": "2024年3月オープンの新しいドッグカフェ。屋根付きテラスで雨天時も外遊び可能。店内犬同伴OK。月替わり撮影スポットあり。駐車場は店前3台。定休日: 火曜。営業時間: 月水木10:30-18:00、金土日祝8:30-18:00。",
+    "imageUrl": "",
+    "images": [],
+    "officialUrl": "https://www.instagram.com/cafe_anera/"
+  },
+  {
+    "id": "dog-run-cafe-pic",
+    "name": "Dog Run Cafe Pic",
+    "aliases": [
+      "ドッグランカフェピック",
+      "どっぐらんかふぇぴっく",
+      "Pic"
+    ],
+    "address": "和歌山県和歌山市榎原741",
+    "lat": 34.2267,
+    "lng": 135.1797,
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": true,
+      "free": false,
+      "separated": false,
+      "detail": "屋内ドッグラン（カフェスペースと一体）+ 屋外人工芝ドッグラン。1,000円以上のランチ注文で2時間利用可"
+    },
+    "admission": {
+      "free": false,
+      "fee": "ドッグラン利用は1,000円以上のランチ注文が条件"
+    },
+    "visited": false,
+    "tags": [
+      "rain"
+    ],
+    "remarks": "屋内ドッグランがカフェに併設されており、雨天時も完全に屋内で遊ばせられる。貸切も事前予約で可能。駐車場は店舗前約10台無料。定休日: 火曜（不定休あり）。営業時間: 11:00-18:00。",
+    "imageUrl": "",
+    "images": [],
+    "officialUrl": "https://www.instagram.com/dogrun_cafe.pic/"
+  },
+  {
+    "id": "partners-house-yuasa",
+    "name": "パートナーズハウスゆあさ",
+    "aliases": [
+      "ぱーとなーずはうすゆあさ",
+      "パートナーズハウス湯浅"
+    ],
+    "address": "和歌山県有田郡湯浅町山田1638-1",
+    "lat": 34.0411,
+    "lng": 135.1797,
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": true,
+      "free": false,
+      "separated": true,
+      "detail": "関西最大級。3種4エリア（メイン780㎡、サブ150㎡、全天候型屋根付き250㎡）+ ドッグスパ（温泉）+ ドッグプール（3月中旬〜11月中旬）"
+    },
+    "admission": {
+      "free": false,
+      "fee": "日帰りドッグラン: 1頭目1,000円、2頭目以降500円"
+    },
+    "visited": false,
+    "tags": [
+      "rain",
+      "stay-ok"
+    ],
+    "remarks": "関西最大級のドッグラン。屋根付き全天候型ドッグラン250㎡で雨天でも快適。犬用温泉スパやドッグプール（季節限定）も完備。クラブハウスのレストラン内も犬同伴OK。宿泊施設併設だが日帰り利用も明確にOK。定休日: 木曜（祝日除く、祝前日の木曜は営業）。受付10:00-18:00、レストラン11:00-14:00。",
+    "imageUrl": "",
+    "images": [],
+    "officialUrl": "https://partnershouse.jp/"
+  },
+  {
+    "id": "taiji-kujira-museum",
+    "name": "太地町立くじらの博物館",
+    "aliases": [
+      "くじらの博物館",
+      "くじらはくぶつかん",
+      "太地くじら浜公園"
+    ],
+    "address": "和歌山県東牟婁郡太地町大字太地2934-2",
+    "lat": 33.6033,
+    "lng": 135.9422,
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": false,
+      "fee": "大人1,500円、小中学生800円、70歳以上1,400円、未就学児無料、ペット無料"
+    },
+    "visited": false,
+    "tags": [
+      "rain",
+      "small-dog-only"
+    ],
+    "remarks": "完全屋内の博物館で雨の日でも楽しめる。イルカ・クジラショーも含めキャリーや抱っこで犬同伴入館可。蓋つきキャリーバッグに全身が収まる小型犬のみ（中型・大型犬は不可）。館内ドッグカート可。ペットは入館無料。太地くじら浜公園内にあり年中無休、8:30-17:00。",
+    "imageUrl": "",
+    "images": [],
+    "officialUrl": "https://www.kujirakan.jp/"
+  },
+  {
+    "id": "dog-hotel-shirahama",
+    "name": "DOG HOTEL SHIRAHAMA",
+    "aliases": [
+      "ドッグホテル白浜",
+      "どっぐほてるしらはま",
+      "ドッグホテルシラハマ"
+    ],
+    "address": "和歌山県西牟婁郡白浜町",
+    "lat": 33.6866,
+    "lng": 135.3438,
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": true,
+      "free": false,
+      "separated": true,
+      "detail": "3つのドッグラン（天然芝・人工芝・ウッドチップ）+ 半屋内スペース（雨でも遊べる）。大型犬と中小型犬でエリア分離"
+    },
+    "admission": {
+      "free": false,
+      "fee": "日帰りドッグラン: 3時間1,500円〜。ドッグスパ・日帰り入浴も利用可"
+    },
+    "visited": false,
+    "tags": [
+      "rain",
+      "stay-ok"
+    ],
+    "remarks": "2024年10月オープンの犬連れ複合施設。3つのドッグラン+ドッグスパ+ドッグカフェ&ショップ+トリミング併設。室内・半屋内エリアがあり雨でも快適に遊べる。白浜温泉の「行幸源泉」を使った天然温泉も日帰り利用可。営業時間10:00-17:30。",
+    "imageUrl": "",
+    "images": [],
+    "officialUrl": "https://doghotel-shirahama.jp/"
   }
 ]
