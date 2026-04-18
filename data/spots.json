@@ -5605,9 +5605,9 @@
   {
     "id": "holiday-afternoon",
     "name": "ホリデーアフタヌーン",
-    "address": "滋賀県高島市新旭町深溝",
-    "lat": 35.367,
-    "lng": 136.028,
+    "address": "滋賀県大津市北比良948-10",
+    "lat": 35.287,
+    "lng": 135.903,
     "parking": {
       "available": true,
       "free": true
@@ -5619,8 +5619,8 @@
     "dogRun": {
       "available": true,
       "free": false,
-      "separated": false,
-      "detail": "屋外ドッグラン。日帰り利用可。大型犬OK"
+      "separated": true,
+      "detail": "屋外天然芝ドッグラン（約2000㎡）。日帰り利用可。大型犬・中型犬・小型犬の3エリア分離。料金550円/頭（税込）"
     },
     "admission": {
       "free": false,
@@ -5633,7 +5633,7 @@
     "aliases": [
       "ほりでーあふたぬーん"
     ],
-    "remarks": "犬連れ専用のペンション。全室犬同伴OK。宿泊は中型犬（20kg未満）まで。ドッグランは屋外のため雨天時は利用不可。宿泊は室内で犬と過ごせるため雨の日でも快適。日帰りドッグラン利用も可能（大型犬OK）。",
+    "remarks": "犬連れ専用のペンション。全室犬同伴OK。宿泊は中型犬（20kg未満）まで。ドッグランは屋外のため雨天時は利用不可。宿泊は室内で犬と過ごせるため雨の日でも快適。日帰りドッグラン利用も可能（大型犬OK）。営業時間10:00〜18:00。月曜定休（祝日の場合は翌火曜）。",
     "imageUrl": "images/spots/holiday-afternoon/1.jpg",
     "images": [
       "images/spots/holiday-afternoon/1.jpg",
@@ -5643,12 +5643,12 @@
       "images/spots/holiday-afternoon/5.jpg",
       "images/spots/holiday-afternoon/6.jpg"
     ],
-    "officialUrl": ""
+    "officialUrl": "http://www.biwa.ne.jp/~maikoinn/"
   },
   {
     "id": "takano-ichigo-en",
     "name": "高野いちご園",
-    "address": "滋賀県蒲生郡竜王町山之上",
+    "address": "滋賀県蒲生郡竜王町山之上6603",
     "lat": 35.05,
     "lng": 136.125,
     "parking": {
@@ -5667,7 +5667,7 @@
     },
     "admission": {
       "free": false,
-      "fee": "いちご狩り料金はシーズン・時期により異なる（要予約）"
+      "fee": "いちご狩り料金はシーズン・時期により異なる（要予約）。犬の入場料100円/頭"
     },
     "visited": true,
     "tags": [
@@ -5676,7 +5676,7 @@
     "aliases": [
       "たかのいちごえん"
     ],
-    "remarks": "ペット同伴でいちご狩りができる珍しい農園。犬同伴は第2農園のみで完全予約制。ハウス内のため雨天でもOK。シーズンは12月～5月。カート・抱っこ不要でリード着用で入園可。訪問前に必ず予約すること。",
+    "remarks": "ペット同伴でいちご狩りができる珍しい農園。犬同伴は第2農園のみで完全予約制。ハウス内のため雨天でもOK。シーズンは12月～5月。リード着用で入園可。トイレが不安な場合はマナーウェアかカートを使用。訪問前に必ず予約すること。",
     "imageUrl": "images/spots/takano-ichigo-en/1.jpg",
     "images": [
       "images/spots/takano-ichigo-en/1.jpg",
@@ -5684,7 +5684,7 @@
       "images/spots/takano-ichigo-en/3.jpg",
       "images/spots/takano-ichigo-en/4.jpg"
     ],
-    "officialUrl": ""
+    "officialUrl": "https://takano-ichigo.jp/"
   },
   {
     "id": "aguri-park-ryuo",
