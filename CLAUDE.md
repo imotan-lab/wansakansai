@@ -163,6 +163,21 @@
   - CDP接続失敗 → 既存Cookieで投稿試行 → 失敗時はメールに投稿本文が記載されるので手動フォロー
 - 初期セットアップの残骸: `scripts/x_cookies_raw.json`（Cookie-Editor出力、gitignore）は初回のCookie取得のみに使用。現在は未使用
 
+## プロファイルのキャッシュ自動クリア
+- 専用Chromeプロファイルのキャッシュが運用で肥大化するため、投稿後に自動削除
+- スクリプト: `C:/Users/imao_/.claude/clear_x_cache.py`
+- `post_danger_to_x.py` の投稿成功後に `clear_account("wansakansai")` を呼び出す
+- 削除対象: `Default/{Cache, Code Cache, GPUCache, DawnCache, DawnGraphiteCache, DawnWebGPUCache, Service Worker/CacheStorage, Service Worker/ScriptCache}`
+- Cookie・ログイン情報・履歴・ブックマーク等は**削除しない**（ログイン維持）
+- Chromeが動作中なら自動スキップ（プロファイルロック回避）
+- 手動実行も可能: `python clear_x_cache.py wansakansai` / `python clear_x_cache.py all`（全アカウント）
+
+## マルチアカウント対応（2アカウント以上でX自動投稿する場合）
+- `refresh_x_cookies.py` の `PORTS` 辞書でアカウント別ポート番号を管理
+- 現在: `wansakansai=9222`, `uchidokoro=9223`
+- 新規アカウント追加時は `PORTS` 辞書に追記。ポート番号はアカウント別に必ず分ける（同時実行時の競合回避）
+- プロファイルは `x_chrome_profile_{account}` 形式で分離
+
 ## 危険情報とスポットの連動
 - スポット詳細ページ（spot.html）: スポット名がdangers.jsonに含まれていれば危険情報を警告表示
 - 危険情報ページ（danger.html）: スポット名がdangers.jsonに含まれていればスポット詳細へのリンクを表示
