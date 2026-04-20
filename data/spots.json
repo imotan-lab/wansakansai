@@ -577,12 +577,20 @@
     },
     "visited": true,
     "remarks": "入場・駐車場・ドッグラン全て無料の三拍子。通称うみふれ。約27.9haの広大な敷地で大阪湾に面しており、晴れた日は明石海峡大橋も見える。ドッグランは小型犬エリアと中大型犬エリアの2区画、天然芝。9:00〜17:00（夏季：7月海の日含む三連休〜8月末の土日祝は7:00〜19:00）。接種証明書の提示不要。BBQ広場や海釣りテラスもあり。",
-    "imageUrl": "",
+    "imageUrl": "images/spots/umi-fureai-hiroba/dogrun.jpg",
     "officialUrl": "https://www.city.sakai.lg.jp/shisei/toshi/rinkai/umifureai/index.html",
     "tags": [],
     "aliases": [
       "うみとのふれあいひろば",
       "うみふれ"
+    ],
+    "images": [
+      "images/spots/umi-fureai-hiroba/dogrun.jpg",
+      "images/spots/umi-fureai-hiroba/entrance.jpg",
+      "images/spots/umi-fureai-hiroba/hiroba.jpg",
+      "images/spots/umi-fureai-hiroba/shelter.jpg",
+      "images/spots/umi-fureai-hiroba/office.jpg",
+      "images/spots/umi-fureai-hiroba/notice.jpg"
     ]
   },
   {

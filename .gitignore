@@ -10,8 +10,11 @@ Thumbs.db
 # Claude Code
 .claude/
 
+# Python
+__pycache__/
+*.pyc
+
 # Scripts（機密・一時データ）
 scripts/x_cookies_raw.json
 scripts/dangers_prev.json
 scripts/x_post_result.json
-scripts/__pycache__/
