@@ -21,6 +21,7 @@ from pathlib import Path
 sys.path.insert(0, "C:/Users/imao_/.claude")
 from x_poster import post_tweet, count_x_weight, MAX_TWEET_WEIGHT  # noqa: E402
 from refresh_x_cookies import refresh_with_auto_chrome  # noqa: E402
+from clear_x_cache import clear_account, human_size  # noqa: E402
 
 PROJECT_DIR = Path(__file__).resolve().parent.parent
 DANGERS_PATH = PROJECT_DIR / "data" / "dangers.json"
@@ -180,6 +181,17 @@ def main():
     # 実投稿モードなら prev を更新（次回以降の差分基準にする）
     if not dry_run:
         save_json(PREV_PATH, current)
+
+        # 投稿でChromeを起動してキャッシュが増えたのでクリア（ログイン情報は残る）
+        # Chromeが動いているケース（想定外）は clear_account 側でスキップされる
+        try:
+            r = clear_account(ACCOUNT)
+            if r["skipped"]:
+                print(f"Cache clear: SKIP ({r['reason']})")
+            else:
+                print(f"Cache clear: OK ({human_size(r['freed_bytes'])} 解放)")
+        except Exception as e:
+            print(f"Cache clear: ERR ({type(e).__name__}: {e})")
 
     return 0
 
