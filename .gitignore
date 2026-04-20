@@ -14,3 +14,4 @@ Thumbs.db
 scripts/x_cookies_raw.json
 scripts/dangers_prev.json
 scripts/x_post_result.json
+scripts/__pycache__/
