@@ -17,9 +17,10 @@ import json
 import sys
 from pathlib import Path
 
-# x_poster.py を import パスに追加
+# x_poster.py, refresh_x_cookies.py を import パスに追加
 sys.path.insert(0, "C:/Users/imao_/.claude")
 from x_poster import post_tweet, count_x_weight, MAX_TWEET_WEIGHT  # noqa: E402
+from refresh_x_cookies import refresh as refresh_cookies  # noqa: E402
 
 PROJECT_DIR = Path(__file__).resolve().parent.parent
 DANGERS_PATH = PROJECT_DIR / "data" / "dangers.json"
@@ -140,6 +141,11 @@ def main():
         # prev を最新で上書き（削除や順序変更だけだった場合も追従）
         save_json(PREV_PATH, current)
         return 0
+
+    # 投稿前にCookieをリフレッシュ（ChromeがCDP起動していれば最新化、失敗しても続行）
+    if not dry_run:
+        ok, msg = refresh_cookies(ACCOUNT)
+        print(f"Cookie refresh: {'OK' if ok else 'SKIP'} - {msg}")
 
     posts = []
     for entry, change_type in targets:

@@ -133,18 +133,33 @@
 
 ## 危険情報のX自動投稿（@wansakansai）
 - 危険情報に変更があった場合、追加・更新エントリを自動でXにポスト（削除はポストしない）
-- タスク内の STEP 6.5 で実行。`scripts/post_danger_to_x.py` が差分検出 + 投稿を担当
+- タスク内の STEP 6.5 で実行。`scripts/post_danger_to_x.py` が差分検出 + Cookieリフレッシュ + 投稿を担当
 - 差分検出は `scripts/dangers_prev.json`（前回スナップショット、.gitignore）と現在の dangers.json を比較
 - 投稿ライブラリ: `C:/Users/imao_/.claude/x_poster.py`（汎用、Playwright使用）
-- 認証: Chrome拡張「Cookie-Editor」で取得したCookieを storage_state に変換して使用
-  - 元データ: `scripts/x_cookies_raw.json`（.gitignore、Cookie-Editor のJSONエクスポート）
-  - 変換済み: `C:/Users/imao_/.claude/secrets/x_storage_wansakansai.json`（Playwright形式）
-  - Cookie期限切れ時は再エクスポート → 再変換
+- 投稿本文は「入口」位置づけで最低限（場所・種別）+ サイト誘導URL + ハッシュタグ5個（#わんさかんさい #犬のいる暮らし #{県}わんこ #犬の安全 #毒餌注意）
+- 都道府県タグはlocationから自動判定（大阪/兵庫/京都/奈良/滋賀/和歌山、該当なしは「関西」）
+- 文字数カウントはX内部仕様（日本語1文字=2、URL=23固定）で計算。280ウェイト上限（=日本語実質140文字）
 - 投稿は `[data-testid="tweetButtonInline"]` が画面外になりがちなので **Ctrl+Enterショートカット** で送信
-- 1投稿280文字以内に収まるよう description を要約（超える分は末尾カット+「…」）
 - 複数件の場合は1件ずつ分割投稿（間隔2秒）
 - 投稿失敗してもタスクは続行（メール本文に失敗内容+投稿本文を記載、ユーザーが手動フォロー）
 - 投稿結果は `scripts/x_post_result.json` に保存され、メール通知で本文確認可能
+
+## X認証（Cookie自動リフレッシュ）
+- 専用プロファイルのChromeを常駐起動し、CDP（Chrome DevTools Protocol）経由でCookieを借りる方式
+- 専用プロファイル: `C:/Users/imao_/.claude/x_chrome_profile`（普段のChromeと完全分離）
+- Chrome起動フラグ: `--remote-debugging-port=9222 --remote-allow-origins=* --user-data-dir=C:\Users\imao_\.claude\x_chrome_profile`
+  - Chrome 136+ のセキュリティ強化で、デフォルトプロファイルではdebug portが無効化されるため専用プロファイル必須
+- 自動起動: スタートアップフォルダに `Chrome-Debug.lnk`（PC起動時に自動立ち上げ）
+  - パス: `C:\Users\imao_\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Chrome-Debug.lnk`
+- リフレッシュスクリプト: `C:/Users/imao_/.claude/refresh_x_cookies.py`
+  - `http://localhost:9222` にCDP接続してx.comのCookie取得 → `secrets/x_storage_wansakansai.json` に上書き
+  - 失敗しても非エラー終了（既存Cookieで続行）
+- 運用: 会社PC 24h稼働 + 専用Chrome常駐でCookie実質無期限（X側のセッションリフレッシュを借りる）
+- トラブル時:
+  - 専用Chromeを誤って閉じた → スタートアップのショートカットで再起動。ログイン状態は保持される
+  - Cookie失効（パスワード変更等） → 専用Chromeで再ログイン → 次回の自動リフレッシュで反映
+  - CDP接続失敗 → 既存Cookieで投稿試行 → 失敗時はメールに投稿本文が記載されるので手動フォロー
+- 初期セットアップの残骸: `scripts/x_cookies_raw.json`（Cookie-Editor出力、gitignore）は初回のCookie取得のみに使用。現在は未使用
 
 ## 危険情報とスポットの連動
 - スポット詳細ページ（spot.html）: スポット名がdangers.jsonに含まれていれば危険情報を警告表示
