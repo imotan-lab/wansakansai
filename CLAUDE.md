@@ -145,19 +145,21 @@
 - 投稿結果は `scripts/x_post_result.json` に保存され、メール通知で本文確認可能
 
 ## X認証（Cookie自動リフレッシュ）
-- 専用プロファイルのChromeを常駐起動し、CDP（Chrome DevTools Protocol）経由でCookieを借りる方式
+- 専用プロファイルのChromeを **タスク実行時だけ headless で一時起動** し、CDP経由でCookieを借りる方式
+- 通常時はChromeは動いていない（普段のブラウザ利用を邪魔しない）
 - 専用プロファイル: `C:/Users/imao_/.claude/x_chrome_profile`（普段のChromeと完全分離）
-- Chrome起動フラグ: `--remote-debugging-port=9222 --remote-allow-origins=* --user-data-dir=C:\Users\imao_\.claude\x_chrome_profile`
+- Chrome起動フラグ: `--remote-debugging-port=9222 --remote-allow-origins=* --user-data-dir=C:\Users\imao_\.claude\x_chrome_profile --headless=new`
   - Chrome 136+ のセキュリティ強化で、デフォルトプロファイルではdebug portが無効化されるため専用プロファイル必須
-- 自動起動: スタートアップフォルダに `Chrome-Debug.lnk`（PC起動時に自動立ち上げ）
-  - パス: `C:\Users\imao_\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Chrome-Debug.lnk`
 - リフレッシュスクリプト: `C:/Users/imao_/.claude/refresh_x_cookies.py`
-  - `http://localhost:9222` にCDP接続してx.comのCookie取得 → `secrets/x_storage_wansakansai.json` に上書き
+  - `--auto` オプションでChromeの起動・終了も自動管理（headless）
+  - Chrome起動 → `http://localhost:9222` にCDP接続 → x.comのCookie取得 → `secrets/x_storage_wansakansai.json` に上書き → Chrome終了
   - 失敗しても非エラー終了（既存Cookieで続行）
-- 運用: 会社PC 24h稼働 + 専用Chrome常駐でCookie実質無期限（X側のセッションリフレッシュを借りる）
+- 運用: 毎日21時のタスク実行時、headlessで起動→Cookie更新→終了。ユーザーには見えない
+- ログイン状態はプロファイル（`x_chrome_profile`）に永続保存されるので、タスクのたびに起動しても再ログイン不要
 - トラブル時:
-  - 専用Chromeを誤って閉じた → スタートアップのショートカットで再起動。ログイン状態は保持される
-  - Cookie失効（パスワード変更等） → 専用Chromeで再ログイン → 次回の自動リフレッシュで反映
+  - Cookie失効（パスワード変更等） → 専用Chromeを手動起動して再ログインする必要あり:
+    - 手動起動: `"C:\Program Files\Google\Chrome\Application\chrome.exe" --user-data-dir="C:\Users\imao_\.claude\x_chrome_profile"` （debug portなしでもログイン操作は可能）
+    - @wansakansaiにログイン → Chrome閉じる → 次回タスクから自動反映
   - CDP接続失敗 → 既存Cookieで投稿試行 → 失敗時はメールに投稿本文が記載されるので手動フォロー
 - 初期セットアップの残骸: `scripts/x_cookies_raw.json`（Cookie-Editor出力、gitignore）は初回のCookie取得のみに使用。現在は未使用
 
