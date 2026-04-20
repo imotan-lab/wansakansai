@@ -131,6 +131,21 @@
 - ただし危険情報（毒餌・事故等の注意喚起）はSNS情報であることを明記すれば1件でも掲載OK（注意喚起は誤情報でも気をつけるに越したことはないため）
 - 3ヶ月以上前で続報なし・解決済みの情報は削除を検討
 
+## 危険情報のX自動投稿（@wansakansai）
+- 危険情報に変更があった場合、追加・更新エントリを自動でXにポスト（削除はポストしない）
+- タスク内の STEP 6.5 で実行。`scripts/post_danger_to_x.py` が差分検出 + 投稿を担当
+- 差分検出は `scripts/dangers_prev.json`（前回スナップショット、.gitignore）と現在の dangers.json を比較
+- 投稿ライブラリ: `C:/Users/imao_/.claude/x_poster.py`（汎用、Playwright使用）
+- 認証: Chrome拡張「Cookie-Editor」で取得したCookieを storage_state に変換して使用
+  - 元データ: `scripts/x_cookies_raw.json`（.gitignore、Cookie-Editor のJSONエクスポート）
+  - 変換済み: `C:/Users/imao_/.claude/secrets/x_storage_wansakansai.json`（Playwright形式）
+  - Cookie期限切れ時は再エクスポート → 再変換
+- 投稿は `[data-testid="tweetButtonInline"]` が画面外になりがちなので **Ctrl+Enterショートカット** で送信
+- 1投稿280文字以内に収まるよう description を要約（超える分は末尾カット+「…」）
+- 複数件の場合は1件ずつ分割投稿（間隔2秒）
+- 投稿失敗してもタスクは続行（メール本文に失敗内容+投稿本文を記載、ユーザーが手動フォロー）
+- 投稿結果は `scripts/x_post_result.json` に保存され、メール通知で本文確認可能
+
 ## 危険情報とスポットの連動
 - スポット詳細ページ（spot.html）: スポット名がdangers.jsonに含まれていれば危険情報を警告表示
 - 危険情報ページ（danger.html）: スポット名がdangers.jsonに含まれていればスポット詳細へのリンクを表示
