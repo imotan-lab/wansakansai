@@ -1103,6 +1103,29 @@ img {
   color: #fff;
 }
 
+.footer-social {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.footer-social .social-x {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.78rem;
+  text-decoration: none;
+}
+
+.footer-social .social-x:hover {
+  color: #fff;
+}
+
+.footer-social svg {
+  vertical-align: middle;
+}
+
 /* ===== Ad Placeholder ===== */
 .ad-slot {
   display: none;
