@@ -14,7 +14,9 @@ data/dangers.json と scripts/dangers_prev.json を比較し、
 """
 
 import json
+import random
 import sys
+import time
 from pathlib import Path
 
 # x_poster.py, refresh_x_cookies.py を import パスに追加
@@ -143,13 +145,26 @@ def main():
         save_json(PREV_PATH, current)
         return 0
 
+    # 投稿時刻のランダム化（bot検出対策）
+    # タスク実行時刻は固定だが、実投稿を0〜30分の範囲でずらす
+    if not dry_run:
+        jitter_sec = random.randint(0, 1800)
+        print(f"Posting jitter: {jitter_sec}秒待機（{jitter_sec // 60}分{jitter_sec % 60}秒）")
+        time.sleep(jitter_sec)
+
     # 投稿前にCookieをリフレッシュ（専用Chromeを一時起動→取得→終了、失敗しても続行）
     if not dry_run:
         ok, msg = refresh_with_auto_chrome(ACCOUNT)
         print(f"Cookie refresh: {'OK' if ok else 'SKIP'} - {msg}")
 
     posts = []
-    for entry, change_type in targets:
+    for i, (entry, change_type) in enumerate(targets):
+        # 2件目以降は投稿間に30〜120秒のランダム待機（連投パターン回避）
+        if i > 0 and not dry_run:
+            gap = random.randint(30, 120)
+            print(f"Inter-post jitter: {gap}秒待機")
+            time.sleep(gap)
+
         text = build_post_text(entry, change_type)
         if dry_run:
             posts.append({
