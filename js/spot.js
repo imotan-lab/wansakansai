@@ -26,16 +26,57 @@
     }
 
     // Update page title & SEO meta
-    document.title = `${spot.name} - わんさかんさい`;
+    // SEO: 検索クエリ（「○○公園 駐車場」「○○ ドッグラン」等）にマッチするよう
+    // タイトル・descに事実ベースの特徴キーワードを含める
+    const prefMatch = (spot.address || '').match(/^(大阪府|兵庫県|京都府|奈良県|滋賀県|和歌山県)/);
+    const prefShort = prefMatch ? prefMatch[1].replace(/[府県]$/, '') : '関西';
+
+    // タイトル用キーワード（事実ベース。嘘を書かない）
+    const titleKeywords = [];
+    if (spot.parking && spot.parking.available) {
+      titleKeywords.push(spot.parking.free ? '駐車場無料' : '駐車場');
+    }
+    if (spot.dogRun && spot.dogRun.available) {
+      titleKeywords.push('ドッグラン');
+    }
+    // タイトル: 「スポット名｜特徴（都道府県）- わんさかんさい」
+    const titleKwText = titleKeywords.length > 0
+      ? `${titleKeywords.join('・')}（${prefShort}）`
+      : `${prefShort}の犬連れスポット`;
+    const spotTitle = `${spot.name}｜${titleKwText} - わんさかんさい`;
+    document.title = spotTitle;
+
     const spotUrl = `https://wansakansai.com/spot.html?id=${spot.id}`;
-    const spotDesc = `${spot.name}（${spot.address}）の犬連れお出かけ情報。駐車場・トイレ・ドッグラン情報など。`;
+
+    // description用: より多くのキーワードを含める（検索対象が広がる）
+    const descFeatures = [];
+    if (spot.parking && spot.parking.available) {
+      descFeatures.push(spot.parking.free ? '駐車場無料' : '駐車場あり');
+    } else if (spot.parking && spot.parking.available === false) {
+      descFeatures.push('駐車場なし');
+    }
+    if (spot.dogRun && spot.dogRun.available) {
+      const dr = spot.dogRun.free ? '無料ドッグラン' : 'ドッグラン';
+      descFeatures.push(spot.dogRun.separated ? `${dr}（エリア分離）` : dr);
+    }
+    if (spot.toilet && spot.toilet.available) {
+      descFeatures.push(spot.toilet.western ? 'トイレ（洋式）' : 'トイレあり');
+    }
+    if (spot.admission) {
+      descFeatures.push(spot.admission.free ? '入場無料' : '有料');
+    }
+    const descFeaturesText = descFeatures.length > 0
+      ? descFeatures.join('・') + '。'
+      : '';
+    const spotDesc = `${spot.name}（${spot.address}）の犬連れお出かけ情報。${descFeaturesText}${prefShort}で犬と楽しめるスポットの詳細・アクセス・地図を掲載。`;
+
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) metaDesc.content = spotDesc;
     // canonical
     let canonical = document.querySelector('link[rel="canonical"]');
     if (canonical) canonical.href = spotUrl;
     // OGP
-    const ogUpdates = { 'og:title': `${spot.name} - わんさかんさい`, 'og:description': spotDesc, 'og:url': spotUrl };
+    const ogUpdates = { 'og:title': spotTitle, 'og:description': spotDesc, 'og:url': spotUrl };
     for (const [prop, val] of Object.entries(ogUpdates)) {
       const el = document.querySelector(`meta[property="${prop}"]`);
       if (el) el.content = val;
