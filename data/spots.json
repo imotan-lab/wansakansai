@@ -6284,5 +6284,159 @@
     "imageUrl": "",
     "images": [],
     "officialUrl": "https://www.town.shirahama.wakayama.jp/soshiki/kanko/koen/shisetsu/park/1454026568032.html"
+  },
+  {
+    "id": "aragijima",
+    "name": "あらぎ島展望台",
+    "aliases": [
+      "あらぎじま",
+      "あらぎ島",
+      "あらぎ島展望所",
+      "蘭島",
+      "らんとう"
+    ],
+    "address": "和歌山県有田郡有田川町三田664-1付近",
+    "lat": 34.093655,
+    "lng": 135.419824,
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "tags": [
+      "koyo"
+    ],
+    "remarks": "日本の棚田百選・国の重要文化的景観に選定された扇形の棚田を、有田川対岸の展望所から鑑賞するスポット。展望所専用駐車場（無料・約7台）と、徒歩約10分の道の駅あらぎの里駐車場（無料・約20〜23台）が利用可。トイレは道の駅あらぎの里に設置（展望所内にはトイレなし）。24時間開放・無料で、季節ごとの表情（5〜6月の水鏡、7〜8月の青々とした緑、9月の黄金色の稲穂、冬の雪景色）が楽しめる。展望所はリードでの犬連れ散策可能（犬連れ訪問ブログあり）。ただしあらぎ島の棚田自体は私有地のため立ち入り厳禁、展望所の柵内にも入らないこと。展望所までは駐車場から坂道・階段を歩く必要あり。",
+    "imageUrl": "",
+    "images": [],
+    "officialUrl": "https://www.town.aridagawa.lg.jp/top/kakuka/kanaya/9/2/keikan/4718.html"
+  },
+  {
+    "id": "toretore-ichiba",
+    "name": "とれとれ市場 南紀白浜",
+    "aliases": [
+      "とれとれいちば",
+      "とれとれ市場",
+      "とれとれ",
+      "とれとれマーケット",
+      "南紀白浜とれとれ市場"
+    ],
+    "address": "和歌山県西牟婁郡白浜町堅田2521",
+    "lat": 33.681387,
+    "lng": 135.375197,
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "tags": [],
+    "remarks": "西日本最大級の海鮮マーケット。営業時間8:30〜18:30（食事オーダーストップ17:30頃）、不定休。普通車777台の無料大型駐車場あり。【犬連れ注意】屋内市場・BBQコーナーは犬NG。屋外テラス席（味処エリア）のみペット同伴可で、購入した海鮮丼やたこ焼き等をテラスで食べるのが定番。昼時は混雑するためテラス席確保が鍵。マグロ解体ショーや踊りたこ焼き、生鰹藁焼きなどが人気。隣接地にペット同伴可の宿泊施設「とれとれヴィレッジ」あり。",
+    "imageUrl": "",
+    "images": [],
+    "officialUrl": "https://toretore.com/ichiba/"
+  },
+  {
+    "id": "shirarahama",
+    "name": "白良浜",
+    "aliases": [
+      "しららはま",
+      "白良浜海水浴場",
+      "白良浜ビーチ"
+    ],
+    "address": "和歌山県西牟婁郡白浜町864",
+    "lat": 33.6829,
+    "lng": 135.3436,
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "tags": [
+      "water"
+    ],
+    "remarks": "白浜を代表する全長約640m・幅約100mの白砂のビーチ。【重要】2025年6月23日からペットフレンドリー化の一環として、白良浜周囲の遊歩道（約600m）が犬の散歩OKに解禁された。ただし砂浜エリアと階段部分は引き続きペット同伴NG、遊歩道では必ずリード着用またはケージで常に制止できる状態にする。遊歩道周辺にペット用うんちBOXが3か所設置。海水浴場は2025年5/3〜9/15開設、海水浴シーズン中も遊歩道散歩自体は可能だが混雑する。駐車場はシーズンオフ無料、シーズン中は時期により500円〜2,000円。砂浜で犬を遊ばせたい場合は近隣の江津良海水浴場（海水浴シーズン外なら犬OK）を利用するのがおすすめ。",
+    "imageUrl": "",
+    "images": [],
+    "officialUrl": "https://www.nankishirahama.jp/spot/shirarahama/"
+  },
+  {
+    "id": "nanbu-bairin",
+    "name": "南部梅林",
+    "aliases": [
+      "みなべばいりん",
+      "なんぶばいりん",
+      "南部梅林公園",
+      "みなべ梅林",
+      "梅の里"
+    ],
+    "address": "和歌山県日高郡みなべ町晩稲",
+    "lat": 33.786263,
+    "lng": 135.345478,
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": false,
+      "fee": "梅まつり開園期間中のみ営業。大人（高校生以上）500円、小人（小・中学生）200円、幼児無料。駐車場は普通車500円/日"
+    },
+    "visited": false,
+    "tags": [],
+    "remarks": "【季節限定スポット】日本最大級・約8万本の梅林。例年1月下旬〜3月上旬のみ開園（2026年は1/31〜3/1）。開園時間8:00〜17:00。公式サイトで「わんちゃんたちとも一緒に梅の花を楽しむことができます」と明記、リード必須でペット同伴可。ウォーキングコース2種（60〜80分）、展望台「春告の丘」、売店（かたやまのいももち等）あり。山道あり歩きやすい靴推奨。シーズン外（4月〜翌1月上旬）は閉園、園内は梅農家の作業エリアとなるため立入不可。訪問は梅まつり期間中のみ可能なのでご注意ください。",
+    "imageUrl": "",
+    "images": [],
+    "officialUrl": "https://minabebairin.com/"
   }
 ]
