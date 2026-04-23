@@ -55,6 +55,26 @@ JMA_AREA_CODES = {
 
 
 def detect_prefecture(text: str) -> str | None:
+    """都道府県判定。
+    1段階目: 都府県の完全名（大阪府/兵庫県/京都府/奈良県/滋賀県/和歌山県）を優先
+    2段階目: 市町村名のキーワードで判定
+    これにより「京都府船井郡京丹波町」が「京都」と正しく判定される
+    （兵庫の「丹波」で誤判定されない）
+    """
+    # Pass 1: 完全な都府県名を優先
+    pref_full_names = {
+        "和歌山県": "和歌山",  # 「和歌山市」より前に判定
+        "大阪府": "大阪",
+        "兵庫県": "兵庫",
+        "京都府": "京都",
+        "奈良県": "奈良",
+        "滋賀県": "滋賀",
+    }
+    for full_name, pref in pref_full_names.items():
+        if full_name in text:
+            return pref
+
+    # Pass 2: 市町村名等の部分一致
     for pref, keywords in PREF_KEYWORDS.items():
         for k in keywords:
             if k in text:
