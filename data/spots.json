@@ -6127,5 +6127,162 @@
     "imageUrl": "",
     "images": [],
     "officialUrl": "https://www.yuasa-kankokyokai.com/article/1172/"
+  },
+  {
+    "id": "engetsuto",
+    "name": "円月島（高嶋）",
+    "aliases": [
+      "えんげつとう",
+      "円月島",
+      "高嶋",
+      "たかしま",
+      "臨海浦",
+      "りんかいうら"
+    ],
+    "address": "和歌山県西牟婁郡白浜町1600",
+    "lat": 33.689996,
+    "lng": 135.336431,
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "tags": [],
+    "remarks": "南紀白浜のシンボル。正式名称は「高嶋」で、島の中央に直径約9mの円月形の海蝕洞があることから「円月島」と呼ばれる。「日本の夕陽百選」に選ばれており、春分・秋分の前後には洞穴に夕日が沈む絶景が見られる。観賞ポイント（白浜臨海交差点付近）は道路沿いで専用駐車場はないが、約30台分のスペースあり（カーブのため駐車時は後続車注意）。夕日時は満車になりやすく日没1〜1.5時間前到着推奨。近隣の「臨海公衆トイレ」利用可。島自体には上陸不可。見学は無料・24時間可。犬連れで夕景を楽しむ観光客が多数おり、リード必須。番所山公園（既存掲載、円月島を見下ろせる展望台あり）とセット散歩がおすすめ。",
+    "imageUrl": "",
+    "images": [],
+    "officialUrl": "https://www.town.shirahama.wakayama.jp/soshiki/kanko/koen/gyomu/midokoro/1454401479333.html"
+  },
+  {
+    "id": "wakayama-marina-city",
+    "name": "和歌山マリーナシティ",
+    "aliases": [
+      "わかやままりーなしてぃ",
+      "マリーナシティ",
+      "ポルトヨーロッパ",
+      "ぽるとよーろっぱ",
+      "黒潮市場",
+      "くろしおいちば"
+    ],
+    "address": "和歌山県和歌山市毛見1527",
+    "lat": 34.155876,
+    "lng": 135.179147,
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": "ポルトヨーロッパ入園・黒潮市場入場は無料。駐車場: マリーナシティ第1・第2は1日1,500円（3,500台）、県営公共マリーナ駐車場は1日500円（最安）、黒潮市場専用は1時間750円（1,000円以上購入で1時間無料、2階レストラン・浜焼きBBQ利用で2時間無料）"
+    },
+    "visited": false,
+    "tags": [
+      "rain"
+    ],
+    "remarks": "和歌山湾に浮かぶ人工島の複合リゾート。テーマパーク「ポルトヨーロッパ」は全国でも珍しく犬連れで入園可能（リード必須・短め、飼い主の清掃責任、抱っこorカート推奨）。園内の屋外エリアは自由に散策でき、ヨーロッパの港町を再現した街並みでフォトスポット多数。黒潮市場は屋内NGだが、屋外テラスの一部が犬同伴可で購入した海鮮丼を犬と一緒に食べられる。【犬NG】ポルトヨーロッパ内レストラン・乗り物・紀ノ国フルーツ村・BBQコーナー、黒潮市場屋内。ショップ（メルカード）はペット用バギー・抱っこで入場可。メインは「屋外散策＋黒潮市場テラスでの飲食」。観覧車は2024年に老朽化のため撤去。同エリア内に和歌山マリーナシティホテル・紀州黒潮温泉・フィッシャーマンズワーフあり。",
+    "imageUrl": "",
+    "images": [],
+    "officialUrl": "https://www.marinacity.com/"
+  },
+  {
+    "id": "oishi-kogen",
+    "name": "生石高原",
+    "aliases": [
+      "おいしこうげん",
+      "生石ヶ峰",
+      "おいしがみね",
+      "山の家おいし"
+    ],
+    "address": "和歌山県海草郡紀美野町中田899-29",
+    "lat": 34.1052,
+    "lng": 135.3252,
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "tags": [
+      "koyo"
+    ],
+    "remarks": "標高870mの関西屈指のススキ名所。約13haのススキ大草原が広がり、見頃は10月上旬〜11月中旬。360度パノラマで、晴天時は六甲・淡路・四国まで望める。山頂には「山の家おいし」（9:30〜16:30、年末年始休業、洋式トイレ・多目的トイレあり、入場無料）。駐車場は第1（約30台、24時間）と第2（約200台、ススキシーズン9:30〜16:30）で無料。ペット同伴OK（排泄物持ち帰り必須）、大型犬含め犬連れ訪問実績多数。火上げ岩はインスタ映えスポット。ススキシーズンの土日祝は2時間渋滞になることも、午前訪問＆有田川町側ルート推奨。冬季はスタッドレスタイヤ必要。熊出没情報あり（2026年3月時点でキャンプ場のみ臨時休業中、日帰り散策は通常営業）、カモシカ・イノシシ生息のため決められたルート以外立入禁止。",
+    "imageUrl": "",
+    "images": [],
+    "officialUrl": "https://www.town.kimino.wakayama.jp/sagasu/sangyoka/kankosangyo/oishikogen/1822.html"
+  },
+  {
+    "id": "hirakusabaru-park",
+    "name": "平草原公園",
+    "aliases": [
+      "ひらくさばらこうえん",
+      "へいそうげんこうえん",
+      "平草原"
+    ],
+    "address": "和歌山県西牟婁郡白浜町2054-1",
+    "lat": 33.6711591,
+    "lng": 135.3487426,
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": true,
+      "free": true,
+      "separated": true,
+      "detail": "2025年6月23日オープンの無料ドッグラン。約800㎡を小型犬用（10kg未満）と中・大型犬用（10kg以上）に分離。足洗い場・うんちポスト・東屋・シェイド完備。利用時間8:30〜17:00、年中無休、登録不要。スタッフ常駐なし。"
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "tags": [
+      "sakura"
+    ],
+    "remarks": "白浜町を一望する標高の高い公園。約2,000本の桜（9品種）の名所で、3月下旬〜4月上旬に桜まつり・ライトアップ開催。2025年6月に無料ドッグラン新設（エリア分離あり）。【重要】ドッグランおよびそこへ向かう通路以外はペット同伴不可のため、園内の桜並木を犬連れで散策することはできない。駐車場からドッグランまではリード着用またはケージ・カート利用必須。梅園、2kmのトリムコース、白浜温泉民俗資料館併設。敷地面積約140,000㎡、8:30〜17:00年中無休、入場無料、駐車場60台無料。スズメバチ・マムシ出没の注意喚起あり。",
+    "imageUrl": "",
+    "images": [],
+    "officialUrl": "https://www.town.shirahama.wakayama.jp/soshiki/kanko/koen/shisetsu/park/1454026568032.html"
   }
 ]
