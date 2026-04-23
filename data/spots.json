@@ -6011,5 +6011,121 @@
     "imageUrl": "",
     "images": [],
     "officialUrl": "https://doghotel-shirahama.jp/"
+  },
+  {
+    "id": "senjojiki-shirahama",
+    "name": "千畳敷",
+    "aliases": [
+      "せんじょうじき",
+      "せんじょうしき",
+      "白浜千畳敷",
+      "しらはませんじょうじき"
+    ],
+    "address": "和歌山県西牟婁郡白浜町2927-72",
+    "lat": 33.672,
+    "lng": 135.331444,
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "tags": [],
+    "remarks": "新第三紀層の砂岩からなる約2ヘクタールの大岩盤が太平洋に面して広がる景勝地。国の名勝・吉野熊野国立公園・南紀熊野ジオパークのジオサイト。「日本の夕陽百選」にも選定。駐車場70台・無料・24時間開放、無料トイレあり。駐車場脇には売店「茜・千畳茶屋」「海鮮屋千畳」があり、名物の地元産お米の団子が食べられる。【犬連れ時の注意】岩畳エリアはペット立入禁止（複数の犬連れブログで確認）。駐車場・展望エリアからの景色観賞となる。リード必須。波浪警報発令時は立入禁止、強風時も注意。",
+    "imageUrl": "",
+    "images": [],
+    "officialUrl": "https://www.town.shirahama.wakayama.jp/soshiki/kanko/koen/gyomu/midokoro/1454456648503.html"
+  },
+  {
+    "id": "sandanbeki",
+    "name": "三段壁",
+    "aliases": [
+      "さんだんべき",
+      "三段壁洞窟",
+      "さんだんべきどうくつ"
+    ],
+    "address": "和歌山県西牟婁郡白浜町2927-52",
+    "lat": 33.66591,
+    "lng": 135.33535,
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": "展望エリアは無料。三段壁洞窟は大人（中学生以上）1,500円、小人（小学生）750円、小学生未満無料"
+    },
+    "visited": false,
+    "tags": [],
+    "remarks": "高さ50〜60m・全長約2kmの断崖絶壁の絶景スポット（吉野熊野国立公園・ジオスポット）。【展望エリア】は24時間無料で犬連れ散策可能、町営駐車場（普通車30台・大型バス5台）・トイレ（多目的トイレ有）あり。柵はあるが断崖なので小型犬でも必ずリード・抱き上げ推奨。遊歩道は岩がゴツゴツで肉球注意、夏は照り返しで高温注意。【三段壁洞窟】（有料）は愛犬同伴可だが「抱っこまたはケージ（キャリー）に入れる」ことが条件で、抱っこできない大型犬は断られる場合あり。洞窟内トイレなし、湿度が高いので犬の体調注意。2024年3月からペット用兜の無料貸出サービス開始。営業時間8:00〜17:00（最終入場16:50）年中無休。",
+    "imageUrl": "",
+    "images": [],
+    "officialUrl": "https://sandanbeki.com/"
+  },
+  {
+    "id": "yuasa-machinami",
+    "name": "湯浅町 重要伝統的建造物群保存地区",
+    "aliases": [
+      "ゆあさ",
+      "湯浅の町並み",
+      "醤油の町",
+      "湯浅町並み",
+      "伝建地区",
+      "湯浅伝建地区",
+      "湯浅伝統的建造物群保存地区",
+      "しょうゆのまち"
+    ],
+    "address": "和歌山県有田郡湯浅町湯浅2702-9",
+    "lat": 34.0371,
+    "lng": 135.175,
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "tags": [
+      "rain"
+    ],
+    "remarks": "和歌山県唯一の重要伝統的建造物群保存地区で醤油醸造発祥の地。北町・鍛冶町・中町・濱町を中心に東西約400m×南北約280m（約6.3ha）に醸造町家や土蔵が残り、角長職人蔵・醤油資料館、金山寺味噌の太田久助吟製、大仙堀、甚風呂（銭湯跡資料館）などが点在。散策の起点は「湯浅町観光用駐車場」（62台・大型バス5台、無料24時間、トイレあり、伝建地区まで徒歩2分）がおすすめ。近隣の「まちなみの駅湯浅」（10台・無料24時間・バリアフリートイレ）も至近。町並みは公道のためリード着用で散策OK。犬連れ訪問実績あり（太田久助吟製は抱っこでの入店OK、パン工房カワはテラス席で同伴可）。甚風呂・角長醤油資料館など屋内施設は犬NGのため交代見学推奨。所要時間1時間〜半日。JR湯浅駅から徒歩約15分。",
+    "imageUrl": "",
+    "images": [],
+    "officialUrl": "https://www.yuasa-kankokyokai.com/article/1172/"
   }
 ]
