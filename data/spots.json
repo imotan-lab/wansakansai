@@ -3194,7 +3194,7 @@
   },
   {
     "id": "gobo-sogo-park",
-    "name": "御坊総合公園",
+    "name": "御坊総合運動公園",
     "address": "和歌山県御坊市塩屋町南塩屋1123",
     "lat": 33.8979,
     "lng": 135.1609,
@@ -3224,11 +3224,11 @@
       "fee": ""
     },
     "visited": false,
-    "remarks": "御坊市の大規模スポーツ・レクリエーション公園。広い芝生と遊歩道で犬連れ散歩可。駐車場250台・無料。",
+    "remarks": "御坊市の大規模スポーツ・レクリエーション公園。広い芝生と遊歩道で犬連れ散歩可。駐車場約100台・無料。",
     "imageUrl": "",
-    "officialUrl": "https://www.city.gobo.wakayama.jp/",
+    "officialUrl": "https://www.city.gobo.lg.jp/sosiki/fureai/tanto/kouen/itiran/1383727992128.html",
     "aliases": [
-      "ごぼうそうごうこうえん"
+      "ごぼうそうごううんどうこうえん"
     ],
     "tags": []
   },
@@ -3306,7 +3306,7 @@
     "visited": false,
     "remarks": "国の天然記念物。大小40余りの奇岩が約850mにわたり連なる絶景。日の出スポットとしても有名。道の駅くしもと橋杭岩に隣接。犬連れ散策可。駐車場無料。",
     "imageUrl": "",
-    "officialUrl": "https://www.town.kushimoto.wakayama.jp/",
+    "officialUrl": "https://www.town.kushimoto.wakayama.jp/kanko/kushimoto/hashikui-iwa.html",
     "aliases": [
       "橋杭岩海水浴場",
       "はしぐいいわ"
@@ -3316,7 +3316,7 @@
   {
     "id": "shiono-misaki-bouro",
     "name": "潮岬 望楼の芝",
-    "address": "和歌山県東牟婁郡串本町潮岬2927",
+    "address": "和歌山県東牟婁郡串本町潮岬2706-26",
     "lat": 33.4374,
     "lng": 135.7666,
     "category": "walk",
@@ -3347,7 +3347,7 @@
     "visited": false,
     "remarks": "本州最南端の岬に広がる約10万㎡の芝生広場。360度の大パノラマで太平洋を一望。風が強い日も多いが開放感抜群。犬連れ散策可。駐車場無料。",
     "imageUrl": "",
-    "officialUrl": "https://www.town.kushimoto.wakayama.jp/",
+    "officialUrl": "https://www.town.kushimoto.wakayama.jp/kanko/shionomisaki/bourounoshiba.html",
     "aliases": [
       "潮岬",
       "本州最南端",
@@ -3358,7 +3358,7 @@
   {
     "id": "kozagawa-ichimaiwa",
     "name": "古座川の一枚岩",
-    "address": "和歌山県東牟婁郡古座川町相瀬290",
+    "address": "和歌山県東牟婁郡古座川町相瀬290-2",
     "lat": 33.6062,
     "lng": 135.7248,
     "category": "walk",
