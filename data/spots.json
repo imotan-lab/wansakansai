@@ -2781,7 +2781,7 @@
   {
     "id": "oike-yuen",
     "name": "大池遊園",
-    "address": "和歌山県紀の川市貴志川町長山",
+    "address": "和歌山県紀の川市貴志川町長山1287番地の1",
     "lat": 34.2447,
     "lng": 135.4022,
     "category": "park",
@@ -2812,7 +2812,7 @@
     "visited": false,
     "remarks": "池の周囲に約800本の桜が咲く和歌山県屈指の花見スポット。ボート乗り場・遊具あり。犬連れ散策可。駐車場通常無料（桜まつり期間3月下旬〜4月上旬は有料）。",
     "imageUrl": "",
-    "officialUrl": "https://www.city.kinokawa.lg.jp/",
+    "officialUrl": "https://www.city.kinokawa.lg.jp/kanko/park/ooike-yuen.html",
     "aliases": [
       "おおいけゆうえん"
     ],
@@ -2978,7 +2978,7 @@
     "visited": false,
     "remarks": "切り立った断崖と清流が続く渓谷。不動の滝・磨崖仏あり。紅葉の名所としても有名。犬連れ散策可。駐車場無料。",
     "imageUrl": "",
-    "officialUrl": "https://www.tanabe.lg.jp/",
+    "officialUrl": "https://www.tanabe-kanko.jp/view/sizen/kizekkyo/",
     "aliases": [
       "きぜつきょう"
     ],
