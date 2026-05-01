@@ -287,6 +287,29 @@
       container.querySelector('.spot-detail').appendChild(nearbyEl);
     }
 
+    // 楽天 + じゃらん アフィリエイト（ペット可宿）- 最下部に配置
+    (() => {
+      // 楽天トラベル（楽天アフィリエイト直接リンク。公式ペット可宿特集ページ）
+      const RAKUTEN_AFFILIATE_ID = '535b3809.5ed3e82b.535b380a.3e77d4ae';
+      const travelUrl = 'https://travel.rakuten.co.jp/pet/';
+      const rakutenLink = `https://hb.afl.rakuten.co.jp/hgc/${RAKUTEN_AFFILIATE_ID}/?pc=${encodeURIComponent(travelUrl)}&link_type=text`;
+      // じゃらんnet（A8.net 経由のアフィリエイトリンク。固定リンク先はじゃらんトップ）
+      const JALAN_A8MAT = '4B3G6J+9ICAE2+14CS+64JTE';
+      const jalanLink = `https://px.a8.net/svt/ejp?a8mat=${JALAN_A8MAT}`;
+      const jalanTracker = `https://www13.a8.net/0.gif?a8mat=${JALAN_A8MAT}`;
+      const affEl = document.createElement('div');
+      affEl.className = 'affiliate-stay';
+      affEl.innerHTML = `
+        <span class="affiliate-pr-tag">PR</span>
+        <span class="affiliate-stay-text">愛犬と泊まれる宿を探す：</span>
+        <a href="${rakutenLink}" target="_blank" rel="sponsored noopener" class="affiliate-link">楽天トラベル</a>
+        <span class="affiliate-sep">／</span>
+        <a href="${jalanLink}" target="_blank" rel="sponsored nofollow noopener" class="affiliate-link">じゃらんnet</a>
+        <img border="0" width="1" height="1" src="${jalanTracker}" alt="" style="display:none;">
+      `;
+      container.querySelector('.spot-detail').appendChild(affEl);
+    })();
+
   } catch (e) {
     container.innerHTML = '<div class="empty-state"><p>データの読み込みに失敗しました</p></div>';
   }
