@@ -294,6 +294,19 @@ img {
 .filter-group-btns {
   display: flex;
   gap: 4px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .filter-group {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    width: 100%;
+  }
+  .filter-group-btns {
+    width: 100%;
+  }
 }
 
 .filter-btn {
