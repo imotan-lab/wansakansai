@@ -1,6 +1,6 @@
 # X（Twitter）自動投稿の実装詳細
 
-犬阪んさい（@wansakansai）のX自動投稿の詳細実装メモ。CLAUDE.mdから分離。
+わんさかんさい（@wansakansai）のX自動投稿の詳細実装メモ。CLAUDE.mdから分離。
 
 ---
 
