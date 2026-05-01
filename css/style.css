@@ -270,6 +270,50 @@ img {
   margin-bottom: 12px;
 }
 
+/* ===== Affiliate (Rakuten Travel) ===== */
+.affiliate-stay {
+  background: linear-gradient(135deg, #FFF8E1 0%, #FFE4B5 100%);
+  border: 2px solid #F0D078;
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin: 24px 0;
+  text-align: center;
+}
+.affiliate-stay h3 {
+  margin: 0 0 8px;
+  color: #8B6914;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+.affiliate-stay p {
+  margin: 0 0 14px;
+  font-size: 0.85rem;
+  color: #5D4E20;
+  line-height: 1.5;
+}
+.affiliate-link {
+  display: inline-block;
+  background: #BF0000;
+  color: #fff !important;
+  padding: 11px 28px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(191, 0, 0, 0.25);
+  transition: all 0.2s;
+}
+.affiliate-link:hover {
+  background: #960000;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(191, 0, 0, 0.35);
+}
+.affiliate-note {
+  margin-top: 10px !important;
+  font-size: 0.7rem !important;
+  color: #888 !important;
+}
+
 /* ===== Filter Buttons ===== */
 .filter-section {
   display: flex;

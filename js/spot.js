@@ -208,6 +208,39 @@
           </div>
         ` : ''}
 
+        ${(() => {
+          // 楽天アフィリエイト（ペット可宿）
+          const RAKUTEN_AFFILIATE_ID = '535b3809.5ed3e82b.535b380a.3e77d4ae';
+          const PREF_TRAVEL_CODE = {
+            '大阪府': 27, '兵庫県': 28, '京都府': 26,
+            '奈良県': 29, '滋賀県': 25, '和歌山県': 30
+          };
+          const addr = spot.address || '';
+          const prefMatch = addr.match(/^(大阪府|兵庫県|京都府|奈良県|滋賀県|和歌山県)/);
+          const prefName = prefMatch ? prefMatch[1].replace(/[府県]$/, '') : '';
+          const prefCode = prefMatch ? PREF_TRAVEL_CODE[prefMatch[1]] : null;
+          // 市町村抽出（白浜、湯浅、和歌山市等）
+          const cityMatch = addr.replace(/^(大阪府|兵庫県|京都府|奈良県|滋賀県|和歌山県)/, '')
+                                .replace(/^[^市町村]+?郡/, '')
+                                .match(/^(.+?)(市|町|村)/);
+          const keyword = cityMatch ? cityMatch[1] : '';
+          // 楽天トラベル ペット可検索URL
+          let travelUrl = 'https://travel.rakuten.co.jp/dsearch?f_pet=1';
+          if (prefCode) travelUrl += `&f_pref=${prefCode}`;
+          if (keyword) travelUrl += `&f_keyword=${encodeURIComponent(keyword)}`;
+          // アフィリエイトリンクでラップ
+          const rakutenLink = `https://hb.afl.rakuten.co.jp/hgc/${RAKUTEN_AFFILIATE_ID}/?pc=${encodeURIComponent(travelUrl)}&link_type=text`;
+          const areaLabel = keyword ? `${keyword}エリア` : (prefName ? `${prefName}エリア` : '関西');
+          return `
+            <div class="affiliate-stay">
+              <h3>🏨 ${areaLabel}のペット可宿を探す</h3>
+              <p>${spot.name}に行く前後で、愛犬と泊まれる宿をチェック</p>
+              <a href="${rakutenLink}" target="_blank" rel="sponsored noopener" class="affiliate-link">楽天トラベルで探す →</a>
+              <p class="affiliate-note">※楽天アフィリエイトプログラムを使用しています</p>
+            </div>
+          `;
+        })()}
+
         <div class="share-buttons">
           <span class="share-label">シェア</span>
           <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(spot.name + ' - わんさかんさい')}&url=${encodeURIComponent(window.location.href)}" target="_blank" rel="noopener noreferrer" class="share-btn share-x">X</a>
