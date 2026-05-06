@@ -38,7 +38,7 @@
       const related = findRelatedSpots(d);
       const linksHtml = related.length > 0
         ? `<div class="danger-card-links">${related.map(s =>
-            `<a href="spot.html?id=${s.id}" class="danger-spot-link">${s.name}</a>`
+            `<a href="spots/${s.id}.html" class="danger-spot-link">${s.name}</a>`
           ).join('')}</div>`
         : '';
       return `

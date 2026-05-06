@@ -31,7 +31,7 @@ for page in static_pages:
     lines.append(f'  </url>')
 
 for spot in spots:
-    loc = f"{BASE_URL}/spot.html?id={spot['id']}"
+    loc = f"{BASE_URL}/spots/{spot['id']}.html"
     lines.append(f'  <url>')
     lines.append(f'    <loc>{loc}</loc>')
     lines.append(f'    <lastmod>{TODAY}</lastmod>')

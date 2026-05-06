@@ -3,36 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="犬連れお出かけスポットの詳細情報 - わんさかんさい">
-  <title>スポット詳細 - わんさかんさい</title>
-  <link rel="canonical" href="https://wansakansai.com/spot.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="わんさかんさい">
-  <meta property="og:title" content="スポット詳細 - わんさかんさい">
-  <meta property="og:description" content="犬連れお出かけスポットの詳細情報 - わんさかんさい">
-  <meta property="og:url" content="https://wansakansai.com/spot.html">
-  <meta property="og:image" content="https://wansakansai.com/images/ogp.png">
-  <meta property="og:locale" content="ja_JP">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@wansakansai">
-  <meta name="twitter:creator" content="@wansakansai">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="icon" href="favicon.ico">
-  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-  <link rel="stylesheet" href="css/style.css">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2097489177716087" crossorigin="anonymous"></script>
+  <meta name="robots" content="noindex">
+  <title>移動中... - わんさかんさい</title>
+  <script>
+    // 旧URL構造（spot.html?id=xxx）から新URL構造（spots/xxx.html）へリダイレクト
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get('id');
+      if (id) {
+        // ID指定あり: スポット詳細ページへリダイレクト
+        window.location.replace('spots/' + encodeURIComponent(id) + '.html');
+      } else {
+        // ID指定なし: トップページへ（ソフト404解消）
+        window.location.replace('index.html');
+      }
+    })();
+  </script>
+  <link rel="canonical" href="https://wansakansai.com/">
 </head>
 <body>
-
-  <main class="main-content">
-    <a href="index.html" class="back-link">← スポット一覧に戻る</a>
-    <div id="spotDetail" class="loading-spinner">読み込み中...</div>
-    <div class="ad-slot"></div>
-  </main>
-
-  <script src="js/common.js"></script>
-  <script src="js/spot.js"></script>
+  <p>リダイレクト中... もし自動的に移動しない場合は<a href="index.html">こちら</a>からトップページへ。</p>
 </body>
 </html>

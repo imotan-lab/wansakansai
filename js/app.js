@@ -247,7 +247,7 @@
       else if (isStayOk) tags.push('<span class="tag tag-stay">宿泊可</span>');
 
       return `
-        <a href="spot.html?id=${s.id}" class="spot-card${isStayOnly ? ' spot-card-stay' : ''}">
+        <a href="spots/${s.id}.html" class="spot-card${isStayOnly ? ' spot-card-stay' : ''}">
           ${visitedStamp}
           <div class="spot-card-header">
             <span class="spot-card-name">${s.name}</span>

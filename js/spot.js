@@ -5,8 +5,10 @@
   renderFooter();
 
   const container = document.getElementById('spotDetail');
+  // SPOT_ID取得: 静的HTML(spots/{id}.html)では window.WANSAKA_SPOT_ID、
+  // 旧URL(spot.html?id=xxx)では URLパラメータ
   const params = new URLSearchParams(window.location.search);
-  const spotId = params.get('id');
+  const spotId = window.WANSAKA_SPOT_ID || params.get('id');
 
   if (!spotId) {
     container.innerHTML = '<div class="empty-state"><p>スポットが指定されていません</p></div>';
@@ -15,8 +17,8 @@
 
   try {
     const [spots, dangers] = await Promise.all([
-      loadJSON('data/spots.json'),
-      loadJSON('data/dangers.json')
+      loadJSON('../data/spots.json').catch(() => loadJSON('data/spots.json')),
+      loadJSON('../data/dangers.json').catch(() => loadJSON('data/dangers.json'))
     ]);
     const spot = spots.find(s => s.id === spotId);
 
@@ -25,75 +27,16 @@
       return;
     }
 
-    // Update page title & SEO meta
-    // SEO: 検索クエリ（「○○公園 駐車場」「○○ ドッグラン」等）にマッチするよう
-    // タイトル・descに事実ベースの特徴キーワードを含める
-    const prefMatch = (spot.address || '').match(/^(大阪府|兵庫県|京都府|奈良県|滋賀県|和歌山県)/);
-    const prefShort = prefMatch ? prefMatch[1].replace(/[府県]$/, '') : '関西';
+    // SEO関連（title/description/canonical/OGP/JSON-LD）は generate_spot_pages.py で
+    // 静的HTMLに埋め込み済みのため、JSでの動的更新は不要
 
-    // タイトル用キーワード（事実ベース。嘘を書かない）
-    const titleKeywords = [];
-    if (spot.parking && spot.parking.available) {
-      titleKeywords.push(spot.parking.free ? '駐車場無料' : '駐車場');
-    }
-    if (spot.dogRun && spot.dogRun.available) {
-      titleKeywords.push('ドッグラン');
-    }
-    // タイトル: 「スポット名｜特徴（都道府県）- わんさかんさい」
-    const titleKwText = titleKeywords.length > 0
-      ? `${titleKeywords.join('・')}（${prefShort}）`
-      : `${prefShort}の犬連れスポット`;
-    const spotTitle = `${spot.name}｜${titleKwText} - わんさかんさい`;
-    document.title = spotTitle;
-
-    const spotUrl = `https://wansakansai.com/spot.html?id=${spot.id}`;
-
-    // description用: より多くのキーワードを含める（検索対象が広がる）
-    const descFeatures = [];
-    if (spot.parking && spot.parking.available) {
-      descFeatures.push(spot.parking.free ? '駐車場無料' : '駐車場あり');
-    } else if (spot.parking && spot.parking.available === false) {
-      descFeatures.push('駐車場なし');
-    }
-    if (spot.dogRun && spot.dogRun.available) {
-      const dr = spot.dogRun.free ? '無料ドッグラン' : 'ドッグラン';
-      descFeatures.push(spot.dogRun.separated ? `${dr}（エリア分離）` : dr);
-    }
-    if (spot.toilet && spot.toilet.available) {
-      descFeatures.push(spot.toilet.western ? 'トイレ（洋式）' : 'トイレあり');
-    }
-    if (spot.admission) {
-      descFeatures.push(spot.admission.free ? '入場無料' : '有料');
-    }
-    const descFeaturesText = descFeatures.length > 0
-      ? descFeatures.join('・') + '。'
-      : '';
-    const spotDesc = `${spot.name}（${spot.address}）の犬連れお出かけ情報。${descFeaturesText}${prefShort}で犬と楽しめるスポットの詳細・アクセス・地図を掲載。`;
-
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) metaDesc.content = spotDesc;
-    // canonical
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (canonical) canonical.href = spotUrl;
-    // OGP
-    const ogUpdates = { 'og:title': spotTitle, 'og:description': spotDesc, 'og:url': spotUrl };
-    for (const [prop, val] of Object.entries(ogUpdates)) {
-      const el = document.querySelector(`meta[property="${prop}"]`);
-      if (el) el.content = val;
-    }
-    // JSON-LD
-    const jsonLd = document.createElement('script');
-    jsonLd.type = 'application/ld+json';
-    jsonLd.textContent = JSON.stringify({
-      '@context': 'https://schema.org', '@type': 'Place',
-      name: spot.name, address: { '@type': 'PostalAddress', addressRegion: spot.address },
-      geo: { '@type': 'GeoCoordinates', latitude: spot.lat, longitude: spot.lng },
-      url: spotUrl
-    });
-    document.head.appendChild(jsonLd);
+    // パス解決: /spots/{id}.html (静的ページ) からは ../ プレフィックスが必要
+    const isInSpotsDir = window.location.pathname.startsWith('/spots/');
+    const imgBase = isInSpotsDir ? '../' : '';
+    const spotLinkBase = isInSpotsDir ? '../spots/' : 'spots/';
 
     // Build info
-    const visitedStamp = spot.visited ? '<img src="images/stamp-visited.png" alt="運営が実際に訪問済み" class="detail-visited-stamp">' : '';
+    const visitedStamp = spot.visited ? `<img src="${imgBase}images/stamp-visited.png" alt="運営が実際に訪問済み" class="detail-visited-stamp">` : '';
 
     let parkingText = 'なし';
     if (spot.parking.available) {
@@ -118,7 +61,8 @@
     const isFav = isFavorite(spot.id);
 
     // Build gallery
-    const images = spot.images || (spot.imageUrl ? [spot.imageUrl] : []);
+    const rawImages = spot.images || (spot.imageUrl ? [spot.imageUrl] : []);
+    const images = rawImages.map(img => imgBase + img);
     let galleryHtml = '';
     if (images.length > 0) {
       galleryHtml = `
@@ -278,7 +222,7 @@
       nearbyEl.innerHTML = `
         <h3>近くのスポット</h3>
         ${nearby.map(s => `
-          <a href="spot.html?id=${s.id}" class="nearby-spot-card">
+          <a href="${spotLinkBase}${s.id}.html" class="nearby-spot-card">
             <span class="nearby-spot-name">${s.name}</span>
             <span class="nearby-spot-dist">${formatDistance(s._distance)}</span>
           </a>

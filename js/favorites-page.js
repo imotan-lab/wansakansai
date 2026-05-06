@@ -57,7 +57,7 @@
       if (s.admission.free) tags.push('<span class="tag">入場無料</span>');
 
       return `
-        <a href="spot.html?id=${s.id}" class="spot-card">
+        <a href="spots/${s.id}.html" class="spot-card">
           ${visitedStamp}
           <div class="spot-card-header">
             <span class="spot-card-name">${s.name}</span>
