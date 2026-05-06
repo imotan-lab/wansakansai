@@ -83,7 +83,11 @@
 
 ## 作業フロー
 - コード変更後は必ず git commit → git push する
-- **スポットを追加・削除したら** `python generate_sitemap.py` を実行してsitemap.xmlを再生成してからコミットすること
+- **スポットを追加・編集・削除したら** 以下2つを順に実行してからコミットすること
+  - `python generate_spot_pages.py` で `spots/{id}.html` 静的ページを再生成（SEO的に必須）
+  - `python generate_sitemap.py` で sitemap.xml を再生成
+- スポット詳細ページのURLは `https://wansakansai.com/spots/{id}.html` が正規（旧 `spot.html?id=xxx` は自動リダイレクト）。内部リンクは `spots/{id}.html` 形式で書く
+- spots/ 配下のHTMLは `generate_spot_pages.py` の出力なので**手動編集禁止**。再生成で上書きされる
 - プッシュ後はデプロイ完了を待ち、本番サイト https://wansakansai.com を確認する
 - 本番確認はプレビューツールのヘッドレスブラウザで行う（Chromeに干渉しない）
   - preview_startでローカルサーバー起動 → preview_evalで本番URLにナビゲート → preview_screenshotで確認
