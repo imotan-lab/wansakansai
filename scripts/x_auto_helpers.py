@@ -213,25 +213,16 @@ def record_post(history: dict, spot_id: str, post_type: str, text: str):
 # Bot感をなくすため、文体・語尾・絵文字・構造をランダムで変える。
 # 嘘を流さないため、施設情報はspotデータから動的取得。
 
+# ゆるい統一版: ブランド一貫性を保ちつつ、軽いバリエーションでBot感も回避
 OPENING_PATTERNS = [
+    "【今日のおすすめ】{name}（{pref}）",
     "{name}（{pref}）",
-    "{pref}の{name}",
-    "【{name}】{pref}",
-    "{name}（{pref}）を紹介します",
-    "今日の一押し：{name}（{pref}）",
-    "{pref}にある{name}",
 ]
 
 CLOSING_PATTERNS = [
-    "詳細はサイトから\n{url}",
-    "詳しくはこちら\n{url}",
+    "詳細はこちら\n{url}",
     "もっと見る→ {url}",
-    "情報まとめ\n{url}",
-    "{url}\nで詳しくチェック",
 ]
-
-# 特徴説明の語尾ゆらぎ
-FEATURE_STYLE = ["facts", "friendly", "mixed"]
 
 
 def pick_prefecture_hashtag(pref: str | None) -> str:
@@ -333,16 +324,14 @@ def build_spot_post_text(
                 "屋根ありで雨OK",
             ])
 
-    # 本文中段の組み立て（複数パターン）
-    middle_patterns = [
-        "、".join(features) + "。" if features else "",
-        " / ".join(features) if features else "",
-        "\n".join(f"・{f}" for f in features) if len(features) >= 2 else (features[0] if features else ""),
-    ]
-    middle = rng.choice([m for m in middle_patterns if m]) if features else ""
+    # 本文中段: 箇条書き形式に統一（ブランド一貫性）
+    if features:
+        middle = "\n".join(f"・{f}" for f in features)
+    else:
+        middle = ""
 
     if rain_note:
-        middle = f"{rain_note}。{middle}" if middle else f"{rain_note}のスポット"
+        middle = f"・{rain_note}\n{middle}" if middle else f"・{rain_note}"
 
     # 訪問済みなら軽い一言
     visited_note = ""
@@ -409,7 +398,7 @@ def build_spot_post_text(
 
 
 def spot_url(spot_id: str) -> str:
-    return f"{SITE_BASE}/spot.html?id={spot_id}"
+    return f"{SITE_BASE}/spots/{spot_id}.html"
 
 
 def blog_url(slug: str) -> str:
