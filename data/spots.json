@@ -2558,8 +2558,8 @@
     "dogRun": {
       "available": true,
       "free": true,
-      "detail": "大型犬エリア・小型犬エリア・第3エリアの3区画。犬種サイズ別に分離。無料。",
-      "separated": true
+      "detail": "砂地・芝生・第3エリアの3区画。犬種サイズの区別なし、好みで選択可。無料。1年以内の各種混合ワクチン・狂犬病予防接種証明書必要。",
+      "separated": false
     },
     "admission": {
       "free": true,
