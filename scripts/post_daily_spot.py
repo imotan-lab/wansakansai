@@ -180,16 +180,25 @@ def main():
         save_history(history)
 
     # 結果保存
+    result_data = {
+        "posts": [{
+            "spot_id": spot["id"],
+            "name": spot["name"],
+            "text": text,
+            "success": post_ok,
+            "message": post_msg,
+        }],
+    }
     with open(RESULT_PATH, "w", encoding="utf-8") as f:
-        json.dump({
-            "posts": [{
-                "spot_id": spot["id"],
-                "name": spot["name"],
-                "text": text,
-                "success": post_ok,
-                "message": post_msg,
-            }],
-        }, f, ensure_ascii=False, indent=2)
+        json.dump(result_data, f, ensure_ascii=False, indent=2)
+
+    # 失敗時は日付付きで永続保存（後日の調査用、dry-runでも上書きされない）
+    if not post_ok:
+        from datetime import datetime
+        fail_path = PROJECT_DIR / "scripts" / f"x_post_fail_{datetime.now().strftime('%Y-%m-%d_%H%M%S')}.json"
+        with open(fail_path, "w", encoding="utf-8") as f:
+            json.dump(result_data, f, ensure_ascii=False, indent=2)
+        print(f"失敗詳細を保存: {fail_path}")
 
     # キャッシュクリア
     if post_ok:

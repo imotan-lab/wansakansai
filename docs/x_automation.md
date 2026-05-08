@@ -45,7 +45,7 @@
    - 「【ブログ更新】」プレフィックス
 
 4. **週次まとめ** - `scripts/post_weekly_digest.py`
-   - スケジュール: 毎週日曜20:00 JST
+   - スケジュール: 毎週**土曜**20:00 JST（日曜のdaily/danger連投を回避するため、Bot判定リスク対策）
    - タスクID: `wansakansai-weekly-digest`
    - `git log --diff-filter=A --since="7 days ago"` で新規追加ファイルを検出（`blog/*.html`のうちindex.html・drafts以外）
    - 90日以上投稿されていないスポットからピックアップ

@@ -19,3 +19,4 @@ scripts/x_cookies_raw.json
 scripts/dangers_prev.json
 scripts/x_post_result.json
 scripts/x_post_history.json
+scripts/x_post_fail_*.json

@@ -212,6 +212,14 @@ def main():
     with open(RESULT_PATH, "w", encoding="utf-8") as f:
         json.dump(result_data, f, ensure_ascii=False, indent=2)
 
+    # 失敗時は日付付きで永続保存（後日の調査用）
+    if not post_ok:
+        from datetime import datetime
+        fail_path = PROJECT_DIR / "scripts" / f"x_post_fail_weekly_{datetime.now().strftime('%Y-%m-%d_%H%M%S')}.json"
+        with open(fail_path, "w", encoding="utf-8") as f:
+            json.dump(result_data, f, ensure_ascii=False, indent=2)
+        print(f"失敗詳細を保存: {fail_path}")
+
     if post_ok:
         try:
             r = clear_account(ACCOUNT)
