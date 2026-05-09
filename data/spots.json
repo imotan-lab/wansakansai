@@ -3485,9 +3485,9 @@
   {
     "id": "tankakujo-park",
     "name": "丹鶴城公園",
-    "address": "和歌山県新宮市丹鶴3-2-1",
-    "lat": 33.7281,
-    "lng": 135.9884,
+    "address": "和歌山県新宮市新宮7690",
+    "lat": 33.7299,
+    "lng": 135.9925,
     "category": "park",
     "dogSize": {
       "small": true,
