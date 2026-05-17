@@ -47,17 +47,24 @@
 // ===== Common: Header & Footer Injection =====
 
 function getBasePath() {
-  // サブディレクトリ（blog/等）内にいる場合は親ディレクトリを基準にする
+  // サブディレクトリ（blog/, spots/）内にいる場合は親ディレクトリを基準にする
   const path = window.location.pathname;
-  if (path.includes('/blog/')) return '../';
+  if (path.includes('/blog/') || path.includes('/spots/')) return '../';
   return '';
 }
 
-// ブログ内からアクセスする場合、SITE_NAVのhrefを調整する
+// サブディレクトリ内からアクセスする場合、SITE_NAVのhrefを調整する
 function resolveNavHref(href, base) {
-  // blog/index.html のようなサブディレクトリへのリンクは、blog内からは index.html になる
-  if (base === '../' && href.startsWith('blog/')) {
-    return href.replace('blog/', '');
+  if (base === '../') {
+    const path = window.location.pathname;
+    // blog内からは「ブログ一覧」リンクが同じblog内なのでblog/プレフィックスを外す
+    if (path.includes('/blog/') && href.startsWith('blog/')) {
+      return href.replace('blog/', '');
+    }
+    // spots内からも同様
+    if (path.includes('/spots/') && href.startsWith('spots/')) {
+      return href.replace('spots/', '');
+    }
   }
   return base + href;
 }
