@@ -122,15 +122,18 @@
   - 遠くの小さい人物には score_threshold を下げる。食べ物・看板・犬のみの写真は誤検出が多いので、人がいないと判断できる写真は検出自体をスキップする
 
 ## スポット情報 定期チェック（自動タスク）
-- 毎日 PM10:00 JST にローカルスケジュールタスクで実行
-- タスクID: wansakansai-spot-check
-- 10件ずつ順番にチェック、約2週間で全件1周
+- 毎日 PM12:10（前半5件）と PM10:07（後半5件）にローカルスケジュールタスクで実行
+- タスクID: wansakansai-spot-check（前半）/ wansakansai-spot-check-pm（後半）
+- **チェック優先度はカウントベース**: `check_counts` でスポットごとのチェック回数を管理し、回数が少ない順から優先チェック（新規追加スポットは初期値0で自動的に最優先）
+  - 進捗ファイル形式: `{"check_counts": {"spot-id": N, ...}, "pending_layout_ids": [...], "last_date": "..."}`
+  - 対象取得: `python scripts/get_next_check_targets.py --count 5`
+  - カウント更新: `python scripts/update_check_count.py --ids "id1,id2,..." --pending-clear`
 - 複数サイト突き合わせ + ブログ・SNS犬連れ実績確認
 - 問題があればspots.jsonを修正してcommit & push
 - 再検証タスク（spot-verify-am / spot-verify-pm）の冒頭で全件文体チェック（`python scripts/check_writing_style.py --fix`）を実行し、機械的に判定可能な違反は自動修正する
 - チェックタスクで各スポットの本番URLをChrome MCPで開き、レイアウト崩れ・画像404・JSエラーをログに記録（修正はverifyタスクで実施）
 - 自動タスクの実行時間にClaude Codeローカル＋Chrome MCP接続が必要。Claudeを立ち上げ続けておくこと
-- Chrome未接続時はレイアウトチェックだけスキップしてタスクは継続（Web情報チェックは実施）。スキップした分は進捗ファイルの `pending_layout_indices` にプール、次回チェック時に今回分と合わせて消化（チェック成功でpendingリセット）
+- Chrome未接続時はレイアウトチェックだけスキップしてタスクは継続（Web情報チェックは実施）。スキップした分は進捗ファイルの `pending_layout_ids` にプール、次回チェック時に今回分と合わせて消化（チェック成功でpendingリセット）
 - ログ: C:\Users\imao_\.claude\logs\spot_check_YYYY-MM-DD.log（7日分保持）
 - 進捗管理: C:\Users\imao_\Documents\wansakansai\spot_check_progress.json
 - ログ出力はlog.py経由。log.pyはログ名で出力先を振り分け: spot_check_*とwansakansai_*は.claude/logs/へ、それ以外はDocuments/uchidokoro/logs/へ
