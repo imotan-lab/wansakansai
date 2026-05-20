@@ -124,7 +124,9 @@
 ## スポット情報 定期チェック（自動タスク）
 - 毎日 PM12:10（前半5件）と PM10:07（後半5件）にローカルスケジュールタスクで実行
 - タスクID: wansakansai-spot-check（前半）/ wansakansai-spot-check-pm（後半）
-- **チェック優先度はカウントベース**: `check_counts` でスポットごとのチェック回数を管理し、回数が少ない順から優先チェック（新規追加スポットは初期値0で自動的に最優先）
+- **チェック優先度はカウントベース**: `check_counts` でスポットごとのチェック回数を管理し、回数が少ない順から優先チェック
+  - 新規追加スポットは初期値0で自動的に最優先
+  - 既存スポット追加時の初期値は3（新規が3周＝カウント3になるまで既存はチェックされない設計）
   - 進捗ファイル形式: `{"check_counts": {"spot-id": N, ...}, "pending_layout_ids": [...], "last_date": "..."}`
   - 対象取得: `python scripts/get_next_check_targets.py --count 5`
   - カウント更新: `python scripts/update_check_count.py --ids "id1,id2,..." --pending-clear`
