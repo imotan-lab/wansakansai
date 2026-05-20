@@ -6441,5 +6441,903 @@
     "imageUrl": "",
     "images": [],
     "officialUrl": "https://minabebairin.com/"
+  },
+  {
+    "id": "gomanninnomori-park",
+    "name": "5万人の森公園",
+    "address": "奈良県五條市北山町930-1",
+    "lat": 34.3803,
+    "lng": 135.6864,
+    "category": "park",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 2,
+    "barrierFree": 3,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "五條市の里山に広がる入場無料の都市公園。広大な芝生広場・展望台・キャンプ広場（予約制・有料）あり、リード着用で愛犬の散歩可能。2024年7月にリニューアルした「gogoカフェ」「gogoストア」併設、カフェのテラス席は犬同伴可。堀内果実園プロデュースで野菜カレー・生パスタ・ソフトクリーム等を提供。駐車場約50台無料、定休日水曜、9:00〜17:00。フン持ち帰り必須。",
+    "imageUrl": "",
+    "officialUrl": "https://www.city.gojo.lg.jp/soshiki/kouen/1_2/2/3482.html",
+    "tags": [],
+    "aliases": [
+      "ごまんにんのもりこうえん",
+      "5万人の森",
+      "五万人の森公園",
+      "gogoカフェ",
+      "ゴゴカフェ"
+    ]
+  },
+  {
+    "id": "muroyama-art-forest",
+    "name": "室生山上公園 芸術の森",
+    "address": "奈良県宇陀市室生181",
+    "lat": 34.538,
+    "lng": 136.0325,
+    "category": "park",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 3,
+    "barrierFree": 2,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": false,
+      "fee": "大人410円・犬は無料"
+    },
+    "visited": false,
+    "remarks": "イスラエルの彫刻家ダニ・カラヴァン監修の自然と芸術が融合した公園。リードまたはキャリーで犬同伴可能、犬の入園料無料。広大な敷地に螺旋の水路・段々の野原・三日月の丘等のランドスケープアートが点在し、芝生散策が楽しめる。北ゲート53台・南ゲート50台（土日祝のみ）の無料駐車場あり。営業時間10:00〜17:00（3・11・12月は〜16:00）、入園は閉園30分前まで、火曜定休（祝日の場合翌日）、12/29〜2月末休園。",
+    "imageUrl": "",
+    "officialUrl": "https://www.city.uda.lg.jp/soshiki/30/3665.html",
+    "tags": [
+      "koyo"
+    ],
+    "aliases": [
+      "むろうさんじょうこうえん げいじゅつのもり",
+      "室生山上公園芸術の森",
+      "むろうさんじょうこうえん"
+    ]
+  },
+  {
+    "id": "ryuogabuchi",
+    "name": "龍王ヶ淵",
+    "address": "奈良県宇陀市室生向渕",
+    "lat": 34.5683,
+    "lng": 135.9902,
+    "category": "walk",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": false,
+      "western": false
+    },
+    "stairs": 2,
+    "barrierFree": 2,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "標高530mの山中にある神秘的な自然池。風のない晴れた日には水鏡のように周囲の木々が映り込む絶景で、写真愛好家・撮影スポットとして人気。池の周囲には遊歩道（約1km）が整備され、リード着用で愛犬と散策可能。県道28号線沿いに無料駐車場あり、スズランの開花期（5月）には臨時駐車場も開設。トイレなし、自然の中のため夏場はマムシ・スズメバチに注意。一部ぬかるみあり長靴推奨。",
+    "imageUrl": "",
+    "officialUrl": "http://yamatoji.nara-kankou.or.jp/02nature/03lake-dam/03east_area/ryuogabuchi/",
+    "tags": [],
+    "aliases": [
+      "りゅうおうがふち",
+      "りゅうおうがぶち",
+      "龍王ヶ渕",
+      "竜王ヶ淵",
+      "竜王ヶ渕"
+    ]
+  },
+  {
+    "id": "soni-kogen",
+    "name": "曽爾高原",
+    "address": "奈良県宇陀郡曽爾村太良路",
+    "lat": 34.521,
+    "lng": 136.1638,
+    "category": "walk",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 3,
+    "barrierFree": 1,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "標高約700mの一面ススキの草原で関西屈指の絶景ハイキングスポット。リード着用で愛犬と入山可能、高原一帯は入山無料。お亀池を巡る遊歩道や亀山峠への登山道があり、ススキの見頃は10月上旬〜11月下旬で特に夕日と黄金色のススキが美しい。倶留尊山方面は二本ボソ先で入山料500円別途。野口駐車場150台・ファームガーデン駐車場150台あり、1回800円。シーズン中は夕方渋滞注意。",
+    "imageUrl": "",
+    "officialUrl": "https://sonimura.com/sightseeing/1/",
+    "tags": [
+      "koyo"
+    ],
+    "aliases": [
+      "そにこうげん",
+      "曽爾村高原",
+      "お亀池",
+      "おかめいけ"
+    ]
+  },
+  {
+    "id": "byobuiwa-koen",
+    "name": "屏風岩公苑",
+    "address": "奈良県宇陀郡曽爾村長野",
+    "lat": 34.5073,
+    "lng": 136.0959,
+    "category": "walk",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": false
+    },
+    "stairs": 3,
+    "barrierFree": 1,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "国の天然記念物・幅2km高さ200mの柱状節理の岩壁がそびえる名所。麓には樹齢約100年の山桜約300本が群生し、見頃の4月中旬〜下旬には屏風岩と桜の幻想的なコントラストが楽しめる。リード着用でペット同伴可、犬連れ訪問者多数。24時間入場無料、駐車場50台あり、春・秋シーズンのみ普通車1台500円の維持管理協力金が必要。秋は紅葉の名所、夜間ライトアップ開催あり。",
+    "imageUrl": "",
+    "officialUrl": "https://sonimura.com/sightseeing/4/",
+    "tags": [
+      "sakura",
+      "koyo"
+    ],
+    "aliases": [
+      "びょうぶいわこうえん",
+      "屏風岩"
+    ]
+  },
+  {
+    "id": "shigisan-chogosonshiji",
+    "name": "信貴山 朝護孫子寺",
+    "address": "奈良県生駒郡平群町信貴山2280-1",
+    "lat": 34.6094,
+    "lng": 135.6713,
+    "category": "walk",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 4,
+    "barrierFree": 1,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": "霊宝館・戒壇巡り等は別途有料（霊宝館大人300円・子供200円）"
+    },
+    "visited": false,
+    "remarks": "信貴山真言宗の総本山で聖徳太子ゆかりの古刹、寅にちなむ巨大な張子の虎で有名。公式にはペット参拝不可とされるが、本堂内部以外の境内・参道はリード着用で散策する犬連れ訪問者も多い（マナー厳守必須、本堂前は控える）。境内自由拝観、9:00〜16:30。駐車場は第一・第二合わせ約90台で1回500円前払い。階段・坂道多く脚力必要、桜・紅葉の名所でもある。",
+    "imageUrl": "",
+    "officialUrl": "https://www.sigisan.or.jp/",
+    "tags": [
+      "sakura",
+      "koyo"
+    ],
+    "aliases": [
+      "しぎさん ちょうごそんしじ",
+      "朝護孫子寺",
+      "ちょうごそんしじ",
+      "信貴山寺",
+      "信貴山"
+    ]
+  },
+  {
+    "id": "katsuragisan-ropeway",
+    "name": "葛城山ロープウェイ・葛城高原",
+    "address": "奈良県御所市櫛羅2503-1",
+    "lat": 34.4544,
+    "lng": 135.6838,
+    "category": "walk",
+    "dogSize": {
+      "small": true,
+      "large": false
+    },
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 3,
+    "barrierFree": 2,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": false,
+      "fee": "ロープウェイ大人往復1,500円・犬は手回り品切符片道290円（往復580円）"
+    },
+    "visited": false,
+    "remarks": "標高959mの山頂に広がる葛城高原と山麓を結ぶロープウェイ、ペット同乗可能で関西では珍しい犬連れ絶景スポット。乗車条件はクレートまたはキャリーに完全に収納できる10kg以内（クレート貸出あり）、混雑時持込断りの場合あり。山頂はなだらかな高原で散策路充実、5月上旬の「一目百万本」と称されるツツジが圧巻。秋はススキ・紅葉、冬は樹氷も。葛城高原ロッジ食堂・入浴はペット不可。麓駐車場有料。",
+    "imageUrl": "",
+    "officialUrl": "https://www.kintetsu.co.jp/senden/katsuragisanropeway/",
+    "tags": [
+      "koyo",
+      "small-dog-only"
+    ],
+    "aliases": [
+      "かつらぎさんろーぷうぇい",
+      "葛城山",
+      "葛城高原",
+      "かつらぎこうげん",
+      "やまとかつらぎさん"
+    ]
+  },
+  {
+    "id": "yoshinoyama",
+    "name": "吉野山（千本桜）",
+    "address": "奈良県吉野郡吉野町吉野山",
+    "lat": 34.3628,
+    "lng": 135.8599,
+    "category": "walk",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 4,
+    "barrierFree": 1,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": "下千本駐車場 通常乗用車500円・桜シーズンは値上げ"
+    },
+    "visited": false,
+    "remarks": "ユネスコ世界遺産「紀伊山地の霊場と参詣道」を構成する日本屈指の桜の名所。シロヤマザクラ中心に約200種3万本が下千本・中千本・上千本・奥千本と順に咲き継ぐ。リード着用で愛犬と参道散策可能、吉水神社は犬の祈祷も受付ける「ワンコに優しい神社」として知られる。下千本駐車場約400台、2025年10月から通年有料化、桜シーズン3月20日〜GW最終日は値上げ。近鉄ロープウェイは犬手回り品290円で同乗可。本堂内はペット不可、各寺社のマナー要確認。",
+    "imageUrl": "",
+    "officialUrl": "https://yoshinoyama-kankou.com/",
+    "tags": [
+      "sakura",
+      "koyo"
+    ],
+    "aliases": [
+      "よしのやま",
+      "吉野",
+      "吉野千本桜",
+      "千本桜",
+      "下千本",
+      "中千本",
+      "上千本"
+    ]
+  },
+  {
+    "id": "tsukigase-baikei",
+    "name": "月ヶ瀬梅渓",
+    "address": "奈良県奈良市月ヶ瀬尾山",
+    "lat": 34.7075,
+    "lng": 136.0392,
+    "category": "walk",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 3,
+    "barrierFree": 2,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "五月川（名張川）の渓谷沿いに約1万本の梅が広がる奈良県三大梅林の一つで国の名勝。リード着用で愛犬と散策可能、犬連れ訪問ブログ多数あり。見頃は2月中旬〜3月中旬、梅まつり期間中（2026年は2月14日〜3月29日）は屋台・観光船等イベント多数。駐車場は周辺に複数あり600〜800円程度（てっぺん駐車場30台700円・ロマントピア月ヶ瀬300台以上等）、休日は混雑するため平日または夕方推奨。フン持ち帰り・他来訪者への配慮必須。",
+    "imageUrl": "",
+    "officialUrl": "https://tsukigase-kanko.or.jp/",
+    "tags": [],
+    "aliases": [
+      "つきがせばいけい",
+      "月ヶ瀬梅林",
+      "つきがせばいりん",
+      "月ケ瀬梅林",
+      "月ヶ瀬梅溪"
+    ]
+  },
+  {
+    "id": "yatadera",
+    "name": "矢田寺",
+    "address": "奈良県大和郡山市矢田町3549",
+    "lat": 34.6495,
+    "lng": 135.7365,
+    "category": "walk",
+    "dogSize": {
+      "small": true,
+      "large": false
+    },
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 4,
+    "barrierFree": 1,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": false,
+      "fee": "あじさい期間中（5月末〜6月）大人700円・小学生300円、通常時境内自由"
+    },
+    "visited": false,
+    "remarks": "正式名称・金剛山寺、約1万株のあじさいで知られる「あじさい寺」。矢田丘陵の緑を背景にした古刹で、リード着用または抱っこバッグでペット同伴可能、寺院では珍しく犬連れ参拝歓迎。大型犬は不可、あじさい園は通路狭く抱っこ推奨。あじさい開園期間は例年5月31日〜6月30日、開門8:30〜17:00。民間駐車場500台あり100〜500円程度。お地蔵さん巡りや本堂への階段あり、フン・マナーパンツ等の配慮必須。",
+    "imageUrl": "",
+    "officialUrl": "https://www.yatadera.or.jp/",
+    "tags": [
+      "small-dog-only"
+    ],
+    "aliases": [
+      "やたでら",
+      "金剛山寺",
+      "こんごうさんじ",
+      "あじさい寺",
+      "矢田のお地蔵さん"
+    ]
+  },
+  {
+    "id": "harvest-no-oka",
+    "name": "堺・緑のミュージアム ハーベストの丘",
+    "address": "大阪府堺市南区鉢ヶ峯寺2405-1",
+    "lat": 34.4549,
+    "lng": 135.5123,
+    "category": "other",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 2,
+    "barrierFree": 4,
+    "dogRun": {
+      "available": true,
+      "free": false,
+      "separated": true,
+      "detail": "総面積約2,100平米、小型犬エリアと中・大型犬エリアに分離。入園料に含まれる"
+    },
+    "admission": {
+      "free": false,
+      "fee": "大人1,000円（3〜11月）・600円（12〜2月）、ワンちゃん600円"
+    },
+    "visited": false,
+    "remarks": "南大阪最大級のふれあい体験型農業公園。総面積約2,100平米の大型ドッグランあり、小型犬エリアと中・大型犬エリアに分離、リードは2m以内のもの限定で伸縮リード・ロングリードは不可。入園時に1年以内に接種した5種以上の混合ワクチンと狂犬病ワクチン接種証明書の原本提示が必須。GW・夏季（例年7月下旬〜9月下旬）・食育ワンダーランド開催日（例年12月）は犬の入園不可、気温が高い日も入園不可となる場合あり要確認。じゃぶじゃぶ広場・動物ふれあい村エリアは犬不可、その他のエリアは散歩可能。駐車場約1,800台無料。",
+    "imageUrl": "",
+    "officialUrl": "https://farm.or.jp/",
+    "tags": [
+      "sakura"
+    ],
+    "aliases": [
+      "はーべすとのおか",
+      "ハーベストの丘",
+      "堺ハーベストの丘",
+      "堺・緑のミュージアム"
+    ]
+  },
+  {
+    "id": "world-bokujo",
+    "name": "ワールド牧場",
+    "address": "大阪府南河内郡河南町白木1456-2",
+    "lat": 34.4754,
+    "lng": 135.642,
+    "category": "other",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 3,
+    "barrierFree": 3,
+    "dogRun": {
+      "available": true,
+      "free": false,
+      "separated": true,
+      "detail": "小型犬専用エリアと中・大型犬エリアに分離、アジリティ設備あり。入園料に含まれる"
+    },
+    "admission": {
+      "free": false,
+      "fee": "大人2,000円・小人1,000円・ペット500円（2026年3月改定）"
+    },
+    "visited": false,
+    "remarks": "1989年開業の大型ふれあい観光牧場。小型犬エリアと中・大型犬エリアに分離した広々ドッグランあり、両エリアともアジリティ設備あり、高低差のある自然のフィールドが特徴。牛・馬・羊・アルパカ等多数の動物とのふれあい可能で犬同伴で園内散策可能。毎月11日はわんわんDAYでペット入園料無料。営業時間は10:00〜17:30で季節により変動、定休日は火曜（祝日翌日休）、12〜2月の冬期は平日休業（春休み・GW・夏休み・年末年始は無休）。駐車場約1,000台無料。",
+    "imageUrl": "",
+    "officialUrl": "http://www.worldranch.co.jp/",
+    "tags": [],
+    "aliases": [
+      "わーるどぼくじょう",
+      "ワールド牧場",
+      "World Ranch"
+    ]
+  },
+  {
+    "id": "expo70-park",
+    "name": "万博記念公園",
+    "address": "大阪府吹田市千里万博公園1-1",
+    "lat": 34.8083,
+    "lng": 135.5345,
+    "category": "walk",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 2,
+    "barrierFree": 4,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "1970年大阪万博跡地に整備された大規模公園。有料エリアの自然文化園・日本庭園・運動施設はペット持ち込み禁止（補助犬は除く）、園路や広場等の無料エリアのみマナーを守った散歩が可能。太陽の塔周辺の中央口広場やお祭り広場・東大路・西大路などの園路で散歩可能、有料ゲート内には絶対に入らないよう注意。リード必須・フン処理必須。駐車場は平日2時間410円・土日祝620円、最大平日1,100円・土日祝1,600円。不明点は万博記念公園コールセンター（06-6877-7387）で事前確認推奨。",
+    "imageUrl": "",
+    "officialUrl": "https://www.expo70-park.jp/",
+    "tags": [
+      "sakura",
+      "koyo"
+    ],
+    "aliases": [
+      "ばんぱくきねんこうえん",
+      "万博公園",
+      "EXPO70",
+      "万博"
+    ]
+  },
+  {
+    "id": "sennan-satoumi-park",
+    "name": "せんなん里海公園",
+    "address": "大阪府泉南郡岬町淡輪地先",
+    "lat": 34.3375,
+    "lng": 135.1875,
+    "category": "park",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 2,
+    "barrierFree": 4,
+    "dogRun": {
+      "available": true,
+      "free": true,
+      "separated": true,
+      "detail": "中・大型犬フィールド約460平米と小型犬専用フィールド約100平米に分離、海が見える芝生の丘"
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "阪南市から岬町にかけての海岸に広がる大阪府営海浜公園。隣接する淡輪海水浴場（ときめきビーチ）は犬同伴入場可能、ただし遊泳客がいる場所での入水不可、リード必須。海が見える芝生の丘の無料ドッグランあり、中・大型犬フィールド約460平米と小型犬専用フィールド約100平米に分離、24時間利用可能（年末年始休場）。さとうみ磯浜も散歩コースとして人気。駐車場約1,000台、普通車は平日320円・土日祝620円（1日）、7・8月は料金変動あり要確認。",
+    "imageUrl": "",
+    "officialUrl": "https://sennan.osaka-park.or.jp/",
+    "tags": [
+      "water"
+    ],
+    "aliases": [
+      "せんなんさとうみこうえん",
+      "ときめきビーチ",
+      "ときめきびーち",
+      "淡輪海水浴場",
+      "たんのわかいすいよくじょう",
+      "さとうみ公園"
+    ]
+  },
+  {
+    "id": "nishikinohama-park",
+    "name": "二色の浜公園",
+    "address": "大阪府貝塚市沢859-1",
+    "lat": 34.4283,
+    "lng": 135.3522,
+    "category": "park",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 1,
+    "barrierFree": 4,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "中央エリア・スポーツエリア・海浜緑地の3エリアからなる大阪府営海浜公園。2012年からペットOKゾーンが設けられ犬と一緒に海水浴可能、ただし潮干狩りエリアは犬不可。海浜緑地のドッグフリーDAYキャンプエリアでは犬連れBBQも可能、リード必須・フン処理必須。第1駐車場は9:00〜21:00（出庫22:00まで）、第2駐車場は5:00〜21:00、料金は普通車平日200円・土日祝300円（1時間）、最大640円。",
+    "imageUrl": "",
+    "officialUrl": "https://nishikinohama-park.com/",
+    "tags": [
+      "water"
+    ],
+    "aliases": [
+      "にしきのはまこうえん",
+      "二色の浜",
+      "二色ヶ浜",
+      "BLUEPARK"
+    ]
+  },
+  {
+    "id": "senri-minami-park",
+    "name": "千里南公園",
+    "address": "大阪府吹田市津雲台1-3",
+    "lat": 34.8025,
+    "lng": 135.5042,
+    "category": "park",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 1,
+    "barrierFree": 4,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "千里ニュータウン南部に1963年開園した市民憩いの公園。中央に牛ヶ首池がありその周囲を一周約916mの遊歩道で散策可能、中央広場の周回路と合わせ約1,173mのコースはジョギング・散歩で人気。約330本のソメイヨシノが咲く桜の名所。園内のPARK in CAFE bird treeはデッキテラス席で犬同伴OK。24時間開園・年中無休、リード必須。駐車場48台で60分100円、阪急南千里駅から徒歩5分のため公共交通機関推奨。",
+    "imageUrl": "",
+    "officialUrl": "https://www.city.suita.osaka.jp/home/soshiki/div-doboku/kouenmidori/park-info/senriminami-park.html",
+    "tags": [
+      "sakura"
+    ],
+    "aliases": [
+      "せんりみなみこうえん",
+      "千里南"
+    ]
+  },
+  {
+    "id": "senri-chuo-park",
+    "name": "千里中央公園",
+    "address": "大阪府豊中市新千里東町3-9",
+    "lat": 34.8111,
+    "lng": 135.5055,
+    "category": "park",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 3,
+    "barrierFree": 3,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "千里ニュータウンの中心に広がる総面積約14.2haの都市公園。冒険の森エリアに総延長約150mのロングローラーすべり台あり、芝生広場・散策路・展望台・池などを巡る散歩コースが充実、四季を通じて自然観察が楽しめる。桜の丘に約300本のソメイヨシノが咲く花見の名所で、新緑・紅葉シーズンも見どころ多数。リード必須。展望台駐車場35台は無料、第1駐車場100台・第2駐車場44台は最初の30分無料・以降30分100円。",
+    "imageUrl": "",
+    "officialUrl": "https://www.city.toyonaka.osaka.jp/shisetsu/koen/toubu/senricyuo.html",
+    "tags": [
+      "sakura",
+      "koyo"
+    ],
+    "aliases": [
+      "せんりちゅうおうこうえん",
+      "千里中央",
+      "冒険の森"
+    ]
+  },
+  {
+    "id": "suigetsu-park-ikeda",
+    "name": "水月公園",
+    "address": "大阪府池田市鉢塚3-6",
+    "lat": 34.8161,
+    "lng": 135.4378,
+    "category": "park",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": false,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 2,
+    "barrierFree": 3,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "梅・花菖蒲の名所として知られる水と緑豊かな池田市の公園。中段の池には友好都市・中国蘇州市から贈られた斉芳亭が映え、人工滝とともに中国式庭園の趣あり。約250本15種の梅は2月下旬、約6,000株60種の花菖蒲は6月が見頃、4月上旬の桜も楽しめる。園内に無料の釣り堀あり（9:00〜17:00、冬期16:00まで）。リード必須。専用駐車場なしのため阪急バス「鉢塚」下車徒歩5分等の公共交通機関推奨、車利用時は近隣有料駐車場利用。",
+    "imageUrl": "",
+    "officialUrl": "https://www.ikedashi-kanko.jp/spot/recommend-spot14",
+    "tags": [
+      "sakura"
+    ],
+    "aliases": [
+      "すいげつこうえん",
+      "水月公園 池田"
+    ]
+  },
+  {
+    "id": "kema-sakuranomiya-park",
+    "name": "毛馬桜之宮公園",
+    "address": "大阪府大阪市都島区中野町〜北区天満1丁目",
+    "lat": 34.7028,
+    "lng": 135.5158,
+    "category": "walk",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": false,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 1,
+    "barrierFree": 4,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "大川の毛馬洗堰から天満橋まで延長約4.2kmにわたるリバーサイドパーク。ソメイヨシノ・山桜・里桜など約4,800本の桜並木が続き、例年3月下旬〜4月中旬は大阪屈指の花見スポット。造幣局・泉布観など明治初期のレトロ建造物が並ぶ右岸沿いの遊歩道は散策・ジョギングに最適、犬連れの花見スポットとしても人気。リード必須・フン処理必須。園内にトイレ約7ヶ所あり。専用駐車場なしのため周辺コインパーキング利用、JR桜ノ宮駅・京阪天満橋駅・JR大阪城北詰駅から徒歩圏内。",
+    "imageUrl": "",
+    "officialUrl": "https://parksgreenery.city.osaka.lg.jp/article/parks-sakuranomiya/",
+    "tags": [
+      "sakura"
+    ],
+    "aliases": [
+      "けまさくらのみやこうえん",
+      "桜之宮公園",
+      "桜ノ宮公園",
+      "毛馬桜の宮公園"
+    ]
+  },
+  {
+    "id": "hagitani-sogo-park",
+    "name": "萩谷総合公園",
+    "address": "大阪府高槻市大字萩谷111-1",
+    "lat": 34.885,
+    "lng": 135.5678,
+    "category": "park",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "stairs": 3,
+    "barrierFree": 3,
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": false,
+    "remarks": "高槻市初の総合公園、総面積約33.98haの広大な森林公園。サッカー場・テニスコート・野球場の運動系ゾーン、多目的広場・わんぱく広場の休養遊戯ゾーン、森林浴・野鳥観察が楽しめる自然系ゾーンに分かれ、体験の森・観察の森・チョウの里・梢の森など散策園路が充実。緑地70％以上を残した自然豊かな環境で、隣接する摂津峡公園へも散策可能。全長約40mのローラーすべり台2基あり。リード必須。駐車場350台、普通車1時間100円・3時間超400円上限。定休日は第3水曜（公園事務所）・12月28日〜1月4日。",
+    "imageUrl": "",
+    "officialUrl": "https://www.city.takatsuki.osaka.jp/soshiki/54/5514.html",
+    "tags": [
+      "koyo"
+    ],
+    "aliases": [
+      "はぎたにそうごうこうえん",
+      "萩谷公園"
+    ]
   }
 ]
