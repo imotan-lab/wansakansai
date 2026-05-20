@@ -128,6 +128,8 @@
 - 複数サイト突き合わせ + ブログ・SNS犬連れ実績確認
 - 問題があればspots.jsonを修正してcommit & push
 - 再検証タスク（spot-verify-am / spot-verify-pm）の冒頭で全件文体チェック（`python scripts/check_writing_style.py --fix`）を実行し、機械的に判定可能な違反は自動修正する
+- チェックタスクで各スポットの本番URLをChrome MCPで開き、レイアウト崩れ・画像404・JSエラーをログに記録（修正はverifyタスクで実施）
+- 自動タスクの実行時間にClaude Codeローカル＋Chrome MCP接続が必要。Claudeを立ち上げ続けておくこと
 - ログ: C:\Users\imao_\.claude\logs\spot_check_YYYY-MM-DD.log（7日分保持）
 - 進捗管理: C:\Users\imao_\Documents\wansakansai\spot_check_progress.json
 - ログ出力はlog.py経由。log.pyはログ名で出力先を振り分け: spot_check_*とwansakansai_*は.claude/logs/へ、それ以外はDocuments/uchidokoro/logs/へ
