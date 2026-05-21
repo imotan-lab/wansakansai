@@ -54,7 +54,7 @@
       if (spot.dogRun.detail) dogRunText += ` / ${spot.dogRun.detail}`;
     }
 
-    let admissionText = spot.admission.free ? '無料' : `有料（${spot.admission.fee || ''})`;
+    let admissionText = spot.admission.free ? '無料' : `有料（${spot.admission.fee || ''}）`;
 
     const mapQuery = encodeURIComponent(spot.name + ' ' + spot.address);
 
