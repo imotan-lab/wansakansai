@@ -21,75 +21,171 @@ SPOTS_JSON = PROJECT_DIR / "data" / "spots.json"
 PREF_RE = re.compile(r"^(大阪府|兵庫県|京都府|奈良県|滋賀県|和歌山県)")
 
 
-def build_title(spot: dict) -> str:
-    """スポット名｜特徴（都道府県）- わんさかんさい"""
-    addr = spot.get("address", "") or ""
-    m = PREF_RE.match(addr)
-    pref_short = m.group(1).rstrip("府県") if m else "関西"
+def _pref_and_rest(addr: str) -> tuple[str, str]:
+    """住所を都道府県とそれ以降に分割。"""
+    m = PREF_RE.match(addr or "")
+    if not m:
+        return ("", addr or "")
+    pref = m.group(1)
+    rest = (addr or "")[len(pref):]
+    return (pref, rest)
 
-    keywords = []
-    parking = spot.get("parking") or {}
-    if parking.get("available"):
-        keywords.append("駐車場無料" if parking.get("free") else "駐車場")
+
+def _short_pref(pref: str) -> str:
+    return pref.rstrip("府県") if pref else "関西"
+
+
+def build_title(spot: dict) -> str:
+    """スポット名｜犬連れOK・特徴（都道府県）- わんさかんさい
+
+    SEO: 「○○ 犬連れ」クエリで上位を狙うため『犬連れOK』を必ず含める。
+    全角30文字以内が理想（検索結果で省略されない）。長すぎる場合は特徴を削る。
+    """
+    pref, _ = _pref_and_rest(spot.get("address", ""))
+    pref_short = _short_pref(pref)
+
+    # 優先順位順の特徴リスト
+    features = ["犬連れOK"]
     dogrun = spot.get("dogRun") or {}
     if dogrun.get("available"):
-        keywords.append("ドッグラン")
+        features.append("ドッグラン")
+    parking = spot.get("parking") or {}
+    if parking.get("available"):
+        features.append("駐車場無料" if parking.get("free") else "駐車場あり")
+    admission = spot.get("admission") or {}
+    if admission.get("free"):
+        features.append("入場無料")
 
-    if keywords:
-        kw_text = f"{'・'.join(keywords)}（{pref_short}）"
-    else:
-        kw_text = f"{pref_short}の犬連れスポット"
-    return f"{spot['name']}｜{kw_text} - わんさかんさい"
+    suffix = " - わんさかんさい"
+    name = spot["name"]
+    # 文字数調整: name + ｜ + 特徴 + （県） + suffix が30文字を超えない範囲で特徴を盛る
+    for k in range(len(features), 0, -1):
+        feat_text = "・".join(features[:k])
+        title = f"{name}｜{feat_text}（{pref_short}）{suffix}"
+        if len(title) <= 37:  # 検索結果でほぼ表示される範囲
+            return title
+    return f"{name}｜犬連れOK（{pref_short}）{suffix}"
 
 
 def build_description(spot: dict) -> str:
-    addr = spot.get("address", "") or ""
-    m = PREF_RE.match(addr)
-    pref_short = m.group(1).rstrip("府県") if m else "関西"
+    """スポットの犬連れ情報を120字前後で要約する meta description。
+
+    SEO: 検索結果に表示される説明文。スポット名・特徴・remarks先頭を含める。
+    """
+    pref, rest = _pref_and_rest(spot.get("address", ""))
+    pref_short = _short_pref(pref)
 
     features = []
     parking = spot.get("parking") or {}
     if parking.get("available") is True:
-        features.append("駐車場無料" if parking.get("free") else "駐車場あり")
-    elif parking.get("available") is False:
-        features.append("駐車場なし")
+        features.append("駐車場無料" if parking.get("free") else "駐車場有料")
     dogrun = spot.get("dogRun") or {}
     if dogrun.get("available"):
         dr = "無料ドッグラン" if dogrun.get("free") else "ドッグラン"
         if dogrun.get("separated"):
             dr += "（エリア分離）"
         features.append(dr)
+    admission = spot.get("admission") or {}
+    if admission.get("free"):
+        features.append("入場無料")
     toilet = spot.get("toilet") or {}
     if toilet.get("available"):
-        features.append("トイレ（洋式）" if toilet.get("western") else "トイレあり")
-    admission = spot.get("admission") or {}
-    if "free" in admission:
-        features.append("入場無料" if admission.get("free") else "有料")
+        features.append("トイレあり")
 
     feat_text = "・".join(features) + "。" if features else ""
+
+    # remarks先頭文の最初の1〜2文だけ抜粋
+    remarks = (spot.get("remarks") or "").strip()
+    remarks_excerpt = ""
+    if remarks:
+        sentences = [s.strip() for s in remarks.split("。") if s.strip()]
+        excerpt_buf = ""
+        for s in sentences:
+            if len(excerpt_buf) + len(s) + 1 > 60:
+                break
+            excerpt_buf += s + "。"
+        remarks_excerpt = excerpt_buf
+
     return (
-        f"{spot['name']}（{addr}）の犬連れお出かけ情報。"
-        f"{feat_text}{pref_short}で犬と楽しめるスポットの詳細・アクセス・地図を掲載。"
-    )
+        f"{spot['name']}は{pref_short}の犬連れOKスポット。"
+        f"{feat_text}{remarks_excerpt}"
+        f"アクセス・地図・周辺情報を掲載。"
+    )[:155]
 
 
-def build_jsonld(spot: dict, url: str) -> str:
+def _amenity(name: str, value: bool) -> dict:
+    return {
+        "@type": "LocationFeatureSpecification",
+        "name": name,
+        "value": value,
+    }
+
+
+def build_jsonld(spot: dict, url: str, image_url: str = "") -> str:
+    """Place構造化データ。リッチリザルト対応のため amenityFeature 等を充実させる。"""
+    pref, rest = _pref_and_rest(spot.get("address", ""))
+
+    address: dict = {
+        "@type": "PostalAddress",
+        "addressCountry": "JP",
+    }
+    if pref:
+        address["addressRegion"] = pref
+    if rest:
+        address["streetAddress"] = rest
+
     data = {
         "@context": "https://schema.org",
         "@type": "Place",
         "name": spot["name"],
-        "address": {
-            "@type": "PostalAddress",
-            "addressRegion": spot.get("address", ""),
-        },
+        "description": (spot.get("remarks") or "").split("。")[0] + "。" if spot.get("remarks") else "",
         "url": url,
+        "address": address,
+        "petsAllowed": True,
     }
+    if image_url:
+        data["image"] = image_url
     if spot.get("lat") and spot.get("lng"):
         data["geo"] = {
             "@type": "GeoCoordinates",
             "latitude": spot["lat"],
             "longitude": spot["lng"],
         }
+
+    # 価格帯
+    admission = spot.get("admission") or {}
+    if admission.get("free"):
+        data["priceRange"] = "無料"
+    elif admission.get("fee"):
+        data["priceRange"] = admission["fee"]
+
+    # 公式URL等は sameAs に
+    if spot.get("officialUrl"):
+        data["sameAs"] = [spot["officialUrl"]]
+
+    # 設備
+    amenities = []
+    parking = spot.get("parking") or {}
+    if parking.get("available"):
+        amenities.append(_amenity("駐車場無料" if parking.get("free") else "駐車場", True))
+    elif parking.get("available") is False:
+        amenities.append(_amenity("駐車場", False))
+    dogrun = spot.get("dogRun") or {}
+    if dogrun.get("available"):
+        dr_name = "無料ドッグラン" if dogrun.get("free") else "ドッグラン"
+        amenities.append(_amenity(dr_name, True))
+    toilet = spot.get("toilet") or {}
+    if toilet.get("available"):
+        amenities.append(_amenity("トイレ（洋式）" if toilet.get("western") else "トイレ", True))
+    if amenities:
+        data["amenityFeature"] = amenities
+
+    # 識別子（aliases等を別名として）
+    aliases = spot.get("aliases") or []
+    if aliases:
+        # ひらがな読み等は alternateName に
+        data["alternateName"] = aliases
+
     return json.dumps(data, ensure_ascii=False)
 
 
@@ -215,7 +311,8 @@ def build_html(spot: dict) -> str:
     desc = build_description(spot)
     images = spot.get("images") or ([spot["imageUrl"]] if spot.get("imageUrl") else [])
     og_image = f"{BASE_URL}/{images[0]}" if images else f"{BASE_URL}/images/ogp.png"
-    jsonld = build_jsonld(spot, url)
+    jsonld_image = og_image if images else ""  # OGP fallback画像は構造化データには含めない
+    jsonld = build_jsonld(spot, url, jsonld_image)
     body_content = build_body_content(spot)
 
     title_e = html.escape(title)
