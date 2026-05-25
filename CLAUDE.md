@@ -38,10 +38,10 @@
 - canonical URL: 全ページに設定済み（spot.htmlはJSで動的更新）
 - JSON-LD構造化データ: index.htmlにWebSite、spot.jsでPlace（スポットごとに動的生成）
 - 画像最適化済み（ロゴ・スタンプ等をリサイズ、合計8.3MB→435KBに削減）
-- AdSense申請済み（pub-2097489177716087、2026-04-09申請、審査待ち）
-- ads.txt設置済み（pub-2097489177716087）
-- AdSenseコード: 全HTMLページのheadに設置済み
-- 広告枠（ad-slot）はdisplay:noneで非表示中、AdSense審査通過後に有効化する
+- **AdSense審査落ち** → adsbygoogle.js スクリプトと ad-slot div を全HTMLから一旦除去（2026-05-25実施）
+  - ads.txt は残置（再申請時に必要）
+  - 再申請時は generate_spot_pages.py のテンプレと各種HTML（index/about/contact/danger/favorites/privacy/404、blog/**/*.html）の `</head>` 直前に `<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2097489177716087" crossorigin="anonymous"></script>` を戻す
+  - 広告枠（`<div class="ad-slot"></div>`）も以前は spotDetail 下と index.html の主要セクションに設置していた。再申請通過後に必要に応じて復活
 - 独自ドメイン: wansakansai.com（お名前.comで取得済み、Aレコード+AAAAレコード設定済み）
 
 ## スポットデータ項目

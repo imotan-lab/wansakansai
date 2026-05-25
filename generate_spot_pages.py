@@ -343,7 +343,6 @@ def build_html(spot: dict) -> str:
   <link rel="icon" href="../favicon.ico">
   <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
   <link rel="stylesheet" href="../css/style.css">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2097489177716087" crossorigin="anonymous"></script>
   <script type="application/ld+json">{jsonld}</script>
 </head>
 <body>
@@ -353,7 +352,6 @@ def build_html(spot: dict) -> str:
     <div id="spotDetail">
       {body_content}
     </div>
-    <div class="ad-slot"></div>
   </main>
 
   <script>window.WANSAKA_SPOT_ID = "{sid_e}";</script>
