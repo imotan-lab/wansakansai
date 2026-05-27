@@ -129,9 +129,9 @@
   {
     "id": "arashiyama-takao-parkway",
     "name": "嵐山-高雄パークウエイ ワン遊ランド",
-    "address": "京都府京都市西京区嵐山中尾下町54-4",
-    "lat": 35.0272,
-    "lng": 135.6637,
+    "address": "京都府京都市右京区梅ケ畑檜社町11",
+    "lat": 35.0394,
+    "lng": 135.6728,
     "category": "park",
     "dogSize": {
       "small": true,
