@@ -177,7 +177,7 @@
                 </div>
               `).join('')}
             </div>
-            <a href="danger.html" class="detail-danger-more">危険情報の一覧を見る</a>
+            <a href="${getBasePath()}danger.html" class="detail-danger-more">危険情報の一覧を見る</a>
           `;
         })()}
       </div>
