@@ -256,6 +256,12 @@
 - ナビゲーション: SITE_NAVに「ブログ」追加済み（危険情報の後に配置）
 - 記事追加手順: HTMLを `blog/` に配置 → `blog/index.html` にカードを追加
 
+## セキュリティチェック
+- Desktop版は `/plugin` 非対応のため security-guidance プラグインは使えない（グローバルCLAUDE.md記載どおり）
+- 実際の手段は組み込み `/security-review` スキル（AIレビュー込み・APIキー不要・動作確認済み）＋手動コード監査
+- 重点チェック項目は `.claude/claude-security-guidance.md` にまとめてある（`/security-review`・手動監査時の参照リスト。`.claude/`はgitignore対象＝ローカルのみ）
+- 重点: ①データ/入力をinnerHTMLに入れない（XSS）②秘密情報・PAT URLをコミットしない③自動更新JSONにHTMLタグ混入させない
+
 ## 注意事項
 - uchidokoroフォルダ・ファイルには絶対に触れないこと
 - セッション中に汎用的な運用ルールや仕組みが決まったら、ユーザーに言われなくてもCLAUDE.mdとメモリの両方に自動で保存すること
