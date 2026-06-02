@@ -121,6 +121,13 @@
   - 処理後の自己確認（STEP 6）を省略してユーザーに完了報告する
   - 遠くの小さい人物には score_threshold を下げる。食べ物・看板・犬のみの写真は誤検出が多いので、人がいないと判断できる写真は検出自体をスキップする
 
+## 自動タスク共通方針
+- **SKILL.md frontmatterには `model:` 行を入れない**（最新Opus 1Mに自動追従させる方針）
+  - 調査の結果、`model:` をどう指定しても（固定バージョン / opus[1m] / 指定なし）すべて最新Opusで実行されることを確認（Claude Codeがfrontmatterの model: を無視して最新Opusに解決する挙動）
+  - モデル名（Opus/Sonnet/Haiku）も将来変わり得るため固定指定はリスク。`update_scheduled_task` でプロンプト更新するとmodel行が消える既知バグもあり、維持コスト面でも削除が合理的
+  - 確認方法：各タスクログの「使用モデル」行で実際の実行モデルを確認（意図せずSonnetになっていたら要再検討）
+  - 対象タスク（7つ）: wansakansai-daily-spot / danger-update / spot-check / spot-check-pm / spot-verify-am / spot-verify-pm / weekly-digest
+
 ## スポット情報 定期チェック（自動タスク）
 - 毎日 PM12:10（前半5件）と PM10:07（後半5件）にローカルスケジュールタスクで実行
 - タスクID: wansakansai-spot-check（前半）/ wansakansai-spot-check-pm（後半）
