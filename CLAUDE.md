@@ -127,6 +127,9 @@
   - モデル名（Opus/Sonnet/Haiku）も将来変わり得るため固定指定はリスク。`update_scheduled_task` でプロンプト更新するとmodel行が消える既知バグもあり、維持コスト面でも削除が合理的
   - 確認方法：各タスクログの「使用モデル」行で実際の実行モデルを確認（意図せずSonnetになっていたら要再検討）
   - 対象タスク（7つ）: wansakansai-daily-spot / danger-update / spot-check / spot-check-pm / spot-verify-am / spot-verify-pm / weekly-digest
+- **死活監視は task-watchdog（毎朝8:03・うちどころ側で一元管理）が全11タスク（うちどころ4＋わんさかんさい7）を点検・自動復旧する**。わんさかんさい側で同じ死活監視を二重に作らないこと（重複は無駄＆混乱の元）。詳細はグローバルCLAUDE.md参照
+  - タスクが「途中終了→実行中のまま居座り後続をブロック」する障害が起き得る（過去に spot-check-pm が6/1〜6/3の3晩停止）。復旧は `update_scheduled_task` で enabled off→on トグル。これも基本watchdogが自動でやる
+- 共有スクリプト send_notify.py（汎用 notify サブコマンド）・log.py（watchdog_ 接頭辞の振り分け）はうちどころ側watchdog用に拡張済み。わんさかんさいの既存サブコマンド・振り分けは不変
 
 ## スポット情報 定期チェック（自動タスク）
 - 毎日 PM12:10（前半5件）と PM10:07（後半5件）にローカルスケジュールタスクで実行
