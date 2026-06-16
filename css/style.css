@@ -272,44 +272,69 @@ img {
 
 /* ===== Affiliate (Rakuten Travel) ===== */
 .affiliate-stay {
+  margin: 40px 0 8px;
+  padding: 16px 0 0;
+  border-top: 1px dashed var(--color-border);
+}
+.affiliate-stay-head {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin: 40px 0 8px;
-  padding: 12px 0 0;
-  border-top: 1px dashed var(--color-border);
-  font-size: 0.78rem;
-  color: var(--color-text-light);
-  line-height: 1.5;
+  gap: 8px;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text);
+  line-height: 1.4;
 }
 .affiliate-pr-tag {
+  flex-shrink: 0;
   display: inline-block;
-  background: transparent;
   color: var(--color-text-light);
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   font-weight: 600;
-  padding: 0;
   letter-spacing: 0.5px;
   border: 1px solid var(--color-border);
   padding: 1px 5px;
   border-radius: 3px;
 }
 .affiliate-stay-text {
-  color: var(--color-text-light);
+  color: var(--color-text);
 }
-.affiliate-link {
-  color: var(--color-text-light) !important;
-  font-weight: 500;
-  text-decoration: underline;
-  text-underline-offset: 2px;
+.affiliate-btns {
+  display: flex;
+  gap: 10px;
 }
-.affiliate-link:hover {
-  color: var(--color-primary) !important;
+.affiliate-btn {
+  flex: 1;
+  min-height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none !important;
+  color: #fff !important;
+  transition: opacity 0.15s ease, transform 0.05s ease;
 }
-.affiliate-sep {
-  color: var(--color-border);
-  font-size: 0.7rem;
+.affiliate-btn:hover {
+  opacity: 0.88;
+}
+.affiliate-btn:active {
+  transform: translateY(1px);
+}
+.affiliate-btn-rakuten {
+  background: #bf0000;
+}
+.affiliate-btn-jalan {
+  background: #e57000;
+}
+@media (max-width: 480px) {
+  .affiliate-btns {
+    flex-direction: column;
+  }
 }
 
 /* ===== Filter Buttons ===== */

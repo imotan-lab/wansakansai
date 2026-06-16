@@ -233,25 +233,58 @@
 
     // 楽天 + じゃらん アフィリエイト（ペット可宿）- 最下部に配置
     (() => {
-      // 楽天トラベル（楽天アフィリエイト直接リンク。公式ペット可宿特集ページ）
+      // スポットの都道府県を判定（app.jsのgetPrefectureと同一ロジック）
+      const prefMatch = (spot.address || '').match(/^(.+?[都道府県])/);
+      const prefName = prefMatch ? prefMatch[1] : '';
+      // 都道府県 → 楽天トラベルのローマ字エリア（県別ペット可宿ランキングへディープリンク）
+      const PREF_ROMAJI = {
+        '大阪府': 'osaka', '和歌山県': 'wakayama', '滋賀県': 'shiga',
+        '奈良県': 'nara', '兵庫県': 'hyogo', '京都府': 'kyoto',
+      };
+      const romaji = PREF_ROMAJI[prefName];
+      // 県が判定できれば県別ページ、未対応なら全国ペット可トップにフォールバック
+      const travelUrl = romaji
+        ? `https://travel.rakuten.co.jp/share/batch/rrg_pg/pgenerator/hotel/id235/${romaji}/index.html`
+        : 'https://travel.rakuten.co.jp/pet/';
+      // 楽天アフィリの「どこでもリンク」形式（既存IDを流用、link_typeはtextのまま＝規約上安全）
       const RAKUTEN_AFFILIATE_ID = '535b3809.5ed3e82b.535b380a.3e77d4ae';
-      const travelUrl = 'https://travel.rakuten.co.jp/pet/';
       const rakutenLink = `https://hb.afl.rakuten.co.jp/hgc/${RAKUTEN_AFFILIATE_ID}/?pc=${encodeURIComponent(travelUrl)}&link_type=text`;
-      // じゃらんnet（A8.net 経由のアフィリエイトリンク。固定リンク先はじゃらんトップ）
+      // じゃらんnet（A8.net 経由。ディープリンク可否未確認のため汎用リンクのまま）
       const JALAN_A8MAT = '4B3G6J+9ICAE2+14CS+64JTE';
       const jalanLink = `https://px.a8.net/svt/ejp?a8mat=${JALAN_A8MAT}`;
       const jalanTracker = `https://www13.a8.net/0.gif?a8mat=${JALAN_A8MAT}`;
+      // 見出し（県が判定できれば県名入り）
+      const headingText = prefName
+        ? `${prefName}で愛犬と泊まれる宿を探す`
+        : '愛犬と泊まれる宿を探す';
+
       const affEl = document.createElement('div');
       affEl.className = 'affiliate-stay';
       affEl.innerHTML = `
-        <span class="affiliate-pr-tag">PR</span>
-        <span class="affiliate-stay-text">愛犬と泊まれる宿を探す：</span>
-        <a href="${rakutenLink}" target="_blank" rel="sponsored noopener" class="affiliate-link">楽天トラベル</a>
-        <span class="affiliate-sep">／</span>
-        <a href="${jalanLink}" target="_blank" rel="sponsored nofollow noopener" class="affiliate-link">じゃらんnet</a>
+        <div class="affiliate-stay-head">
+          <span class="affiliate-pr-tag">PR</span>
+          <span class="affiliate-stay-text">${headingText}</span>
+        </div>
+        <div class="affiliate-btns">
+          <a href="${rakutenLink}" target="_blank" rel="sponsored noopener" class="affiliate-btn affiliate-btn-rakuten" data-aff="rakuten">楽天トラベルで探す</a>
+          <a href="${jalanLink}" target="_blank" rel="sponsored nofollow noopener" class="affiliate-btn affiliate-btn-jalan" data-aff="jalan">じゃらんnetで探す</a>
+        </div>
         <img border="0" width="1" height="1" src="${jalanTracker}" alt="" style="display:none;">
       `;
       container.querySelector('.spot-detail').appendChild(affEl);
+
+      // GAアウトバウンドクリック計測（common.jsがwindow.gtagを定義済み）
+      affEl.querySelectorAll('.affiliate-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (typeof window.gtag === 'function') {
+            window.gtag('event', 'affiliate_click', {
+              network: btn.dataset.aff,
+              prefecture: prefName || 'unknown',
+              spot_id: spot.id,
+            });
+          }
+        });
+      });
     })();
 
   } catch (e) {
