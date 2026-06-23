@@ -25,6 +25,7 @@
 5. **プライバシーポリシー**
 6. **お問い合わせ** - Googleフォーム埋め込み済み
 7. **404ページ** - チワワイラスト付き
+8. **テーマ別まとめ** - 目的・季節別のスポット集約ページ群（themes/。詳細は後述）
 
 ## SEO・収益化
 - Google Analytics設置済み（G-NPGCWSCZGB）
@@ -259,6 +260,19 @@
 - 現在2記事公開済み（近つ飛鳥の桜、滋賀・琵琶湖1泊2日旅）
 - ナビゲーション: SITE_NAVに「ブログ」追加済み（危険情報の後に配置）
 - 記事追加手順: HTMLを `blog/` に配置 → `blog/index.html` にカードを追加
+
+## テーマ別まとめページ（themes/）
+- 目的・季節別に犬連れスポットを集約する固有URLのランディング群（SEO・AdSense審査でのページ厚み増を狙う）
+- 配置: `themes/` 配下に静的HTML。一覧hubは `themes/index.html`
+- 現在7テーマ: dogrun-free（無料ドッグラン）/ dogrun（ドッグラン全）/ sakura（桜）/ koyo（紅葉）/ water（水遊び）/ rain（雨でもOK）/ free（完全無料）
+- ナビ: SITE_NAVに「まとめ」追加済み（スポット検索の次に配置、id=themes）
+- **テーマ定義は `js/themes-data.js` の `THEMES` 配列で一元管理**（slug・navTitle・lead・filter）。フィルタはここが唯一の定義で、各ページ・hubが共有する
+- 描画: `js/theme-page.js`（個別ページ。`window.THEME_SLUG` でテーマ指定）/ `js/themes-index.js`（hub）。一覧はspots.jsonから府県別に動的描画し件数も自動追従
+- 各テーマページは**固有の導入文＋選び方のポイント**を必ず置く（薄い量産ページ化を避けるため。文体はabout.html同様のです・ます調でOK＝spots.jsonのremarks文体ルールは適用しない）
+- 共通スタイルは `css/themes.css`
+- **パス解決**: `/themes/` は `js/common.js` の `getBasePath()`・`resolveNavHref()` に追加済み（blog/・spots/と同様）。新サブディレクトリを増やす時は同様に両関数へ追加すること
+- **新テーマ追加手順**: ①必要ならspots.jsonにtag追加 → ②`js/themes-data.js` の `THEMES` に1要素追加 → ③既存の `themes/{slug}.html` を複製して導入文・meta（title/description/canonical/og/THEME_SLUG）を差し替え → ④`generate_sitemap.py` の `theme_slugs` にslug追加 → ⑤`python generate_sitemap.py` 再生成 → commit & push
+- sitemapにテーマページも含む（`generate_sitemap.py` の static_pages で生成）
 
 ## セキュリティチェック
 - Desktop版は `/plugin` 非対応のため security-guidance プラグインは使えない（グローバルCLAUDE.md記載どおり）
