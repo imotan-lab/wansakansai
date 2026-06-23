@@ -12,37 +12,16 @@
   gtag('config', GA_ID);
 })();
 
-// ===== OGP Meta Tags =====
-(function() {
-  const BASE_URL = 'https://imotan-lab.github.io/wansakansai/';
-  const siteName = 'わんさかんさい';
-  const ogImage = BASE_URL + 'images/ogp.png';
-  const title = document.title;
-  const desc = document.querySelector('meta[name="description"]');
-  const description = desc ? desc.content : '';
-  const url = window.location.href;
+// ===== HTML escape helper =====
+// データ（spots.json / dangers.json 等）を innerHTML に挿入する箇所で使用しXSSを防ぐ。
+function escapeHtml(value) {
+  return String(value == null ? '' : value).replace(/[&<>"']/g, (c) => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
+  }[c]));
+}
 
-  const tags = {
-    'og:type': 'website',
-    'og:site_name': siteName,
-    'og:title': title,
-    'og:description': description,
-    'og:url': url,
-    'og:image': ogImage,
-    'og:locale': 'ja_JP',
-    'twitter:card': 'summary',
-    'twitter:title': title,
-    'twitter:description': description,
-    'twitter:image': ogImage,
-  };
-
-  Object.entries(tags).forEach(([key, value]) => {
-    const meta = document.createElement('meta');
-    meta.setAttribute(key.startsWith('twitter:') ? 'name' : 'property', key);
-    meta.content = value;
-    document.head.appendChild(meta);
-  });
-})();
+// OGP/Twitterタグは各HTMLの <head> に静的記述済みのため、JSでの動的注入は廃止した。
+// （旧実装は旧GitHub Pagesドメインの og:image を全ページに二重出力していた）
 
 // ===== Common: Header & Footer Injection =====
 
@@ -109,6 +88,17 @@ function renderHeader(activePage) {
   `;
 
   document.body.prepend(header);
+
+  // 本文へスキップ（キーボード操作のアクセシビリティ）
+  const mainEl = document.querySelector('.main-content');
+  if (mainEl && !mainEl.id) mainEl.id = 'main';
+  if (mainEl && !document.querySelector('.skip-link')) {
+    const skip = document.createElement('a');
+    skip.href = '#main';
+    skip.className = 'skip-link';
+    skip.textContent = '本文へスキップ';
+    document.body.prepend(skip);
+  }
 
   // Hamburger toggle
   const hamburger = header.querySelector('.hamburger');

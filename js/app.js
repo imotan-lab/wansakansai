@@ -250,13 +250,13 @@
         <a href="spots/${s.id}.html" class="spot-card${isStayOnly ? ' spot-card-stay' : ''}">
           ${visitedStamp}
           <div class="spot-card-header">
-            <span class="spot-card-name">${s.name}</span>
+            <span class="spot-card-name">${escapeHtml(s.name)}</span>
             <div class="spot-card-right">
               ${distText}
-              <button class="fav-btn${favClass}" data-id="${s.id}" aria-label="お気に入り">&#9829;</button>
+              <button class="fav-btn${favClass}" data-id="${escapeHtml(s.id)}" aria-label="お気に入り">&#9829;</button>
             </div>
           </div>
-          <p class="spot-card-address">${s.address}</p>
+          <p class="spot-card-address">${escapeHtml(s.address)}</p>
           <div class="spot-card-tags">${tags.join('')}</div>
         </a>
       `;

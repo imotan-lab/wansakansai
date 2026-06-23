@@ -37,7 +37,7 @@ def detect_violations(remarks: str) -> list[str]:
         return issues
     if "\n" in remarks or "\r" in remarks:
         issues.append("改行文字を含む（1段落で完結させる）")
-    if re.search(r"(です。|ます。|でした。|ません。|でしょう。)", remarks):
+    if re.search(r"(です。|ます。|でした。|ません。|でしょう。|ください。|ましょう。)", remarks):
         issues.append("です・ます調を含む（常体＋体言止めに統一）")
     if "～" in remarks:
         issues.append("半角チルダ「～」(U+FF5E) を含む → 全角波ダッシュ「〜」(U+301C) に置換")

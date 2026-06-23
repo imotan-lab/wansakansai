@@ -79,6 +79,24 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://wansakansai.com/blog/index.html</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://wansakansai.com/blog/chikatsu-asuka-sakura.html</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://wansakansai.com/blog/shiga-biwako-2days.html</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://wansakansai.com/spots/osaka-castle-park.html</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>

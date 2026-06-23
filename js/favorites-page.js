@@ -57,15 +57,15 @@
       if (s.admission.free) tags.push('<span class="tag">入場無料</span>');
 
       return `
-        <a href="spots/${s.id}.html" class="spot-card">
+        <a href="spots/${encodeURIComponent(s.id)}.html" class="spot-card">
           ${visitedStamp}
           <div class="spot-card-header">
-            <span class="spot-card-name">${s.name}</span>
+            <span class="spot-card-name">${escapeHtml(s.name)}</span>
             <div class="spot-card-right">
-              <button class="fav-btn active" data-id="${s.id}" aria-label="お気に入りを解除">&#9829;</button>
+              <button class="fav-btn active" data-id="${escapeHtml(s.id)}" aria-label="お気に入りを解除">&#9829;</button>
             </div>
           </div>
-          <p class="spot-card-address">${s.address}</p>
+          <p class="spot-card-address">${escapeHtml(s.address)}</p>
           <div class="spot-card-tags">${tags.join('')}</div>
         </a>
       `;

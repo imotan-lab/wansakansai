@@ -38,15 +38,15 @@
       const related = findRelatedSpots(d);
       const linksHtml = related.length > 0
         ? `<div class="danger-card-links">${related.map(s =>
-            `<a href="spots/${s.id}.html" class="danger-spot-link">${s.name}</a>`
+            `<a href="spots/${encodeURIComponent(s.id)}.html" class="danger-spot-link">${escapeHtml(s.name)}</a>`
           ).join('')}</div>`
         : '';
       return `
         <div class="danger-card">
-          <p class="danger-card-date">${dateStr}</p>
-          <p class="danger-card-location">${d.location}</p>
-          <span class="danger-card-type">${d.type}</span>
-          <p class="danger-card-desc">${d.description}</p>
+          <p class="danger-card-date">${escapeHtml(dateStr)}</p>
+          <p class="danger-card-location">${escapeHtml(d.location)}</p>
+          <span class="danger-card-type">${escapeHtml(d.type)}</span>
+          <p class="danger-card-desc">${escapeHtml(d.description)}</p>
           ${linksHtml}
         </div>
       `;

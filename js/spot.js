@@ -30,10 +30,9 @@
     // SEO関連（title/description/canonical/OGP/JSON-LD）は generate_spot_pages.py で
     // 静的HTMLに埋め込み済みのため、JSでの動的更新は不要
 
-    // パス解決: /spots/{id}.html (静的ページ) からは ../ プレフィックスが必要
-    const isInSpotsDir = window.location.pathname.startsWith('/spots/');
-    const imgBase = isInSpotsDir ? '../' : '';
-    const spotLinkBase = isInSpotsDir ? '../spots/' : 'spots/';
+    // パス解決は common.js の getBasePath() に統一（/spots/ 配下なら '../'）
+    const imgBase = getBasePath();
+    const spotLinkBase = imgBase + 'spots/';
 
     // Build info
     const visitedStamp = spot.visited ? `<img src="${imgBase}images/stamp-visited.png" alt="運営が実際に訪問済み" class="detail-visited-stamp">` : '';
@@ -51,10 +50,13 @@
     let dogRunText = 'なし';
     if (spot.dogRun.available) {
       dogRunText = spot.dogRun.free ? 'あり（無料）' : 'あり（有料）';
-      if (spot.dogRun.detail) dogRunText += ` / ${spot.dogRun.detail}`;
+      if (spot.dogRun.detail) dogRunText += ` / ${escapeHtml(spot.dogRun.detail)}`;
     }
 
-    let admissionText = spot.admission.free ? '無料' : `有料（${spot.admission.fee || ''}）`;
+    let admissionText = spot.admission.free ? '無料' : `有料（${escapeHtml(spot.admission.fee || '')}）`;
+
+    // 公式URLは http(s) のみ許可（javascript: 等のスキーム混入を防ぐ）
+    const officialUrlSafe = /^https?:\/\//i.test(spot.officialUrl || '') ? spot.officialUrl : '';
 
     const mapQuery = encodeURIComponent(spot.name + ' ' + spot.address);
 
@@ -68,7 +70,7 @@
       galleryHtml = `
         <div class="spot-gallery">
           <div class="spot-gallery-main">
-            <img src="${images[0]}" alt="${spot.name}" class="spot-gallery-img" id="galleryMainImg">
+            <img src="${images[0]}" alt="${escapeHtml(spot.name)}" class="spot-gallery-img" id="galleryMainImg">
             ${images.length > 1 ? `
               <button class="gallery-nav gallery-prev" id="galleryPrev">&lt;</button>
               <button class="gallery-nav gallery-next" id="galleryNext">&gt;</button>
@@ -89,15 +91,16 @@
         ${galleryHtml}
         <div class="spot-detail-header">
           ${visitedStamp}
-          <h1 class="spot-detail-title">${spot.name}</h1>
+          <h1 class="spot-detail-title">${escapeHtml(spot.name)}</h1>
         </div>
-        <p class="spot-detail-address">${spot.address}</p>
+        <p class="spot-detail-address">${escapeHtml(spot.address)}</p>
         <button class="detail-fav-btn${isFav ? ' active' : ''}" id="detailFavBtn">
           &#9829; ${isFav ? 'お気に入り済み' : 'お気に入りに追加'}
         </button>
 
         <iframe
           class="spot-map"
+          title="${escapeHtml(spot.name)}の地図"
           src="https://maps.google.co.jp/maps?q=${mapQuery}&output=embed&z=15"
           allowfullscreen
           loading="lazy"
@@ -121,10 +124,10 @@
             <span class="detail-info-label">入場料</span>
             <span class="detail-info-value">${admissionText}</span>
           </div>
-          ${spot.officialUrl ? `
+          ${officialUrlSafe ? `
           <div class="detail-info-item">
             <span class="detail-info-label">公式HP</span>
-            <span class="detail-info-value"><a href="${spot.officialUrl}" target="_blank" rel="noopener noreferrer">${spot.officialUrl.replace(/^https?:\/\//, '').replace(/\/$/, '')}</a></span>
+            <span class="detail-info-value"><a href="${escapeHtml(officialUrlSafe)}" target="_blank" rel="noopener noreferrer">${escapeHtml(officialUrlSafe.replace(/^https?:\/\//, '').replace(/\/$/, ''))}</a></span>
           </div>` : ''}
         </div>
 
@@ -136,7 +139,7 @@
           <div class="detail-remarks">
             <h3>備考・犬連れでのポイント</h3>
             <p>${(() => {
-              const sentences = spot.remarks.split('。').filter(s => s);
+              const sentences = escapeHtml(spot.remarks).split('。').filter(s => s);
               let html = '';
               let buffer = '';
               for (let i = 0; i < sentences.length; i++) {
@@ -171,9 +174,9 @@
               <h3>このスポットに関する危険情報</h3>
               ${related.map(d => `
                 <div class="detail-danger-item">
-                  <span class="danger-card-type">${d.type}</span>
-                  <span class="detail-danger-date">${d.date}</span>
-                  <p>${d.description}</p>
+                  <span class="danger-card-type">${escapeHtml(d.type)}</span>
+                  <span class="detail-danger-date">${escapeHtml(d.date)}</span>
+                  <p>${escapeHtml(d.description)}</p>
                 </div>
               `).join('')}
             </div>
@@ -222,8 +225,8 @@
       nearbyEl.innerHTML = `
         <h3>近くのスポット</h3>
         ${nearby.map(s => `
-          <a href="${spotLinkBase}${s.id}.html" class="nearby-spot-card">
-            <span class="nearby-spot-name">${s.name}</span>
+          <a href="${spotLinkBase}${encodeURIComponent(s.id)}.html" class="nearby-spot-card">
+            <span class="nearby-spot-name">${escapeHtml(s.name)}</span>
             <span class="nearby-spot-dist">${formatDistance(s._distance)}</span>
           </a>
         `).join('')}

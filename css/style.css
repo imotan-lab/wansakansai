@@ -46,7 +46,7 @@ a {
 }
 
 a:hover {
-  color: var(--color-primary-light);
+  color: var(--color-primary);
 }
 
 img {
@@ -55,6 +55,24 @@ img {
 }
 
 /* ===== Header ===== */
+/* 本文へスキップ（通常は隠し、フォーカス時のみ表示） */
+.skip-link {
+  position: absolute;
+  left: 8px;
+  top: -48px;
+  z-index: 1000;
+  background: var(--color-primary);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: top 0.15s;
+}
+.skip-link:focus {
+  top: 8px;
+  color: #fff;
+}
+
 .site-header {
   background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
   color: #fff;
@@ -416,7 +434,10 @@ img {
 }
 
 .filter-btn {
-  padding: 6px 14px;
+  padding: 8px 14px;
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
   border: 2px solid var(--color-border);
   border-radius: 50px;
   font-size: 0.8rem;
@@ -606,8 +627,13 @@ img {
   font-size: 1.15rem;
   cursor: pointer;
   color: var(--color-border);
-  padding: 2px 4px;
+  padding: 0;
   line-height: 1;
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   transition: color 0.15s, transform 0.1s;
 }
 
@@ -1322,7 +1348,11 @@ img {
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
   .hamburger {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
   }
 
   .nav-menu {

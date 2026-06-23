@@ -186,7 +186,10 @@ def build_jsonld(spot: dict, url: str, image_url: str = "") -> str:
         # ひらがな読み等は alternateName に
         data["alternateName"] = aliases
 
-    return json.dumps(data, ensure_ascii=False)
+    # <script> 内に直接埋め込むため、</script> 等でタグが早期終了しないよう
+    # < > & を Unicode エスケープする（JSON-LD としての有効性は保たれる）
+    dumped = json.dumps(data, ensure_ascii=False)
+    return dumped.replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
 
 
 def parking_text(spot: dict) -> str:
