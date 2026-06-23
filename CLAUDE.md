@@ -13,7 +13,7 @@
 - 地図: Google Maps iframe埋め込み（APIキー不要）
 - お問い合わせ: Googleフォーム埋め込み
 - AdSense審査落ち（コード除去済み・ads.txt残置・プライバシーポリシー完備、再申請可能）
-- ナビゲーション: common.jsのSITE_NAV定数で一元管理（ページ追加時は1行追加するだけ）
+- ナビゲーション: common.jsのSITE_NAV定数で一元管理（ページ追加時は1行追加）。ヘッダーは主要4項目のみ（お気に入り/ブログ/このサイトについて/お問い合わせ）。トップ/テーマ別で探す/危険情報は `footerOnly: true` でフッターのみ掲載し、トップページ上部の「現在地から探す」「テーマ別で探す」ボタン＋危険情報バナーで導線を確保（ロゴ＝トップ）
 - 都道府県フィルター: spots.jsonの住所から自動抽出（ハードコードなし）
 - 個別対応は避け、テンプレート化・データ駆動を基本方針とする
 
@@ -35,7 +35,7 @@
   - HTTPS版: https://wansakansai.com/（2026-04-08追加）
 - sitemap.xml / robots.txt 設置済み
 - sitemap.xmlのベースURLはwansakansai.com（generate_sitemap.pyのBASE_URL）
-- OGPタグ設置済み（画像: images/ogp.png）-- 各ページに静的HTML版+JSでの動的更新
+- OGPタグは各HTMLの `<head>` に静的記述で統一（画像: images/ogp.png）。**JSでの動的注入は廃止**（旧common.js実装が旧github.ioドメインのog:imageを全ページに二重出力していたため）。OGPを追加・変更する時は静的HTMLに直接書く（privacy/favorites含め全ページ静的記述済み。spots/はgenerate_spot_pages.pyが埋め込む）
 - canonical URL: 全ページに設定済み（spot.htmlはJSで動的更新）
 - JSON-LD構造化データ: index.htmlにWebSite、spot.jsでPlace（スポットごとに動的生成）
 - 画像最適化済み（ロゴ・スタンプ等をリサイズ、合計8.3MB→435KBに削減）
@@ -59,7 +59,7 @@
 ## フィルター機能
 - 都道府県・条件タグの2段構成、いずれもトグル式（複数選択可、AND条件）
 - フィルター定義はapp.jsのFILTER_GROUPS配列でカテゴリごとにグループ管理
-- グループ: 駐車場（無料/有料/なし）、施設（ドッグラン/トイレ）、料金（入場無料/有料）、特徴（桜/紅葉/水遊び/小型犬のみ/雨でもOK）
+- グループ: 駐車場（無料/有料/なし）、施設（ドッグラン/トイレ）、料金（入場無料/有料）、特徴（桜/紅葉/水遊び/小型犬のみ/雨でもOK）、宿泊（宿泊可=stay-ok/宿泊専用=stay-only）
 - タグ系フィルター（桜・紅葉等）はspots.jsonのtagsフィールドを参照
 - 新しいタグを追加する手順: spots.jsonのtagsに値を追加 → FILTER_GROUPSに1行追加
 - GPS取得後もフィルターは維持される（フィルター→距離ソートの順で処理）
@@ -257,7 +257,7 @@
 - 記事ページ: `blog/` ディレクトリに個別HTMLで配置
 - ブログ用画像: `images/blog/{記事スラッグ}/` に配置
 - 下書き: `blog/drafts/` にMarkdownで保存
-- 現在2記事公開済み（近つ飛鳥の桜、滋賀・琵琶湖1泊2日旅）
+- 現在2記事公開済み（近つ飛鳥の桜、滋賀・琵琶湖1泊2日旅）。和歌山1泊2日記事は本文完成・**写真待ちで下書き据え置き**（blog/wakayama-1night-2days.html。未コミット・index未掲載・sitemap対象外）。写真反映時に公開すること（画像追加→index.htmlにカード追加→`renderHeader('blog'); renderFooter();`の呼び出し追加→generate_sitemap.py再生成→commit）
 - ナビゲーション: SITE_NAVに「ブログ」追加済み（危険情報の後に配置）
 - 記事追加手順: HTMLを `blog/` に配置 → `blog/index.html` にカードを追加
 
@@ -279,6 +279,7 @@
 - 実際の手段は組み込み `/security-review` スキル（AIレビュー込み・APIキー不要・動作確認済み）＋手動コード監査
 - 重点チェック項目は `.claude/claude-security-guidance.md` にまとめてある（`/security-review`・手動監査時の参照リスト。`.claude/`はgitignore対象＝ローカルのみ）
 - 重点: ①データ/入力をinnerHTMLに入れない（XSS）②秘密情報・PAT URLをコミットしない③自動更新JSONにHTMLタグ混入させない
+- **クライアントJSでデータをinnerHTMLに挿入する時は common.js の `escapeHtml()` を必ず通す**（spots.json/dangers.json由来の name/address/remarks/description等）。URLは `^https?://` のみ許可。静的生成側(generate_spot_pages.py)は html.escape＋JSON-LDは `<>&` エスケープ済み。js全体は2026-06に監査・対応済み（app.js/spot.js/danger.js/theme-page.js/favorites-page.js）
 
 ## 注意事項
 - uchidokoroフォルダ・ファイルには絶対に触れないこと
