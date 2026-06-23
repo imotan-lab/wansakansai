@@ -1,0 +1,115 @@
+/* ===== テーマまとめページ共通スタイル ===== */
+.theme-content {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 16px;
+}
+.theme-content h1 {
+  font-size: 1.4rem;
+  color: var(--color-primary);
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+.theme-count {
+  color: var(--color-text-light, #777);
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+.theme-intro {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin-bottom: 28px;
+}
+.theme-intro p {
+  line-height: 1.85;
+  margin-bottom: 12px;
+  color: var(--color-text);
+}
+.theme-intro p:last-child { margin-bottom: 0; }
+.theme-intro h2 {
+  font-size: 1.05rem;
+  color: var(--color-primary);
+  margin: 6px 0 10px;
+}
+.theme-intro ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.theme-intro li {
+  padding: 5px 0;
+  padding-left: 1.2em;
+  text-indent: -1.2em;
+  line-height: 1.7;
+  color: var(--color-text);
+}
+.theme-intro li::before {
+  content: "- ";
+  color: var(--color-primary);
+}
+.theme-group { margin-bottom: 28px; }
+.theme-group-title {
+  font-size: 1.15rem;
+  color: var(--color-primary);
+  margin: 0 0 12px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--color-border);
+}
+.theme-empty {
+  color: var(--color-text);
+  padding: 20px 0;
+}
+.theme-note {
+  font-size: 0.82rem;
+  color: var(--color-text-light, #888);
+  margin-top: 8px;
+  line-height: 1.7;
+}
+.theme-back {
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--color-accent);
+  text-decoration: none;
+}
+.theme-back:hover { text-decoration: underline; }
+
+/* ===== テーマ一覧（hub）カード ===== */
+.theme-index-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 14px;
+  margin-bottom: 8px;
+}
+.theme-card {
+  display: block;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  text-decoration: none;
+  color: var(--color-text);
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+.theme-card:hover {
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+}
+.theme-card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 6px;
+}
+.theme-card-count {
+  font-size: 0.82rem;
+  color: var(--color-accent);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.theme-card-lead {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--color-text);
+}

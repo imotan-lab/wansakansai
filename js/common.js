@@ -47,9 +47,9 @@
 // ===== Common: Header & Footer Injection =====
 
 function getBasePath() {
-  // サブディレクトリ（blog/, spots/）内にいる場合は親ディレクトリを基準にする
+  // サブディレクトリ（blog/, spots/, themes/）内にいる場合は親ディレクトリを基準にする
   const path = window.location.pathname;
-  if (path.includes('/blog/') || path.includes('/spots/')) return '../';
+  if (path.includes('/blog/') || path.includes('/spots/') || path.includes('/themes/')) return '../';
   return '';
 }
 
@@ -65,6 +65,10 @@ function resolveNavHref(href, base) {
     if (path.includes('/spots/') && href.startsWith('spots/')) {
       return href.replace('spots/', '');
     }
+    // themes内からも同様（まとめ一覧リンクは同じthemes内なのでthemes/プレフィックスを外す）
+    if (path.includes('/themes/') && href.startsWith('themes/')) {
+      return href.replace('themes/', '');
+    }
   }
   return base + href;
 }
@@ -72,6 +76,7 @@ function resolveNavHref(href, base) {
 // Site navigation definition (single source of truth)
 const SITE_NAV = [
   { href: 'index.html', label: 'スポット検索', id: 'home' },
+  { href: 'themes/index.html', label: 'まとめ', id: 'themes' },
   { href: 'favorites.html', label: 'お気に入り', id: 'favorites' },
   { href: 'danger.html', label: '危険情報', id: 'danger' },
   { href: 'blog/index.html', label: 'ブログ', id: 'blog' },

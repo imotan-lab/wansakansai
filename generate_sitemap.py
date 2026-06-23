@@ -19,6 +19,12 @@ static_pages = [
     {"loc": f"{BASE_URL}/about.html",   "changefreq": "monthly", "priority": "0.5"},
 ]
 
+# テーマ別まとめページ（js/themes-data.js の THEMES と対応）
+theme_slugs = ["dogrun-free", "dogrun", "sakura", "koyo", "water", "rain", "free"]
+static_pages.append({"loc": f"{BASE_URL}/themes/index.html", "changefreq": "weekly", "priority": "0.7"})
+for slug in theme_slugs:
+    static_pages.append({"loc": f"{BASE_URL}/themes/{slug}.html", "changefreq": "weekly", "priority": "0.6"})
+
 lines = ['<?xml version="1.0" encoding="UTF-8"?>']
 lines.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
 
