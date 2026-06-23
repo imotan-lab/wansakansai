@@ -74,11 +74,13 @@ function resolveNavHref(href, base) {
 }
 
 // Site navigation definition (single source of truth)
+// ヘッダーは主要ページのみ。トップ（ロゴから遷移）・テーマ別・危険情報は
+// トップページ上部に導線を置いたため footerOnly でフッターのみ掲載（内部リンクは維持）。
 const SITE_NAV = [
-  { href: 'index.html', label: 'スポット検索', id: 'home' },
-  { href: 'themes/index.html', label: 'まとめ', id: 'themes' },
+  { href: 'index.html', label: 'トップ', id: 'home', footerOnly: true },
+  { href: 'themes/index.html', label: 'テーマ別で探す', id: 'themes', footerOnly: true },
+  { href: 'danger.html', label: '危険情報', id: 'danger', footerOnly: true },
   { href: 'favorites.html', label: 'お気に入り', id: 'favorites' },
-  { href: 'danger.html', label: '危険情報', id: 'danger' },
   { href: 'blog/index.html', label: 'ブログ', id: 'blog' },
   { href: 'about.html', label: 'このサイトについて', id: 'about' },
   { href: 'privacy.html', label: 'プライバシーポリシー', id: 'privacy', footerOnly: true },
