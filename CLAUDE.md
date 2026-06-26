@@ -43,6 +43,9 @@
   - ads.txt は残置（再申請時に必要）
   - 再申請時は generate_spot_pages.py のテンプレと各種HTML（index/about/contact/danger/favorites/privacy/404、blog/**/*.html）の `</head>` 直前に `<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2097489177716087" crossorigin="anonymous"></script>` を戻す
   - 広告枠（`<div class="ad-slot"></div>`）も以前は spotDetail 下と index.html の主要セクションに設置していた。再申請通過後に必要に応じて復活
+  - **再申請ステータス（2026-06-26時点）: まだ再申請していない**。薄いページは解消済み（スポット解説92件拡充・テーマ8ページ新設・監査修正）だが、**写真不足（176/183スポットが画像ゼロ）が残る弱点**。ユーザー方針＝**写真を入れてから再申請（方針B）**。写真追加→再申請の段取りは `引き継ぎ_2026-06-26.md` 参照
+- **アフィリエイト収益化**: スポット詳細ページ最下部に「愛犬と泊まれる宿を探す」（楽天トラベル＋じゃらん/A8.net）を設置（実装は `js/spot.js` のみ・県別ディープリンク・rel="sponsored"・GAクリック計測あり）
+  - 2026-06-26に各管理画面で検証済み＝**両方とも正規リンクで正常**（楽天IDはユーザー本人アカウント一致、じゃらんa8matはアカウントの正規素材で提携済み）。**A8リンクはサイト非依存（アカウント共通）**＝うちどころ/わんさかんさいで同一a8matでOK。修正不要
 - 独自ドメイン: wansakansai.com（お名前.comで取得済み、Aレコード+AAAAレコード設定済み）
 
 ## スポットデータ項目
