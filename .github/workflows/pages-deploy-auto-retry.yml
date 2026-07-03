@@ -1,0 +1,59 @@
+name: pages-deploy-auto-retry
+
+# GitHub Pages の deploy ジョブが一時的な障害で失敗した場合に自動で再実行する。
+# - workflow_run: Pagesビルド完了イベントで即時チェック（動的ワークフローで発火しない環境があるため保険としてscheduleも併用）
+# - schedule: 毎時23分の定期チェック（フォールバック）
+# - 再試行は run_attempt < 3 のみ（自動2回まで。恒久障害での無限ループ防止）
+on:
+  workflow_run:
+    workflows: ["pages build and deployment"]
+    types: [completed]
+  schedule:
+    - cron: "23 * * * *"
+  workflow_dispatch:
+
+permissions:
+  actions: write
+
+concurrency:
+  group: pages-deploy-auto-retry
+  cancel-in-progress: false
+
+jobs:
+  retry:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check latest pages deployment and rerun if failed
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -eu
+          run_json=$(curl -sf -H "Authorization: token $GH_TOKEN" \
+            "https://api.github.com/repos/$REPO/actions/runs?per_page=20" \
+            | jq '[.workflow_runs[] | select(.name == "pages build and deployment")][0]')
+          if [ -z "$run_json" ] || [ "$run_json" = "null" ]; then
+            echo "No pages run found; nothing to do."
+            exit 0
+          fi
+          run_id=$(echo "$run_json" | jq -r '.id')
+          status=$(echo "$run_json" | jq -r '.status')
+          conclusion=$(echo "$run_json" | jq -r '.conclusion')
+          attempt=$(echo "$run_json" | jq -r '.run_attempt')
+          echo "latest pages run: id=$run_id status=$status conclusion=$conclusion attempt=$attempt"
+          if [ "$status" = "completed" ] && [ "$conclusion" = "failure" ] && [ "$attempt" -lt 3 ]; then
+            echo "Deploy failed (attempt $attempt). Triggering rerun of failed jobs..."
+            code=$(curl -s -o /dev/null -w "%{http_code}" -X POST \
+              -H "Authorization: token $GH_TOKEN" \
+              -H "Accept: application/vnd.github+json" \
+              "https://api.github.com/repos/$REPO/actions/runs/$run_id/rerun-failed-jobs")
+            echo "rerun API response: $code"
+            if [ "$code" != "201" ]; then
+              echo "Rerun request failed with HTTP $code" >&2
+              exit 1
+            fi
+          elif [ "$status" = "completed" ] && [ "$conclusion" = "failure" ]; then
+            echo "Already retried $((attempt - 1)) times. Leaving for manual investigation."
+          else
+            echo "No retry needed."
+          fi
