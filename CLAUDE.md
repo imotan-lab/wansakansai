@@ -7,6 +7,13 @@
 - **ホスティング**: GitHub Pages（wansakansai.com）
 - **ターゲット**: 関西在住・関西旅行中の犬の飼い主
 
+## 変更履歴について（肥大化防止・2026-07-09導入）
+
+時系列の履歴・完了済み施策の実装詳細・古い進捗語りは **CLAUDE_history.md**（.gitignore対象＝公開リポジトリに載せない）へ退避する。過去の経緯を調べる時だけ読むこと。**本体（このファイル）には現在形のルール・鉄則・決定事項・パス/ID・現在の状態のみを書き、以後の履歴行の追記もCLAUDE_history.mdへ**（このファイルには書かない）。
+
+**★圧縮手順（scripts/check_claude_md_size.py が50KB超を通知した時。どのセッションでも「圧縮して」の一言で以下を実行）★**：
+①CLAUDE.mdを圧縮前バックアップ（Dropbox: Claude_backup/自動タスク/wansakansai-claude-md/）②時系列履歴・完了済み施策の詳細・古い進捗語りをCLAUDE_history.mdへ退避（**ルール・鉄則・決定事項・パス/ID・現在の状態は残す**。削除ではなく移動）③別エージェントに圧縮前後＋アーカイブの全数比較をさせ**欠損ゼロを確認**（毎回参照が必要な運用ルールがアーカイブに埋まっていたら本体へ戻す）④両ファイルをDropboxへバックアップ。★無人タスクにはやらせない（対話セッション専用作業。自動タスクは検知と通知のみ）★
+
 ## 技術構成
 - HTML + CSS + Vanilla JS（フレームワーク不使用）
 - スポットデータ: JSON管理（data/spots.json）
@@ -38,7 +45,6 @@
 - OGPタグは各HTMLの `<head>` に静的記述で統一（画像: images/ogp.png）。**JSでの動的注入は廃止**（旧common.js実装が旧github.ioドメインのog:imageを全ページに二重出力していたため）。OGPを追加・変更する時は静的HTMLに直接書く（privacy/favorites含め全ページ静的記述済み。spots/はgenerate_spot_pages.pyが埋め込む）
 - canonical URL: 全ページに設定済み（spot.htmlはJSで動的更新）
 - JSON-LD構造化データ: index.htmlにWebSite、spot.jsでPlace（スポットごとに動的生成）
-- 画像最適化済み（ロゴ・スタンプ等をリサイズ、合計8.3MB→435KBに削減）
 - **AdSense審査落ち** → adsbygoogle.js スクリプトと ad-slot div を全HTMLから一旦除去（2026-05-25実施）
   - ads.txt は残置（再申請時に必要）
   - 再申請時は generate_spot_pages.py のテンプレと各種HTML（index/about/contact/danger/favorites/privacy/404、blog/**/*.html）の `</head>` 直前に `<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2097489177716087" crossorigin="anonymous"></script>` を戻す
@@ -57,7 +63,7 @@
 - カタカナ⇔ひらがな自動変換、記号（中黒・ハイフン・スペース）無視
 - 既存フィルター（都道府県・タグ）と組み合わせ可能
 - デバウンス200msでリアルタイム検索
-- 全129スポットにひらがな読みをaliasesに登録済み（pykakasiで生成、手動修正済み）
+- 全スポットにひらがな読みをaliasesに登録する運用（新規追加時も必ず入れる。チェックリスト参照）
 
 ## フィルター機能
 - 都道府県・条件タグの2段構成、いずれもトグル式（複数選択可、AND条件）
@@ -131,6 +137,9 @@
   - モデル名（Opus/Sonnet/Haiku）も将来変わり得るため固定指定はリスク。`update_scheduled_task` でプロンプト更新するとmodel行が消える既知バグもあり、維持コスト面でも削除が合理的
   - 確認方法：各タスクログの「使用モデル」行で実際の実行モデルを確認（意図せずSonnetになっていたら要再検討）
   - 対象タスク（7つ）: wansakansai-daily-spot / danger-update / spot-check / spot-check-pm / spot-verify-am / spot-verify-pm / weekly-digest
+- **★メール送信ポリシー「静かなのが正常」（2026-07-09適用・うちどころ2026-07-08方式）★**: メールを送るのは「①人間の対応が必要 ②公開内容が変わった ③異常（エラー・スキップ・中断）」の時だけ。変化なしの日は送らず、ログに「メール送信なし（変化なし・全OK）」を必ず記録する。各タスクの具体的な送信条件はSKILL.mdの「★メール送信ポリシー★」ブロック参照。**weekly-digest（毎週土曜）だけは週次ハートビートとして毎回必ず送る**。SKILL.mdの送信条件を変更したら必ず敵対的レビュー（別エージェント・最低1巡）を通すこと
+- **全7タスクはログ末尾に完了マーカー「=== タスクID 完了 ===」を必ず書く**（エラー中断時は書かない）。task-watchdogのSTEP 2.5「完走点検」がこのマーカーで「起動したが途中で黙って死んだ」型を検知する（メール不在が異常シグナルでなくなった分の補完。spot-check系4タスクはspot_check_YYYY-MM-DD.logを共有するためタスクID入りマーカー必須）
+- **CLAUDE.mdサイズ検知**: `python scripts/check_claude_md_size.py --json` が50KB超・履歴参照喪失をNG判定する。wansakansai-spot-verify-am が日次で実行し、NG時のみメール通知。★無人タスクはCLAUDE.mdを書き換えない（圧縮は対話セッション専用＝冒頭「変更履歴について」の圧縮手順参照）★
 - **死活監視は task-watchdog（毎朝8:03・うちどころ側で一元管理）が全11タスク（うちどころ4＋わんさかんさい7）を点検・自動復旧する**。わんさかんさい側で同じ死活監視を二重に作らないこと（重複は無駄＆混乱の元）。詳細はグローバルCLAUDE.md参照
   - タスクが「途中終了→実行中のまま居座り後続をブロック」する障害が起き得る（過去に spot-check-pm が6/1〜6/3の3晩停止）。復旧は `update_scheduled_task` で enabled off→on トグル。これも基本watchdogが自動でやる
 - 共有スクリプト send_notify.py（汎用 notify サブコマンド）・log.py（watchdog_ 接頭辞の振り分け）はうちどころ側watchdog用に拡張済み。わんさかんさいの既存サブコマンド・振り分けは不変
@@ -158,10 +167,9 @@
 ## 危険情報（data/dangers.json）
 - 毎日自動更新あり（毎日 PM9:00 JST、ローカルスケジュールタスクで実行）
 - タスクID: wansakansai-danger-update
-- 実行後にメール通知（send_notify.py wansakansai）
+- メール通知は変化・異常時のみ（send_notify.py wansakansai。「静かなのが正常」ポリシー＝上記「自動タスク共通方針」参照）
 - ログ: C:\Users\imao_\.claude\logs\wansakansai_YYYY-MM-DD.log（7日分保持）
 - Dropboxバックアップ: C:\Users\imao_\今電 Dropbox\今電　今尾笙夢\Claude_backup\自動タスク\wansakansai-danger-update\
-- 旧リモートトリガー（trig_01P99nejNKkymiirUC8BpUJn）は一時停止済み
 - 情報源: 自治体公式サイト + SNS（X、Instagram、Threads）
 - SNS情報は「SNS上の報告」等と明記し、公式情報と区別する
 - 1件だけの未確認情報は掲載しない（複数アカウントからの報告があるもののみ）

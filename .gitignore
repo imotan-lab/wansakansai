@@ -9,6 +9,7 @@ Thumbs.db
 
 # Claude Code
 .claude/
+CLAUDE_history.md
 
 # Python
 __pycache__/
@@ -20,3 +21,4 @@ scripts/dangers_prev.json
 scripts/x_post_result.json
 scripts/x_post_history.json
 scripts/x_post_fail_*.json
+scripts/*_stdout.log
