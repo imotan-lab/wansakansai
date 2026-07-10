@@ -79,6 +79,7 @@
     - @wansakansaiにログイン → Chrome閉じる → 次回タスクから自動反映
   - CDP接続失敗 → 既存Cookieで投稿試行 → 失敗時はメールに投稿本文が記載されるので手動フォロー
   - **bot検知・アカウントロック（2026-07-10実例）**: 投稿ボタン待ちタイムアウト（`SideNav_NewTweet_Button` 不可視）で失敗し、アクセスが `x.com/account/access`（Cloudflare「Verify you are human」）に飛ぶ場合はbot検知によるロック。**CAPTCHA解除はAIでは代行不可（人間確認）**。手順: ①上記コマンドで専用Chromeを手動起動（AIが起動まで代行可）②ユーザー本人がチェック→解除フロー完了→タイムライン表示を確認して閉じる ③`python "C:/Users/imao_/.claude/refresh_x_cookies.py" --auto wansakansai` でCookie取り直し ④ログイン確認は投稿なしのチェックスクリプトで行う（storage_stateでx.com/homeを開き投稿ボタン有無を見る）。解除直後の即再投稿はしない（Bot感回避。次回定時から自然再開）
+  - **再発時の根治策（2026-07-10決定: 初回のため様子見中）**: X公式APIへの移行。無料枠は2026年2月廃止→従量課金（投稿$0.01/通・最低$5チャージ・新規$10バウチャー）で、当サイトの月40通なら**月約60円**。移行時はユーザーが開発者登録＋支払い設定（本人作業）→APIキー受領後にAIが投稿スクリプト3本（daily/weekly/danger）をAPI方式へ書き換え・Playwright方式はフォールバック温存。ロックが頻発するようならこれを実施
 - 初期セットアップの残骸: `scripts/x_cookies_raw.json`（Cookie-Editor出力、gitignore）は初回のCookie取得のみに使用。現在は未使用
 
 ## プロファイルのキャッシュ自動クリア
