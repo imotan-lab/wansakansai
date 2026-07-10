@@ -78,6 +78,7 @@
     - 手動起動: `"C:\Program Files\Google\Chrome\Application\chrome.exe" --user-data-dir="C:\Users\imao_\.claude\x_chrome_profile"` （debug portなしでもログイン操作は可能）
     - @wansakansaiにログイン → Chrome閉じる → 次回タスクから自動反映
   - CDP接続失敗 → 既存Cookieで投稿試行 → 失敗時はメールに投稿本文が記載されるので手動フォロー
+  - **bot検知・アカウントロック（2026-07-10実例）**: 投稿ボタン待ちタイムアウト（`SideNav_NewTweet_Button` 不可視）で失敗し、アクセスが `x.com/account/access`（Cloudflare「Verify you are human」）に飛ぶ場合はbot検知によるロック。**CAPTCHA解除はAIでは代行不可（人間確認）**。手順: ①上記コマンドで専用Chromeを手動起動（AIが起動まで代行可）②ユーザー本人がチェック→解除フロー完了→タイムライン表示を確認して閉じる ③`python "C:/Users/imao_/.claude/refresh_x_cookies.py" --auto wansakansai` でCookie取り直し ④ログイン確認は投稿なしのチェックスクリプトで行う（storage_stateでx.com/homeを開き投稿ボタン有無を見る）。解除直後の即再投稿はしない（Bot感回避。次回定時から自然再開）
 - 初期セットアップの残骸: `scripts/x_cookies_raw.json`（Cookie-Editor出力、gitignore）は初回のCookie取得のみに使用。現在は未使用
 
 ## プロファイルのキャッシュ自動クリア
