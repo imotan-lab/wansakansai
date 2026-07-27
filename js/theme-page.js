@@ -39,7 +39,7 @@
 
   // 都道府県の抽出（app.js と同じ規則で統一）
   function getPrefecture(address) {
-    const m = (address || '').match(/^(.+?[都道府県])/);
+    const m = (address || '').match(/^(北海道|東京都|京都府|大阪府|.+?県)/);
     return m ? m[1] : 'その他';
   }
 

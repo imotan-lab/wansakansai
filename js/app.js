@@ -125,8 +125,10 @@
   }
 
   // Extract prefecture list from spot data
+  // 「京都府」は最短一致だと「京都」で切れてしまうため、都府道を明示列挙してから県にフォールバックする
+  const PREF_RE = /^(北海道|東京都|京都府|大阪府|.+?県)/;
   function getPrefecture(address) {
-    const m = address.match(/^(.+?[都道府県])/);
+    const m = (address || '').match(PREF_RE);
     return m ? m[1] : 'その他';
   }
 

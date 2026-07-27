@@ -237,7 +237,7 @@
     // 楽天 + じゃらん アフィリエイト（ペット可宿）- 最下部に配置
     (() => {
       // スポットの都道府県を判定（app.jsのgetPrefectureと同一ロジック）
-      const prefMatch = (spot.address || '').match(/^(.+?[都道府県])/);
+      const prefMatch = (spot.address || '').match(/^(北海道|東京都|京都府|大阪府|.+?県)/);
       const prefName = prefMatch ? prefMatch[1] : '';
       // 都道府県 → 楽天トラベルのローマ字エリア（県別ペット可宿ランキングへディープリンク）
       const PREF_ROMAJI = {
