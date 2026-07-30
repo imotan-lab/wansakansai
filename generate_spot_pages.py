@@ -203,7 +203,11 @@ def toilet_text(spot: dict) -> str:
     t = spot.get("toilet") or {}
     if not t.get("available"):
         return "なし"
-    return "あり（洋式）" if t.get("western") else "あり（和式）"
+    western = t.get("western")
+    # None は洋式/和式が未確認。断定せず「あり」とだけ表示する
+    if western is None:
+        return "あり"
+    return "あり（洋式）" if western else "あり（和式）"
 
 
 def dogrun_text(spot: dict) -> str:

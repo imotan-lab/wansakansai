@@ -44,7 +44,12 @@
 
     let toiletText = 'なし';
     if (spot.toilet.available) {
-      toiletText = spot.toilet.western ? 'あり（洋式）' : 'あり（和式）';
+      // western が null（洋式/和式が未確認）のときは断定せず「あり」とだけ表示する
+      if (spot.toilet.western === null || spot.toilet.western === undefined) {
+        toiletText = 'あり';
+      } else {
+        toiletText = spot.toilet.western ? 'あり（洋式）' : 'あり（和式）';
+      }
     }
 
     let dogRunText = 'なし';
