@@ -222,9 +222,14 @@ def dogrun_text(spot: dict) -> str:
 
 def admission_text(spot: dict) -> str:
     a = spot.get("admission") or {}
+    fee = (a.get("fee") or "").strip()
     if a.get("free"):
-        return "無料"
-    return f"有料（{a.get('fee', '')}）"
+        # 入場自体は無料でも fee に駐車場代・一部有料施設などの補足がある場合は捨てずに表示する。
+        # fee が既に「無料〜」で始まる場合はそのまま（「無料（無料（〜））」の二重表記を防ぐ）
+        if not fee:
+            return "無料"
+        return fee if fee.startswith("無料") else f"無料（{fee}）"
+    return f"有料（{fee}）"
 
 
 def format_remarks(remarks: str) -> str:

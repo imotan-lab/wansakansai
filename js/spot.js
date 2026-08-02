@@ -58,7 +58,21 @@
       if (spot.dogRun.detail) dogRunText += ` / ${escapeHtml(spot.dogRun.detail)}`;
     }
 
-    let admissionText = spot.admission.free ? '無料' : `有料（${escapeHtml(spot.admission.fee || '')}）`;
+    // 入場自体は無料でも fee に駐車場代・一部有料施設などの補足がある場合は捨てずに表示する。
+    // fee が既に「無料〜」で始まる場合はそのまま（「無料（無料（〜））」の二重表記を防ぐ）
+    const admissionFee = (spot.admission.fee || '').trim();
+    let admissionText;
+    if (spot.admission.free) {
+      if (!admissionFee) {
+        admissionText = '無料';
+      } else {
+        admissionText = admissionFee.startsWith('無料')
+          ? escapeHtml(admissionFee)
+          : `無料（${escapeHtml(admissionFee)}）`;
+      }
+    } else {
+      admissionText = `有料（${escapeHtml(admissionFee)}）`;
+    }
 
     // 公式URLは http(s) のみ許可（javascript: 等のスキーム混入を防ぐ）
     const officialUrlSafe = /^https?:\/\//i.test(spot.officialUrl || '') ? spot.officialUrl : '';
