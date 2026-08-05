@@ -59,14 +59,14 @@
     }
 
     // 入場自体は無料でも fee に駐車場代・一部有料施設などの補足がある場合は捨てずに表示する。
-    // fee が既に「無料〜」で始まる場合はそのまま（「無料（無料（〜））」の二重表記を防ぐ）
+    // fee が既に「無料」を含む場合はそのまま（「無料（〜は無料（〜））」の二重表記を防ぐ）
     const admissionFee = (spot.admission.fee || '').trim();
     let admissionText;
     if (spot.admission.free) {
       if (!admissionFee) {
         admissionText = '無料';
       } else {
-        admissionText = admissionFee.startsWith('無料')
+        admissionText = admissionFee.includes('無料')
           ? escapeHtml(admissionFee)
           : `無料（${escapeHtml(admissionFee)}）`;
       }
