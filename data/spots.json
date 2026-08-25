@@ -10852,5 +10852,100 @@
     "tags": [
       "sakura"
     ]
+  },
+  {
+    "id": "makio-komorebi-no-mori",
+    "name": "槇尾こもれびの森",
+    "address": "大阪府和泉市仏並町",
+    "lat": 34.4067,
+    "lng": 135.4963,
+    "category": "park",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": true,
+    "remarks": "2024年3月に全面オープンした槇尾川上流の自然公園。市内最大級の大型複合遊具まきおタワーを中心に、芝生広場のもふもふ広場・遊歩道・展望台が整備されている。入園も駐車場も無料で、駐車場はP1〜P6の6か所に分かれ90〜100台（公式は計100台）。トイレは洋式で24時間利用可、多目的トイレ併設。犬連れはリード着用で散策可、放し飼いは現地看板で禁止。ドッグランはなし。芝生広場のそばを流れる槇尾川は水深が大人の足首ほどで、泳ぐというより浅瀬を歩く深さ。流れも穏やかで犬の水遊びにちょうどよい。ゴミ箱がないため持ち帰りのこと。火気の使用とBBQは禁止、テント・タープの設置も小型の日よけを除き不可。土日祝は駐車場が満車になりやすく、アクセス路は道幅が狭い。展望台へ続く遊歩道は山道で細い箇所があり、混雑時の犬連れは注意。携帯電波が弱い。",
+    "imageUrl": "",
+    "officialUrl": "https://www.city.osaka-izumi.lg.jp/kakukano/syougaibu/shogaisuisin/syougaigaku/osirase/18202.html",
+    "aliases": [
+      "まきおこもれびのもり",
+      "こもれびの森",
+      "槇尾木漏れ日の森",
+      "木漏れ日の森",
+      "きもれびのもり",
+      "槙尾こもれびの森",
+      "まきおタワー",
+      "笑働の森"
+    ],
+    "tags": [
+      "water",
+      "sakura",
+      "koyo"
+    ]
+  },
+  {
+    "id": "mizukoshigawa",
+    "name": "水越川",
+    "address": "大阪府南河内郡千早赤阪村大字水分",
+    "lat": 34.4441,
+    "lng": 135.6769,
+    "category": "riverside",
+    "dogSize": {
+      "small": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": false,
+      "western": false
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": true,
+    "remarks": "金剛山の登山口にもなっている水越峠付近の渓流。水越川公共駐車場が起点で、川も駐車場も無料。水深は数cm〜大人の足首ほどで、深い場所でも30cm程度。流れが穏やかで透明度が高く、泳ぐというより浅瀬を歩く深さのため小型犬でも入りやすい。管理者のいない自然の川で犬種やサイズの制限はなく、リード着用とフンの持ち帰りが前提。ドッグランはなし。標高が高く水温はかなり冷たいため、犬を長時間入れる場合は体の冷えに注意。駐車場は中流側と上流側の2か所で合わせて30〜40台程度だが、登山口を兼ねるため休日は早朝から満車になりやすい。村の規定で18:00〜翌6:00は利用禁止。駐車場にトイレはなく、最寄りは旧国道309号の分岐付近にある水越峠公衆トイレ（車で2分程度）。水辺の広場の入口は老朽化のため閉鎖中で再開未定。ゴミ箱がないため持ち帰りのこと。落差のある小さな滝があり、ゲリラ豪雨時は急な増水の危険。アクセス路は道幅が狭く対向車とすれ違えない区間あり。BBQ・火気の可否は村の公式見解が公表されておらず、行う場合は千早赤阪村都市整備課への事前確認推奨。",
+    "imageUrl": "",
+    "officialUrl": "https://www.vill.chihayaakasaka.osaka.jp/kakuka/sangyokensetsu/toshiseibi/new/2672.html",
+    "aliases": [
+      "みずこしがわ",
+      "水越川公共駐車場",
+      "みずこしがわこうきょうちゅうしゃじょう",
+      "水越峠",
+      "みずこしとうげ",
+      "千早赤阪 川遊び",
+      "ちはやあかさか かわあそび"
+    ],
+    "tags": [
+      "water"
+    ]
   }
 ]
