@@ -208,7 +208,12 @@ def parking_text(spot: dict) -> str:
 
 def toilet_text(spot: dict) -> str:
     t = spot.get("toilet") or {}
-    if not t.get("available"):
+    available = t.get("available")
+    # available が None は「無い」ではなく「未確認」。断定せず要確認と表示する
+    # （調べても公表情報が見つからない施設がある。false と書くと誤情報になる）
+    if available is None:
+        return "情報なし（要確認）"
+    if not available:
         return "なし"
     western = t.get("western")
     # None は洋式/和式が未確認。断定せず「あり」とだけ表示する

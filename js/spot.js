@@ -43,7 +43,10 @@
     }
 
     let toiletText = 'なし';
-    if (spot.toilet.available) {
+    // available が null（有無そのものが未確認）のときは「なし」と断定しない
+    if (spot.toilet.available === null || spot.toilet.available === undefined) {
+      toiletText = '情報なし（要確認）';
+    } else if (spot.toilet.available) {
       // western が null（洋式/和式が未確認）のときは断定せず「あり」とだけ表示する
       if (spot.toilet.western === null || spot.toilet.western === undefined) {
         toiletText = 'あり';
