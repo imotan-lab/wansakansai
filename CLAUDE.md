@@ -97,7 +97,17 @@
   - `python generate_spot_pages.py` で `spots/{id}.html` 静的ページを再生成（SEO的に必須）
   - `python generate_sitemap.py` で sitemap.xml を再生成
 - スポット詳細ページのURLは `https://wansakansai.com/spots/{id}.html` が正規（旧 `spot.html?id=xxx` は自動リダイレクト）。内部リンクは `spots/{id}.html` 形式で書く
-- spots/ 配下のHTMLは `generate_spot_pages.py` の出力なので**手動編集禁止**。再生成で上書きされる
+- spots/ 配下のHTMLは `generate_spot_pages.py` の出力なので**手動編集禁止**。再生成で上書きされる（`spots/index.html` も同スクリプトが生成する全スポット一覧ページ。削除対象からは除外済み）
+
+## 静的内部リンク（インデックス対策・2026-08-25導入）
+
+**★鉄則: スポットページへの導線をJS描画だけに依存させないこと★**
+トップのスポット一覧（app.js）・テーマページ（theme-page.js）はJS描画のため、レンダリング前HTMLに `spots/*.html` へのリンクが1本も無く、全260ページがGoogleから孤立ページ扱いされて「検出 - インデックス未登録」が106ページ滞留した（2026-08-25に発覚・修正）。
+
+現在の静的クロール経路（いずれも `generate_spot_pages.py` が生成）:
+- `spots/index.html` … 全スポットを府県別に並べた静的一覧。**クロール経路のハブ**。トップページ（`index.html` の `.all-spots-link`）から静的リンクで到達できる
+- 各スポットページ … 「近くのスポット」6件への静的リンク（GPS距離順・ハバサイン）＋一覧ページへの導線。**spot.jsが `#spotDetail` を描き直すため表示は従来どおりで、生HTMLにリンクを残すのが目的**
+- 新しい一覧・カテゴリ系ページを作る時も、リンクをJS描画だけに置かない（生HTMLに必ず残す）
 - プッシュ後はデプロイ完了を待ち、本番サイト https://wansakansai.com を確認する
 - 本番確認はプレビューツールのヘッドレスブラウザで行う（Chromeに干渉しない）
   - preview_startでローカルサーバー起動 → preview_evalで本番URLにナビゲート → preview_screenshotで確認
