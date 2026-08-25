@@ -165,7 +165,10 @@
   - 対象取得: `python scripts/get_next_check_targets.py --count 5`
   - カウント更新: `python scripts/update_check_count.py --ids "id1,id2,..." --pending-clear`
 - 複数サイト突き合わせ + ブログ・SNS犬連れ実績確認
-- **有料施設・小規模施設（`admission.free`=false / `dogRun.free`=false / category=`dogrun` / officialUrlがInstagram）は毎回Instagramも確認する**（2026-08-25追加。対象58件・1日10件チェックのうち平均2.2件）。HPを持たない施設はInstagramが実質の公式で、料金改定・定休日・臨時休業がそこにしか出ないため。checkタスクが差異をログに記録し、verifyタスクが**公式Instagramを一次情報として優先採用**して修正する（「1サイトのみでは修正しない」の例外。ただし投稿日を確認し古い投稿で上書きしないこと）
+- **有料施設・小規模施設はInstagramも確認する**（2026-08-25追加。対象59件・1日10件チェックのうち平均2.2件）。HPを持たない施設はInstagramが実質の公式で、料金改定・定休日がそこにしか出ないため
+  - 対象判定: `admission.free`=false ／ **`dogRun.available`=true かつ `dogRun.free`=false** ／ `officialUrl`が空またはInstagram・Facebook・XのURL ／ `category`=`dogrun`（categoryは77件欠落しているため補助的条件）
+  - **★`dogRun.free` 単独で判定しないこと★** ドッグランが無いスポットもデフォルトで false のため、263件中232件（88%）が対象になりタスクが破綻する（2026-08-25の敵対的レビューで判明）
+  - checkタスクが差異をログに記録し、verifyタスクが**公式Instagramを一次情報として優先採用**して修正する（「1サイトのみでは修正しない」の例外）。ただし歯止めとして①投稿日が1年以上前の情報は単独採用しない②Chrome MCPで原文を確認できなかった項目は修正しない（WebFetchは要約を返すため）③臨時休業・期間限定価格などの**一時的情報はspots.jsonに書かない**（remarksに有効期限の概念が無く翌年に誤情報化する）④アカウントは住所か施設名の一致で**本人確認**してから採用する
 - 問題があればspots.jsonを修正してcommit & push
 - 再検証タスク（spot-verify-am / spot-verify-pm）の冒頭で全件文体チェック（`python scripts/check_writing_style.py --fix`）を実行し、機械的に判定可能な違反は自動修正する
 - チェックタスクで各スポットの本番URLをChrome MCPで開き、レイアウト崩れ・画像404・JSエラーをログに記録（修正はverifyタスクで実施）
