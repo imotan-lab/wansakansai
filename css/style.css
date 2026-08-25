@@ -1414,3 +1414,88 @@ img {
     height: 350px;
   }
 }
+
+/* ===== All Spots Index (spots/index.html) ===== */
+/* 全スポットの静的一覧。JS描画に依存しないクロール経路のハブを兼ねる */
+.all-spots-title {
+  font-size: 1.4rem;
+  color: var(--color-primary);
+  margin-bottom: 8px;
+}
+
+.all-spots-lead {
+  font-size: 0.9rem;
+  color: var(--color-text-light);
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+
+.all-spots-group {
+  margin-bottom: 28px;
+}
+
+.all-spots-group h2 {
+  font-size: 1.05rem;
+  color: var(--color-accent);
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--color-border);
+  margin-bottom: 12px;
+}
+
+.all-spots-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 2px 16px;
+}
+
+.all-spots-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--color-border);
+  min-height: 44px;
+}
+
+.all-spots-list a {
+  color: var(--color-text);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.all-spots-list a:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.all-spots-city {
+  margin-left: auto;
+  font-size: 0.75rem;
+  color: var(--color-text-light);
+  white-space: nowrap;
+}
+
+/* トップページ・スポット詳細から一覧ページへの導線 */
+.all-spots-link {
+  margin: 24px 0 8px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.all-spots-link a {
+  display: inline-block;
+  padding: 12px 20px;
+  min-height: 44px;
+  color: var(--color-primary);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-bg-card);
+}
+
+.all-spots-link a:hover {
+  background: var(--color-bg);
+  border-color: var(--color-primary-light);
+}

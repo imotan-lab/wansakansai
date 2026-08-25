@@ -11,6 +11,7 @@ spots.jsonから各スポット用の静的HTMLを spots/{id}.html として事�
 import json
 import re
 import html
+import math
 from pathlib import Path
 
 BASE_URL = "https://wansakansai.com"
@@ -19,6 +20,12 @@ SPOTS_DIR = PROJECT_DIR / "spots"
 SPOTS_JSON = PROJECT_DIR / "data" / "spots.json"
 
 PREF_RE = re.compile(r"^(大阪府|兵庫県|京都府|奈良県|滋賀県|和歌山県)")
+
+# 一覧ページの表示順（spots/index.html）
+PREF_ORDER = ["大阪府", "兵庫県", "京都府", "奈良県", "滋賀県", "和歌山県"]
+
+# 静的内部リンクの本数（各スポットページに載せる「近くのスポット」件数）
+NEARBY_COUNT = 6
 
 
 def _pref_and_rest(addr: str) -> tuple[str, str]:
@@ -247,7 +254,58 @@ def format_remarks(remarks: str) -> str:
     return "<br>".join(html_lines)
 
 
-def build_body_content(spot: dict) -> str:
+def _distance_km(a: dict, b: dict) -> float:
+    """2スポット間の直線距離（km）。ハバサイン公式。"""
+    lat1, lng1 = a.get("lat"), a.get("lng")
+    lat2, lng2 = b.get("lat"), b.get("lng")
+    if None in (lat1, lng1, lat2, lng2):
+        return float("inf")
+    r = 6371.0
+    p1, p2 = math.radians(lat1), math.radians(lat2)
+    dp = math.radians(lat2 - lat1)
+    dl = math.radians(lng2 - lng1)
+    h = math.sin(dp / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(dl / 2) ** 2
+    return 2 * r * math.asin(math.sqrt(h))
+
+
+def _format_distance(km: float) -> str:
+    if km < 1:
+        return f"{int(round(km * 1000))}m"
+    return f"{km:.1f}km"
+
+
+def build_nearby_html(spot: dict, all_spots: list) -> str:
+    """近くのスポットへの静的リンク。
+
+    ★SEO上の役割★ spots/{id}.html はサイトマップ以外から辿れない孤立ページだと
+    Googleが「検出 - インデックス未登録」のまま放置する（2026-08-25に106ページで実際に発生）。
+    スポット同士を静的リンクで結び、クロール経路を作るためのブロック。
+    spot.js が #spotDetail を innerHTML で描き直すため、JS実行後はJS版の表示に置き換わる
+    （＝見た目は従来どおり。この静的版はレンダリング前のHTMLをbotに読ませるためのもの）。
+    """
+    others = [s for s in all_spots if s.get("id") != spot.get("id")]
+    ranked = sorted(others, key=lambda s: _distance_km(spot, s))
+    nearby = [s for s in ranked[:NEARBY_COUNT] if _distance_km(spot, s) != float("inf")]
+    if not nearby:
+        return ""
+
+    cards = []
+    for s in nearby:
+        sid = html.escape(s["id"])
+        nm = html.escape(s["name"])
+        dist = html.escape(_format_distance(_distance_km(spot, s)))
+        cards.append(
+            f'<a href="{sid}.html" class="nearby-spot-card">'
+            f'<span class="nearby-spot-name">{nm}</span>'
+            f'<span class="nearby-spot-dist">{dist}</span></a>'
+        )
+    return f'''<div class="nearby-spots">
+          <h3>近くのスポット</h3>
+          {"".join(cards)}
+        </div>'''
+
+
+def build_body_content(spot: dict, all_spots: list = None) -> str:
     """SEO的にbotがクロール時に読み取れる本文HTML（spot.jsが上書きするが、初期表示でも有意義）"""
     name = html.escape(spot["name"])
     address = html.escape(spot.get("address", ""))
@@ -313,10 +371,11 @@ def build_body_content(spot: dict) -> str:
 
         {warn}
         {remarks_html}
+        {build_nearby_html(spot, all_spots or [])}
       </div>'''
 
 
-def build_html(spot: dict) -> str:
+def build_html(spot: dict, all_spots: list = None) -> str:
     sid = spot["id"]
     url = f"{BASE_URL}/spots/{sid}.html"
     title = build_title(spot)
@@ -325,11 +384,12 @@ def build_html(spot: dict) -> str:
     og_image = f"{BASE_URL}/{images[0]}" if images else f"{BASE_URL}/images/ogp.png"
     jsonld_image = og_image if images else ""  # OGP fallback画像は構造化データには含めない
     jsonld = build_jsonld(spot, url, jsonld_image)
-    body_content = build_body_content(spot)
+    body_content = build_body_content(spot, all_spots)
 
     title_e = html.escape(title)
     desc_e = html.escape(desc)
     sid_e = html.escape(sid)
+    total_spots = len(all_spots) if all_spots else 0
 
     return f'''<!DOCTYPE html>
 <html lang="ja">
@@ -364,11 +424,125 @@ def build_html(spot: dict) -> str:
     <div id="spotDetail">
       {body_content}
     </div>
+    <p class="all-spots-link"><a href="index.html">関西の犬連れスポット一覧（全{total_spots}件）を見る</a></p>
   </main>
 
   <script>window.WANSAKA_SPOT_ID = "{sid_e}";</script>
   <script src="../js/common.js"></script>
   <script src="../js/spot.js"></script>
+</body>
+</html>
+'''
+
+
+def build_index_html(spots: list) -> str:
+    """spots/index.html — 全スポットの静的一覧ページ。
+
+    ★SEO上の役割★ トップページのスポット一覧は app.js がJSで描画するため、
+    レンダリング前のHTMLには spots/*.html へのリンクが1本も無かった。
+    その結果Googleが全スポットページを孤立ページ扱いし、サイトマップで検出しても
+    インデックスしない状態になっていた（2026-08-25時点で106ページが「検出 - インデックス未登録」）。
+    このページが全スポットへの静的リンクを持つクロール経路のハブになる。
+    """
+    groups: dict[str, list] = {p: [] for p in PREF_ORDER}
+    others: list = []
+    for s in spots:
+        pref, _ = _pref_and_rest(s.get("address", ""))
+        if pref in groups:
+            groups[pref].append(s)
+        else:
+            others.append(s)
+
+    sections = []
+    for pref in PREF_ORDER:
+        items = sorted(groups[pref], key=lambda s: s["name"])
+        if not items:
+            continue
+        links = []
+        for s in items:
+            sid = html.escape(s["id"])
+            nm = html.escape(s["name"])
+            _, rest = _pref_and_rest(s.get("address", ""))
+            city = html.escape(rest[:12])
+            links.append(
+                f'<li><a href="{sid}.html">{nm}</a><span class="all-spots-city">{city}</span></li>'
+            )
+        sections.append(
+            f'''<section class="all-spots-group">
+        <h2>{html.escape(pref)}（{len(items)}件）</h2>
+        <ul class="all-spots-list">
+          {"".join(links)}
+        </ul>
+      </section>'''
+        )
+
+    if others:
+        links = []
+        for s in sorted(others, key=lambda s: s["name"]):
+            sid = html.escape(s["id"])
+            nm = html.escape(s["name"])
+            links.append(f'<li><a href="{sid}.html">{nm}</a></li>')
+        sections.append(
+            f'''<section class="all-spots-group">
+        <h2>その他（{len(others)}件）</h2>
+        <ul class="all-spots-list">
+          {"".join(links)}
+        </ul>
+      </section>'''
+        )
+
+    total = len(spots)
+    url = f"{BASE_URL}/spots/index.html"
+    title = f"関西の犬連れスポット一覧（全{total}件）- わんさかんさい"
+    desc = (
+        f"大阪・兵庫・京都・奈良・滋賀・和歌山の犬連れOKスポット全{total}件を府県別にまとめた一覧。"
+        "ドッグラン・公園・海辺・道の駅など、愛犬と行ける場所を一覧から探せます。"
+    )
+    title_e = html.escape(title)
+    desc_e = html.escape(desc)
+
+    return f'''<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{desc_e}">
+  <title>{title_e}</title>
+  <link rel="canonical" href="{url}">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="わんさかんさい">
+  <meta property="og:title" content="{title_e}">
+  <meta property="og:description" content="{desc_e}">
+  <meta property="og:url" content="{url}">
+  <meta property="og:image" content="{BASE_URL}/images/ogp.png">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@wansakansai">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="../favicon.ico">
+  <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <main class="main-content">
+    <a href="../index.html" class="back-link">← トップページに戻る</a>
+    <h1 class="all-spots-title">関西の犬連れスポット一覧</h1>
+    <p class="all-spots-lead">
+      掲載中の全{total}件を府県別に並べています。現在地から近い順に探す場合は
+      <a href="../index.html">トップページ</a>、目的や季節から探す場合は
+      <a href="../themes/index.html">テーマ別まとめ</a>をご利用ください。
+    </p>
+    {"".join(sections)}
+  </main>
+
+  <script src="../js/common.js"></script>
+  <script>
+    renderHeader('spots');
+    renderFooter();
+  </script>
 </body>
 </html>
 '''
@@ -381,9 +555,12 @@ def main():
     SPOTS_DIR.mkdir(parents=True, exist_ok=True)
 
     # 既存の html ファイルをクリア（spots.jsonに無いスポットの古いファイル削除）
+    # index.html は全スポット一覧ページなので削除対象から除外する
     existing_ids = {s["id"] for s in spots}
     deleted = 0
     for f in SPOTS_DIR.glob("*.html"):
+        if f.stem == "index":
+            continue
         if f.stem not in existing_ids:
             f.unlink()
             deleted += 1
@@ -391,10 +568,17 @@ def main():
     generated = 0
     for spot in spots:
         out = SPOTS_DIR / f"{spot['id']}.html"
-        out.write_text(build_html(spot), encoding="utf-8", newline="\n")
+        out.write_text(build_html(spot, spots), encoding="utf-8", newline="\n")
         generated += 1
 
-    print(f"spots/ 生成完了: {generated}件" + (f" (削除: {deleted}件)" if deleted else ""))
+    (SPOTS_DIR / "index.html").write_text(
+        build_index_html(spots), encoding="utf-8", newline="\n"
+    )
+
+    print(
+        f"spots/ 生成完了: {generated}件 + 一覧ページ1件"
+        + (f" (削除: {deleted}件)" if deleted else "")
+    )
 
 
 if __name__ == "__main__":

@@ -21,6 +21,9 @@ static_pages = [
     {"loc": f"{BASE_URL}/contact.html", "changefreq": "monthly", "priority": "0.5"},
     {"loc": f"{BASE_URL}/privacy.html", "changefreq": "yearly",  "priority": "0.3"},
     {"loc": f"{BASE_URL}/about.html",   "changefreq": "monthly", "priority": "0.5"},
+    # 全スポットの静的一覧（generate_spot_pages.py が生成）。全スポットページへの
+    # 静的リンクを持つクロール経路のハブなので優先度を高めに置く
+    {"loc": f"{BASE_URL}/spots/index.html", "changefreq": "weekly", "priority": "0.9"},
 ]
 
 # テーマ別まとめページ（js/themes-data.js の THEMES と対応）
