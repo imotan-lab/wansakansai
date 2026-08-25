@@ -165,6 +165,7 @@
   - 対象取得: `python scripts/get_next_check_targets.py --count 5`
   - カウント更新: `python scripts/update_check_count.py --ids "id1,id2,..." --pending-clear`
 - 複数サイト突き合わせ + ブログ・SNS犬連れ実績確認
+- **有料施設・小規模施設（`admission.free`=false / `dogRun.free`=false / category=`dogrun` / officialUrlがInstagram）は毎回Instagramも確認する**（2026-08-25追加。対象58件・1日10件チェックのうち平均2.2件）。HPを持たない施設はInstagramが実質の公式で、料金改定・定休日・臨時休業がそこにしか出ないため。checkタスクが差異をログに記録し、verifyタスクが**公式Instagramを一次情報として優先採用**して修正する（「1サイトのみでは修正しない」の例外。ただし投稿日を確認し古い投稿で上書きしないこと）
 - 問題があればspots.jsonを修正してcommit & push
 - 再検証タスク（spot-verify-am / spot-verify-pm）の冒頭で全件文体チェック（`python scripts/check_writing_style.py --fix`）を実行し、機械的に判定可能な違反は自動修正する
 - チェックタスクで各スポットの本番URLをChrome MCPで開き、レイアウト崩れ・画像404・JSエラーをログに記録（修正はverifyタスクで実施）
