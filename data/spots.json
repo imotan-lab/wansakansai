@@ -6680,53 +6680,6 @@
     ]
   },
   {
-    "id": "shigisan-chogosonshiji",
-    "name": "信貴山 朝護孫子寺",
-    "address": "奈良県生駒郡平群町信貴山2280-1",
-    "lat": 34.6094,
-    "lng": 135.6713,
-    "category": "walk",
-    "dogSize": {
-      "small": true,
-      "large": true
-    },
-    "parking": {
-      "available": true,
-      "free": false
-    },
-    "toilet": {
-      "available": true,
-      "western": true
-    },
-    "stairs": 4,
-    "barrierFree": 1,
-    "dogRun": {
-      "available": false,
-      "free": false,
-      "separated": false,
-      "detail": ""
-    },
-    "admission": {
-      "free": true,
-      "fee": "霊宝館・戒壇巡り等は別途有料（霊宝館大人300円・子供200円）"
-    },
-    "visited": false,
-    "remarks": "信貴山真言宗の総本山で聖徳太子ゆかりの古刹、寅にちなむ巨大な張子の虎で有名。公式サイトに犬猫等ペットを連れての参拝はお断りとの明記があり、犬同伴での参拝は不可。境内・参道を含め犬連れでの立ち入りは控えること。境内自由拝観、4〜9月は8:30〜17:30・10〜3月は9:00〜17:00。霊宝館・戒壇巡り等は別途有料。駐車場は第一・第二があり1回500円前払い、台数は情報源により約90台〜約150台と幅があるため事前確認推奨。階段・坂道が多く脚力必要、桜・紅葉の名所でもある。",
-    "imageUrl": "",
-    "officialUrl": "https://www.sigisan.or.jp/",
-    "tags": [
-      "sakura",
-      "koyo"
-    ],
-    "aliases": [
-      "しぎさん ちょうごそんしじ",
-      "朝護孫子寺",
-      "ちょうごそんしじ",
-      "信貴山寺",
-      "信貴山"
-    ]
-  },
-  {
     "id": "katsuragisan-ropeway",
     "name": "葛城山ロープウェイ・葛城高原",
     "address": "奈良県御所市櫛羅2503-1",
