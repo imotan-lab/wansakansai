@@ -96,6 +96,17 @@
 - **スポットを追加・編集・削除したら** 以下2つを順に実行してからコミットすること
   - `python generate_spot_pages.py` で `spots/{id}.html` 静的ページを再生成（SEO的に必須）
   - `python generate_sitemap.py` で sitemap.xml を再生成
+- **★スポットを削除する前に必ずX投稿履歴を確認する（2026-08-31追加）★**
+  ```bash
+  python scripts/check_x_posted.py {スポットID}
+  ```
+  **サイトから消してもXのポストは残る**ため、犬NGを理由に削除したスポットが「犬連れOK」として
+  Xに残り続ける事故を防ぐ。該当があればXのポストも削除するか判断すること（該当ポストは
+  https://x.com/wansakansai から履歴の日付で探せる）。
+  - X本体の検索より確実: 危険情報の投稿は本文に「場所」しか載らないため本文検索では拾えず、
+    検索インデックスの遅延や表示制限にも影響されない
+  - `--orphans` で「spots.jsonに無いのに投稿済み」＝過去の削除漏れを一括検出できる
+  - 履歴は `scripts/x_post_history.json`（.gitignore対象・スポットID/種別/日時/本文を保持）
 - スポット詳細ページのURLは `https://wansakansai.com/spots/{id}.html` が正規（旧 `spot.html?id=xxx` は自動リダイレクト）。内部リンクは `spots/{id}.html` 形式で書く
 - spots/ 配下のHTMLは `generate_spot_pages.py` の出力なので**手動編集禁止**。再生成で上書きされる（`spots/index.html` も同スクリプトが生成する全スポット一覧ページ。削除対象からは除外済み）
 
