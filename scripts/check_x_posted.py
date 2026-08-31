@@ -81,7 +81,9 @@ def main() -> int:
 
     kw = args.keyword
     hits = [x for x in hist
-            if kw in str(x.get("spot_id", "")) or kw in str(x.get("text_preview", ""))]
+            if kw in str(x.get("spot_id", ""))
+            or kw in str(x.get("text_preview", ""))
+            or kw in str(x.get("text_full", ""))]
 
     if not hits:
         print(f"「{kw}」のX投稿履歴: なし（Xに残っていないので削除して問題なし）")

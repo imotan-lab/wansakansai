@@ -25,6 +25,12 @@ from x_poster import post_tweet, count_x_weight, MAX_TWEET_WEIGHT  # noqa: E402
 from refresh_x_cookies import refresh_with_auto_chrome  # noqa: E402
 from clear_x_cache import clear_account, human_size  # noqa: E402
 
+# 投稿履歴（x_post_history.json）への記録に使う。
+# ★2026-08-31追加★ 以前は危険情報の投稿だけ履歴に残らず、
+# scripts/check_x_posted.py で「投稿したか」を調べても検出できなかった。
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from x_auto_helpers import load_history, save_history, record_post  # noqa: E402
+
 PROJECT_DIR = Path(__file__).resolve().parent.parent
 DANGERS_PATH = PROJECT_DIR / "data" / "dangers.json"
 PREV_PATH = PROJECT_DIR / "scripts" / "dangers_prev.json"
@@ -196,6 +202,25 @@ def main():
     # 実投稿モードなら prev を更新（次回以降の差分基準にする）
     if not dry_run:
         save_json(PREV_PATH, current)
+
+        # 投稿履歴に記録する（スポット削除前の確認 scripts/check_x_posted.py が参照する）。
+        # spot_id には危険情報のID（danger-0XX）を入れる。
+        try:
+            history = load_history()
+            recorded = 0
+            for p in posts:
+                if p.get("success"):
+                    record_post(history, p["id"], "danger", p.get("text", ""))
+                    # record_post は text_preview を60字で切るが、危険情報は location が
+                    # 長く語句が末尾に来ることがあるため、検索漏れ防止に全文を保持する
+                    history["posts"][-1]["text_full"] = p.get("text", "")
+                    recorded += 1
+            if recorded:
+                save_history(history)
+                print(f"History: {recorded}件を x_post_history.json に記録")
+        except Exception as e:
+            # 履歴記録の失敗で投稿処理を落とさない（投稿自体は成功しているため）
+            print(f"History: ERR ({type(e).__name__}: {e})")
 
         # 投稿でChromeを起動してキャッシュが増えたのでクリア（ログイン情報は残る）
         # Chromeが動いているケース（想定外）は clear_account 側でスキップされる
