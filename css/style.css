@@ -901,8 +901,36 @@ img {
   height: 250px;
   border: none;
   border-radius: var(--radius-sm);
-  margin-bottom: 20px;
+  margin-bottom: 8px;
   display: block;
+}
+
+/* 地図の下の注記とGoogleマップ起動リンク */
+.spot-map-note {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--color-text-light, #777);
+  margin-bottom: 20px;
+}
+
+.spot-map-link {
+  display: inline-block;
+  padding: 8px 14px;
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-sm);
+  color: var(--color-primary);
+  font-weight: bold;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.spot-map-link:hover {
+  background: var(--color-primary);
+  color: #fff;
 }
 
 .detail-info-list {

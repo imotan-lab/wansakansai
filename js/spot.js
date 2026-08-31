@@ -80,7 +80,15 @@
     // 公式URLは http(s) のみ許可（javascript: 等のスキーム混入を防ぐ）
     const officialUrlSafe = /^https?:\/\//i.test(spot.officialUrl || '') ? spot.officialUrl : '';
 
-    const mapQuery = encodeURIComponent(spot.name + ' ' + spot.address);
+    // 地図は必ず座標で指定する。以前は名称+住所の文字列検索だったが、
+    // Googleが場所を特定できないと地図が表示されない（水越川で発生）。
+    // parking.lat/lng があれば駐車場を指す。無ければスポットの座標。
+    const pk = spot.parking || {};
+    const hasParkingPin = typeof pk.lat === 'number' && typeof pk.lng === 'number';
+    const mapLat = hasParkingPin ? pk.lat : spot.lat;
+    const mapLng = hasParkingPin ? pk.lng : spot.lng;
+    const hasCoords = typeof mapLat === 'number' && typeof mapLng === 'number';
+    const mapCoord = hasCoords ? encodeURIComponent(mapLat + ',' + mapLng) : '';
 
     const isFav = isFavorite(spot.id);
 
@@ -120,14 +128,20 @@
           &#9829; ${isFav ? 'お気に入り済み' : 'お気に入りに追加'}
         </button>
 
+        ${hasCoords ? `
         <iframe
           class="spot-map"
           title="${escapeHtml(spot.name)}の地図"
-          src="https://maps.google.co.jp/maps?q=${mapQuery}&output=embed&z=15"
+          src="https://maps.google.co.jp/maps?q=${mapCoord}&output=embed&z=${hasParkingPin ? 17 : 16}"
           allowfullscreen
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
         ></iframe>
+        <p class="spot-map-note">
+          <span>${hasParkingPin ? '地図のピンは駐車場の位置' : '地図のピンはスポットのおおよその位置'}</span>
+          <a class="spot-map-link" href="https://www.google.com/maps/search/?api=1&query=${mapCoord}" target="_blank" rel="noopener">Googleマップで開く</a>
+        </p>
+        ` : ''}
 
         <div class="detail-info-list">
           <div class="detail-info-item">
