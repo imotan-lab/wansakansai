@@ -233,9 +233,10 @@ JS描画だけだとレンダリング前HTMLにリンクが残らず、Google�
 - 3ヶ月以上前で続報なし・解決済みの情報は削除を検討
 
 ## 週次SEOレポート（自動タスク・2026-09-02導入）
-タスクID: wansakansai-weekly-seo（毎週水曜の朝）。ログ: `.claude/logs/wansakansai_seo_YYYY-MM-DD.log`
-Chrome MCPでSearch Consoleの「日付」タブの画面テキストを取る → `scripts/seo_ingest.py` で累積CSVへ → `scripts/seo_report.py` でPDF/PPTX → メール添付 → Dropbox退避。
-水曜なのはSearch Consoleの数字が2〜3日遅れて確定するため（水曜なら前週日曜ぶんまで確定済み）。
+タスクID: wansakansai-weekly-seo（毎週金曜の朝）。ログ: `.claude/logs/wansakansai_seo_YYYY-MM-DD.log`
+Chrome MCPでSearch Consoleの「日」タブの画面テキストを取る → `scripts/seo_ingest.py` で累積CSVへ → `scripts/seo_report.py` でPDF/PPTX → メール添付 → Dropbox退避。
+**金曜なのはデータ確定が4日遅れだから**（2026-09-02水に実測＝最新は8/29土まで。日曜ぶんが揃うのは木曜以降なので1日余裕をみた）。
+URLで日別タブと4指標まで指定できる: `.../search-analytics?resource_id=https%3A%2F%2Fwansakansai.com%2F&breakdown=date&metrics=CLICKS%2CIMPRESSIONS%2CCTR%2CPOSITION`。ただし**「1ページあたりの行数」は既定10のままだと10日分しか取れない**。500に変える操作は**キーボードの下矢印で移動する**こと（メニュー項目のクリックは反映されない・実測）。
 累積CSV `C:/Users/imao_/Documents/wansakansai/seo_daily.csv` は**ローカルのみ**なので毎回Dropbox（`Claude_backup/自動タスク/wansakansai-weekly-seo/`）へ退避する。成果物も同じ場所。
 
 - **★数字を作らない★** 画面テキストは各項目が区切りなしで連結される（`2026/08/29811,9764.1%9.2`）。**手で切り分けないこと**。`--expect-clicks` に画面の合計を渡して検算し、合わなければ取り込まず終了コード1で止まる

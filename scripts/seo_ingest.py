@@ -29,8 +29,30 @@ import sys
 FIELDS = ["date", "clicks", "impressions", "ctr", "position"]
 
 
+def solve_spaced(rec):
+    """区切りが残っている場合。素直に読めるのでこちらを先に試す。
+
+    Chrome MCPの get_page_text は「2026/08/29 81 1,976 4.1% 9.2」のように
+    空白区切りで返す。区切りが消えるのは表を画像や別経路から写した場合。
+    """
+    # 末尾は $ で閉じない。最後の行のうしろにはページ送りの文言が続くため
+    # （閉じると最終行だけ区切りなし側に落ち、掲載順位に次の文字の数字がくっつく）
+    m = re.match(r"^(\d{4}/\d{2}/\d{2})\s+([\d,]+)\s+([\d,]+)\s+([\d.]+)\s*%\s+([\d.]+)(?=\s|$)",
+                 rec)
+    if not m:
+        return None
+    date, c, i, ctr, pos = m.groups()
+    c, i = int(c.replace(",", "")), int(i.replace(",", ""))
+    if i == 0 or c > i:
+        return None
+    if abs(c / i * 100 - float(ctr)) > 0.06:      # 区切りがあってもCTRの整合は確認する
+        return None
+    return {"date": date.replace("/", "-"), "clicks": c, "impressions": i,
+            "ctr": float(ctr), "position": float(pos)}
+
+
 def solve(rec):
-    """1レコード分の文字列を数値に分解する。決まらなければ None。"""
+    """区切りが消えている場合。1レコード分の文字列を数値に分解する。決まらなければ None。"""
     m = re.match(r"^(\d{4}/\d{2}/\d{2})(.*)%([\d.]+)", rec)
     if not m:
         return None
@@ -76,7 +98,12 @@ def parse_raw(text):
     for ch in chunks:
         if not re.match(r"^\d{4}/\d{2}/\d{2}", ch):
             continue                            # 表の前にある見出しなど
-        r = solve(ch)
+        # グラフのX軸の目盛りも日付として拾えてしまう。表の行はCTRの % が近くに必ず来るので、
+        # 空白を除いた先頭40文字に % が無いものは表の行ではないとみなして黙って飛ばす
+        packed = re.sub(r"\s+", "", ch)
+        if "%" not in packed[:40]:
+            continue
+        r = solve_spaced(ch) or solve(packed)
         if r:
             ok.append(r)
         else:
