@@ -1,3 +1,23 @@
+// 全文を段落に分ける。descriptionは改行なしの一続きなので、句点で区切って
+// 110字を目安にまとめる。文の途中では切らない
+// 各段落は中でescapeHtmlを通しているため、呼び出し側はそのまま埋め込んでよい
+function paragraphize(text) {
+  const sentences = String(text || '').split('。').map(s => s.trim()).filter(Boolean);
+  if (sentences.length === 0) return '';
+  const paras = [];
+  let buf = '';
+  for (const s of sentences) {
+    buf += s + '。';
+    if (buf.length >= 110) { paras.push(buf); buf = ''; }
+  }
+  if (buf) {
+    // 最後が短すぎる場合は前の段落にくっつける（1行だけの段落を作らない）
+    if (paras.length > 0 && buf.length < 40) paras[paras.length - 1] += buf;
+    else paras.push(buf);
+  }
+  return paras.map(p => '<p class="danger-card-desc">' + escapeHtml(p) + '</p>').join('');
+}
+
 // ===== Spot Detail Page =====
 
 (async function () {
@@ -213,7 +233,7 @@
                   <span class="danger-card-type">${escapeHtml(d.type)}</span>
                   <span class="detail-danger-date">${escapeHtml(d.date)}</span>
                   <p>${escapeHtml(d.summary || d.description)}</p>
-                  ${d.summary ? `<details class="danger-detail"><summary>詳しく見る</summary><p class="danger-card-desc">${escapeHtml(d.description)}</p></details>` : ''}
+                  ${d.summary ? `<details class="danger-detail"><summary>詳しく見る</summary>${paragraphize(d.description)}</details>` : ''}
                 </div>
               `).join('')}
             </div>
