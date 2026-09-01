@@ -23,6 +23,20 @@ function escapeHtml(value) {
 // OGP/Twitterタグは各HTMLの <head> に静的記述済みのため、JSでの動的注入は廃止した。
 // （旧実装は旧GitHub Pagesドメインの og:image を全ページに二重出力していた）
 
+// ===== アフィリエイトリンクのクリック計測 =====
+// スポット詳細（js/spot.js が動的生成）とブログ記事（静的HTML）の両方を1か所で見る。
+// 個別バインドだと二重計測や付け忘れが起きるため document への委譲にまとめている。
+// ★計測はここだけで行うこと。他のファイルで addEventListener しないこと★
+document.addEventListener('click', function (e) {
+  const btn = e.target && e.target.closest ? e.target.closest('.affiliate-btn[data-aff]') : null;
+  if (!btn || typeof window.gtag !== 'function') return;
+  window.gtag('event', 'affiliate_click', {
+    network: btn.dataset.aff,
+    prefecture: btn.dataset.affPref || 'unknown',
+    page: btn.dataset.affPage || 'unknown',
+  });
+});
+
 // ===== Common: Header & Footer Injection =====
 
 function getBasePath() {

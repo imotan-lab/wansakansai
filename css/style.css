@@ -393,6 +393,22 @@ img {
     flex-direction: column;
   }
 }
+/* 記事本文の途中に差し込む版。区切り線ではなく枠で囲って本文と切り分ける */
+.affiliate-stay.affiliate-inline {
+  margin: 22px 0 26px;
+  padding: 14px 16px;
+  border: 1px solid var(--color-border);
+  border-top: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg);
+}
+.affiliate-stay.affiliate-inline .affiliate-stay-head {
+  margin-bottom: 8px;
+}
+/* 宿を1つだけ挙げる時はボタンを横に伸ばしすぎない */
+.affiliate-btns.affiliate-btns-single .affiliate-btn {
+  flex: 0 1 320px;
+}
 
 /* ===== Filter Buttons ===== */
 .filter-section {

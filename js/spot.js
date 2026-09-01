@@ -326,25 +326,15 @@ function paragraphize(text) {
           <span class="affiliate-stay-text">${headingText}</span>
         </div>
         <div class="affiliate-btns">
-          <a href="${rakutenLink}" target="_blank" rel="sponsored noopener" class="affiliate-btn affiliate-btn-rakuten" data-aff="rakuten">楽天トラベルで探す</a>
-          <a href="${jalanLink}" target="_blank" rel="sponsored nofollow noopener" class="affiliate-btn affiliate-btn-jalan" data-aff="jalan">じゃらんnetで探す</a>
+          <a href="${rakutenLink}" target="_blank" rel="sponsored noopener" class="affiliate-btn affiliate-btn-rakuten" data-aff="rakuten" data-aff-pref="${prefName || 'unknown'}" data-aff-page="spot:${spot.id}">楽天トラベルで探す</a>
+          <a href="${jalanLink}" target="_blank" rel="sponsored nofollow noopener" class="affiliate-btn affiliate-btn-jalan" data-aff="jalan" data-aff-pref="${prefName || 'unknown'}" data-aff-page="spot:${spot.id}">じゃらんnetで探す</a>
         </div>
         <img border="0" width="1" height="1" src="${jalanTracker}" alt="" style="display:none;">
       `;
       container.querySelector('.spot-detail').appendChild(affEl);
 
-      // GAアウトバウンドクリック計測（common.jsがwindow.gtagを定義済み）
-      affEl.querySelectorAll('.affiliate-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          if (typeof window.gtag === 'function') {
-            window.gtag('event', 'affiliate_click', {
-              network: btn.dataset.aff,
-              prefecture: prefName || 'unknown',
-              spot_id: spot.id,
-            });
-          }
-        });
-      });
+      // GAのクリック計測は js/common.js の委譲リスナーが拾う（data-aff / data-aff-pref /
+      // data-aff-page を見ている）。ここでバインドすると二重計測になるので書かないこと。
     })();
 
   } catch (e) {
