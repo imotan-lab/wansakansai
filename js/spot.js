@@ -212,7 +212,8 @@
                 <div class="detail-danger-item">
                   <span class="danger-card-type">${escapeHtml(d.type)}</span>
                   <span class="detail-danger-date">${escapeHtml(d.date)}</span>
-                  <p>${escapeHtml(d.description)}</p>
+                  <p>${escapeHtml(d.summary || d.description)}</p>
+                  ${d.summary ? `<details class="danger-detail"><summary>詳しく見る</summary><p class="danger-card-desc">${escapeHtml(d.description)}</p></details>` : ''}
                 </div>
               `).join('')}
             </div>

@@ -1,3 +1,17 @@
+// 一覧は要約だけ見せる。summaryが無いエントリは説明文の冒頭2文までを代わりに使う
+// （自動更新タスクが要約を付け忘れても表示が壊れないようにするため）
+function summaryOf(d) {
+  if (d.summary) return d.summary;
+  const text = (d.description || '').trim();
+  const parts = text.split('。').filter(Boolean);
+  let out = '';
+  for (const p of parts) {
+    if (out.length + p.length > 70) break;
+    out += p + '。';
+  }
+  return out || text.slice(0, 70);
+}
+
 // ===== Danger Page =====
 
 (async function () {
@@ -46,7 +60,11 @@
           <p class="danger-card-date">${escapeHtml(dateStr)}</p>
           <p class="danger-card-location">${escapeHtml(d.location)}</p>
           <span class="danger-card-type">${escapeHtml(d.type)}</span>
-          <p class="danger-card-desc">${escapeHtml(d.description)}</p>
+          <p class="danger-card-summary">${escapeHtml(summaryOf(d))}</p>
+          <details class="danger-detail">
+            <summary>詳しく見る</summary>
+            <p class="danger-card-desc">${escapeHtml(d.description)}</p>
+          </details>
           ${linksHtml}
         </div>
       `;

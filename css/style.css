@@ -1527,3 +1527,43 @@ img {
   background: var(--color-bg);
   border-color: var(--color-primary-light);
 }
+
+/* ===== 危険情報の要約と詳細トグル（2026-09-01） ===== */
+/* 一覧は要約だけを出し、全文は details で畳む。説明が長く一覧で読みにくかったため */
+.danger-card-summary {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+
+.danger-detail {
+  margin-bottom: 10px;
+}
+
+.danger-detail > summary {
+  display: inline-block;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: var(--color-primary);
+  padding: 4px 10px;
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-sm);
+  list-style: none;
+}
+
+.danger-detail > summary::-webkit-details-marker { display: none; }
+
+.danger-detail > summary:hover {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.danger-detail[open] > summary { margin-bottom: 8px; }
+
+.danger-detail[open] > summary::after { content: 'を閉じる'; }
+
+.danger-detail .danger-card-desc {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: var(--color-text-light, #666);
+}
