@@ -111,7 +111,13 @@ function renderHeader(activePage) {
 
 function renderFooter() {
   const base = getBasePath();
-  const footer = document.createElement('footer');
+  // ★生HTMLに静的フッターがあればそれを使う（新規作成しない）★
+  // フッターをJSでしか描いていなかったため、about/contact/privacy/blogへの
+  // 内部リンクがレンダリング前HTMLに1本も残らず、Googleが一度もクロールしない
+  // 状態になっていた（2026-09-02にSearch Consoleで確認）。
+  // 各ページの </body> 直前に同じ内容の静的フッターを置き、ここでは中身を描き直す。
+  const existing = document.querySelector('footer.site-footer');
+  const footer = existing || document.createElement('footer');
   footer.className = 'site-footer';
   footer.innerHTML = `
     <div class="footer-nav">
@@ -127,7 +133,7 @@ function renderFooter() {
     </div>
     <p>&copy; 2026 わんさかんさい All rights reserved.</p>
   `;
-  document.body.appendChild(footer);
+  if (!existing) document.body.appendChild(footer);
 }
 
 // Distance calculation (Haversine formula)

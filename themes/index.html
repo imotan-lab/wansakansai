@@ -33,12 +33,41 @@
         <p>目的や季節に合わせて、関西の犬連れお出かけスポットをテーマ別にまとめました。「無料でドッグランを使いたい」「桜や紅葉を愛犬と楽しみたい」「雨の日でも遊べる場所がいい」など、気になるテーマから探してみてください。各スポットの詳細ページでは、駐車場やトイレ、ドッグランの条件、犬連れのルールまで確認できます。</p>
       </div>
 
-      <div id="themeGrid" class="theme-index-grid"></div>
+      <!-- 静的リンク: js/themes-index.js が件数つきのカードで描き直すが、
+           レンダリング前HTMLにも各テーマへのリンクを残しておく（クロール経路の確保）。
+           テーマを増やしたら js/themes-data.js とあわせてここにも1行足すこと。 -->
+      <div id="themeGrid" class="theme-index-grid">
+        <a href="dogrun-free.html" class="theme-card"><div class="theme-card-title">無料ドッグラン</div></a>
+        <a href="dogrun.html" class="theme-card"><div class="theme-card-title">ドッグランがある公園</div></a>
+        <a href="sakura.html" class="theme-card"><div class="theme-card-title">桜・お花見</div></a>
+        <a href="koyo.html" class="theme-card"><div class="theme-card-title">紅葉</div></a>
+        <a href="water.html" class="theme-card"><div class="theme-card-title">水遊び・川遊び</div></a>
+        <a href="rain.html" class="theme-card"><div class="theme-card-title">雨でもOK</div></a>
+        <a href="free.html" class="theme-card"><div class="theme-card-title">完全無料で行ける</div></a>
+      </div>
 
       <a href="../index.html" class="theme-back">← トップへ戻る</a>
     </div>
   </main>
 
+  <!-- 静的フッター: クローラーに内部リンクを残すために生HTMLへ置いている。
+       表示内容は js/common.js の renderFooter() が同じもので描き直す。 消さないこと。 -->
+  <footer class="site-footer">
+    <div class="footer-nav">
+      <a href="../index.html">トップ</a>
+      <a href="index.html">テーマ別で探す</a>
+      <a href="../danger.html">危険情報</a>
+      <a href="../favorites.html">お気に入り</a>
+      <a href="../blog/index.html">ブログ</a>
+      <a href="../about.html">このサイトについて</a>
+      <a href="../privacy.html">プライバシーポリシー</a>
+      <a href="../contact.html">お問い合わせ</a>
+    </div>
+    <div class="footer-social">
+      <a href="https://x.com/wansakansai" target="_blank" rel="noopener noreferrer" aria-label="Xでフォロー" class="social-x"><span>@wansakansai</span></a>
+    </div>
+    <p>&copy; 2026 わんさかんさい All rights reserved.</p>
+  </footer>
   <script src="../js/common.js"></script>
   <script src="../js/themes-data.js"></script>
   <script src="../js/themes-index.js"></script>

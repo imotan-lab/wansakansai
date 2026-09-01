@@ -27,6 +27,32 @@ PREF_ORDER = ["大阪府", "兵庫県", "京都府", "奈良県", "滋賀県", "
 # 静的内部リンクの本数（各スポットページに載せる「近くのスポット」件数）
 NEARBY_COUNT = 6
 
+# ★静的フッター★
+# フッターをJSでしか描いていなかったため、about/contact/privacy/blog への内部リンクが
+# レンダリング前HTMLに1本も残らず、Googleが一度もクロールしない状態になっていた
+# （2026-09-02にSearch Consoleで確認）。生HTMLにリンクを残すのが目的で、
+# 表示内容は js/common.js の renderFooter() が同じもので描き直す（二重にはならない）。
+# リンク先は SITE_NAV と同じ並び。spots/ 配下なので resolveNavHref と同じく ../ を付ける。
+STATIC_FOOTER = """  <!-- 静的フッター: クローラーに内部リンクを残すために生HTMLへ置いている。
+       表示内容は js/common.js の renderFooter() が同じもので描き直す。 消さないこと。 -->
+  <footer class="site-footer">
+    <div class="footer-nav">
+      <a href="../index.html">トップ</a>
+      <a href="../themes/index.html">テーマ別で探す</a>
+      <a href="../danger.html">危険情報</a>
+      <a href="../favorites.html">お気に入り</a>
+      <a href="../blog/index.html">ブログ</a>
+      <a href="../about.html">このサイトについて</a>
+      <a href="../privacy.html">プライバシーポリシー</a>
+      <a href="../contact.html">お問い合わせ</a>
+    </div>
+    <div class="footer-social">
+      <a href="https://x.com/wansakansai" target="_blank" rel="noopener noreferrer" aria-label="Xでフォロー" class="social-x"><span>@wansakansai</span></a>
+    </div>
+    <p>&copy; 2026 わんさかんさい All rights reserved.</p>
+  </footer>
+"""
+
 
 def _pref_and_rest(addr: str) -> tuple[str, str]:
     """住所を都道府県とそれ以降に分割。"""
@@ -441,6 +467,7 @@ def build_html(spot: dict, all_spots: list = None) -> str:
     <p class="all-spots-link"><a href="index.html">関西の犬連れスポット一覧（全{total_spots}件）を見る</a></p>
   </main>
 
+{STATIC_FOOTER}
   <script>window.WANSAKA_SPOT_ID = "{sid_e}";</script>
   <script src="../js/common.js"></script>
   <script src="../js/spot.js"></script>
@@ -552,6 +579,7 @@ def build_index_html(spots: list) -> str:
     {"".join(sections)}
   </main>
 
+{STATIC_FOOTER}
   <script src="../js/common.js"></script>
   <script>
     renderHeader('spots');
