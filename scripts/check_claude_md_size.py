@@ -1,8 +1,12 @@
 # -*- coding: utf-8 -*-
-"""CLAUDE.md肥大化検知（わんさかんさい・2026-07-09導入）。
+"""CLAUDE.md肥大化検知（わんさかんさい・2026-07-09導入／2026-09-02に閾値50KB→80KBへ）。
+
+閾値を上げた理由: 50KBでは追記のたびに超え、その都度ルールの説明を削る作業が発生していた。
+中身を点検したところ残っているのは運用に必要な現在形のルールばかりで、
+肥大というより閾値が実態に合っていなかった。履歴の退避方針そのものは変えない。
 
 うちどころの audit_site.py check_23_claude_md_size の移植。
-50KB超でNG＝対話セッションで圧縮する合図（履歴・完了施策の詳細をCLAUDE_history.mdへ退避。
+80KB超でNG＝対話セッションで圧縮する合図（履歴・完了施策の詳細をCLAUDE_history.mdへ退避。
 手順はCLAUDE.md冒頭「変更履歴について」の圧縮手順4ステップ参照）。
 あわせて履歴退避ルールの生存確認（CLAUDE_history.mdへの参照が消えていないか）も行う。
 
@@ -25,7 +29,7 @@ BASE = Path(__file__).resolve().parent.parent
 def main():
     parser = argparse.ArgumentParser(description="CLAUDE.md肥大化検知（検知のみ・書き換えない）")
     parser.add_argument("--path", default=str(BASE / "CLAUDE.md"), help="検査対象（テスト用）")
-    parser.add_argument("--threshold-kb", type=int, default=50, help="NG閾値KB（既定50）")
+    parser.add_argument("--threshold-kb", type=int, default=80, help="NG閾値KB（既定80）")
     parser.add_argument("--json", action="store_true", help="JSON出力")
     args = parser.parse_args()
 
