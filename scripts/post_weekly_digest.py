@@ -141,14 +141,24 @@ def build_digest_text(activity: dict, featured: dict | None,
     text = "\n".join(lines)
 
     # 短縮
-    while count_x_weight(text) > MAX_TWEET_WEIGHT:
-        # 末尾のハッシュタグを減らす、最終手段として行を省く
-        if "ピックアップ" in text and featured:
-            # ピックアップを短縮
-            lines = [l for l in lines if not l.startswith("サイト:")]
-            text = "\n".join(lines)
-        else:
+    # ★同じ判定を繰り返さないこと★
+    # 以前は「ピックアップがあるなら サイト: 行を消す」を while で回していたが、
+    # 1回消したあとは lines が変化しないのに条件は真のままで、text が縮まず
+    # 無限ループになっていた（2026-09-03発見）。タスクが終わらなくなる型で、
+    # ログにも何も出ないので一番気づきにくい。落とす行を順番に決め打ちする。
+    droppers = [
+        lambda ls: [l for l in ls if not l.startswith("サイト:")],
+        lambda ls: [l for l in ls if not l.startswith("新着ブログ")],
+        lambda ls: [l for l in ls if not l.startswith("今週のピックアップ")],
+    ]
+    for drop in droppers:
+        if count_x_weight(text) <= MAX_TWEET_WEIGHT:
             break
+        shorter = drop(lines)
+        if shorter == lines:
+            continue
+        lines = shorter
+        text = "\n".join(lines)
 
     return text
 

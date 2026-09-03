@@ -88,6 +88,37 @@ def extract_title_from_html(html: str) -> str:
     return title
 
 
+
+def trim_title(title: str, limit: int) -> str:
+    """タイトルを limit 字までに収める。括弧を開いたまま終わらせない。
+
+    括弧の中身は説明であることが多いので、まず括弧より前を試す。
+    それでも長ければ区切り記号のところで切り、最後の手段でだけ字数で切る。
+    """
+    t = (title or "").strip()
+    if len(t) <= limit:
+        return t
+
+    head = re.split(r"[（(]", t, maxsplit=1)[0].strip("　 ・、-")
+    if head and len(head) <= limit:
+        return head
+
+    base = head or t
+    for sep in ("　", " ", "・", "、", "！", "!", "？", "?", "〜", "-"):
+        idx = base.rfind(sep, 0, limit + 1)
+        if idx >= 8:
+            return base[:idx].strip("　 ・、-")
+
+    cut = base[:limit]
+    # 字数で切った場合でも、開いたままの括弧を残さない
+    for op, cl in (("（", "）"), ("(", ")"), ("「", "」"), ("『", "』")):
+        if cut.count(op) != cut.count(cl):
+            i = cut.rfind(op)
+            if i > 0:
+                cut = cut[:i]
+    return cut.strip("　 ・、-") + "…"
+
+
 def build_blog_post_text(title: str, url: str, desc: str = "") -> str:
     opening = random.choice(BLOG_OPENINGS).format(title=title)
     closing = random.choice(BLOG_CLOSINGS).format(url=url)
@@ -115,7 +146,10 @@ def build_blog_post_text(title: str, url: str, desc: str = "") -> str:
         if middle:
             middle = ""
         elif len(title) > 20:
-            title = title[:20] + "…"
+            # ★1文字ずつ・決め打ちの位置で切らないこと★
+            # title[:20] だと括弧の途中で終わり得る。危険情報の投稿が
+            # 実際にそうなって公開された（2026-09-03）。区切りのいい位置で切る。
+            title = trim_title(title, 20)
             opening = random.choice(BLOG_OPENINGS).format(title=title)
         else:
             break
