@@ -15,6 +15,7 @@ data/dangers.json と scripts/dangers_prev.json を比較し、
 
 import json
 import random
+import re
 import sys
 import time
 from pathlib import Path
@@ -102,6 +103,47 @@ def diff_entries(current: list, prev: list):
     return added, updated
 
 
+def shorten_location(location: str):
+    """場所の表記を、長い順に短い順へ並べた候補として返す。
+
+    ★1文字ずつ削ってはいけない★
+    以前は文字数に収まるまで末尾を1文字ずつ削っていたため、括弧の途中で切れて
+    閉じ括弧のない意味の通らない投稿が公開された（2026-09-03・danger-017）。
+    区切りのいい位置でだけ短くし、括弧を開いたまま終わらせない。
+
+    候補の順番:
+      1. そのまま
+      2. 括弧の中身を落とす（「関西全域（〜〜）」→「関西全域」）
+      3. 括弧の外を「、」「・」で区切って前から詰める（末尾に「ほか」）
+      4. 最初の区切りだけ（最後の砦）
+    """
+    loc = (location or "").strip()
+    if not loc:
+        return [""]
+
+    cands = [loc]
+
+    # 2. 括弧（全角・半角）より前だけ
+    head = re.split(r"[（(]", loc, maxsplit=1)[0].strip("、・ 　")
+    if head and head != loc:
+        cands.append(head)
+    base = head or loc
+
+    # 3. 区切りで前から詰める
+    parts = [p for p in re.split(r"[、・]", base) if p.strip()]
+    for n in range(len(parts) - 1, 0, -1):
+        s = "、".join(parts[:n])
+        if n < len(parts):
+            s += "ほか"
+        if s not in cands:
+            cands.append(s)
+
+    # 4. 最後の砦
+    if parts and parts[0] not in cands:
+        cands.append(parts[0])
+    return cands
+
+
 def build_post_text(entry: dict, change_type: str) -> str:
     """危険情報エントリから投稿本文を生成（入口として最低限の情報）。"""
     location = entry.get("location", "")
@@ -118,13 +160,11 @@ def build_post_text(entry: dict, change_type: str) -> str:
             f"{hashtags}"
         )
 
-    # location が長すぎる場合のみ切り詰める
-    while count_x_weight(build(location)) > MAX_TWEET_WEIGHT and len(location) > 10:
-        location = location[:-1]
-    if count_x_weight(build(location)) > MAX_TWEET_WEIGHT:
-        location = location.rstrip("・、,") + "…"
-
-    return build(location)
+    for candidate in shorten_location(location):
+        if count_x_weight(build(candidate)) <= MAX_TWEET_WEIGHT:
+            return build(candidate)
+    # ここには来ない想定（shorten_location の最後は必ず短い）が、来たら空で返す
+    return build("")
 
 
 def main():
