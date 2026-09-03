@@ -130,7 +130,14 @@ def check_posts(entries):
         from post_danger_to_x import build_post_text, load_json, diff_entries, PREV_PATH
         from x_poster import count_x_weight, MAX_TWEET_WEIGHT
     except Exception as ex:
-        return [f"投稿文の点検ができなかった（{type(ex).__name__}: {ex}）"], []
+        # ★import失敗をNGにしないこと★
+        # ここは post_danger_to_x 経由で Playwright まわりまで読み込む。
+        # 無関係な理由で読み込めなかっただけで危険情報の更新まで止まると、
+        # 「投稿の点検ができない」ことを理由に「サイトも更新しない」ことになり本末転倒。
+        # 壊れた投稿は x_poster.post_tweet 側の見張りが最後に止めるので、
+        # ここは警告に留めて先へ進む。
+        print(f"（警告）投稿文の点検を飛ばした: {type(ex).__name__}: {ex}")
+        return [], []
 
     prev = load_json(PREV_PATH, None)
     if prev is None:
