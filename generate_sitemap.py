@@ -37,7 +37,10 @@ for slug in theme_slugs:
 blog_count = 0
 blog_index = PROJECT_DIR / 'blog' / 'index.html'
 if blog_index.exists():
-    static_pages.append({"loc": f"{BASE_URL}/blog/index.html", "changefreq": "weekly", "priority": "0.6"})
+    # ★/blog/index.html ではなく /blog/ を載せること★
+    # Googleは2026-09-04時点で /blog/ を登録済みで、index.html は代替ページ扱い。
+    # 一度 canonical を index.html 側に合わせて登録済みURLを捨てかけた（9ce2cdc）。
+    static_pages.append({"loc": f"{BASE_URL}/blog/", "changefreq": "weekly", "priority": "0.6"})
     html = blog_index.read_text(encoding='utf-8')
     article_slugs = sorted({m for m in re.findall(r'href="([a-z0-9\-]+\.html)"', html) if m != 'index.html'})
     for slug in article_slugs:
