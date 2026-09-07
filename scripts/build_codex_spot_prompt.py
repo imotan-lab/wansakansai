@@ -165,7 +165,14 @@ def main():
     except Exception:
         pass
 
-    want = [s.strip() for s in a.ids.split(",") if s.strip()]
+    # ★重複を落とすこと★ STEP 6の追いかけ対象と今日の5件が重なると、
+    # 同じスポットを2回プロンプトに載せてしまう（2026-09-07のレビューで判明）。順序は保つ。
+    seen = set()
+    want = []
+    for t in (x.strip() for x in a.ids.split(",")):
+        if t and t not in seen:
+            seen.add(t)
+            want.append(t)
     if not want:
         print("!! --ids が空")
         return 1
@@ -196,7 +203,12 @@ def main():
         body += json.dumps(trimmed, ensure_ascii=False, indent=2)
         body += "\n```\n\n"
 
-    Path(a.out).parent.mkdir(parents=True, exist_ok=True)
+    # ★先に消してから書くこと★ 出力先は固定名なので、生成に失敗すると
+    # 前回のプロンプトが残り、それがCodexに渡る恐れがある（2026-09-07のレビューで判明）。
+    out_path = Path(a.out)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    if out_path.exists():
+        out_path.unlink()
     io.open(a.out, "w", encoding="utf-8", newline="\n").write(body)
     print(f"[key] Codexプロンプト作成 件数={len(want)} 出典={src}")
     print(f"出力: {a.out}")
