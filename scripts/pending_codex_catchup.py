@@ -153,8 +153,11 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--days", type=int, default=7, help="さかのぼる日数（既定7）")
     ap.add_argument("--kind", choices=sorted(KINDS), help="danger か spot（省略時は両方）")
-    ap.add_argument("--max-ids", type=int, default=5,
-                    help="1回に出すIDの上限（既定5）。多すぎるとCodexが時間内に終わらない")
+    # ★既定を2にしてある★ 今日の5件と合わせて7件が上限の目安。
+    # 2026-09-08に「今日の5件＋追いかけ5件＝10件」を1回で渡したところ、
+    # Codexが90分かけても判定を1件も返せず、全部無駄になった。
+    ap.add_argument("--max-ids", type=int, default=2,
+                    help="1回に出すIDの上限（既定2）。今日の5件と合わせて7件を超えさせないため")
     ap.add_argument("--logdir", default=str(LOGDIR),
                     help="ログの置き場所（動作確認用。通常は指定しない）")
     a = ap.parse_args()
