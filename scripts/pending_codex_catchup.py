@@ -62,11 +62,23 @@ KINDS = {
 }
 
 SKIP = "[codex-skip]"
-DONE = "[codex-catchup]"
+# ★済みの印は2種類ある★
+#   [codex-catchup]  … 後日の追いかけ検証で済ませたもの
+#   [codex-verified] … その日の実行で通常どおりCodex検証を終えたもの
+# 後者を数えないと、同じ日に片方がスキップした時に、
+# もう片方が正常に検証した分まで未検証扱いになる（2026-09-08に実際に起きた）。
+DONE_MARKS = ("[codex-catchup]", "[codex-verified]")
+DONE = DONE_MARKS[0]   # メッセージ表示用
 
-# ログの「チェック対象: [id(count=N), ...]」行からIDを拾う
+# ログの「チェック対象: [...]」行からIDを拾う。
+# ★IDの直後に (count= が来る前提にしないこと★
+# 実行によっては「id 日本語名(count=5)」と日本語名が挟まる。
+# 位置で決め打ちすると片方の書き方しか拾えない（2026-09-08に実際に起きた）。
+# 括弧の中からIDの形をしたものを全部拾う。日本語は [a-z0-9-] に一致しないので混ざらない。
 TARGET_LINE = re.compile(r"チェック対象:\s*\[([^\]]*)\]")
-TARGET_ID = re.compile(r"([A-Za-z0-9][A-Za-z0-9_-]*)\s*\(count=")
+TARGET_ID = re.compile(r"[a-z][a-z0-9-]{3,}")
+# 括弧の中に紛れる、IDではない語
+NOT_IDS = {"count"}
 
 
 class GitError(Exception):
@@ -128,12 +140,14 @@ def checked_ids_from_log(text):
     """
     ids = set()
     for m in TARGET_LINE.finditer(text):
-        ids.update(TARGET_ID.findall(m.group(1)))
+        ids.update(t for t in TARGET_ID.findall(m.group(1)) if t not in NOT_IDS)
     return ids
 
 
 def done_ids_from_log(text, candidates):
-    """[codex-catchup] 行に現れた「候補IDのうちどれか」を返す（＝追いかけ済みの印）。
+    """済みの印がある行に現れた「候補IDのうちどれか」を返す。
+
+    済みの印は [codex-catchup]（追いかけ）と [codex-verified]（その日の通常検証）の2種類。
 
     ★散文から正規表現でIDを推測しないこと★
     以前は単語境界つきの正規表現で拾っていたが、ログには丸数字（①など）や日本語が
@@ -142,7 +156,7 @@ def done_ids_from_log(text, candidates):
     （2026-09-07に実データで発覚。合成テストは空白区切りだったので通っていた）。
     候補は分かっているので、素直に部分一致で照合する。
     """
-    lines = [l for l in text.split("\n") if DONE in l]
+    lines = [l for l in text.split("\n") if any(m in l for m in DONE_MARKS)]
     if not lines:
         return set()
     blob = "\n".join(lines)
@@ -229,6 +243,7 @@ def main():
         print("\n[key] 未検証あり={}日 今回出したID={}件".format(total_days, emitted))
         print("上の [ids] をSTEP 7の --ids に今日の5件と一緒に並べて1回で渡すこと。")
         print("済んだらその日のログに {} と**検証したIDを列挙**して書く。".format(DONE))
+        print("（その日の通常検証を終えた分は [codex-verified] にIDを列挙すること）")
         print("★IDを書かないと、その日は次回も未検証として出続ける★")
         return 3
 
