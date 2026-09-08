@@ -17,10 +17,10 @@
   --color-border: #E8DCC8;
   --color-danger: #C0392B;
   --color-visited: #E67E22;
-  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.08);
-  --shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.12);
-  --radius: 12px;
-  --radius-sm: 8px;
+  --shadow-card: none;
+  --shadow-hover: 0 2px 6px rgba(0, 0, 0, 0.08);
+  --radius: 4px;
+  --radius-sm: 3px;
   --max-width: 960px;
 }
 
@@ -561,6 +561,7 @@ img {
   background: var(--color-bg-card);
   border-radius: var(--radius);
   box-shadow: var(--shadow-card);
+  border: 1px solid var(--color-border);
   padding: 16px;
   transition: box-shadow 0.2s, transform 0.2s;
   cursor: pointer;
@@ -896,6 +897,7 @@ img {
   border-color: var(--color-primary);
   color: inherit;
   box-shadow: var(--shadow-card);
+  border: 1px solid var(--color-border);
 }
 
 .nearby-spot-name {
@@ -1148,6 +1150,7 @@ img {
   background: var(--color-bg-card);
   border-radius: var(--radius);
   box-shadow: var(--shadow-card);
+  border: 1px solid var(--color-border);
   padding: 16px;
 }
 
@@ -1217,6 +1220,7 @@ img {
   background: var(--color-bg-card);
   border-radius: var(--radius);
   box-shadow: var(--shadow-card);
+  border: 1px solid var(--color-border);
   padding: 32px 24px;
 }
 
