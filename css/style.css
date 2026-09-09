@@ -941,6 +941,21 @@ img {
   margin: 10px 0 0;
 }
 
+/* 期限付きの情報（工事・イベント期間の運用）。期限を過ぎると出なくなる。
+   注意ボックスの色をこれ以上増やさないため、背景や枠は付けずテキストだけで示す */
+.detail-temp {
+  margin: 12px 0 0;
+}
+
+.detail-temp-note {
+  font-size: 0.9rem;
+  margin: 0 0 6px;
+}
+
+.detail-temp-note:last-child {
+  margin-bottom: 0;
+}
+
 .spot-map-link {
   display: inline-block;
   padding: 8px 14px;

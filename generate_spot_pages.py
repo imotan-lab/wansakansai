@@ -12,6 +12,7 @@ import json
 import re
 import html
 import math
+import datetime
 from pathlib import Path
 
 BASE_URL = "https://wansakansai.com"
@@ -385,9 +386,42 @@ def build_body_content(spot: dict, all_spots: list = None) -> str:
     if has_paid_info:
         fee_note = '<p class="detail-fee-note">掲載時点の料金です。最新の料金は公式サイトでご確認ください。</p>'
 
+    # 期限付きの情報（工事・イベント期間の運用など）。until を過ぎたものは出力しない。
+    # js/spot.js の activeTemps と同じ条件にすること。
+    # 静的HTMLは生成した日の判定なので、期限切れの検出は scripts/check_spot_expiry.py が
+    # 毎日行い、見つかったら再生成して取り除く（表示の主体は spot.js 側）
+    temp_note = ""
+    _temps = spot.get("temporary")
+    if isinstance(_temps, dict):
+        _temps = [_temps]
+    if isinstance(_temps, list):
+        _today_iso = datetime.date.today().isoformat()
+        _lines = []
+        for _t in _temps:
+            if not isinstance(_t, dict):
+                continue
+            _note = _t.get("note")
+            _until = _t.get("until")
+            if not _note or not isinstance(_until, str):
+                continue
+            if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", _until) or _until < _today_iso:
+                continue
+            _y, _m, _d = _until.split("-")
+            _label = f"{int(_y)}年{int(_m)}月{int(_d)}日まで"
+            _lines.append(
+                f'<p class="detail-temp-note">{html.escape(_note)}（{_label}）</p>'
+            )
+        if _lines:
+            temp_note = '<div class="detail-temp">' + "".join(_lines) + "</div>"
+
     warn = ""
     if "small-dog-only" in (spot.get("tags") or []):
         warn = '<div class="detail-warn">小型犬のみ入場可（大型犬は要確認）</div>'
+
+    # 条件付きのブロックは、空のものを行ごと落としてから繋ぐ。
+    # テンプレートに1行ずつ並べると、出番のないスポットに空行だけが残り、
+    # ブロックを1つ増やすたび全263ページに無意味な差分が出るため
+    extra_blocks = "\n        ".join(b for b in (fee_note, temp_note, warn) if b)
 
     remarks_html = ""
     if spot.get("remarks"):
@@ -424,8 +458,7 @@ def build_body_content(spot: dict, all_spots: list = None) -> str:
           {official}
         </div>
 
-        {fee_note}
-        {warn}
+        {extra_blocks}
         {remarks_html}
         {build_nearby_html(spot, all_spots or [])}
       </div>'''

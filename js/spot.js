@@ -69,6 +69,25 @@ function paragraphize(text) {
     const dogRunPaid = !!(spot.dogRun && spot.dogRun.available && spot.dogRun.free === false);
     const hasPaidInfo = parkingPaid || admissionPaid || dogRunPaid;
 
+    // 期限付きの情報（工事・イベント期間の運用など）。until を過ぎたものは表示しない。
+    // データは消さずに残る＝確認がすり抜けた時に古い案内を出し続けないための保険。
+    // 消すのは人が公式で確認してから（scripts/check_spot_expiry.py 参照）
+    const nowLocal = new Date();
+    const todayISO = new Date(nowLocal.getTime() - nowLocal.getTimezoneOffset() * 60000)
+      .toISOString().slice(0, 10);
+    const tempRaw = Array.isArray(spot.temporary)
+      ? spot.temporary
+      : (spot.temporary ? [spot.temporary] : []);
+    const activeTemps = tempRaw.filter(t =>
+      t && typeof t.note === 'string' && t.note
+      && typeof t.until === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(t.until)
+      && t.until >= todayISO
+    );
+    const formatUntil = (iso) => {
+      const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso);
+      return m ? `${Number(m[1])}年${Number(m[2])}月${Number(m[3])}日まで` : '';
+    };
+
     let toiletText = 'なし';
     // available が null（有無そのものが未確認）のときは「なし」と断定しない
     if (spot.toilet.available === null || spot.toilet.available === undefined) {
@@ -196,6 +215,12 @@ function paragraphize(text) {
 
         ${hasPaidInfo ? `
           <p class="detail-fee-note">掲載時点の料金です。最新の料金は公式サイトでご確認ください。</p>
+        ` : ''}
+
+        ${activeTemps.length ? `
+          <div class="detail-temp">
+            ${activeTemps.map(t => `<p class="detail-temp-note">${escapeHtml(t.note)}（${formatUntil(t.until)}）</p>`).join('')}
+          </div>
         ` : ''}
 
         ${(spot.tags || []).includes('small-dog-only') ? `
