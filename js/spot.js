@@ -62,6 +62,13 @@ function paragraphize(text) {
       parkingText = spot.parking.free ? 'あり（無料）' : 'あり（有料）';
     }
 
+    // 有料の項目が1つでもあれば料金の注記を出す（駐車場・入場料・ドッグラン）。
+    // 料金は改定されるので、掲載値がいつ時点のものかを明示して公式へ誘導する。
+    const parkingPaid = !!(spot.parking && spot.parking.available && spot.parking.free === false);
+    const admissionPaid = !!(spot.admission && spot.admission.free === false);
+    const dogRunPaid = !!(spot.dogRun && spot.dogRun.available && spot.dogRun.free === false);
+    const hasPaidInfo = parkingPaid || admissionPaid || dogRunPaid;
+
     let toiletText = 'なし';
     // available が null（有無そのものが未確認）のときは「なし」と断定しない
     if (spot.toilet.available === null || spot.toilet.available === undefined) {
@@ -186,6 +193,10 @@ function paragraphize(text) {
             <span class="detail-info-value"><a href="${escapeHtml(officialUrlSafe)}" target="_blank" rel="noopener noreferrer">${escapeHtml(officialUrlSafe.replace(/^https?:\/\//, '').replace(/\/$/, ''))}</a></span>
           </div>` : ''}
         </div>
+
+        ${hasPaidInfo ? `
+          <p class="detail-fee-note">掲載時点の料金です。最新の料金は公式サイトでご確認ください。</p>
+        ` : ''}
 
         ${(spot.tags || []).includes('small-dog-only') ? `
           <div class="detail-warn">小型犬のみ入場可（大型犬は要確認）</div>

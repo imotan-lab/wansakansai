@@ -934,6 +934,13 @@ img {
   margin-bottom: 20px;
 }
 
+/* 料金の注記（駐車場・入場料・ドッグランのいずれかが有料のときだけ出る） */
+.detail-fee-note {
+  font-size: 0.85rem;
+  color: var(--color-text-light, #777);
+  margin: 10px 0 0;
+}
+
 .spot-map-link {
   display: inline-block;
   padding: 8px 14px;

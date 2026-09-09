@@ -370,6 +370,21 @@ def build_body_content(spot: dict, all_spots: list = None) -> str:
             <span class="detail-info-value"><a href="{url_e}" target="_blank" rel="noopener noreferrer">{html.escape(display)}</a></span>
           </div>'''
 
+    # 有料の項目が1つでもあれば料金の注記を出す（駐車場・入場料・ドッグラン）。
+    # 料金は改定されるので、掲載値がいつ時点のものかを明示して公式へ誘導する。
+    # js/spot.js の hasPaidInfo と同じ条件にすること（片方だけ変えると表示が食い違う）
+    _p = spot.get("parking") or {}
+    _a = spot.get("admission") or {}
+    _d = spot.get("dogRun") or {}
+    has_paid_info = (
+        (_p.get("available") and _p.get("free") is False)
+        or _a.get("free") is False
+        or (_d.get("available") and _d.get("free") is False)
+    )
+    fee_note = ""
+    if has_paid_info:
+        fee_note = '<p class="detail-fee-note">掲載時点の料金です。最新の料金は公式サイトでご確認ください。</p>'
+
     warn = ""
     if "small-dog-only" in (spot.get("tags") or []):
         warn = '<div class="detail-warn">小型犬のみ入場可（大型犬は要確認）</div>'
@@ -409,6 +424,7 @@ def build_body_content(spot: dict, all_spots: list = None) -> str:
           {official}
         </div>
 
+        {fee_note}
         {warn}
         {remarks_html}
         {build_nearby_html(spot, all_spots or [])}
