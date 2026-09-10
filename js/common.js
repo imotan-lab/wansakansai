@@ -145,7 +145,7 @@ function renderFooter() {
         <span>@wansakansai</span>
       </a>
     </div>
-    <p class="footer-affiliate-note">当サイトはアフィリエイト広告（楽天トラベル・じゃらんnet）を利用しています。</p>
+    <p class="footer-affiliate-note">当サイトはアフィリエイト広告（楽天・じゃらんnet・Amazonなど）を利用しています。</p>
     <p>&copy; 2026 わんさかんさい All rights reserved.</p>
   `;
   if (!existing) document.body.appendChild(footer);
