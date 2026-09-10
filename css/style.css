@@ -409,6 +409,14 @@ img {
 .affiliate-btns.affiliate-btns-single .affiliate-btn {
   flex: 0 1 320px;
 }
+/* 縦並び（スマホ）では flex-basis が高さに効き、上の 320px がそのまま縦長ボタンになる。
+   （2026-09-10 かばたリゾートのスマホ表示で発覚。ブログの1ボタン枠も同じ症状だった）
+   ★上の定義より後に置くこと。前に置くと同じ詳細度で負けて効かない★ */
+@media (max-width: 480px) {
+  .affiliate-btns.affiliate-btns-single .affiliate-btn {
+    flex: 0 0 auto;
+  }
+}
 
 /* ===== Filter Buttons ===== */
 .filter-section {
