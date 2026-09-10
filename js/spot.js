@@ -327,7 +327,13 @@ function paragraphize(text) {
       container.querySelector('.spot-detail').appendChild(nearbyEl);
     }
 
-    // 楽天 + じゃらん アフィリエイト（ペット可宿）- 最下部に配置
+    // 楽天 + じゃらん アフィリエイト（ペット可宿）
+    // 2026-09-10: 配置を最下部から「備考の直後」へ移し、リンク先を3段にした。
+    //   ①rakutenHotelId … その宿泊施設そのもの（楽天の施設ページへ直リンク）
+    //   ②stayKeyword    … 近隣の地名で「ペットと泊まれる宿」を検索（白浜・長浜・琵琶湖など）
+    //   ③県別           … 従来どおり県別ペット可ランキング（地名が無いスポット）
+    // 変えた理由: GA4で affiliate_click が7日で2件（PVの0.27%）。最下部に県別リンクでは
+    // 「このスポットに行く人」の関心と繋がらず、押す理由が無かった。
     (() => {
       // スポットの都道府県を判定（app.jsのgetPrefectureと同一ロジック）
       const prefMatch = (spot.address || '').match(/^(北海道|東京都|京都府|大阪府|.+?県)/);
@@ -338,36 +344,69 @@ function paragraphize(text) {
         '奈良県': 'nara', '兵庫県': 'hyogo', '京都府': 'kyoto',
       };
       const romaji = PREF_ROMAJI[prefName];
-      // 県が判定できれば県別ページ、未対応なら全国ペット可トップにフォールバック
-      const travelUrl = romaji
-        ? `https://travel.rakuten.co.jp/share/batch/rrg_pg/pgenerator/hotel/id235/${romaji}/index.html`
-        : 'https://travel.rakuten.co.jp/pet/';
+      // 楽天トラベルのキーワード検索は f_query が Shift_JIS（UTF-8で渡すと文字化けして0件になる）。
+      // JSにエンコーダが無いので、採用した地名だけ表で持つ。
+      // ★0件になる地名は入れないこと。採用前に必ず件数を確かめる（2026-09-10時点:
+      //   白浜24件・和歌山42件・長浜6件・琵琶湖14件・丹波21件。高槻1件・寝屋川0件は不採用）
+      const STAY_KW_SJIS = {
+        '白浜': '%94%92%95l', '和歌山': '%98a%89%CC%8ER', '長浜': '%92%B7%95l',
+        '琵琶湖': '%94%FA%94i%8C%CE', '丹波': '%92O%94g',
+      };
+      const hotelId = (typeof spot.rakutenHotelId === 'string' && /^\d+$/.test(spot.rakutenHotelId))
+        ? spot.rakutenHotelId : '';
+      const kw = (spot.stayKeyword && STAY_KW_SJIS[spot.stayKeyword]) ? spot.stayKeyword : '';
+
+      let travelUrl, headingText, rakutenLabel, affKind;
+      if (hotelId) {
+        travelUrl = `https://travel.rakuten.co.jp/HOTEL/${hotelId}/${hotelId}.html`;
+        headingText = 'この宿の空室と料金を楽天トラベルで見る';
+        rakutenLabel = '空室・料金を見る';
+        affKind = 'rakuten-hotel';
+      } else if (kw) {
+        travelUrl = `https://kw.travel.rakuten.co.jp/keyword/Event.do?f_query=${STAY_KW_SJIS[kw]}&f_category=3&f_area=9&f_max=30&f_su=2&f_sort=0`;
+        headingText = `${kw}で愛犬と泊まれる宿を探す`;
+        rakutenLabel = '楽天トラベルで探す';
+        affKind = 'rakuten-kw';
+      } else {
+        // 県が判定できれば県別ページ、未対応なら全国ペット可トップにフォールバック
+        travelUrl = romaji
+          ? `https://travel.rakuten.co.jp/share/batch/rrg_pg/pgenerator/hotel/id235/${romaji}/index.html`
+          : 'https://travel.rakuten.co.jp/pet/';
+        headingText = prefName ? `${prefName}で愛犬と泊まれる宿を探す` : '愛犬と泊まれる宿を探す';
+        rakutenLabel = '楽天トラベルで探す';
+        affKind = 'rakuten';
+      }
       // 楽天アフィリの「どこでもリンク」形式（既存IDを流用、link_typeはtextのまま＝規約上安全）
       const RAKUTEN_AFFILIATE_ID = '535b3809.5ed3e82b.535b380a.3e77d4ae';
       const rakutenLink = `https://hb.afl.rakuten.co.jp/hgc/${RAKUTEN_AFFILIATE_ID}/?pc=${encodeURIComponent(travelUrl)}&link_type=text`;
-      // じゃらんnet（A8.net 経由。ディープリンク可否未確認のため汎用リンクのまま）
+      // じゃらんnet（A8.net 経由。ディープリンク可否未確認のため汎用リンクのまま）。
+      // 施設直リンクの時は出さない（「この宿の空室」の隣に汎用検索が並ぶと文脈が合わない）
       const JALAN_A8MAT = '4B3G6J+9ICAE2+14CS+64JTE';
       const jalanLink = `https://px.a8.net/svt/ejp?a8mat=${JALAN_A8MAT}`;
       const jalanTracker = `https://www13.a8.net/0.gif?a8mat=${JALAN_A8MAT}`;
-      // 見出し（県が判定できれば県名入り）
-      const headingText = prefName
-        ? `${prefName}で愛犬と泊まれる宿を探す`
-        : '愛犬と泊まれる宿を探す';
+      const showJalan = !hotelId;
 
       const affEl = document.createElement('div');
-      affEl.className = 'affiliate-stay';
+      // affiliate-inline = 本文の途中に置く時の枠付きスタイル（ブログ記事と共通）
+      affEl.className = 'affiliate-stay affiliate-inline';
       affEl.innerHTML = `
         <div class="affiliate-stay-head">
           <span class="affiliate-pr-tag">PR</span>
           <span class="affiliate-stay-text">${headingText}</span>
         </div>
-        <div class="affiliate-btns">
-          <a href="${rakutenLink}" target="_blank" rel="sponsored noopener" class="affiliate-btn affiliate-btn-rakuten" data-aff="rakuten" data-aff-pref="${prefName || 'unknown'}" data-aff-page="spot:${spot.id}">楽天トラベルで探す</a>
-          <a href="${jalanLink}" target="_blank" rel="sponsored nofollow noopener" class="affiliate-btn affiliate-btn-jalan" data-aff="jalan" data-aff-pref="${prefName || 'unknown'}" data-aff-page="spot:${spot.id}">じゃらんnetで探す</a>
+        <div class="affiliate-btns${showJalan ? '' : ' affiliate-btns-single'}">
+          <a href="${rakutenLink}" target="_blank" rel="sponsored noopener" class="affiliate-btn affiliate-btn-rakuten" data-aff="${affKind}" data-aff-pref="${prefName || 'unknown'}" data-aff-page="spot:${spot.id}">${rakutenLabel}</a>
+          ${showJalan ? `<a href="${jalanLink}" target="_blank" rel="sponsored nofollow noopener" class="affiliate-btn affiliate-btn-jalan" data-aff="jalan" data-aff-pref="${prefName || 'unknown'}" data-aff-page="spot:${spot.id}">じゃらんnetで探す</a>` : ''}
         </div>
-        <img border="0" width="1" height="1" src="${jalanTracker}" alt="" style="display:none;">
+        ${showJalan ? `<img border="0" width="1" height="1" src="${jalanTracker}" alt="" style="display:none;">` : ''}
       `;
-      container.querySelector('.spot-detail').appendChild(affEl);
+      // 備考（読み終えた直後）に置く。備考が無いスポットは従来どおり末尾
+      const remarksEl = container.querySelector('.detail-remarks');
+      if (remarksEl) {
+        remarksEl.insertAdjacentElement('afterend', affEl);
+      } else {
+        container.querySelector('.spot-detail').appendChild(affEl);
+      }
 
       // GAのクリック計測は js/common.js の委譲リスナーが拾う（data-aff / data-aff-pref /
       // data-aff-page を見ている）。ここでバインドすると二重計測になるので書かないこと。

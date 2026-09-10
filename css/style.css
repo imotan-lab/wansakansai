@@ -1338,6 +1338,13 @@ img {
   vertical-align: middle;
 }
 
+/* アフィリエイト表記（景表法のステマ規制対応・2026-09-10）。控えめに、ただし必ず見える位置に */
+.footer-affiliate-note {
+  margin: 0 0 8px;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
 /* ===== Ad Placeholder ===== */
 .ad-slot {
   display: none;

@@ -336,7 +336,8 @@
     "aliases": [
       "わかやまじょうこうえん",
       "虎伏城"
-    ]
+    ],
+    "stayKeyword": "和歌山"
   },
   {
     "id": "makino-metasequoia",
@@ -2078,7 +2079,8 @@
     ],
     "tags": [
       "sakura"
-    ]
+    ],
+    "stayKeyword": "長浜"
   },
   {
     "id": "shozakai-park",
@@ -2246,7 +2248,8 @@
     ],
     "tags": [
       "rain"
-    ]
+    ],
+    "stayKeyword": "長浜"
   },
   {
     "id": "taga-taisha",
@@ -2542,7 +2545,8 @@
       "四季の郷",
       "みちのえきしきのさとこうえんFOODHUNTERPARK"
     ],
-    "tags": []
+    "tags": [],
+    "stayKeyword": "和歌山"
   },
   {
     "id": "suiken-park",
@@ -2582,7 +2586,8 @@
     "aliases": [
       "すいけんこうえん"
     ],
-    "tags": []
+    "tags": [],
+    "stayKeyword": "和歌山"
   },
   {
     "id": "kinokawa-daiichi-ryokuchi",
@@ -2623,7 +2628,8 @@
       "紀の川第一緑地",
       "きのかわだい1りょくち"
     ],
-    "tags": []
+    "tags": [],
+    "stayKeyword": "和歌山"
   },
   {
     "id": "bansho-yama-park",
@@ -2663,7 +2669,8 @@
     "aliases": [
       "ばんしょやまこうえん"
     ],
-    "tags": []
+    "tags": [],
+    "stayKeyword": "白浜"
   },
   {
     "id": "shirasaki-kaiyo-park",
@@ -2745,7 +2752,8 @@
       "片男波海水浴場",
       "かたおなみこうえん"
     ],
-    "tags": []
+    "tags": [],
+    "stayKeyword": "和歌山"
   },
   {
     "id": "shimin-no-mori-park",
@@ -2788,7 +2796,8 @@
       "和歌山森林公園",
       "わかやまししんりんこうえんしみんのもり"
     ],
-    "tags": []
+    "tags": [],
+    "stayKeyword": "和歌山"
   },
   {
     "id": "oike-yuen",
@@ -4616,7 +4625,8 @@
       "みちのえききょうたんばあじゆめのさと"
     ],
     "remarks": "京都縦貫自動車道の京丹波パーキングエリア併設の道の駅で、高速道路からも一般道からも利用できる。無料ドッグラン「ワン遊ランド」は全犬種共用の1区画で、犬用シャワー・水飲み場・リードフック付きベンチを備える（9:00〜17:00、無人管理、狂犬病・混合ワクチン接種が必要）。隣接の古墳公園は犬連れ散策に向く。地場産品の京丹波マルシェやレストラン・フードコートがあり、テラス席はペット同伴可。駐車場・トイレは無料で、入場も無料。",
-    "officialUrl": "https://ajim.info/"
+    "officialUrl": "https://ajim.info/",
+    "stayKeyword": "丹波"
   },
   {
     "id": "miyama-kayabuki-no-sato",
@@ -5205,7 +5215,8 @@
     "remarks": "彦根市、琵琶湖に面した約4,500坪の敷地に建つ愛犬と泊まれるホテル。宿泊のほか日帰りでドッグランだけの利用もでき、屋外は小中型犬・フリー・大型犬の3エリアに分かれた天然芝、雨の日には専用フロアマットの室内ドッグランも使える。日帰りのカフェバー利用も可能。日帰り料金は平日が大人1,100円・小人（6〜12歳）550円＋犬1頭1,100円、土日祝が大人1,320円・小人660円＋犬1頭1,320円（税込）。初回のみパスカード発行料として3頭まで300円・4頭目以降1頭100円が必要。営業は4〜10月8:00〜18:00、11〜3月8:00〜17:00。琵琶湖を望む開放的なロケーションが魅力。",
     "imageUrl": "",
     "images": [],
-    "officialUrl": "https://www.biwadog.co.jp/"
+    "officialUrl": "https://www.biwadog.co.jp/",
+    "stayKeyword": "琵琶湖"
   },
   {
     "id": "kabata-resort",
@@ -5247,7 +5258,8 @@
       "images/spots/kabata-resort/3.jpg",
       "images/spots/kabata-resort/4.jpg"
     ],
-    "officialUrl": "https://kabataresort.com/"
+    "officialUrl": "https://kabataresort.com/",
+    "rakutenHotelId": "143245"
   },
   {
     "id": "oogoya",
@@ -5358,7 +5370,8 @@
     "remarks": "守山市、犬連れ専用の半個室「with Dogルーム」を備えたカフェ。仕切りで区切られた個室空間はノーリードで過ごせ、追加の個室料金もかからないため、ほかの客を気にせず愛犬とゆっくりくつろげる。個室にはミニドッグランが併設され、食事のあとに少し体を動かせる。犬同伴時はマナーベルトの着用が必須で、忘れた場合は店で購入できる。旬のフルーツを使ったパフェやワッフルなどのスイーツが評判で、犬用メニューも用意される。屋内なので雨の日でも快適。2時間制・席数が限られるため予約がおすすめ。会計は現金のみの場合があり要確認。営業11:30〜18:00、定休日は不定期のため公式Instagramの営業カレンダーで要確認。駐車場無料。",
     "imageUrl": "",
     "images": [],
-    "officialUrl": "https://www.instagram.com/cafe_andf/"
+    "officialUrl": "https://www.instagram.com/cafe_andf/",
+    "stayKeyword": "琵琶湖"
   },
   {
     "id": "with-wan",
@@ -5676,7 +5689,8 @@
       "images/spots/holiday-afternoon/5.jpg",
       "images/spots/holiday-afternoon/6.jpg"
     ],
-    "officialUrl": "http://www.biwa.ne.jp/~maikoinn/"
+    "officialUrl": "http://www.biwa.ne.jp/~maikoinn/",
+    "rakutenHotelId": "13999"
   },
   {
     "id": "takano-ichigo-en",
@@ -5761,7 +5775,8 @@
       "images/spots/aguri-park-ryuo/1.jpg",
       "images/spots/aguri-park-ryuo/2.jpg",
       "images/spots/aguri-park-ryuo/3.jpg"
-    ]
+    ],
+    "stayKeyword": "琵琶湖"
   },
   {
     "id": "shikinosato-yuraku",
@@ -5810,7 +5825,9 @@
     "officialUrl": "https://www.wakayama-shikinosato.com/",
     "tags": [
       "stay-only"
-    ]
+    ],
+    "stayKeyword": "白浜",
+    "rakutenHotelId": "145348"
   },
   {
     "id": "cafe-chrp",
@@ -5924,7 +5941,8 @@
     "remarks": "和歌山市、2022年2月オープンの屋内ドッグランを併設したドッグカフェ。カフェスペースの奥にある屋内ランは雨の日でも安全に遊ばせられ、屋外の人工芝ドッグランもある。貸切予約も可能だが、貸切料金は媒体により記載が異なるため要確認。ドッグランの利用は15kg以下まで、16kg以上はオムツ着用でカフェのみ利用可。利用は初回登録料500円（1家族）が必要で、通常1頭目1,000円・2頭目以降500円、カフェ利用時は1頭目500円・2頭目以降300円とお得（1,000円以上のランチ注文で2時間利用可）。カフェエリア・ドッグランともにマナーウェア着用必須で、受付でサイズ別に購入も可能。狂犬病予防接種済票と混合ワクチン接種証明書はいずれも1年以内のものを提示。駐車場は平日5台・土日祝10台で無料。営業11:00〜18:00（料理・ドリンクL.O.17:30）、不定休で基本は月曜・火曜が休み。",
     "imageUrl": "",
     "images": [],
-    "officialUrl": "https://www.instagram.com/dogrun_cafe.pic/"
+    "officialUrl": "https://www.instagram.com/dogrun_cafe.pic/",
+    "stayKeyword": "和歌山"
   },
   {
     "id": "partners-house-yuasa",
@@ -5962,7 +5980,8 @@
     "remarks": "関西最大級のドッグラン。屋根付き全天候型ドッグラン250平米で雨でも快適。日帰りスパやドッグプール（季節限定）も充実。クラブハウスのレストランも犬同伴OK。ドッグ施設併設だが、日帰り利用ももちろんOK。駐車場約35台無料。定休日: 木曜（祝日を除く、祝前の木曜は営業）。受付10:00〜18:00（日帰り利用は10:00〜17:00）、レストラン11:00〜14:00（L.O.13:45）。",
     "imageUrl": "",
     "images": [],
-    "officialUrl": "https://partnershouse.jp/"
+    "officialUrl": "https://partnershouse.jp/",
+    "rakutenHotelId": "106158"
   },
   {
     "id": "taiji-kujira-museum",
@@ -6040,7 +6059,9 @@
     "remarks": "白浜温泉地、スプリングス白浜の敷地内にある犬連れ複合施設。ドッグランは天然芝・人工芝・半室内の3エリア構成で、半室内はウッドチップ敷きのため雨でも遊べる。屋内では大型犬と中型・小型犬でエリアが分かれる。ドッグカフェ＆ショップ「ツリーバー」、ドッグウォッシュ＆ランドリー、トリミングを併設し、宿泊もできる。天然温泉「行幸源泉」を使ったドッグスパは改装準備のため休業中で、再開時期は未定のため利用前に要確認。ドッグランの一般利用は1頭1,000円（和歌山県民割500円、宿泊者無料）。利用時間は宿泊者8:00〜21:00、一般利用10:00〜17:30最終受付。一時預かりのDog STAYもある。ワクチン未接種は入場不可、排泄物は飼い主が処理。駐車場30台以上・無料。JR白浜駅から車約13分。",
     "imageUrl": "",
     "images": [],
-    "officialUrl": "https://doghotel-shirahama.jp/"
+    "officialUrl": "https://doghotel-shirahama.jp/",
+    "stayKeyword": "白浜",
+    "rakutenHotelId": "193085"
   },
   {
     "id": "senjojiki-shirahama",
@@ -6077,7 +6098,8 @@
     "remarks": "畳を千枚敷けるほどの広さに例えられる大岩盤が太平洋に面して広がる景勝地。1800万年前〜1500万年前にできた砂岩からなり、打ち寄せる荒波に浸食されてスロープ状の岩畳になった。国の名勝・吉野熊野国立公園・南紀熊野ジオパークのジオサイト。「日本の夕陽百選」にも選定。駐車場70台・無料・24時間開放、無料トイレあり。駐車場脇には売店「茜・千畳茶屋」「海鮮屋千畳」があり、名物の地元産お米の団子が食べられる。【犬連れ時の注意】白浜町公式にペット禁止の明文規定はないものの、犬連れ専門媒体は「ワンコは立ち入り禁止なので下には降りられない」と記載しており、犬連れは駐車場・展望エリアからの景色観賞に限るのが無難。現地看板の指示に従うこと。都市公園のため白浜町都市公園条例で禁止・制限される行為があり、強風時は特に注意。",
     "imageUrl": "",
     "images": [],
-    "officialUrl": "https://www.town.shirahama.wakayama.jp/soshiki/kanko/koen/gyomu/midokoro/1454456648503.html"
+    "officialUrl": "https://www.town.shirahama.wakayama.jp/soshiki/kanko/koen/gyomu/midokoro/1454456648503.html",
+    "stayKeyword": "白浜"
   },
   {
     "id": "sandanbeki",
@@ -6113,7 +6135,8 @@
     "remarks": "高さ50〜60m・全長約2kmの断崖絶壁の絶景スポット（吉野熊野国立公園・ジオスポット）。【展望エリア】は24時間無料で犬連れ散策可能、町営駐車場（普通車30台・大型バス5台）・トイレ（多目的トイレ有）あり。柵はあるが断崖なので小型犬でも必ずリード・抱き上げ推奨。遊歩道は岩がゴツゴツで肉球注意、夏は照り返しで高温注意。【三段壁洞窟】（有料）は愛犬同伴可だが「抱っこするかカートに乗せる」「ケージ（キャリー）に入れる」ことが条件で、抱っこできない大型犬は断られる場合あり。洞窟内にトイレはなく、一度地上へ戻って公衆トイレを利用すること。湿度が高いので犬の体調注意。地上から地底36mまでエレベーターで約24秒、洞内は一周約200mの歩道でスロープ設置のためベビーカー・車椅子も見学可、車椅子の貸出2台あり。所要は洞内15〜20分、周辺散策を含めて40分程度。受付でペット用兜の貸出サービスあり（料金の記載はなく要確認）。営業時間8:00〜17:00（最終入場16:50）年中無休だが、12月中旬に洞内点検で臨時休館の場合あり。20人以上の団体割引あり。障がい者手帳提示で本人と同伴者大人1名が通常料金の半額（他の割引との併用不可）。敷地内に海を望むテイクアウトの「崖cafe」があり、カウンター席・テラス席を備える（犬同伴可否は要確認）。",
     "imageUrl": "",
     "images": [],
-    "officialUrl": "https://sandanbeki.com/"
+    "officialUrl": "https://sandanbeki.com/",
+    "stayKeyword": "白浜"
   },
   {
     "id": "yuasa-machinami",
@@ -6195,7 +6218,8 @@
     "remarks": "南紀白浜のシンボル。正式名称は「高嶋」で、島の中央に直径約9mの円月形の海蝕洞があることから「円月島」と呼ばれる。「日本の夕陽百選」に選ばれており、春分・秋分の前後には洞穴に夕日が沈む絶景が見られる。観賞ポイント（白浜臨海交差点付近）は道路沿いで専用駐車場はないが、約30台分のスペースあり（カーブのため駐車時は後続車注意）。夕日時は満車になりやすく日没1〜1.5時間前到着推奨。近隣の「臨海公衆トイレ」利用可。島自体には上陸不可。見学は無料・24時間可。犬連れで夕景を楽しむ観光客が多数おり、リード必須。番所山公園（既存掲載、円月島を見下ろせる展望台あり）とセット散歩がおすすめ。",
     "imageUrl": "",
     "images": [],
-    "officialUrl": "https://www.town.shirahama.wakayama.jp/soshiki/kanko/koen/gyomu/midokoro/1454401479333.html"
+    "officialUrl": "https://www.town.shirahama.wakayama.jp/soshiki/kanko/koen/gyomu/midokoro/1454401479333.html",
+    "stayKeyword": "白浜"
   },
   {
     "id": "wakayama-marina-city",
@@ -6236,7 +6260,8 @@
     "remarks": "和歌山湾に浮かぶ人工島の複合リゾート。テーマパーク「ポルトヨーロッパ」は全国でも珍しく犬連れで入園可能（リード必須・短く持つ、ロングリードNG、柱・木・ベンチ・柵に繋ぎっぱなしNG、テーブル・イスに犬を乗せない等の細則あり）。園内の屋外エリアは自由に散策でき、ヨーロッパの港町を再現した街並みでフォトスポット多数。黒潮市場は屋内NGだが、屋外テラスの一部が犬同伴可で購入した海鮮丼を犬と一緒に食べられる。【犬NG】ポルトヨーロッパ内レストラン・乗り物・紀ノ国フルーツ村・BBQコーナー、黒潮市場屋内。園内ショップ（メルカード等）はペット用バギー・抱っこで入場可。メインは「屋外散策＋黒潮市場テラスでの飲食」。観覧車WAKKA（旧レインボーライダー・高さ48m）は2021年2月に解体され現存しない。同エリア内に和歌山マリーナシティホテル（宿泊者駐車場無料）・紀州黒潮温泉（入浴者は温泉駐車場2時間無料）・フィッシャーマンズワーフあり。ポルトヨーロッパは年2回メンテナンス休業があるので訪問前に公式カレンダー確認推奨。",
     "imageUrl": "",
     "images": [],
-    "officialUrl": "https://www.marinacity.com/"
+    "officialUrl": "https://www.marinacity.com/",
+    "stayKeyword": "和歌山"
   },
   {
     "id": "oishi-kogen",
@@ -6319,7 +6344,8 @@
       "images/spots/hirakusabaru-park/4.jpg",
       "images/spots/hirakusabaru-park/5.jpg"
     ],
-    "officialUrl": "https://www.town.shirahama.wakayama.jp/soshiki/kanko/koen/shisetsu/park/1454026568032.html"
+    "officialUrl": "https://www.town.shirahama.wakayama.jp/soshiki/kanko/koen/shisetsu/park/1454026568032.html",
+    "stayKeyword": "白浜"
   },
   {
     "id": "aragijima",
@@ -6401,7 +6427,8 @@
       "images/spots/toretore-ichiba/2.jpg"
     ],
     "officialUrl": "https://toretore.com/ichiba/",
-    "dogArea": "outdoor-only"
+    "dogArea": "outdoor-only",
+    "stayKeyword": "白浜"
   },
   {
     "id": "shirarahama",
@@ -6439,7 +6466,8 @@
     "remarks": "白浜を代表する全長約620mの白砂のビーチ。【重要】2025年6月23日からペットフレンドリー化の一環として、白良浜周囲の遊歩道（約600m）が犬の散歩OKに解禁された。ただし砂浜エリアと階段部分は引き続きペット同伴NG、遊歩道では必ずリード着用またはケージで常に制止できる状態にする。遊歩道周辺にペット用うんちBOXが3か所設置。海水浴場は2026年5/3〜9/13開設、海水浴シーズン中も遊歩道散歩自体は可能。駐車場料金は時期別で、以下は令和8年度（2026年度）発表分: 4/18〜6/30は500円/回（9:00〜17:00、土日祝18:00まで。うち土日祝と4/29〜5/6は1,000円/回）、7/1〜7/10は2,000円/回（9:00〜17:00、土日祝18:00まで）、7/11〜8/31は2,000円/回（6:00〜18:00）、9/1〜9/27は2,000円/回（9:00〜17:00、土日祝18:00まで）、9/28〜10/25は500円/回（9:00〜17:00、土日祝18:00まで）、夏期の花火イベント開催時の夜間営業（18:00〜21:00）は1,000円/回。シーズンオフ（11月〜4月中旬）は無料だが、最新年度の料金は南紀白浜観光協会の告知で事前確認推奨。砂浜で犬を遊ばせたい場合は近隣の江津良海水浴場（海水浴シーズン外なら犬OK）を利用するのがおすすめ。",
     "imageUrl": "",
     "images": [],
-    "officialUrl": "https://www.nankishirahama.jp/spot/527/"
+    "officialUrl": "https://www.nankishirahama.jp/spot/527/",
+    "stayKeyword": "白浜"
   },
   {
     "id": "nanbu-bairin",
@@ -8036,7 +8064,8 @@
       "西紀SA下り",
       "舞鶴若狭自動車道 西紀SA"
     ],
-    "tags": []
+    "tags": [],
+    "stayKeyword": "丹波"
   },
   {
     "id": "izushi-castle",
@@ -9129,7 +9158,8 @@
     ],
     "tags": [
       "water"
-    ]
+    ],
+    "stayKeyword": "丹波"
   },
   {
     "id": "oishi-park-sumoto",
@@ -11042,6 +11072,7 @@
       "images/spots/fishermans-wharf-shirahama/1.jpg",
       "images/spots/fishermans-wharf-shirahama/2.jpg"
     ],
-    "officialUrl": "https://fw-sh.com/"
+    "officialUrl": "https://fw-sh.com/",
+    "stayKeyword": "白浜"
   }
 ]
