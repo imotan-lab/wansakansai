@@ -399,6 +399,35 @@ function paragraphize(text) {
       const affEl = document.createElement('div');
       // affiliate-inline = 本文の途中に置く時の枠付きスタイル（ブログ記事と共通）
       affEl.className = 'affiliate-stay affiliate-inline';
+      // 「泊まる」文脈が薄いスポット（宿の施設IDも近隣地名も無く、県別の宿リンクしか出せない）では、
+      // 宿リンクの代わりに「持っていくもの」の物販枠を出す（2026-09-10）。
+      // 県別の宿リンクはGA4実測でほぼ押されておらず（7日で2件・PVの0.27%）、
+      // 日帰りの公園を見ている人には、出かける前に要る物の方が文脈が合う。
+      const goodsMode = !hotelId && !kw;
+      if (goodsMode) {
+        affEl.classList.add('affiliate-goods');
+        // 商品は2026-09-10に楽天の商品ページを開いて販売中を確認したもの。価格は変わるので書かない。
+        // 犬種を選ばない定番3点に絞る（点数を増やすほど選べなくなる）
+        const GOODS = [
+          { name: 'リッチェル お散歩ハンディシャワー', note: '給水とおしっこの洗い流しが1本で済む',
+            url: 'https://item.rakuten.co.jp/d-fit/70437/' },
+          { name: 'ライオン ペットキレイ 除菌できるウェットティッシュ', note: '足ふきに。ノンアルコール・無香料',
+            url: 'https://item.rakuten.co.jp/chanet/67510/' },
+          { name: 'BOS うんちが臭わない袋 ペット用', note: 'うんちの臭いを閉じ込める袋。帰りの車内が助かる',
+            url: 'https://item.rakuten.co.jp/rcmdse/lp-4560224462757/' },
+        ];
+        const goodsLink = (u) => `https://hb.afl.rakuten.co.jp/hgc/${RAKUTEN_AFFILIATE_ID}/?pc=${encodeURIComponent(u)}&link_type=text`;
+        affEl.innerHTML = `
+        <div class="affiliate-stay-head">
+          <span class="affiliate-pr-tag">PR</span>
+          <span class="affiliate-stay-text">犬とのお出かけに持っていくもの</span>
+        </div>
+        <ul class="affiliate-goods-list">
+          ${GOODS.map(g => `<li><a href="${goodsLink(g.url)}" target="_blank" rel="sponsored noopener" class="affiliate-btn affiliate-goods-link" data-aff="rakuten-item" data-aff-pref="${prefName || 'unknown'}" data-aff-page="spot:${spot.id}">${escapeHtml(g.name)}<span class="affiliate-goods-note">${escapeHtml(g.note)}</span></a></li>`).join('')}
+        </ul>
+        <p class="affiliate-goods-foot">楽天市場の商品ページが開きます</p>
+      `;
+      } else {
       affEl.innerHTML = `
         <div class="affiliate-stay-head">
           <span class="affiliate-pr-tag">PR</span>
@@ -410,6 +439,7 @@ function paragraphize(text) {
         </div>
         ${showJalan ? `<img border="0" width="1" height="1" src="${jalanTracker}" alt="" style="display:none;">` : ''}
       `;
+      }
       // 備考（読み終えた直後）に置く。備考が無いスポットは従来どおり末尾
       const remarksEl = container.querySelector('.detail-remarks');
       if (remarksEl) {

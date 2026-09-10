@@ -409,6 +409,44 @@ img {
 .affiliate-btns.affiliate-btns-single .affiliate-btn {
   flex: 0 1 320px;
 }
+/* 「持っていくもの」の物販枠（2026-09-10）。ボタンの赤ではなく、商品名＋一言のリストにする。
+   計測は .affiliate-btn[data-aff] の委譲リスナーが拾うので、クラス名は残して見た目だけ上書きする */
+.affiliate-goods-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+.affiliate-goods .affiliate-btn.affiliate-goods-link {
+  display: block;
+  min-height: 0;
+  padding: 10px 12px;
+  text-align: left;
+  background: #fff;
+  color: var(--color-text) !important;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.affiliate-goods .affiliate-btn.affiliate-goods-link:hover {
+  opacity: 1;
+  border-color: var(--color-primary);
+}
+.affiliate-goods-note {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--color-text-light, #777);
+}
+.affiliate-goods-foot {
+  margin: 8px 0 0;
+  font-size: 0.75rem;
+  color: var(--color-text-light, #777);
+}
 /* 縦並び（スマホ）では flex-basis が高さに効き、上の 320px がそのまま縦長ボタンになる。
    （2026-09-10 かばたリゾートのスマホ表示で発覚。ブログの1ボタン枠も同じ症状だった）
    ★上の定義より後に置くこと。前に置くと同じ詳細度で負けて効かない★ */
