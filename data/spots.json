@@ -5259,7 +5259,8 @@
       "images/spots/kabata-resort/4.jpg"
     ],
     "officialUrl": "https://kabataresort.com/",
-    "rakutenHotelId": "143245"
+    "rakutenHotelId": "143245",
+    "jalanYadId": "321469"
   },
   {
     "id": "oogoya",
@@ -5690,7 +5691,8 @@
       "images/spots/holiday-afternoon/6.jpg"
     ],
     "officialUrl": "http://www.biwa.ne.jp/~maikoinn/",
-    "rakutenHotelId": "13999"
+    "rakutenHotelId": "13999",
+    "jalanYadId": "315849"
   },
   {
     "id": "takano-ichigo-en",
@@ -5827,7 +5829,8 @@
       "stay-only"
     ],
     "stayKeyword": "白浜",
-    "rakutenHotelId": "145348"
+    "rakutenHotelId": "145348",
+    "jalanYadId": "338615"
   },
   {
     "id": "cafe-chrp",
@@ -5981,7 +5984,8 @@
     "imageUrl": "",
     "images": [],
     "officialUrl": "https://partnershouse.jp/",
-    "rakutenHotelId": "106158"
+    "rakutenHotelId": "106158",
+    "jalanYadId": "329512"
   },
   {
     "id": "taiji-kujira-museum",
@@ -6061,7 +6065,8 @@
     "images": [],
     "officialUrl": "https://doghotel-shirahama.jp/",
     "stayKeyword": "白浜",
-    "rakutenHotelId": "193085"
+    "rakutenHotelId": "193085",
+    "jalanYadId": "340664"
   },
   {
     "id": "senjojiki-shirahama",

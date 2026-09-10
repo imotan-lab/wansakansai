@@ -354,13 +354,18 @@ function paragraphize(text) {
       };
       const hotelId = (typeof spot.rakutenHotelId === 'string' && /^\d+$/.test(spot.rakutenHotelId))
         ? spot.rakutenHotelId : '';
+      // じゃらんの施設ID（jalan.net/yad{ID}/）。A8の自由URL（a8ejpredirect）で施設ページへ直リンクできる
+      //（2026-09-10に実際に踏み、指定先へA8の計測パラメータ付きで着地することを確認済み）
+      const jalanYadId = (typeof spot.jalanYadId === 'string' && /^\d+$/.test(spot.jalanYadId))
+        ? spot.jalanYadId : '';
       const kw = (spot.stayKeyword && STAY_KW_SJIS[spot.stayKeyword]) ? spot.stayKeyword : '';
 
       let travelUrl, headingText, rakutenLabel, affKind;
       if (hotelId) {
         travelUrl = `https://travel.rakuten.co.jp/HOTEL/${hotelId}/${hotelId}.html`;
-        headingText = 'この宿の空室と料金を楽天トラベルで見る';
-        rakutenLabel = '空室・料金を見る';
+        // じゃらんにも施設ページがあれば2社並べるので、見出しから社名を外す
+        headingText = jalanYadId ? 'この宿の空室と料金を見る' : 'この宿の空室と料金を楽天トラベルで見る';
+        rakutenLabel = jalanYadId ? '楽天トラベルで見る' : '空室・料金を見る';
         affKind = 'rakuten-hotel';
       } else if (kw) {
         travelUrl = `https://kw.travel.rakuten.co.jp/keyword/Event.do?f_query=${STAY_KW_SJIS[kw]}&f_category=3&f_area=9&f_max=30&f_su=2&f_sort=0`;
@@ -379,12 +384,17 @@ function paragraphize(text) {
       // 楽天アフィリの「どこでもリンク」形式（既存IDを流用、link_typeはtextのまま＝規約上安全）
       const RAKUTEN_AFFILIATE_ID = '535b3809.5ed3e82b.535b380a.3e77d4ae';
       const rakutenLink = `https://hb.afl.rakuten.co.jp/hgc/${RAKUTEN_AFFILIATE_ID}/?pc=${encodeURIComponent(travelUrl)}&link_type=text`;
-      // じゃらんnet（A8.net 経由。ディープリンク可否未確認のため汎用リンクのまま）。
-      // 施設直リンクの時は出さない（「この宿の空室」の隣に汎用検索が並ぶと文脈が合わない）
+      // じゃらんnet（A8.net 経由）。施設IDがあれば a8ejpredirect で施設ページへ直リンク、
+      // 無ければ汎用リンク。楽天が施設直リンクなのにじゃらんが汎用だと文脈が合わないので、
+      // その組み合わせの時だけじゃらんを出さない
       const JALAN_A8MAT = '4B3G6J+9ICAE2+14CS+64JTE';
-      const jalanLink = `https://px.a8.net/svt/ejp?a8mat=${JALAN_A8MAT}`;
+      const jalanLink = jalanYadId
+        ? `https://px.a8.net/svt/ejp?a8mat=${JALAN_A8MAT}&a8ejpredirect=${encodeURIComponent(`https://www.jalan.net/yad${jalanYadId}/`)}`
+        : `https://px.a8.net/svt/ejp?a8mat=${JALAN_A8MAT}`;
       const jalanTracker = `https://www13.a8.net/0.gif?a8mat=${JALAN_A8MAT}`;
-      const showJalan = !hotelId;
+      const jalanLabel = jalanYadId ? 'じゃらんで見る' : 'じゃらんnetで探す';
+      const jalanKind = jalanYadId ? 'jalan-hotel' : 'jalan';
+      const showJalan = !hotelId || !!jalanYadId;
 
       const affEl = document.createElement('div');
       // affiliate-inline = 本文の途中に置く時の枠付きスタイル（ブログ記事と共通）
@@ -396,7 +406,7 @@ function paragraphize(text) {
         </div>
         <div class="affiliate-btns${showJalan ? '' : ' affiliate-btns-single'}">
           <a href="${rakutenLink}" target="_blank" rel="sponsored noopener" class="affiliate-btn affiliate-btn-rakuten" data-aff="${affKind}" data-aff-pref="${prefName || 'unknown'}" data-aff-page="spot:${spot.id}">${rakutenLabel}</a>
-          ${showJalan ? `<a href="${jalanLink}" target="_blank" rel="sponsored nofollow noopener" class="affiliate-btn affiliate-btn-jalan" data-aff="jalan" data-aff-pref="${prefName || 'unknown'}" data-aff-page="spot:${spot.id}">じゃらんnetで探す</a>` : ''}
+          ${showJalan ? `<a href="${jalanLink}" target="_blank" rel="sponsored nofollow noopener" class="affiliate-btn affiliate-btn-jalan" data-aff="${jalanKind}" data-aff-pref="${prefName || 'unknown'}" data-aff-page="spot:${spot.id}">${jalanLabel}</a>` : ''}
         </div>
         ${showJalan ? `<img border="0" width="1" height="1" src="${jalanTracker}" alt="" style="display:none;">` : ''}
       `;
