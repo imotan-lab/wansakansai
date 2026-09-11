@@ -83,9 +83,15 @@ function paragraphize(text) {
       && typeof t.until === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(t.until)
       && t.until >= todayISO
     );
-    const formatUntil = (iso) => {
+    // 末尾に「（YYYY年M月D日まで）」を付ける。ただし note がその日付を既に含む時は付けない。
+    // 「10月1日から有料化」のような予告型は note に日付を書く必要があり、
+    // 機械的に付けると同じ日付が二重に出る（2026-09-12 枚方東部公園で発生）
+    const untilSuffix = (iso, note) => {
       const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso);
-      return m ? `${Number(m[1])}年${Number(m[2])}月${Number(m[3])}日まで` : '';
+      if (!m) return '';
+      const label = `${Number(m[1])}年${Number(m[2])}月${Number(m[3])}日`;
+      const short = `${Number(m[2])}月${Number(m[3])}日`;
+      return (note.includes(label) || note.includes(short)) ? '' : `（${label}まで）`;
     };
 
     let toiletText = 'なし';
@@ -219,7 +225,7 @@ function paragraphize(text) {
 
         ${activeTemps.length ? `
           <div class="detail-temp">
-            ${activeTemps.map(t => `<p class="detail-temp-note">${escapeHtml(t.note)}（${formatUntil(t.until)}）</p>`).join('')}
+            ${activeTemps.map(t => `<p class="detail-temp-note">${escapeHtml(t.note)}${untilSuffix(t.until, t.note)}</p>`).join('')}
           </div>
         ` : ''}
 

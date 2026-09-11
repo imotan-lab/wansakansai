@@ -408,9 +408,13 @@ def build_body_content(spot: dict, all_spots: list = None) -> str:
             if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", _until) or _until < _today_iso:
                 continue
             _y, _m, _d = _until.split("-")
-            _label = f"{int(_y)}年{int(_m)}月{int(_d)}日まで"
+            _label = f"{int(_y)}年{int(_m)}月{int(_d)}日"
+            _short = f"{int(_m)}月{int(_d)}日"
+            # note が既にその日付を含む（予告型）なら末尾の「（〜まで）」を付けない。
+            # js/spot.js の untilSuffix と同じ条件にすること
+            _suffix = "" if (_label in _note or _short in _note) else f"（{_label}まで）"
             _lines.append(
-                f'<p class="detail-temp-note">{html.escape(_note)}（{_label}）</p>'
+                f'<p class="detail-temp-note">{html.escape(_note)}{_suffix}</p>'
             )
         if _lines:
             temp_note = '<div class="detail-temp">' + "".join(_lines) + "</div>"
