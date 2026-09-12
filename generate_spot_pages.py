@@ -81,9 +81,16 @@ def build_title(spot: dict) -> str:
 
     # 優先順位順の特徴リスト
     # dogArea == 'outdoor-only' は「主役が屋内で、犬は屋外エリアのみ」の施設。
+    # dogArea == 'carry-only' は「犬を地面に降ろせない」施設（抱っこ・カート・キャリーのみ）。
     # 『犬連れOK』と断定すると現地で断られた読者に無駄足を踏ませるため表記を変える。
     # 『犬連れ』の語は残すので「○○ 犬連れ」クエリでの検索意図は取りこぼさない。
-    features = ["犬連れは屋外のみ" if spot.get("dogArea") == "outdoor-only" else "犬連れOK"]
+    _dog_area = spot.get("dogArea")
+    if _dog_area == "outdoor-only":
+        features = ["犬連れは屋外のみ"]
+    elif _dog_area == "carry-only":
+        features = ["犬連れは抱っこ・カートのみ"]
+    else:
+        features = ["犬連れOK"]
     dogrun = spot.get("dogRun") or {}
     if dogrun.get("available"):
         features.append("ドッグラン")
@@ -147,6 +154,8 @@ def build_description(spot: dict) -> str:
     # 先頭文だけを分ける。三項演算子を連結の途中に置くと後続の文字列を巻き込むため変数化する。
     if spot.get("dogArea") == "outdoor-only":
         lead = f"{spot['name']}は{pref_short}の犬連れスポット（屋外エリアのみ同伴可）。"
+    elif spot.get("dogArea") == "carry-only":
+        lead = f"{spot['name']}は{pref_short}の犬連れスポット（抱っこ・カートでの同伴のみ可）。"
     else:
         lead = f"{spot['name']}は{pref_short}の犬連れOKスポット。"
 
