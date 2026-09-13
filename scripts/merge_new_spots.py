@@ -3,6 +3,7 @@
 使い方:
   python scripts/merge_new_spots.py --check a.json b.json      # 取り込まずに検査だけ
   python scripts/merge_new_spots.py --apply a.json b.json      # 末尾に追加して保存
+  python scripts/merge_new_spots.py --apply --visited-ok a.json  # 運営者が泊まった宿など
 
 検査する内容（機械で判定できることだけ。中身の正しさは2AIの突き合わせで担保する）:
   - 必須キーが揃っているか／余計なキーが無いか
@@ -11,6 +12,7 @@
   - lat/lng が関西の範囲（北緯33.4〜35.8・東経134.0〜136.5）に入っているか
   - remarks が200字以上で「。」で終わるか／禁止記号（半角括弧・全角チルダ・半角波ダッシュ）が無いか
   - visited が false、imageUrl が空、officialUrl が https で始まるか
+    （運営者が実際に訪問・宿泊した場所は --visited-ok で visited=true を許す）
   - aliases の先頭がひらがな読みか
   - tags が既知の語彙か
   - temporary の until が YYYY-MM-DD で未来日か
@@ -25,6 +27,8 @@ import argparse, datetime, io, json, os, re, sys
 sys.stdout.reconfigure(encoding="utf-8")
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SPOTS = os.path.join(ROOT, "data", "spots.json")
+
+ALLOW_VISITED = False
 
 REQUIRED = ["id", "name", "address", "lat", "lng", "category", "dogSize", "parking",
             "toilet", "dogRun", "admission", "visited", "remarks", "imageUrl",
@@ -74,8 +78,8 @@ def check(spot, existing_ids, existing_names, errors, warns):
             e(f"remarks に{name}「{ch}」が入っている")
     if re.search(r"20\d\d年\d+月\d+日", r):
         w("remarks に年入りの日付がある（期限つきなら temporary へ）")
-    if spot.get("visited") is not False:
-        e("visited は false にすること")
+    if spot.get("visited") is not False and not ALLOW_VISITED:
+        e("visited は false にすること（運営者が実際に訪問・宿泊した場合だけ --visited-ok を付ける）")
     if spot.get("imageUrl") != "":
         e("imageUrl は空文字にすること")
     if not str(spot.get("officialUrl", "")).startswith("https://"):
@@ -110,7 +114,11 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("files", nargs="+")
     ap.add_argument("--apply", action="store_true")
+    ap.add_argument("--visited-ok", action="store_true",
+                    help="運営者が実際に訪問・宿泊したスポットに限り visited=true を許す")
     a = ap.parse_args()
+    global ALLOW_VISITED
+    ALLOW_VISITED = a.visited_ok
 
     spots = json.load(io.open(SPOTS, encoding="utf-8"))
     ids = {s["id"] for s in spots}
