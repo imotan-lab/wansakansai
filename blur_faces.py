@@ -8,7 +8,13 @@ import cv2
 import numpy as np
 import os
 
-MODEL_PATH = os.path.join('C:/Users/oh_so', 'face_detection_yunet.onnx')
+# モデルの置き場はPCによって違う。存在するものを使う（会社PCは .claude 配下）
+_CANDIDATES = [
+    'C:/Users/imao_/.claude/face_detection_yunet.onnx',
+    'C:/Users/oh_so/face_detection_yunet.onnx',
+    os.path.join(os.path.dirname(os.path.abspath(__file__)), 'face_detection_yunet.onnx'),
+]
+MODEL_PATH = next((p for p in _CANDIDATES if os.path.exists(p)), _CANDIDATES[0])
 
 
 def detect_faces_yunet(img, score_threshold=0.5):
