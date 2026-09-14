@@ -70,6 +70,21 @@ def load_spots() -> list:
         return json.load(f)
 
 
+def _lead_sentence(spot: dict) -> str:
+    """備考の1文目。remarks は「施設の性格・規模を一言で」から書き始める決まりなので、そのまま紹介文になる。"""
+    remarks = (spot.get("remarks") or "").strip().split("\n")[0]
+    lead = remarks.split("。")[0].strip() if remarks else ""
+    return lead + "。" if lead else ""
+
+
+def _shorten_lead(lead: str) -> str:
+    """「、」の手前で切って短くする。切る所が無ければ空にする。"""
+    body = lead.rstrip("。")
+    if "、" not in body:
+        return ""
+    return body.rsplit("、", 1)[0] + "。"
+
+
 def build_new_spot_text(spot: dict, url: str, today: date | None = None,
                         weather: dict | None = None) -> str:
     today = today or date.today()
@@ -77,6 +92,9 @@ def build_new_spot_text(spot: dict, url: str, today: date | None = None,
     name = spot.get("name", "")
 
     opening = random.choice(NEW_SPOT_OPENINGS).format(name=name, pref=pref)
+
+    # 備考の1文目（2026-09-14追加）。設備の箇条だけだと「入場無料。」で終わる薄い文になっていた
+    lead = _lead_sentence(spot)
 
     features = describe_features(spot)
     random.shuffle(features)
@@ -89,8 +107,6 @@ def build_new_spot_text(spot: dict, url: str, today: date | None = None,
         if "rain" in spot.get("tags", []):
             features.insert(0, "雨の日でもOK")
 
-    middle = "、".join(features) + "。" if features else ""
-
     closing = random.choice(NEW_SPOT_CLOSINGS).format(url=url)
 
     extras = []
@@ -100,29 +116,35 @@ def build_new_spot_text(spot: dict, url: str, today: date | None = None,
         extras.append("#紅葉")
     elif seasonal == "水遊びOK":
         extras.append("#犬と水遊び")
-    hashtags = build_hashtags(spot, extra=extras)
+    hashtag_list = build_hashtags(spot, extra=extras).split()
 
-    parts = [opening]
-    if middle:
-        parts.append(middle)
-    parts.append("")
-    parts.append(closing)
-    parts.append("")
-    parts.append(hashtags)
-    text = "\n".join(parts)
-
-    # 短縮
-    while count_x_weight(text) > MAX_TWEET_WEIGHT and features:
-        features = features[:-1]
+    def assemble(lead, features, tags):
         middle = "、".join(features) + "。" if features else ""
         parts = [opening]
+        if lead:
+            parts.append(lead)
         if middle:
             parts.append(middle)
-        parts.append("")
-        parts.append(closing)
-        parts.append("")
-        parts.append(hashtags)
-        text = "\n".join(parts)
+        parts += ["", closing, "", " ".join(tags)]
+        return "\n".join(parts)
+
+    def droppable_tag(tags):
+        # サイト名と府県のタグは残す
+        cand = [t for t in tags if t != "#わんさかんさい" and not t.endswith("わんこ")]
+        return cand[-1] if cand else None
+
+    text = assemble(lead, features, hashtag_list)
+    # 短縮の順: 設備の箇条 → 追加ハッシュタグ → 備考の文を「、」で切る → 備考の文を外す
+    while count_x_weight(text) > MAX_TWEET_WEIGHT:
+        if features:
+            features = features[:-1]
+        elif droppable_tag(hashtag_list):
+            hashtag_list.remove(droppable_tag(hashtag_list))
+        elif lead:
+            lead = _shorten_lead(lead)
+        else:
+            break
+        text = assemble(lead, features, hashtag_list)
 
     return text
 
