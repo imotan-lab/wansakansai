@@ -149,6 +149,17 @@ def main():
     io.open(SPOTS, "w", encoding="utf-8").write(
         json.dumps(spots, ensure_ascii=False, indent=2) + "\n")
     print(f"data/spots.json に {len(adds)} 件追加（計 {len(spots)} 件）")
+    # X投稿のキューに足す（daily-spot タスクが先頭から1日1件、今日のおすすめの代わりに投稿する）
+    qpath = os.path.join(ROOT, "scripts", "new_spot_queue.json")
+    try:
+        queue = json.load(io.open(qpath, encoding="utf-8"))
+    except (OSError, ValueError):
+        queue = []
+    for d in adds:
+        if d["id"] not in queue:
+            queue.append(d["id"])
+    io.open(qpath, "w", encoding="utf-8").write(json.dumps(queue, ensure_ascii=False, indent=2) + "\n")
+    print(f"X投稿キュー scripts/new_spot_queue.json に {len(adds)} 件追加（待ち {len(queue)} 件・1日1件投稿）")
     print("次に: check_writing_style.py --fix → generate_spot_pages.py → generate_sitemap.py")
     return 0
 
