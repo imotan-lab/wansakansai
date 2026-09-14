@@ -289,7 +289,7 @@ JS描画だけだとレンダリング前HTMLにリンクが残らず、Google�
 ## 危険情報（data/dangers.json）
 - 毎日自動更新あり（毎朝6:31 JST、ローカルスケジュールタスクで実行。2026-07-17に21時から移動＝夜間セッション制限の回避＋朝の散歩前に更新が届く配置）
 - タスクID: wansakansai-danger-update
-- メール通知は変化・異常時のみ（send_notify.py wansakansai。「静かなのが正常」ポリシー＝上記「自動タスク共通方針」参照）。**更新の中身は `--changes-file` で 前→後 と理由・出典を本文に入れる**（2026-09-14・書き方はSKILL.md STEP 7）
+- メール通知は変化・異常時のみ（send_notify.py wansakansai。「静かなのが正常」ポリシー＝上記「自動タスク共通方針」参照）。**更新の中身は `--changes-file` で 前→後 と理由・出典、判断依頼は `--pending-file` で項目ごとに本文へ入れる**（2026-09-14〜15・書き方はSKILL.md STEP 7。`--skipped` はエラーだけ。件名は中身に合わせて変わる）
 - ログ: C:\Users\imao_\.claude\logs\wansakansai_YYYY-MM-DD.log（7日分保持）
 - Dropboxバックアップ: C:\Users\imao_\今電 Dropbox\今電　今尾笙夢\Claude_backup\自動タスク\wansakansai-danger-update\
 - 情報源: 自治体公式サイト + SNS（X、Instagram、Threads）
