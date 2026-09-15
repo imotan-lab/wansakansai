@@ -517,7 +517,7 @@ def build_html(spot: dict, all_spots: list = None) -> str:
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="../favicon.ico">
   <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/style.css?v=20260915">
   <script type="application/ld+json">{jsonld}</script>
 </head>
 <body>
@@ -532,8 +532,8 @@ def build_html(spot: dict, all_spots: list = None) -> str:
 
 {STATIC_FOOTER}
   <script>window.WANSAKA_SPOT_ID = "{sid_e}";</script>
-  <script src="../js/common.js"></script>
-  <script src="../js/spot.js"></script>
+  <script src="../js/common.js?v=20260915"></script>
+  <script src="../js/spot.js?v=20260915"></script>
 </body>
 </html>
 '''
@@ -627,7 +627,7 @@ def build_index_html(spots: list) -> str:
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="../favicon.ico">
   <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/style.css?v=20260915">
 </head>
 <body>
 
@@ -643,7 +643,7 @@ def build_index_html(spots: list) -> str:
   </main>
 
 {STATIC_FOOTER}
-  <script src="../js/common.js"></script>
+  <script src="../js/common.js?v=20260915"></script>
   <script>
     renderHeader('spots');
     renderFooter();

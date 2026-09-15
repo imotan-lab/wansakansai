@@ -1662,3 +1662,22 @@ img {
 }
 
 .danger-detail .danger-card-desc:last-child { margin-bottom: 0; }
+
+
+/* ===== スクロールで浮き上がる（2026-09-15導入） =====
+   js/common.js が対象に .reveal を付け、画面に入ると .is-in が付く。
+   JavaScript が動かない環境では .has-reveal が付かないので、そのまま見える。 */
+.has-reveal .reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity .9s cubic-bezier(.25, .46, .45, .94),
+              transform .9s cubic-bezier(.25, .46, .45, .94);
+  will-change: opacity, transform;
+}
+.has-reveal .reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .has-reveal .reveal { opacity: 1; transform: none; transition: none; }
+}

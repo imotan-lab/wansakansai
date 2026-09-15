@@ -204,3 +204,104 @@ function spotNameMatchesText(spot, text) {
   const names = [spot.name, ...(spot.aliases || [])];
   return names.some(n => text.includes(n));
 }
+
+
+/* ===== スクロールで浮き上がる（2026-09-15導入） =====
+   今電のサイト（imaden-inc.com）と同じ考え方で、下から少し上がりながら現れる。
+   ・対象は下の SELECTOR。JSが後から描くカードも MutationObserver で拾う
+   ・一度現れたら監視をやめる（スクロールのたびに明滅しない）
+   ・端末が「動きを減らす」設定なら何もしない
+   ・IntersectionObserver が無い古い環境でも、何も起きないだけで表示は壊れない */
+(function revealInit() {
+  /* 対象は「スクロールした先に出てくるもの」だけ。
+     ページの主役（スポット詳細の本文など）は入れない。動きが出ない環境で
+     本文が見えなくなるため。 */
+  var SELECTOR = [
+    '.spot-card',          // トップと一覧のカード
+    '.danger-card',        // 危険情報
+    '.theme-card',         // テーマ別のカード
+    '.theme-spot',
+    '.blog-card',          // ブログ一覧
+    '.nearby-spots'        // スポット詳細の下の「近くのスポット」
+  ].join(',');
+
+  if (!('IntersectionObserver' in window)) return;
+  try {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  } catch (e) { /* matchMedia が無い環境では動きを入れる */ }
+
+  document.documentElement.classList.add('has-reveal');
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('is-in');
+      io.unobserve(e.target);
+    });
+  }, { rootMargin: '0px 0px -6% 0px', threshold: 0.06 });
+
+  function mark(el, i) {
+    if (el.classList.contains('reveal')) return;
+    el.classList.add('reveal');
+    // 続けて並ぶものは少しずつ遅らせる（最大8つぶんまで）
+    if (i) el.style.transitionDelay = (Math.min(i, 8) * 55) + 'ms';
+    io.observe(el);
+  }
+
+  function scan(root) {
+    var list = (root || document).querySelectorAll(SELECTOR);
+    for (var i = 0; i < list.length; i++) mark(list[i], i);
+    // 描いた直後に画面へ入っているものは、すぐ出す（薄いまま残さない）
+    window.requestAnimationFrame(function () { sweep(); });
+  }
+
+  scan(document);
+
+  // 一覧は絞り込みのたびに描き直されるので、増えた分を拾う
+  var mo = new MutationObserver(function (records) {
+    for (var i = 0; i < records.length; i++) {
+      var added = records[i].addedNodes;
+      for (var j = 0; j < added.length; j++) {
+        var n = added[j];
+        if (n.nodeType !== 1) continue;
+        if (n.matches && n.matches(SELECTOR)) mark(n, j);
+        if (n.querySelectorAll) scan(n);
+      }
+    }
+  });
+  mo.observe(document.body, { childList: true, subtree: true });
+
+  document.addEventListener('DOMContentLoaded', function () { scan(document); });
+
+  /* スクロールのたびに位置を見て表示する。
+     IntersectionObserver が働かない場合でも、内容が薄いまま残らないようにする。 */
+  var ticking = false;
+  function sweep() {
+    ticking = false;
+    var h = window.innerHeight || document.documentElement.clientHeight;
+    var list = document.querySelectorAll('.reveal:not(.is-in)');
+    for (var i = 0; i < list.length; i++) {
+      var r = list[i].getBoundingClientRect();
+      if (r.top < h * 0.94 && r.bottom > 0) list[i].classList.add('is-in');
+    }
+  }
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(sweep);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  onScroll();
+
+  /* 保険: 3秒たってもまだ現れていないもののうち、画面内にあるものは表示する。 */
+  window.setTimeout(function () {
+    var left = document.querySelectorAll('.reveal:not(.is-in)');
+    if (!left.length) return;
+    var h = window.innerHeight || document.documentElement.clientHeight;
+    for (var i = 0; i < left.length; i++) {
+      var r = left[i].getBoundingClientRect();
+      if (r.top < h) left[i].classList.add('is-in');
+    }
+  }, 3000);
+})();

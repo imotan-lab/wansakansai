@@ -26,3 +26,5 @@ scripts/*_stdout.log
 # 新スポットX投稿のキューと結果（ローカル状態・Dropboxへ退避）
 scripts/new_spot_queue.json
 scripts/new_spot_post_status.json
+# デザイン案の試作（本番には出さない）
+prototype/
