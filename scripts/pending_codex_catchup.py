@@ -25,10 +25,21 @@ Codexが利用上限に達して2AI検証が実行できない日があった。
      日は「済み」になっていた**
   ⑤ 走査が新しい日→古い日の順で、手順書の「古い日から順に消化」と逆だった
 
-判定のしかた:
-  ログに [codex-skip] があり、**その日に検証すべきIDのうち [codex-catchup] 行に
-  現れていないものが残っている**日 = 未検証のまま。
-  （追いかけ検証をしたら [codex-catchup] にIDを列挙して書く。それが済みの印になる）
+★2026-09-17に「Codexを呼ぶ手前で落ちた」型を拾えるようにした★
+  9/16の昼の実行が、調査と修正を終えた12:15を最後に途絶した。Codex検証・コミット・
+  メール・完了マーカーのすべてが未実行で、**修正2件が未検証・未公開のまま
+  作業ツリーに残った**。翌日のpmが作業ツリーの汚れに気づいて拾ったから助かったが、
+  このスクリプトは [codex-skip] を手がかりにする作りだったので0件と答えていた。
+  [codex-skip] は「呼んだが失敗した」印であって、**呼ぶ前に落ちた日には何も残らない**。
+  以後は開始マーカーと完了マーカーの対応も見る（RUNS）。
+
+判定のしかた（次のどちらかに当てはまり、かつ未検証のIDが残っている日）:
+  ① ログに [codex-skip] がある（Codexを呼んだが失敗した）
+  ② 開始マーカーがあるのに完了マーカーが無い実行がある（途中で途絶した）
+     …この場合コミットまで到達していないのでgit差分には出ない。
+        拾えるのはその実行の「チェック対象:」行だけ
+  済みの印は [codex-catchup]（後日の追いかけ）と [codex-verified]（当日の通常検証）。
+  **済みの印は先の日のログに書かれることがある**ので、対象日から今日までを通して見る。
 
 その日に検証すべきID:
   ①gitのコミット差分で変わったID（＝公開内容が変わったもの）
@@ -69,6 +80,33 @@ SKIP = "[codex-skip]"
 # もう片方が正常に検証した分まで未検証扱いになる（2026-09-08に実際に起きた）。
 DONE_MARKS = ("[codex-catchup]", "[codex-verified]")
 DONE = DONE_MARKS[0]   # メッセージ表示用
+
+# ★「Codexを呼ぶ手前で落ちた」型を拾うための開始／完了マーカー（2026-09-17追加）★
+# [codex-skip] は「Codexを呼んだが失敗した」印なので、**呼ぶ前に落ちた日には何も残らない**。
+# 2026-09-16の昼の実行が実際にこの形だった。調査と修正を終えた12:15を最後に途絶し、
+# Codex検証・コミット・メール・完了マーカーがすべて未実行で、
+# 修正2件が未検証・未公開のまま作業ツリーに残った。
+# このスクリプトは [codex-skip] だけを手がかりにしていたため0件と答えていた。
+# 開始マーカーがあるのに完了マーカーが無い＝途中で途絶した、で判定する。
+RUNS = {
+    "danger": [("wansakansai-danger-update",
+                "STEP 0: タスク開始",
+                "=== wansakansai-danger-update 完了 ===")],
+    "spot": [("wansakansai-spot-update-pm",
+              "=== spot-update-pm 開始 ===",
+              "=== wansakansai-spot-update-pm 完了 ==="),
+             ("wansakansai-spot-update-am",
+              "=== spot-update-am 開始 ===",
+              "=== wansakansai-spot-update-am 完了 ===")],
+}
+
+# 走り始めてこれだけ経っていない実行は「まだ動いている最中かもしれない」として数えない。
+# ★この猶予が無いと、タスクが自分自身を「途絶した」と報告する★
+# （このスクリプトは各タスクの途中から呼ばれる。実測は am 約12分・pm 約30分なので6時間は十分な余裕）
+RUNNING_GRACE_HOURS = 6
+
+# ログ行頭の [HH:MM:SS]
+TS = re.compile(r"^\[(\d{2}):(\d{2}):(\d{2})\]")
 
 # ログの「チェック対象: [...]」行からIDを拾う。
 # ★IDの直後に (count= が来る前提にしないこと★
@@ -163,6 +201,98 @@ def done_ids_from_log(text, candidates):
     return {c for c in candidates if c in blob}
 
 
+def done_ids_in(blob, candidates):
+    """済みの印がある行を繋いだ文字列の中に、候補IDが現れるかを素直に部分一致で見る。
+
+    ★散文から正規表現でIDを推測しないこと★（理由は done_ids_from_log の説明と同じ）
+    """
+    if not blob:
+        return set()
+    return {c for c in candidates if c in blob}
+
+
+def done_blob(logdir, pattern, date, today):
+    """date から today までの同じ種類のログを集め、済みの印がある行だけを繋いで返す。
+
+    ★済みの印は、その日のログに書かれるとは限らない（2026-09-17に判明）★
+    2026-09-16のam分は、翌日のpmが追いかけて 2026-09-17 のログの
+    [codex-verified] に並べた。当日のログだけを見ると、
+    **済ませたのに毎日「未検証」と出続ける**。
+    後から古いログに書き足させるのは無理があるので、読む側が先の日まで見る。
+
+    後の日の通常ローテーションで検証された場合も「済み」として扱ってよい。
+    検証されるのはその時点のデータで、そこには過去の修正が含まれているため。
+    """
+    y, mo, d = (int(x) for x in date.split("-"))
+    cur = datetime.date(y, mo, d)
+    lines = []
+    while cur <= today:
+        f = logdir / pattern.format(date=cur.isoformat())
+        if f.exists():
+            try:
+                t = io.open(f, encoding="utf-8", errors="replace").read()
+            except Exception:
+                t = ""
+            lines.extend(l for l in t.split("\n") if any(m in l for m in DONE_MARKS))
+        cur += datetime.timedelta(days=1)
+    return "\n".join(lines)
+
+
+def run_segments(text, runs):
+    """ログ本文を実行ごとに切り分ける。
+
+    ★spot_check ログは am と pm が1つのファイルを共有する★
+    だから「チェック対象:」行がどちらの実行のものかは、行の位置でしか分からない。
+    返すのは [(タスクID, 開始行, その実行ぶんの本文)] の並び。
+    """
+    lines = text.split("\n")
+    marks = []
+    for i, line in enumerate(lines):
+        for task_id, start, _done in runs:
+            if start in line:
+                marks.append((i, task_id, line))
+                break
+    out = []
+    for n, (i, task_id, line) in enumerate(marks):
+        end = marks[n + 1][0] if n + 1 < len(marks) else len(lines)
+        out.append((task_id, line, "\n".join(lines[i:end])))
+    return out
+
+
+def start_dt(date, line):
+    """開始行の [HH:MM:SS] とログの日付から開始時刻を組み立てる。読めなければ None。"""
+    m = TS.match(line)
+    if not m:
+        return None
+    y, mo, d = (int(x) for x in date.split("-"))
+    return datetime.datetime(y, mo, d, int(m.group(1)), int(m.group(2)), int(m.group(3)))
+
+
+def incomplete_runs(date, text, kind, now):
+    """開始マーカーがあるのに完了マーカーが無い実行を返す。
+
+    返すのは [(タスクID, その実行の検証対象ID集合)]。
+    **まだ走っている最中かもしれないものは除く**（RUNNING_GRACE_HOURS）。
+
+    限界を正直に書いておく: 同じタスクが1日に2回走った場合、
+    完了マーカーの有無はファイル全体で見るので「片方だけ途絶」は見分けられない。
+    今の運用は1日1回なので実害は無い。
+    """
+    runs = RUNS.get(kind, [])
+    if not runs:
+        return []
+    done_of = {task_id: done for task_id, _s, done in runs}
+    out = []
+    for task_id, line, body in run_segments(text, runs):
+        if done_of[task_id] in text:
+            continue
+        began = start_dt(date, line)
+        if began is not None and (now - began).total_seconds() < RUNNING_GRACE_HOURS * 3600:
+            continue
+        out.append((task_id, checked_ids_from_log(body)))
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--days", type=int, default=7, help="さかのぼる日数（既定7）")
@@ -182,7 +312,8 @@ def main():
         pass
 
     logdir = Path(a.logdir)
-    today = datetime.date.today()
+    now = datetime.datetime.now()
+    today = now.date()
     kinds = [a.kind] if a.kind else sorted(KINDS)
     total_days = 0
     emitted = 0
@@ -203,7 +334,10 @@ def main():
             except Exception as ex:
                 print("!! {} のログを読めなかった: {}".format(d, ex))
                 return 1
-            if SKIP not in text:
+            # 拾う型は2つ。①Codexを呼んだが失敗した（[codex-skip]）
+            # ②Codexを呼ぶ手前で途絶した（開始マーカーだけあって完了マーカーが無い）
+            broken = incomplete_runs(d, text, kind, now)
+            if SKIP not in text and not broken:
                 continue
 
             try:
@@ -213,24 +347,34 @@ def main():
                 print("   （握り潰すと『変更なし＝追いかけ不要』と誤判定するため中断する）")
                 return 1
 
-            # 変更が無くても、その日の検証対象だったIDは追いかけの対象にする
-            ids |= checked_ids_from_log(text)
-            # すでに追いかけ済みのIDを除く（候補と照合する方式）
-            ids -= done_ids_from_log(text, ids)
+            reasons = []
+            if SKIP in text:
+                # 変更が無くても、その日の検証対象だったIDは追いかけの対象にする
+                ids |= checked_ids_from_log(text)
+                reasons.append("Codex検証をスキップ")
+            for task_id, run_ids in broken:
+                # 途絶した実行は**コミットまで到達していない**ので git差分には出ない。
+                # 拾えるのはその実行の「チェック対象:」行だけ。
+                ids |= run_ids
+                reasons.append("{} が完了マーカー無しで途絶".format(task_id))
+
+            # すでに検証済みのIDを除く。**先の日のログまで見る**（done_blob の説明を参照）
+            ids -= done_ids_in(done_blob(logdir, pattern, d, today), ids)
 
             if ids:
-                pending.append((d, sorted(ids)))
+                pending.append((d, sorted(ids), reasons))
 
         if not pending:
             print("{}: 未検証の日なし".format(kind))
             continue
 
-        for d, ids in pending:
+        for d, ids, reasons in pending:
             total_days += 1
             room = max(0, a.max_ids - emitted)
             shown = ids[:room]
             rest = len(ids) - len(shown)
-            print("{}: {} が未検証（{}件）".format(kind, d, len(ids)))
+            print("{}: {} が未検証（{}件） 理由: {}".format(
+                kind, d, len(ids), " / ".join(reasons)))
             if shown:
                 print("  [ids] {}".format(",".join(shown)))
                 emitted += len(shown)

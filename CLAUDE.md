@@ -36,7 +36,6 @@
 ## SEO・収益化
 - Google Analytics設置済み（G-NPGCWSCZGB）
 - Google Search Console登録済み（metaタグ認証 + HTMLファイル認証）
-  - 旧プロパティ: https://imotan-lab.github.io/wansakansai/
   - 新プロパティ: http://wansakansai.com/（2026-04-06追加、HTMLファイル認証）
   - HTTPS版: https://wansakansai.com/（2026-04-08追加）
 - sitemap.xml / robots.txt 設置済み
@@ -263,9 +262,8 @@ JS描画だけだとレンダリング前HTMLにリンクが残らず、Google�
   - **出力を tail や head で切らない**（前半が失われて判定が読めなくなる）。手順の詳細は spot-update-am / pm のSKILL.md「STEP 8.5」参照
   - **無人タスクでもワークフローとエージェント起動は引き続き禁止**。Codexは承認プロンプトを持たない単発のサブプロセスなので例外として許可している
 - **CLAUDE.mdサイズ検知**（wansakansai-spot-update-am が日次実行）: `python scripts/check_claude_md_size.py --json` が閾値超（**80KB**・2026-09-02に50KBから引き上げ。★この数字はClaudeが置いた目安であって根拠のある上限ではない。守るために文章を削るのは本末転倒で、本来見るべきは「書いてあるルールが今も必要か」★）・履歴参照喪失をNG判定する。wansakansai-spot-verify-am が日次で実行し、NG時のみメール通知。★無人タスクはCLAUDE.mdを書き換えない（圧縮は対話セッション専用＝冒頭「変更履歴について」の圧縮手順参照）★
+- **★STEP 0で作業ブランチと作業ツリーを確かめる（2026-09-17・am/pm/danger）★** master でなければ切り替える（別ブランチのまま pull すると意図しないマージを作り、直した内容も公開ブランチに載らない。2026-09-16に発生）。**未コミットの変更は前の実行が途絶した証拠。**捨てず引き継がず、自分で裏取りし直して今日のぶんと一緒に公開する。「Codexを呼ぶ手前で落ちた」型は pending_codex_catchup.py が開始/完了マーカーの対応で検知する（codex-skip の印だけを見ていた頃は0件と答えていた）
 - **死活監視は task-watchdog（毎朝8:03・うちどころ側で一元管理）が登録されている全タスクを点検・自動復旧する**（対象は list_scheduled_tasks から動的に取るので、タスクを増やしても番兵側の変更は要らない。2026-09-03時点の内訳はうちどころ2＋わんさかんさい8）。わんさかんさい側で同じ死活監視を二重に作らないこと（重複は無駄＆混乱の元）。詳細はグローバルCLAUDE.md参照
-  - タスクが「途中終了→実行中のまま居座り後続をブロック」する障害が起き得る（過去に旧 spot-check-pm が6/1〜6/3の3晩停止）。復旧は `update_scheduled_task` で enabled off→on トグル。これも基本watchdogが自動でやる
-- 共有スクリプト send_notify.py（汎用 notify サブコマンド）・log.py（watchdog_ 接頭辞の振り分け）はうちどころ側watchdog用に拡張済み。わんさかんさいの既存サブコマンド・振り分けは不変
   - 共有スクリプトの正本バックアップは `Claude_backup/スクリプト/` に集約され、task-watchdogが毎日自動更新する（手動バックアップ不要。わんさかんさい側で個別に backup 対象へ追加しなくてよい）
 
 ## スポット情報 定期チェック（自動タスク）
