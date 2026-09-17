@@ -203,10 +203,11 @@ def checked_ids_from_log(text):
     return ids
 
 
-def done_ids_from_log(text, candidates):
-    """済みの印がある行に現れた「候補IDのうちどれか」を返す。
+def done_ids_in(blob, candidates):
+    """済みの印がある行を繋いだ文字列の中に、候補IDが現れるかを素直に部分一致で見る。
 
-    済みの印は [codex-catchup]（追いかけ）と [codex-verified]（その日の通常検証）の2種類。
+    済みの印は [codex-catchup]（後日の追いかけ）と [codex-verified]（当日の通常検証）の2種類。
+    **印かどうかの判定は line_has_mark が行い、ここには済みの行だけが渡ってくる。**
 
     ★散文から正規表現でIDを推測しないこと★
     以前は単語境界つきの正規表現で拾っていたが、ログには丸数字（①など）や日本語が
@@ -214,18 +215,11 @@ def done_ids_from_log(text, candidates):
     maruyama-park-kyoto が park-kyoto として切り出されて一致しなかった
     （2026-09-07に実データで発覚。合成テストは空白区切りだったので通っていた）。
     候補は分かっているので、素直に部分一致で照合する。
-    """
-    lines = [l for l in text.split("\n") if any(m in l for m in DONE_MARKS)]
-    if not lines:
-        return set()
-    blob = "\n".join(lines)
-    return {c for c in candidates if c in blob}
 
-
-def done_ids_in(blob, candidates):
-    """済みの印がある行を繋いだ文字列の中に、候補IDが現れるかを素直に部分一致で見る。
-
-    ★散文から正規表現でIDを推測しないこと★（理由は done_ids_from_log の説明と同じ）
+    ★2026-09-17に done_ids_from_log を削除した★
+    同じことをする関数が2つあり、**古い方は「行のどこかに印の文字列があれば済み」**
+    という、同日に直したばかりの誤りをそのまま抱えたまま呼ばれずに残っていた。
+    使われていない誤りは、次に誰かが呼んだ時に静かに復活する。
     """
     if not blob:
         return set()
@@ -362,21 +356,31 @@ def main():
             if not has_mark(text, SKIP) and not broken:
                 continue
 
-            try:
-                ids = set(changed_ids(d, path))
-            except GitError as ex:
-                print("!! {} のgit差分を取れなかった: {}".format(d, ex))
-                print("   （握り潰すと『変更なし＝追いかけ不要』と誤判定するため中断する）")
-                return 1
-
+            ids = set()
             reasons = []
+
             if has_mark(text, SKIP):
+                # ★この型は「Codexを呼んだが失敗した」＝**コミットまで到達している**★
+                # だからその日の公開内容の変更（git差分）も追いかけの対象になる。
+                try:
+                    ids |= set(changed_ids(d, path))
+                except GitError as ex:
+                    print("!! {} のgit差分を取れなかった: {}".format(d, ex))
+                    print("   （握り潰すと『変更なし＝追いかけ不要』と誤判定するため中断する）")
+                    return 1
                 # 変更が無くても、その日の検証対象だったIDは追いかけの対象にする
                 ids |= checked_ids_from_log(text)
                 reasons.append("Codex検証をスキップ")
+
             for task_id, run_ids in broken:
-                # 途絶した実行は**コミットまで到達していない**ので git差分には出ない。
+                # ★この型は**コミットまで到達していない**ので git差分を混ぜてはいけない★
                 # 拾えるのはその実行の「チェック対象:」行だけ。
+                #
+                # 2026-09-17に直した誤り: git差分を型によらず先に取っていたため、
+                # **その日に対話セッションがやった一括編集まで、途絶した実行のせいにしていた**。
+                # 実際に2026-09-10が29件と報告された（内訳はpmの対象5件＝同日amが検証済みと、
+                # アフィリエイト項目の一括追加24件）。途絶した実行が触っていないものを
+                # 検証待ちに積むと、本当に見るべき数件がその中に埋もれる。
                 ids |= run_ids
                 reasons.append("{} が完了マーカー無しで途絶".format(task_id))
 
