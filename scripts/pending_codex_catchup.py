@@ -81,6 +81,27 @@ SKIP = "[codex-skip]"
 DONE_MARKS = ("[codex-catchup]", "[codex-verified]")
 DONE = DONE_MARKS[0]   # メッセージ表示用
 
+
+# ★印は「行の先頭にあるもの」だけを印として数える（2026-09-17追加）★
+# それまでは本文のどこかに文字列があれば印とみなしていたため、
+# **説明の文章の中で印の名前に触れただけの行が、本物の印として数えられていた**。
+# 実際に2026-09-17のpmが「pending_codex_catchup.py はログ内の [codex-skip] を
+# 証拠に走査する作りなので」と書いた1行で、その日が丸ごと「Codex検証をスキップ」
+# と判定され、まだ検証していないだけの当日分3件が追いかけ対象として出た。
+# 済みの印（[codex-verified]）側で同じことが起きるともっと悪く、
+# **検証していない日を「済み」と誤認して永久に見えなくする**。
+# log.py はメッセージをそのまま1行として書くので、本物の印は必ず
+# 「[HH:MM:SS] 」の直後に来る。文章中の言及は必ず行の途中に来る。
+def has_mark(text, mark):
+    """本文の中に、行頭の印としての mark があるか。"""
+    return any(line_has_mark(line, mark) for line in text.split("\n"))
+
+
+def line_has_mark(line, mark):
+    """1行が mark で始まっているか（先頭のタイムスタンプは読み飛ばす）。"""
+    body = TS.sub("", line, count=1).strip()
+    return body.startswith(mark)
+
 # ★「Codexを呼ぶ手前で落ちた」型を拾うための開始／完了マーカー（2026-09-17追加）★
 # [codex-skip] は「Codexを呼んだが失敗した」印なので、**呼ぶ前に落ちた日には何も残らない**。
 # 2026-09-16の昼の実行が実際にこの形だった。調査と修正を終えた12:15を最後に途絶し、
@@ -233,7 +254,8 @@ def done_blob(logdir, pattern, date, today):
                 t = io.open(f, encoding="utf-8", errors="replace").read()
             except Exception:
                 t = ""
-            lines.extend(l for l in t.split("\n") if any(m in l for m in DONE_MARKS))
+            lines.extend(l for l in t.split("\n")
+                         if any(line_has_mark(l, m) for m in DONE_MARKS))
         cur += datetime.timedelta(days=1)
     return "\n".join(lines)
 
@@ -284,7 +306,7 @@ def incomplete_runs(date, text, kind, now):
     done_of = {task_id: done for task_id, _s, done in runs}
     out = []
     for task_id, line, body in run_segments(text, runs):
-        if done_of[task_id] in text:
+        if has_mark(text, done_of[task_id]):
             continue
         began = start_dt(date, line)
         if began is not None and (now - began).total_seconds() < RUNNING_GRACE_HOURS * 3600:
@@ -337,7 +359,7 @@ def main():
             # 拾う型は2つ。①Codexを呼んだが失敗した（[codex-skip]）
             # ②Codexを呼ぶ手前で途絶した（開始マーカーだけあって完了マーカーが無い）
             broken = incomplete_runs(d, text, kind, now)
-            if SKIP not in text and not broken:
+            if not has_mark(text, SKIP) and not broken:
                 continue
 
             try:
@@ -348,7 +370,7 @@ def main():
                 return 1
 
             reasons = []
-            if SKIP in text:
+            if has_mark(text, SKIP):
                 # 変更が無くても、その日の検証対象だったIDは追いかけの対象にする
                 ids |= checked_ids_from_log(text)
                 reasons.append("Codex検証をスキップ")
