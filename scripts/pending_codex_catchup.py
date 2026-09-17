@@ -48,7 +48,7 @@ Codexが利用上限に達して2AI検証が実行できない日があった。
 
 使い方:
     python scripts/pending_codex_catchup.py              # 未検証の日と対象IDを出す
-    python scripts/pending_codex_catchup.py --days 14    # さかのぼる日数（既定7）
+    python scripts/pending_codex_catchup.py --days 30    # さかのぼる日数（既定14）
     python scripts/pending_codex_catchup.py --kind danger  # 危険情報だけ
     python scripts/pending_codex_catchup.py --kind spot    # スポットだけ
 
@@ -311,7 +311,12 @@ def incomplete_runs(date, text, kind, now):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--days", type=int, default=7, help="さかのぼる日数（既定7）")
+    # ★既定を14にした（2026-09-17・ユーザー判断）★
+    # それまでの7日では、証拠（ログ）が残っているのに探しに行かない期間ができていた。
+    # 実際に2026-09-08の未検証2件が7日窓の外に落ち、印の誤判定と重なって見えなくなっていた。
+    # ログは自動削除されておらず1か月ぶん残っているので、窓を狭める理由はない。
+    # 1回に出すIDは --max-ids で抑えるので、窓を広げても渡す件数は増えない。
+    ap.add_argument("--days", type=int, default=14, help="さかのぼる日数（既定14）")
     ap.add_argument("--kind", choices=sorted(KINDS), help="danger か spot（省略時は両方）")
     # ★既定を2にしてある★ 今日の5件と合わせて7件が上限の目安。
     # 2026-09-08に「今日の5件＋追いかけ5件＝10件」を1回で渡したところ、

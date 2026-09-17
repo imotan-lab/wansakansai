@@ -36,8 +36,7 @@
 ## SEO・収益化
 - Google Analytics設置済み（G-NPGCWSCZGB）
 - Google Search Console登録済み（metaタグ認証 + HTMLファイル認証）
-  - 新プロパティ: http://wansakansai.com/（2026-04-06追加、HTMLファイル認証）
-  - HTTPS版: https://wansakansai.com/（2026-04-08追加）
+  - プロパティ: https://wansakansai.com/（2026-04-08追加、HTMLファイル認証）
 - sitemap.xml / robots.txt 設置済み
 - sitemap.xmlのベースURLはwansakansai.com（generate_sitemap.pyのBASE_URL）
 - OGPタグは各HTMLの `<head>` に静的記述で統一（画像: images/ogp.png）。**JSでの動的注入は禁止**。OGPを追加・変更する時は静的HTMLに直接書く（spots/はgenerate_spot_pages.pyが埋め込む）
@@ -280,7 +279,7 @@ JS描画だけだとレンダリング前HTMLにリンクが残らず、Google�
 - 各スポットの本番URLをChrome MCPで開き、レイアウト崩れ・画像404・JSエラーをログに記録する
 - 自動タスクの実行時間にClaude Codeローカル＋Chrome MCP接続が必要。Claudeを立ち上げ続けておくこと
 - Chrome未接続時はレイアウトチェックだけスキップしてタスクは継続（Web情報チェックは実施）。スキップした分は進捗ファイルの `pending_layout_ids` にプール、次回チェック時に今回分と合わせて消化（チェック成功でpendingリセット）
-- ログ: C:\Users\imao_\.claude\logs\spot_check_YYYY-MM-DD.log（7日分保持）
+- ログ: C:\Users\imao_\.claude\logs\spot_check_YYYY-MM-DD.log（自動削除なし）
 - 進捗管理: C:\Users\imao_\Documents\wansakansai\spot_check_progress.json
 - ログ出力はlog.py経由。log.pyはログ名で出力先を振り分け: spot_check_*とwansakansai_*は.claude/logs/へ、それ以外はDocuments/uchidokoro/logs/へ
 
@@ -288,7 +287,7 @@ JS描画だけだとレンダリング前HTMLにリンクが残らず、Google�
 - 毎日自動更新あり（毎朝6:31 JST、ローカルスケジュールタスクで実行。2026-07-17に21時から移動＝夜間セッション制限の回避＋朝の散歩前に更新が届く配置）
 - タスクID: wansakansai-danger-update
 - メール通知は変化・異常時のみ（send_notify.py wansakansai。「静かなのが正常」ポリシー＝上記「自動タスク共通方針」参照）。**更新の中身は `--changes-file` で 前→後 と理由・出典、判断依頼は `--pending-file` で項目ごとに本文へ入れる**（2026-09-14〜15・書き方はSKILL.md STEP 7。`--skipped` はエラーだけ。件名は中身に合わせて変わる）
-- ログ: C:\Users\imao_\.claude\logs\wansakansai_YYYY-MM-DD.log（7日分保持）
+- ログ: C:\Users\imao_\.claude\logs\wansakansai_YYYY-MM-DD.log（自動削除なし）
 - Dropboxバックアップ: C:\Users\imao_\今電 Dropbox\今電　今尾笙夢\Claude_backup\自動タスク\wansakansai-danger-update\
 - 情報源: 自治体公式サイト + SNS（X、Instagram、Threads）
 - SNS情報は「SNS上の報告」等と明記し、公式情報と区別する
