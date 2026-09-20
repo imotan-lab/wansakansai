@@ -31,9 +31,16 @@ def main():
         progress = {}
 
     counts = progress.setdefault("check_counts", {})
+    # ★最後に見た日も残す（2026-09-20追加）★
+    # 期限付き情報の再確認は期限の14日前から毎日割り込んでいたが、同じ公式ページを
+    # 毎日見て「延長も中止もなし」を確かめるだけで1日5件の枠を食っていた。
+    # get_next_check_targets.py が「前回から3日空いていなければ割り込ませない」判断に使う。
+    last = progress.setdefault("last_checked", {})
+    today_str = datetime.now().strftime("%Y-%m-%d")
     ids = [s.strip() for s in args.ids.split(",") if s.strip()]
     for sid in ids:
         counts[sid] = counts.get(sid, 0) + 1
+        last[sid] = today_str
 
     if args.pending_clear:
         progress["pending_layout_ids"] = []

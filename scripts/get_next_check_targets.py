@@ -42,6 +42,15 @@ def main():
     parser.add_argument("--count", type=int, default=5, help="取得件数（既定: 5）")
     parser.add_argument("--skip", type=int, default=0, help="先頭からスキップする件数")
     parser.add_argument("--today", default=None, help="今日の日付をYYYY-MM-DDで上書き（テスト用）")
+    parser.add_argument("--progress", default=None, help="進捗ファイルのパスを上書き（テスト用）")
+    # ★期限の再確認は毎日ではなく3日おき（2026-09-20・ユーザー判断）★
+    # 期限の14日前から毎日割り込ませていたが、同じ公式ページを毎日見て
+    # 「延長も中止もなし」を確かめるだけで1日5件の枠を2つ食い、新しいスポットの点検が
+    # 後ろに回っていた（播州清水寺と東部公園で9月30日まで約20枠）。
+    # 3日空ければ、期限直前の変更に気づくのが最大3日遅れるだけで、
+    # 1か月前から追いかけている情報にその遅れは効かない。
+    parser.add_argument("--recheck-interval", type=int, default=3,
+                        help="期限の再確認を割り込ませる最短の間隔（日）。前回から未満なら割り込ませない（既定3）")
     parser.add_argument(
         "--no-expiry-priority", action="store_true",
         help="期限の再確認による割り込みを行わない（後半タスク用。日次1回で足りるため）",
@@ -49,8 +58,10 @@ def main():
     args = parser.parse_args()
 
     spots = json.loads(SPOTS_JSON.read_text(encoding="utf-8"))
-    progress = json.loads(PROGRESS_JSON.read_text(encoding="utf-8")) if PROGRESS_JSON.exists() else {}
+    progress_path = Path(args.progress) if args.progress else PROGRESS_JSON
+    progress = json.loads(progress_path.read_text(encoding="utf-8")) if progress_path.exists() else {}
     counts = progress.get("check_counts", {})
+    last_checked = progress.get("last_checked", {})
 
     today = (datetime.date.fromisoformat(args.today) if args.today
              else datetime.date.today())
@@ -67,8 +78,26 @@ def main():
     else:
         expired, due, _bad = scan(spots, today)
     recheck = {}
+    skipped_recent = []
     for item in expired + due:
-        recheck.setdefault(item["id"], []).append(item)
+        sid = item["id"]
+        # 前回見た日から --recheck-interval 日たっていなければ割り込ませない。
+        # 見た日の記録が無いもの（この仕組みより前に見たもの・新規）は割り込ませる。
+        seen = last_checked.get(sid)
+        if seen:
+            try:
+                days = (today - datetime.date.fromisoformat(seen)).days
+            except ValueError:
+                days = None
+            if days is not None and days < args.recheck_interval:
+                if sid not in skipped_recent:
+                    skipped_recent.append(sid)
+                continue
+        recheck.setdefault(sid, []).append(item)
+    if skipped_recent:
+        # 標準出力はJSONなので、判断の根拠は標準エラーに出す（ログにはタスクが書く）
+        print("[expiry] 前回から{}日未満のため今日は割り込ませない: {}".format(
+            args.recheck_interval, ",".join(skipped_recent)), file=sys.stderr)
 
     ranked = sorted(
         enumerate(spots),
