@@ -76,10 +76,17 @@
       { id: 'sakura', label: '桜', test: s => (s.tags || []).includes('sakura') },
       { id: 'koyo', label: '紅葉', test: s => (s.tags || []).includes('koyo') },
       { id: 'water', label: '水遊び', test: s => (s.tags || []).includes('water') },
-      { id: 'small-dog-only', label: '小型犬のみ', test: s => (s.tags || []).includes('small-dog-only') },
       { id: 'rain', label: '雨でもOK', test: s => (s.tags || []).includes('rain') },
       { id: 'stay-ok', label: '宿泊可', test: s => (s.tags || []).includes('stay-ok') },
       { id: 'stay-only', label: '宿泊専用', test: s => (s.tags || []).includes('stay-only') },
+    ]},
+    // 犬のサイズ（2026-09-21）。dogSize は「そのサイズの犬がスポットの目的を果たせるか」。
+    // 「ドッグラン」と同時に押している時だけ、ドッグランだけの制限（dogRun.maxSize）も見る。
+    // 公園は歩けるがドッグランは小型専用、という所を、ドッグラン目当ての人にだけ外すため。
+    { label: '犬のサイズ', filters: [
+      { id: 'size-medium', label: '中型犬OK', test: s => dogSizeAllows(s, 'medium') && (!activeFilters.has('dogrun') || dogRunSizeAllows(s, 'medium')) },
+      { id: 'size-large', label: '大型犬OK', test: s => dogSizeAllows(s, 'large') && (!activeFilters.has('dogrun') || dogRunSizeAllows(s, 'large')) },
+      { id: 'small-dog-only', label: '小型犬のみ', test: s => !dogSizeAllows(s, 'medium') },
     ]},
   ];
 
@@ -241,7 +248,10 @@
       if ((s.tags || []).includes('sakura')) tags.push('<span class="tag tag-feature">桜</span>');
       if ((s.tags || []).includes('koyo')) tags.push('<span class="tag tag-feature">紅葉</span>');
       if ((s.tags || []).includes('water')) tags.push('<span class="tag tag-feature">水遊び</span>');
-      if ((s.tags || []).includes('small-dog-only')) tags.push('<span class="tag tag-warn">小型犬のみ</span>');
+      if (!dogSizeAllows(s, 'medium')) tags.push('<span class="tag tag-warn">小型犬のみ</span>');
+      else if (!dogSizeAllows(s, 'large')) tags.push('<span class="tag tag-warn">中型犬まで</span>');
+      if (s.dogRun && s.dogRun.available && s.dogRun.maxSize === 'small') tags.push('<span class="tag tag-warn">ランは小型犬のみ</span>');
+      else if (s.dogRun && s.dogRun.available && s.dogRun.maxSize === 'medium') tags.push('<span class="tag tag-warn">ランは中型犬まで</span>');
       if ((s.tags || []).includes('rain')) tags.push('<span class="tag tag-feature">雨でもOK</span>');
       const isStayOnly = (s.tags || []).includes('stay-only');
       const isStayOk = (s.tags || []).includes('stay-ok');

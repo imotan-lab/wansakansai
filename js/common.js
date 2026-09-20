@@ -39,6 +39,32 @@ document.addEventListener('click', function (e) {
 
 // ===== Common: Header & Footer Injection =====
 
+// ---- 犬のサイズ（2026-09-21）----
+// dogSize.{small,medium,large} は「そのサイズの犬がそのスポットの目的を果たせるか」。
+// false のものだけ「入れない」。項目が無ければ入れる扱い（記載が無ければ両方trueの決まり）。
+// ドッグランだけの制限は dogRun.maxSize（small|medium|large）に分けて持つ。
+// 同じ判定が generate_spot_pages.py にもある。片方だけ直さないこと。
+function dogSizeAllows(spot, size) {
+  const ds = spot.dogSize || {};
+  return ds[size] !== false;
+}
+function dogRunSizeAllows(spot, size) {
+  const dr = spot.dogRun || {};
+  if (!dr.available || !dr.maxSize) return true;
+  const order = { small: 1, medium: 2, large: 3 };
+  return (order[size] || 3) <= (order[dr.maxSize] || 3);
+}
+function dogSizeWarnings(spot) {
+  const out = [];
+  if (!dogSizeAllows(spot, 'medium')) out.push('小型犬のみ入場可（中型犬・大型犬は不可）');
+  else if (!dogSizeAllows(spot, 'large')) out.push('中型犬まで入場可（大型犬は不可）');
+  const dr = spot.dogRun || {};
+  const max = dr.available ? dr.maxSize : null;
+  if (max === 'small') out.push('ドッグランは小型犬のみ（施設自体は全サイズ可）');
+  else if (max === 'medium') out.push('ドッグランは中型犬まで（大型犬は不可）');
+  return out;
+}
+
 function getBasePath() {
   // サブディレクトリ（blog/, spots/, themes/）内にいる場合は親ディレクトリを基準にする
   const path = window.location.pathname;

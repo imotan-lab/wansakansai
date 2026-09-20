@@ -660,7 +660,8 @@
     "category": "park",
     "dogSize": {
       "small": true,
-      "large": false
+      "medium": true,
+      "large": true
     },
     "parking": {
       "available": true,
@@ -676,7 +677,8 @@
       "available": true,
       "free": true,
       "separated": false,
-      "detail": "小型犬専用（概ね体重10kg未満）。予防接種を受けていない犬は利用不可"
+      "detail": "小型犬専用（概ね体重10kg未満）。予防接種を受けていない犬は利用不可",
+      "maxSize": "small"
     },
     "admission": {
       "free": true,
@@ -914,7 +916,8 @@
     "category": "park",
     "dogSize": {
       "small": true,
-      "large": false
+      "medium": true,
+      "large": true
     },
     "parking": {
       "available": true,
@@ -930,7 +933,8 @@
       "available": true,
       "free": true,
       "separated": false,
-      "detail": "中小型犬専用（体高50cm以下）。攻撃性のある犬・発情中のメス犬・伝染病の犬・ワクチン未接種の犬は入場不可。場内は禁煙で、飲食物と危険物の持込も不可"
+      "detail": "中小型犬専用（体高50cm以下）。攻撃性のある犬・発情中のメス犬・伝染病の犬・ワクチン未接種の犬は入場不可。場内は禁煙で、飲食物と危険物の持込も不可",
+      "maxSize": "medium"
     },
     "admission": {
       "free": true,
@@ -5954,7 +5958,8 @@
       "available": true,
       "free": false,
       "separated": false,
-      "detail": "屋内ドッグラン（カフェスペースの奥）+ 屋外人工芝ドッグラン。1,000円以上のランチ注文で2時間利用可。ドッグラン利用は15kg以下まで、16kg以上はオムツ着用でカフェのみ利用可"
+      "detail": "屋内ドッグラン（カフェスペースの奥）+ 屋外人工芝ドッグラン。1,000円以上のランチ注文で2時間利用可。ドッグラン利用は15kg以下まで、16kg以上はオムツ着用でカフェのみ利用可",
+      "maxSize": "medium"
     },
     "admission": {
       "free": false,
@@ -5968,7 +5973,12 @@
     "imageUrl": "",
     "images": [],
     "officialUrl": "https://www.instagram.com/dogrun_cafe.pic/",
-    "stayKeyword": "和歌山"
+    "stayKeyword": "和歌山",
+    "dogSize": {
+      "small": true,
+      "medium": true,
+      "large": true
+    }
   },
   {
     "id": "partners-house-yuasa",
@@ -6047,7 +6057,12 @@
     "remarks": "世界唯一のくじら博物館で雨の日でも楽しめる。イルカ・クジラショーを含めキャリーバッグ利用で犬同伴可能。公式は「蓋つきのペット用キャリーバッグなどに体全体が収まる大きさのペットのみ入館でき、体の一部が外に出ていない状態での入館」を条件としており、全身が収まる小型犬のみ同伴可（中型・大型犬は不可）。ペットは入館無料。カートやスリングのみでの入館可否は公表情報で確認できず事前確認推奨。開館8:30〜17:00・年中無休だが悪天候時は臨時休館の場合あり。入館当日に限り再入館可。支払いは現金またはクレジットカードのみ。駐車場は博物館正面にあり無料。",
     "imageUrl": "",
     "images": [],
-    "officialUrl": "https://www.kujirakan.jp/"
+    "officialUrl": "https://www.kujirakan.jp/",
+    "dogSize": {
+      "small": true,
+      "medium": false,
+      "large": false
+    }
   },
   {
     "id": "dog-hotel-shirahama",
@@ -6765,6 +6780,7 @@
     "category": "walk",
     "dogSize": {
       "small": true,
+      "medium": false,
       "large": false
     },
     "parking": {
@@ -6905,6 +6921,7 @@
     "category": "walk",
     "dogSize": {
       "small": true,
+      "medium": true,
       "large": false
     },
     "parking": {
@@ -8288,6 +8305,7 @@
     "category": "dogrun",
     "dogSize": {
       "small": true,
+      "medium": true,
       "large": false
     },
     "parking": {
@@ -8302,7 +8320,8 @@
       "available": true,
       "free": false,
       "separated": false,
-      "detail": "体重15kg以下専用の単一エリア（小型〜中型対象、大型犬不可）。適度な傾斜と大きな木がある細長いフィールドで、足洗い場・水道・専用ゴミ箱あり。利用には今年度の狂犬病ワクチン接種証明書（もしくは市町村発行の接種済票、猶予証明では入場不可）と2年以内に接種した3種混合以上のワクチン接種証明書、飼い主の身分証の提示が必須。初回はアイリスイン城陽2階のロゴスカフェ窓口で登録し、会員証の有効期限は初回登録の時期に関わらず翌年度6月30日まで。ラン内は15頭の頭数制限があり、繁忙日は1組2時間制限、10頭以上の団体利用は事前問い合わせが必要。利用料はカフェの1オーダー込みで平日550円・土日祝1,100円（税込）。9:00〜16:00（最終受付15:30）。荒天時休。"
+      "detail": "体重15kg以下専用の単一エリア（小型〜中型対象、大型犬不可）。適度な傾斜と大きな木がある細長いフィールドで、足洗い場・水道・専用ゴミ箱あり。利用には今年度の狂犬病ワクチン接種証明書（もしくは市町村発行の接種済票、猶予証明では入場不可）と2年以内に接種した3種混合以上のワクチン接種証明書、飼い主の身分証の提示が必須。初回はアイリスイン城陽2階のロゴスカフェ窓口で登録し、会員証の有効期限は初回登録の時期に関わらず翌年度6月30日まで。ラン内は15頭の頭数制限があり、繁忙日は1組2時間制限、10頭以上の団体利用は事前問い合わせが必要。利用料はカフェの1オーダー込みで平日550円・土日祝1,100円（税込）。9:00〜16:00（最終受付15:30）。荒天時休。",
+      "maxSize": "medium"
     },
     "admission": {
       "free": true,
@@ -8326,9 +8345,7 @@
       "プラムイン城陽",
       "ろごすらんど どっぐらん"
     ],
-    "tags": [
-      "small-dog-only"
-    ]
+    "tags": []
   },
   {
     "id": "maruyama-park-kyoto",
@@ -9707,6 +9724,7 @@
     "category": "beach",
     "dogSize": {
       "small": true,
+      "medium": true,
       "large": true
     },
     "parking": {
@@ -9721,7 +9739,8 @@
       "available": false,
       "free": false,
       "separated": false,
-      "detail": ""
+      "detail": "",
+      "maxSize": "medium"
     },
     "admission": {
       "free": true,
@@ -10780,7 +10799,8 @@
     "category": "other",
     "dogSize": {
       "small": true,
-      "large": true
+      "medium": false,
+      "large": false
     },
     "parking": {
       "available": true,
@@ -10814,8 +10834,10 @@
     ],
     "tags": [
       "sakura",
-      "koyo"
-    ]
+      "koyo",
+      "small-dog-only"
+    ],
+    "dogArea": "carry-only"
   },
   {
     "id": "takatori-castle-ruins",
@@ -11619,6 +11641,7 @@
     "category": "other",
     "dogSize": {
       "small": true,
+      "medium": false,
       "large": false
     },
     "parking": {

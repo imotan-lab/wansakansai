@@ -428,9 +428,22 @@ def build_body_content(spot: dict, all_spots: list = None) -> str:
         if _lines:
             temp_note = '<div class="detail-temp">' + "".join(_lines) + "</div>"
 
-    warn = ""
-    if "small-dog-only" in (spot.get("tags") or []):
-        warn = '<div class="detail-warn">小型犬のみ入場可（大型犬は要確認）</div>'
+    # 犬のサイズの札（2026-09-21）。dogSize は「そのサイズの犬がスポットの目的を果たせるか」で、
+    # false のものだけ「入れない」。ドッグランだけの制限は dogRun.maxSize に分けて持つ。
+    # js/spot.js の同じ判定と揃えること。
+    _ds = spot.get("dogSize") or {}
+    _dr = spot.get("dogRun") or {}
+    _warns = []
+    if _ds.get("medium") is False:
+        _warns.append("小型犬のみ入場可（中型犬・大型犬は不可）")
+    elif _ds.get("large") is False:
+        _warns.append("中型犬まで入場可（大型犬は不可）")
+    _max = _dr.get("maxSize") if _dr.get("available") else None
+    if _max == "small":
+        _warns.append("ドッグランは小型犬のみ（施設自体は全サイズ可）")
+    elif _max == "medium":
+        _warns.append("ドッグランは中型犬まで（大型犬は不可）")
+    warn = "".join(f'<div class="detail-warn">{w}</div>' for w in _warns)
 
     # 条件付きのブロックは、空のものを行ごと落としてから繋ぐ。
     # テンプレートに1行ずつ並べると、出番のないスポットに空行だけが残り、
@@ -517,7 +530,7 @@ def build_html(spot: dict, all_spots: list = None) -> str:
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="../favicon.ico">
   <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
-  <link rel="stylesheet" href="../css/style.css?v=20260915">
+  <link rel="stylesheet" href="../css/style.css?v=20260921">
   <script type="application/ld+json">{jsonld}</script>
 </head>
 <body>
@@ -532,8 +545,8 @@ def build_html(spot: dict, all_spots: list = None) -> str:
 
 {STATIC_FOOTER}
   <script>window.WANSAKA_SPOT_ID = "{sid_e}";</script>
-  <script src="../js/common.js?v=20260915"></script>
-  <script src="../js/spot.js?v=20260915"></script>
+  <script src="../js/common.js?v=20260921"></script>
+  <script src="../js/spot.js?v=20260921"></script>
 </body>
 </html>
 '''
@@ -627,7 +640,7 @@ def build_index_html(spots: list) -> str:
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="../favicon.ico">
   <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
-  <link rel="stylesheet" href="../css/style.css?v=20260915">
+  <link rel="stylesheet" href="../css/style.css?v=20260921">
 </head>
 <body>
 
@@ -643,7 +656,7 @@ def build_index_html(spots: list) -> str:
   </main>
 
 {STATIC_FOOTER}
-  <script src="../js/common.js?v=20260915"></script>
+  <script src="../js/common.js?v=20260921"></script>
   <script>
     renderHeader('spots');
     renderFooter();

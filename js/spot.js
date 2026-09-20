@@ -229,9 +229,7 @@ function paragraphize(text) {
           </div>
         ` : ''}
 
-        ${(spot.tags || []).includes('small-dog-only') ? `
-          <div class="detail-warn">小型犬のみ入場可（大型犬は要確認）</div>
-        ` : ''}
+        ${dogSizeWarnings(spot).map(w => `<div class="detail-warn">${w}</div>`).join('')}
 
         ${spot.remarks ? `
           <div class="detail-remarks">

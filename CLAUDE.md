@@ -78,6 +78,9 @@
 - 境界的な例（道の駅うずしお＝付けていない）はCLAUDE_history.md
 - **『犬連れ』の語はタイトルに必ず残す**（「○○ 犬連れ」クエリでの検索意図を取りこぼさないため）
 
+### 犬のサイズ（`dogSize` / `dogRun.maxSize`・2026-09-21にフィルター化・ユーザー判断）
+`dogSize.{small,medium,large}` は**「そのサイズの犬がそのスポットの目的を果たせるか」**。`false` は「入れない」と確認できた時だけ。項目が無ければ入れる扱い。**ドッグランだけの制限は `dogRun.maxSize`（small|medium|large）に分けて持つ**（公園は歩けるがランは小型専用、という型を丸ごと「大型不可」にしない）。トップの絞り込み「犬のサイズ」（中型犬OK／大型犬OK／小型犬のみ）は dogSize を見て、**「ドッグラン」と同時に押している時だけ maxSize も見る**。`small-dog-only` タグは `dogSize.medium=false` と必ず一致させる。判定は `js/common.js` の `dogSizeAllows` / `dogRunSizeAllows` / `dogSizeWarnings` と `generate_spot_pages.py` の2か所にあり、片方だけ直さない。**エリア分けの境目（10kg未満は小型エリア等）は制限ではない**ので dogSize に反映しない。数字（10kg・15kg・体高50cm）は remarks に残す。抱っこ・カート限定（`dogArea=carry-only`）はサイズ制限とは別だが、長谷寺のように受付から先が抱っこ必須で現実に中型以上が無理なら medium=false にする
+
 ### 期限付きの情報（`temporary`・任意項目・2026-09-09導入）
 工事やイベント期間の運用のように「**いつ終わるか分かっている**」情報を、remarksではなくここに持たせる。**期限を過ぎると表示が自動で止まる**（`js/spot.js` と `generate_spot_pages.py` が `until` を見ている）。
 
