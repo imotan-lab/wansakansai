@@ -394,8 +394,11 @@ def load_blog_index() -> dict:
             img = ""  # サイト外の画像は使わない
         # 訪問日の部分だけを出す（「/ 1日目: 雨…」のような天気の補足は長いので省く）
         visit = meta.split("/")[0].strip()
-        entry = {"slug": f.stem, "title": title, "visit": visit, "img": img, "sort": sort_key}
         for sid in sorted(set(_BLOG_SPOT_RE.findall(text))):
+            # 記事の中でそのスポットを書いた節の見出しに id="spot-{スポットID}" があれば、そこへ直接飛ばす
+            # （1本の記事に複数のスポットが出るため。無ければ記事の先頭）
+            anchor = f"spot-{sid}" if f'id="spot-{sid}"' in text else ""
+            entry = {"slug": f.stem, "title": title, "visit": visit, "img": img, "sort": sort_key, "anchor": anchor}
             index.setdefault(sid, []).append(entry)
     for sid in index:
         index[sid].sort(key=lambda e: e["sort"], reverse=True)
@@ -416,8 +419,9 @@ def build_blog_links_html(spot: dict, blog_index: dict) -> str:
         img = (f'<img src="{html.escape(b["img"])}" alt="" class="spot-blog-img" loading="lazy">'
                if b["img"] else "")
         visit = f'<span class="spot-blog-meta">{html.escape(b["visit"])}</span>' if b["visit"] else ""
+        frag = f'#{html.escape(b["anchor"])}' if b.get("anchor") else ""
         cards.append(
-            f'<a href="../blog/{html.escape(b["slug"])}.html" class="spot-blog-card">{img}'
+            f'<a href="../blog/{html.escape(b["slug"])}.html{frag}" class="spot-blog-card">{img}'
             f'<span class="spot-blog-body"><span class="spot-blog-title">{html.escape(b["title"])}</span>{visit}</span></a>'
         )
     return f'''<section class="spot-blogs" id="spotBlogs">

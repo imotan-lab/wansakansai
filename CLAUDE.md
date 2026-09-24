@@ -431,8 +431,10 @@ Chrome MCPでSearch Consoleの「日」タブの画面テキストを取る → 
 - **★記事HTMLの末尾に `renderHeader('blog'); renderFooter();` の呼び出しを必ず入れる★** 忘れるとヘッダー・フッターが出ない（和歌山記事で実際に発生）
 - **絵文字は使わない**（既存記事はすべて0件）
 - ナビゲーション: SITE_NAVに「ブログ」追加済み（危険情報の後に配置）
-- 記事追加手順: HTMLを `blog/` に配置 → `blog/index.html` にカードを追加 → **`python generate_spot_pages.py` を流す**
+- 記事追加手順: HTMLを `blog/` に配置（各スポットの節の見出しに `id="spot-{スポットID}"`）→ `blog/index.html` にカードを追加 → **`python scripts/add_blog_img_size.py` → `python generate_spot_pages.py` を流す**
 - **スポットのページから記事へのリンクは自動で出る**（2026-09-25・ユーザー提案）: `generate_spot_pages.py` が `blog/*.html` を読み、本文の `spots/{id}.html` へのリンクを拾って、そのスポットのページに「このスポットに行った記事（ブログ）」を出す。対応表は持たない。記事の `<h1 class="blog-title">`・`<p class="blog-meta">`（最初の日付で新しい順）・`og:image` をそのまま使うので、**この3つの形を崩さないこと**。枠は #spotDetail の外に生HTMLで置き（クローラー用）、表示時に `js/spot.js` が「近くのスポット」の手前へ移す。記事が存在しないスポットにリンクしていると生成時に★で警告が出る
+  - **★記事の中の「そのスポットの節の見出し」に `id="spot-{スポットID}"` を付ける★**（例: `<h3 id="spot-kabata-resort">`）。付いていればスポットのページのリンクがその節へ直接飛ぶ（1本の記事に複数のスポットが出るため・2026-09-25にユーザーと決定）。付いていなければ記事の先頭へ飛ぶ。見出しがヘッダーの下に隠れないよう `css/style.css` の `[id^="spot-"] { scroll-margin-top }` で余白を取っている
+  - **★記事の `<img>` には width / height を必ず入れる★** `python scripts/add_blog_img_size.py` が画像ファイルの実寸を書き込む（`--check` で残りを数える）。無いと写真が読み込まれる前は高さ0で並び、節へ飛んだあとで写真が読み込まれて見出しが大きく下へずれる（2026-09-25に平草原公園の節で実際に起きた）
 
 ## テーマ別まとめページ（themes/）
 - 目的・季節別に犬連れスポットを集約する固有URLのランディング群（SEO・AdSense審査でのページ厚み増を狙う）
