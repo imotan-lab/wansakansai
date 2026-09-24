@@ -331,6 +331,19 @@ function paragraphize(text) {
       container.querySelector('.spot-detail').appendChild(nearbyEl);
     }
 
+    // このスポットに行ったブログ記事（2026-09-25）。generate_spot_pages.py が #spotDetail の外に
+    // 生HTMLで置いている（クローラーにリンクを残すため）。表示では「近くのスポット」の手前へ移す
+    const blogsEl = document.getElementById('spotBlogs');
+    if (blogsEl) {
+      const detailEl = container.querySelector('.spot-detail');
+      const nearbyNode = detailEl.querySelector('.nearby-spots');
+      if (nearbyNode) {
+        detailEl.insertBefore(blogsEl, nearbyNode);
+      } else {
+        detailEl.appendChild(blogsEl);
+      }
+    }
+
     // 楽天 + じゃらん アフィリエイト（ペット可宿）
     // 2026-09-10: 配置を最下部から「備考の直後」へ移し、リンク先を3段にした。
     //   ①rakutenHotelId … その宿泊施設そのもの（楽天の施設ページへ直リンク）

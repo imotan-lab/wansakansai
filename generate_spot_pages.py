@@ -356,6 +356,76 @@ def build_nearby_html(spot: dict, all_spots: list) -> str:
         </div>'''
 
 
+BLOG_DIR = PROJECT_DIR / "blog"
+_BLOG_SPOT_RE = re.compile(r'spots/([a-z0-9-]+)\.html')
+_BLOG_H1_RE = re.compile(r'<h1 class="blog-title">(.*?)</h1>', re.S)
+_BLOG_META_RE = re.compile(r'<p class="blog-meta">(.*?)</p>', re.S)
+_BLOG_OGIMG_RE = re.compile(r'<meta property="og:image" content="([^"]+)"')
+_BLOG_DATE_RE = re.compile(r'(\d{4})年(\d{1,2})月(\d{1,2})日')
+
+
+def load_blog_index() -> dict:
+    """ブログ記事を読み、「スポットID → そのスポットへリンクしている記事の一覧」を作る（2026-09-25導入）。
+
+    ★なぜ自動で拾うか★ 記事を書いてスポットへリンクすれば、このスクリプトを流すだけで
+    スポット側にも記事へのリンクが出る。対応表を手で持つと、記事を足した時に書き忘れる。
+    blog/index.html（一覧）と blog/drafts/（下書き）は対象外。
+    """
+    index: dict = {}
+    if not BLOG_DIR.is_dir():
+        return index
+    for f in sorted(BLOG_DIR.glob("*.html")):
+        if f.stem == "index":
+            continue
+        text = f.read_text(encoding="utf-8")
+        m_title = _BLOG_H1_RE.search(text)
+        if not m_title:
+            continue
+        title = re.sub(r"<[^>]+>", "", m_title.group(1)).strip()
+        m_meta = _BLOG_META_RE.search(text)
+        meta = re.sub(r"<[^>]+>", "", m_meta.group(1)).strip() if m_meta else ""
+        m_date = _BLOG_DATE_RE.search(meta)
+        sort_key = (int(m_date.group(1)), int(m_date.group(2)), int(m_date.group(3))) if m_date else (0, 0, 0)
+        m_img = _BLOG_OGIMG_RE.search(text)
+        img = m_img.group(1) if m_img else ""
+        if img.startswith(BASE_URL + "/"):
+            img = "../" + img[len(BASE_URL) + 1:]
+        elif not img.startswith("../images/"):
+            img = ""  # サイト外の画像は使わない
+        # 訪問日の部分だけを出す（「/ 1日目: 雨…」のような天気の補足は長いので省く）
+        visit = meta.split("/")[0].strip()
+        entry = {"slug": f.stem, "title": title, "visit": visit, "img": img, "sort": sort_key}
+        for sid in sorted(set(_BLOG_SPOT_RE.findall(text))):
+            index.setdefault(sid, []).append(entry)
+    for sid in index:
+        index[sid].sort(key=lambda e: e["sort"], reverse=True)
+    return index
+
+
+def build_blog_links_html(spot: dict, blog_index: dict) -> str:
+    """このスポットが登場するブログ記事への静的リンク（2026-09-25導入・ユーザー提案）。
+
+    #spotDetail の外に置くので spot.js の描き直しで消えない。生HTMLにリンクが残り、
+    表示時は spot.js が「近くのスポット」の手前へ移す。記事が無いスポットでは何も出さない。
+    """
+    blogs = blog_index.get(spot.get("id"), [])
+    if not blogs:
+        return ""
+    cards = []
+    for b in blogs:
+        img = (f'<img src="{html.escape(b["img"])}" alt="" class="spot-blog-img" loading="lazy">'
+               if b["img"] else "")
+        visit = f'<span class="spot-blog-meta">{html.escape(b["visit"])}</span>' if b["visit"] else ""
+        cards.append(
+            f'<a href="../blog/{html.escape(b["slug"])}.html" class="spot-blog-card">{img}'
+            f'<span class="spot-blog-body"><span class="spot-blog-title">{html.escape(b["title"])}</span>{visit}</span></a>'
+        )
+    return f'''<section class="spot-blogs" id="spotBlogs">
+      <h3>このスポットに行った記事（ブログ）</h3>
+      {"".join(cards)}
+    </section>'''
+
+
 def build_body_content(spot: dict, all_spots: list = None) -> str:
     """SEO的にbotがクロール時に読み取れる本文HTML（spot.jsが上書きするが、初期表示でも有意義）"""
     name = html.escape(spot["name"])
@@ -491,7 +561,7 @@ def build_body_content(spot: dict, all_spots: list = None) -> str:
       </div>'''
 
 
-def build_html(spot: dict, all_spots: list = None) -> str:
+def build_html(spot: dict, all_spots: list = None, blog_index: dict = None) -> str:
     sid = spot["id"]
     url = f"{BASE_URL}/spots/{sid}.html"
     title = build_title(spot)
@@ -501,6 +571,7 @@ def build_html(spot: dict, all_spots: list = None) -> str:
     jsonld_image = og_image if images else ""  # OGP fallback画像は構造化データには含めない
     jsonld = build_jsonld(spot, url, jsonld_image)
     body_content = build_body_content(spot, all_spots)
+    blog_links = build_blog_links_html(spot, blog_index or {})
 
     title_e = html.escape(title)
     desc_e = html.escape(desc)
@@ -530,7 +601,7 @@ def build_html(spot: dict, all_spots: list = None) -> str:
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="../favicon.ico">
   <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
-  <link rel="stylesheet" href="../css/style.css?v=20260921">
+  <link rel="stylesheet" href="../css/style.css?v=20260925">
   <script type="application/ld+json">{jsonld}</script>
 </head>
 <body>
@@ -540,13 +611,14 @@ def build_html(spot: dict, all_spots: list = None) -> str:
     <div id="spotDetail">
       {body_content}
     </div>
+    {blog_links}
     <p class="all-spots-link"><a href="index.html">関西の犬連れスポット一覧（全{total_spots}件）を見る</a></p>
   </main>
 
 {STATIC_FOOTER}
   <script>window.WANSAKA_SPOT_ID = "{sid_e}";</script>
   <script src="../js/common.js?v=20260921"></script>
-  <script src="../js/spot.js?v=20260921"></script>
+  <script src="../js/spot.js?v=20260925"></script>
 </body>
 </html>
 '''
@@ -640,7 +712,7 @@ def build_index_html(spots: list) -> str:
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="../favicon.ico">
   <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
-  <link rel="stylesheet" href="../css/style.css?v=20260921">
+  <link rel="stylesheet" href="../css/style.css?v=20260925">
 </head>
 <body>
 
@@ -683,11 +755,17 @@ def main():
             f.unlink()
             deleted += 1
 
+    blog_index = load_blog_index()
     generated = 0
     for spot in spots:
         out = SPOTS_DIR / f"{spot['id']}.html"
-        out.write_text(build_html(spot, spots), encoding="utf-8", newline="\n")
+        out.write_text(build_html(spot, spots, blog_index), encoding="utf-8", newline="\n")
         generated += 1
+    unknown = sorted(sid for sid in blog_index if sid not in existing_ids)
+    if unknown:
+        # 記事が存在しないスポットへリンクしている（スポットの削除・ID変更の取り残し）
+        print("★ブログが、存在しないスポットにリンクしている: " + ", ".join(unknown))
+    print("ブログ記事から逆リンクを出したスポット: {}件".format(sum(1 for s in spots if s["id"] in blog_index)))
 
     (SPOTS_DIR / "index.html").write_text(
         build_index_html(spots), encoding="utf-8", newline="\n"
