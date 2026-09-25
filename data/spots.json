@@ -5418,7 +5418,15 @@
     "imageUrl": "",
     "images": [],
     "officialUrl": "https://www.instagram.com/cafe_andf/",
-    "stayKeyword": "琵琶湖"
+    "stayKeyword": "琵琶湖",
+    "temporary": [
+      {
+        "note": "犬連れ席（with Dogルーム）は9月30日まで休止し、10月に再開予定",
+        "until": "2026-09-30",
+        "source": "https://www.instagram.com/cafe_andf/p/DckHEryPBL6/",
+        "onExpire": "公式Instagramで犬連れ席の再開を確かめる。再開していればこの note を削除する。まだ休止中なら、再開日が分かった時点で until を延ばすか、日付が出るまで様子を見る"
+      }
+    ]
   },
   {
     "id": "with-wan",
