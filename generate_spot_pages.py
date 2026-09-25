@@ -770,6 +770,13 @@ def main():
         # 記事が存在しないスポットへリンクしている（スポットの削除・ID変更の取り残し）
         print("★ブログが、存在しないスポットにリンクしている: " + ", ".join(unknown))
     print("ブログ記事から逆リンクを出したスポット: {}件".format(sum(1 for s in spots if s["id"] in blog_index)))
+    # トップページのタイトル・説明文は「270か所以上」のように件数の下限を書いている（2026-09-25）。
+    # スポットを削除して下回ると嘘になるので、再生成のたびに点検する
+    top = PROJECT_DIR / "index.html"
+    if top.is_file():
+        claims = [int(n) for n in re.findall(r"(\d+)か所以上", top.read_text(encoding="utf-8"))]
+        if claims and len(spots) < max(claims):
+            print("★トップページに「{}か所以上」とあるが、スポットは{}件しかない。index.html の title・description・og・構造化データを直すこと".format(max(claims), len(spots)))
 
     (SPOTS_DIR / "index.html").write_text(
         build_index_html(spots), encoding="utf-8", newline="\n"

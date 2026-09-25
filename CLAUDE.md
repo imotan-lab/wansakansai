@@ -30,6 +30,7 @@
 - sitemap.xml / robots.txt 設置済み
 - sitemap.xmlのベースURLはwansakansai.com（generate_sitemap.pyのBASE_URL）
 - OGPタグは各HTMLの `<head>` に静的記述で統一（画像: images/ogp.png）。**JSでの動的注入は禁止**。OGPを追加・変更する時は静的HTMLに直接書く（spots/はgenerate_spot_pages.pyが埋め込む）
+- **トップページのタイトルと説明文（2026-09-25見直し・ClaudeとCodexが別々に案を出して突き合わせ、Codex2巡目で支持）**: タイトル「関西で犬とお出かけ｜270か所以上から探せる｜わんさかんさい」。表示回数の最も多い検索語「犬とお出かけ 関西」（直近3か月3,430回・CTR 2%・9位前後）を先頭に置き、上位の「14選」「16選」のまとめ記事との違いとして件数を出した。**件数は「270か所以上」と下限で書く**（増えても削除が数件あっても嘘にならない）。**スポットが270を下回ると `generate_spot_pages.py` が★で警告する**ので、その時は index.html の title・description・og・構造化データを直す。300を超えたら数字を上げてよい。「穴場」「おすすめ」は根拠が無いので入れない。訪問済みは一部だけなので「実際に訪問」もトップの説明に入れない。経緯と両案は `Documents/wansakansai/research/top_title_2026-09-25/`
 - canonical URL: 全ページに設定済み（spot.htmlはJSで動的更新）
 - JSON-LD構造化データ: index.htmlにWebSite、spot.jsでPlace（スポットごとに動的生成）
 - **AdSense**: 2026-05-25に adsbygoogle.js と ad-slot を全HTMLから除去（ads.txt は残置・本番で配信中）
