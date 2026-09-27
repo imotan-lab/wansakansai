@@ -3302,49 +3302,6 @@
     "tags": []
   },
   {
-    "id": "kometsugu-park",
-    "name": "小目津公園",
-    "address": "和歌山県日高郡みなべ町山内355",
-    "lat": 33.768354,
-    "lng": 135.303589,
-    "category": "park",
-    "dogSize": {
-      "small": false,
-      "medium": false,
-      "large": false
-    },
-    "parking": {
-      "available": true,
-      "free": true
-    },
-    "toilet": {
-      "available": true,
-      "western": false
-    },
-    "stairs": 2,
-    "barrierFree": 2,
-    "dogRun": {
-      "available": false,
-      "free": false,
-      "detail": "",
-      "separated": false
-    },
-    "admission": {
-      "free": true,
-      "fee": ""
-    },
-    "visited": false,
-    "remarks": "みなべ町、小目津浜に面した約7,500平米の町営公園。芝生が敷き詰められ、桜や黒松が四季の景観をつくる。駐車場からも園内からも海を一望でき、ブランコ・ターザンロープ・ネット遊具など大型遊具が充実。隣接する浜では磯遊びや磯釣りが楽しめ、干潮時のタイドプールにはヤドカリや小魚が見られる。トイレ・水道・自販機のほか有料シャワーも完備。ただし公園内は犬の散歩・放し飼い・フンの放置が禁止で、犬を連れて園内を歩くことはできない。駐車場無料。",
-    "imageUrl": "",
-    "officialUrl": "https://www.town.minabe.lg.jp/",
-    "aliases": [
-      "こめづこうえん"
-    ],
-    "tags": [
-      "water"
-    ]
-  },
-  {
     "id": "hashiguiiwa",
     "name": "橋杭岩",
     "address": "和歌山県東牟婁郡串本町鬮野川1549-8",

@@ -759,6 +759,24 @@ def main():
             f.unlink()
             deleted += 1
 
+    # ★犬が入れないスポットは公開しない（2026-09-28）★
+    # dogSize が small/medium/large すべて false ＝ どのサイズの犬も目的を果たせない。
+    # 掲載ルール上そもそも載せない施設だが、自動タスクが「犬禁止を確認した」時に削除ではなく
+    # 値だけ false にして人の判断待ちにするため、この状態が spots.json に入りうる。
+    # 表示側は「中型犬が不可なら小型犬のみ入場可」と出す作りなので、そのまま生成すると
+    # 犬禁止の公園に「小型犬のみ入場可」の札が出る（2026-09-28 小目津公園で実際に本番に出た）。
+    # ここで止める。生成せず、既存のページも消し、一覧・近くのスポット・sitemap からも外す。
+    no_dog = [s for s in spots if all((s.get("dogSize") or {}).get(k) is False for k in ("small", "medium", "large"))]
+    if no_dog:
+        for s in no_dog:
+            print("★犬が入れない（dogSize すべて false）ため公開しない: {} {}".format(s["id"], s["name"]))
+            f = SPOTS_DIR / f"{s['id']}.html"
+            if f.exists():
+                f.unlink()
+                print("   既存のページを消した: spots/{}.html".format(s["id"]))
+        spots = [s for s in spots if s not in no_dog]
+        existing_ids = {s["id"] for s in spots}
+
     blog_index = load_blog_index()
     generated = 0
     for spot in spots:
