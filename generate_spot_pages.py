@@ -508,7 +508,10 @@ def build_body_content(spot: dict, all_spots: list = None) -> str:
     _ds = spot.get("dogSize") or {}
     _dr = spot.get("dogRun") or {}
     _warns = []
-    if _ds.get("medium") is False:
+    if all(_ds.get(k) is False for k in ("small", "medium", "large")):
+        # 犬が入れない施設。main() で生成を止めているのでここには来ないはずだが、来ても「小型犬のみ」とは出さない
+        _warns.append("犬は入れません（全サイズ不可）")
+    elif _ds.get("medium") is False:
         _warns.append("小型犬のみ入場可（中型犬・大型犬は不可）")
     elif _ds.get("large") is False:
         _warns.append("中型犬まで入場可（大型犬は不可）")
@@ -605,7 +608,7 @@ def build_html(spot: dict, all_spots: list = None, blog_index: dict = None) -> s
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="../favicon.ico">
   <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
-  <link rel="stylesheet" href="../css/style.css?v=20260925">
+  <link rel="stylesheet" href="../css/style.css?v=20260928">
   <script type="application/ld+json">{jsonld}</script>
 </head>
 <body>
@@ -621,8 +624,8 @@ def build_html(spot: dict, all_spots: list = None, blog_index: dict = None) -> s
 
 {STATIC_FOOTER}
   <script>window.WANSAKA_SPOT_ID = "{sid_e}";</script>
-  <script src="../js/common.js?v=20260921"></script>
-  <script src="../js/spot.js?v=20260925"></script>
+  <script src="../js/common.js?v=20260928"></script>
+  <script src="../js/spot.js?v=20260928"></script>
 </body>
 </html>
 '''
@@ -716,7 +719,7 @@ def build_index_html(spots: list) -> str:
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="../favicon.ico">
   <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
-  <link rel="stylesheet" href="../css/style.css?v=20260925">
+  <link rel="stylesheet" href="../css/style.css?v=20260928">
 </head>
 <body>
 
@@ -732,7 +735,7 @@ def build_index_html(spots: list) -> str:
   </main>
 
 {STATIC_FOOTER}
-  <script src="../js/common.js?v=20260921"></script>
+  <script src="../js/common.js?v=20260928"></script>
   <script>
     renderHeader('spots');
     renderFooter();

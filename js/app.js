@@ -248,7 +248,8 @@
       if ((s.tags || []).includes('sakura')) tags.push('<span class="tag tag-feature">桜</span>');
       if ((s.tags || []).includes('koyo')) tags.push('<span class="tag tag-feature">紅葉</span>');
       if ((s.tags || []).includes('water')) tags.push('<span class="tag tag-feature">水遊び</span>');
-      if (!dogSizeAllows(s, 'medium')) tags.push('<span class="tag tag-warn">小型犬のみ</span>');
+      if (!dogSizeAllows(s, 'small') && !dogSizeAllows(s, 'medium') && !dogSizeAllows(s, 'large')) tags.push('<span class="tag tag-warn">犬は入れません</span>');
+      else if (!dogSizeAllows(s, 'medium')) tags.push('<span class="tag tag-warn">小型犬のみ</span>');
       else if (!dogSizeAllows(s, 'large')) tags.push('<span class="tag tag-warn">中型犬まで</span>');
       if (s.dogRun && s.dogRun.available && s.dogRun.maxSize === 'small') tags.push('<span class="tag tag-warn">ランは小型犬のみ</span>');
       else if (s.dogRun && s.dogRun.available && s.dogRun.maxSize === 'medium') tags.push('<span class="tag tag-warn">ランは中型犬まで</span>');

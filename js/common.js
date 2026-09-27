@@ -56,6 +56,12 @@ function dogRunSizeAllows(spot, size) {
 }
 function dogSizeWarnings(spot) {
   const out = [];
+  // すべて false ＝ 犬が入れない施設。掲載ルール上は載せないが、データに入ってしまった時に
+  // 「小型犬のみ入場可」と出してはいけない（2026-09-28 小目津公園で本番に出た）。generate_spot_pages.py と揃える
+  if (!dogSizeAllows(spot, 'small') && !dogSizeAllows(spot, 'medium') && !dogSizeAllows(spot, 'large')) {
+    out.push('犬は入れません（全サイズ不可）');
+    return out;
+  }
   if (!dogSizeAllows(spot, 'medium')) out.push('小型犬のみ入場可（中型犬・大型犬は不可）');
   else if (!dogSizeAllows(spot, 'large')) out.push('中型犬まで入場可（大型犬は不可）');
   const dr = spot.dogRun || {};

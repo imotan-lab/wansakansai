@@ -81,8 +81,17 @@ def collect_all(page, rounds: int) -> list:
     return list(seen.values())
 
 
-def pick_key(text: str) -> str:
-    """その投稿を一意に特定できる文字列を本文から取り出す。"""
+def pick_key(text: str, match: str = "") -> str:
+    """その投稿を一意に特定できる文字列を本文から取り出す。
+
+    --match で探した語を含む行があればそれを使う（2026-09-28）。以前は「12文字以上の最初の行」を使っていたため、
+    短い1行目（「小目津公園（和歌山）」）を飛ばしてURLの断片（wansakansai.com/spots/kometsug）が鍵になり、
+    削除時に見つからなかった。
+    """
+    for line in text.split("\n"):
+        line = line.strip()
+        if match and match in line and not line.startswith(("https://", "@")):
+            return line[:40]
     for line in text.split("\n"):
         line = line.strip()
         if len(line) >= 12 and not line.startswith(("【", "#", "https://", "@", "・")):
@@ -127,12 +136,14 @@ def delete_one(page, key: str, rounds: int = 30) -> bool:
             confirm.click()
             page.wait_for_timeout(2500)
             return True
-        except Exception:
+        except Exception as e:
+            print(f"   [delete_one] 操作に失敗: {type(e).__name__}: {str(e)[:160]}")
             try:
                 page.keyboard.press("Escape")
             except Exception:
                 pass
             return False
+    print("   [delete_one] 対象が見つからないまま巡回を使い切った")
     return False
 
 
@@ -182,17 +193,12 @@ def main():
                 print(f"読み取れた投稿: {len(texts)}件（重複除く）")
                 hits = [(i, t) for i, t in enumerate(texts) if is_broken(t)]
             else:
-                articles = page.locator('article[data-testid="tweet"]')
-                n = articles.count()
-                print(f"読み込めた投稿: {n}件")
-                hits = []
-                for i in range(n):
-                    try:
-                        txt = articles.nth(i).inner_text(timeout=5000)
-                    except Exception:
-                        continue
-                    if a.match in txt:
-                        hits.append((i, txt))
+                # ★--match もスクロールしながら集める（2026-09-28）★
+                # 最初の画面（5件ほど）しか見ていなかったため、2〜3か月前の投稿は「0件」と答えていた
+                # （小目津公園の7月・6月の投稿を探した時に実際に起きた）。--scrolls で遡る深さを変えられる
+                texts = collect_all(page, a.scrolls)
+                print(f"読み込めた投稿: {len(texts)}件（重複除く・{a.scrolls}回スクロール）")
+                hits = [(i, t) for i, t in enumerate(texts) if a.match in t]
 
             label = "括弧が閉じていない（途中で切れた）投稿" if a.scan_broken else f"「{a.match}」を含む投稿"
             print(f"\n{label}: {len(hits)}件")
@@ -214,11 +220,12 @@ def main():
             # 削除すると並びがずれるので、毎回先頭から探し直す
             deleted = 0
             for _, txt in hits:
-                key = pick_key(txt)
+                key = pick_key(txt, a.match or "")
                 if not key:
                     print(f"\n!! 特定用の文字列を取れず飛ばす: {txt[:60]}")
                     continue
-                if not delete_one(page, key):
+                # 探した時と同じ深さまで遡る（既定の30巡では数か月前の投稿に届かず「削除できず」になった・2026-09-28）
+                if not delete_one(page, key, rounds=max(30, a.scrolls)):
                     print(f"\n!! 削除できず: {key}")
                     continue
                 deleted += 1
