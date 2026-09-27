@@ -81,6 +81,7 @@
 
 ### 犬のサイズ（`dogSize` / `dogRun.maxSize`・2026-09-21にフィルター化・ユーザー判断）
 `dogSize.{small,medium,large}` は**「そのサイズの犬がそのスポットの目的を果たせるか」**。`false` は「入れない」と確認できた時だけ。項目が無ければ入れる扱い。**ドッグランだけの制限は `dogRun.maxSize`（small|medium|large）に分けて持つ**（公園は歩けるがランは小型専用、という型を丸ごと「大型不可」にしない）。トップの絞り込み「犬のサイズ」は dogSize を見て、**「ドッグラン」と同時に押している時だけ maxSize も見る**。`small-dog-only` タグは `dogSize.medium=false` と必ず一致させる。判定は `js/common.js` の `dogSizeAllows` / `dogRunSizeAllows` / `dogSizeWarnings` と `generate_spot_pages.py` の2か所にあり、片方だけ直さない。**エリア分けの境目（10kg未満は小型エリア等）は制限ではない**ので dogSize に反映せず、数字は remarks に残す。抱っこ・カート限定（`dogArea=carry-only`）はサイズ制限とは別だが、受付から先が抱っこ必須で現実に中型以上が無理なら medium=false にする
+**★3つとも false にしない（2026-09-28・小目津公園の事故）★** 公式が範囲を限らず犬を禁じている施設は「掲載しない施設」であって、dogSize で表す状態ではない。自動タスクが犬禁止を確認して全部 false にしたところ、表示側は medium=false だけを見て「小型犬のみ入場可」の札を出し、タイトルも「犬連れOK」のまま本番に出た（Codexの変更レビューは事実は確かめたが、値がどう表示されるかはサイトの決まりなので見られない）。犬が入れないと分かったら**値を直さずに人に聞き、人が決めたら対話セッションでデータから外す**（`generate_spot_pages.py` は全部 false のスポットを生成しないが、トップの一覧やテーマ別ページは spots.json を直接読むので、外すのが正しい対処）。表示側は全部 false を「犬は入れません（全サイズ不可）」と出す。**公開前に `python scripts/check_spot_data.py` を流す**（全部 false・タグと値の食い違い・想定外の値を機械で止める。自動タスクの STEP 8 に組み込み済み）
 
 ### 期限付きの情報（`temporary`・任意項目・2026-09-09導入）
 工事やイベント期間の運用のように「**いつ終わるか分かっている**」情報を、remarksではなくここに持たせる。**期限を過ぎると表示が自動で止まる**（`js/spot.js` と `generate_spot_pages.py` が `until` を見ている）。
@@ -158,6 +159,7 @@
     検索インデックスの遅延や表示制限にも影響されない
   - `--orphans` で「spots.jsonに無いのに投稿済み」＝過去の削除漏れを一括検出できる
   - 履歴は `scripts/x_post_history.json`（.gitignore対象・スポットID/種別/日時/本文を保持）
+  - **Xの投稿を消す時**は `python scripts/delete_x_post.py --match "文言" --scrolls 40 --delete`（ちょうど1件に絞れた時だけ消す）。**数か月前の投稿は探索が安定しない**（Xは仮想スクロールで見える範囲が読み込みごとに変わる）。消せない時は、見つけたその場で消す作り（2026-09-28に小目津公園の2件で使った。scratchpad の delete_kometsugu_x.py の型）に切り替える。消したら同じ手順で「0件」を確かめる
 - スポット詳細ページのURLは `https://wansakansai.com/spots/{id}.html` が正規（旧 `spot.html?id=xxx` は自動リダイレクト）。内部リンクは `spots/{id}.html` 形式で書く
 - spots/ 配下のHTMLは `generate_spot_pages.py` の出力なので**手動編集禁止**。再生成で上書きされる（`spots/index.html` も同スクリプトが生成する全スポット一覧ページ。削除対象からは除外済み）
 
