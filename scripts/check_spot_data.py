@@ -14,6 +14,7 @@
   NG2 small-dog-only タグと dogSize.medium=false が食い違う … フィルターと札が別のことを言う
   NG3 dogArea が outdoor-only / carry-only 以外の値
   NG4 dogRun.maxSize が small/medium/large 以外の値
+  NG5 carryLabel があるのに dogArea が carry-only でない
 
 使い方:
   python scripts/check_spot_data.py            … NGを一覧。NGがあれば終了コード1
@@ -39,6 +40,8 @@ def check(spots: list) -> list:
             ngs.append(f"{sid}（{name}）: small-dog-only タグ（{'あり' if 'small-dog-only' in tags else 'なし'}）と dogSize.medium（{ds.get('medium')}）が食い違う")
         if s.get("dogArea") not in (None, "outdoor-only", "carry-only"):
             ngs.append(f"{sid}（{name}）: dogArea の値が想定外: {s.get('dogArea')!r}")
+        if "carryLabel" in s and s.get("dogArea") != "carry-only":
+            ngs.append(f"{sid}（{name}）: carryLabel は dogArea=carry-only の時だけ使う（今は {s.get('dogArea')!r}）")
         mx = (s.get("dogRun") or {}).get("maxSize")
         if mx not in (None, "small", "medium", "large"):
             ngs.append(f"{sid}（{name}）: dogRun.maxSize の値が想定外: {mx!r}")

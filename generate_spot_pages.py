@@ -70,6 +70,17 @@ def _short_pref(pref: str) -> str:
     return pref.rstrip("府県") if pref else "関西"
 
 
+def carry_label(spot: dict) -> str:
+    """dogArea=carry-only の施設で、犬を運ぶ手段として認められているものの表記。
+
+    既定は「抱っこ・カート」（荒牧バラ公園のように地面に触れなければよい施設）。
+    くじらの博物館のように蓋つきキャリーしか認めない施設は carryLabel に「キャリー」と書く。
+    認められていない手段を表示すると「カートで入れる」と誤解させるため、施設の決まりに合わせる。
+    """
+    label = spot.get("carryLabel")
+    return label if isinstance(label, str) and label.strip() else "抱っこ・カート"
+
+
 def build_title(spot: dict) -> str:
     """スポット名｜犬連れOK・特徴（都道府県）- わんさかんさい
 
@@ -88,7 +99,7 @@ def build_title(spot: dict) -> str:
     if _dog_area == "outdoor-only":
         features = ["犬連れは屋外のみ"]
     elif _dog_area == "carry-only":
-        features = ["犬連れは抱っこ・カートのみ"]
+        features = [f"犬連れは{carry_label(spot)}のみ"]
     else:
         features = ["犬連れOK"]
     dogrun = spot.get("dogRun") or {}
@@ -155,7 +166,7 @@ def build_description(spot: dict) -> str:
     if spot.get("dogArea") == "outdoor-only":
         lead = f"{spot['name']}は{pref_short}の犬連れスポット（屋外エリアのみ同伴可）。"
     elif spot.get("dogArea") == "carry-only":
-        lead = f"{spot['name']}は{pref_short}の犬連れスポット（抱っこ・カートでの同伴のみ可）。"
+        lead = f"{spot['name']}は{pref_short}の犬連れスポット（{carry_label(spot)}での同伴のみ可）。"
     else:
         lead = f"{spot['name']}は{pref_short}の犬連れOKスポット。"
 
