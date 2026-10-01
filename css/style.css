@@ -115,7 +115,7 @@ img {
 }
 
 .site-logo .logo-sub {
-  font-size: 0.65rem;
+  font-size: 0.8125rem;
   font-weight: 400;
   opacity: 0.85;
   display: block;
@@ -347,7 +347,7 @@ img {
   flex-shrink: 0;
   display: inline-block;
   color: var(--color-text-light);
-  font-size: 0.62rem;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.5px;
   border: 1px solid var(--color-border);
@@ -732,7 +732,7 @@ img {
   display: inline-flex;
   align-items: center;
   gap: 3px;
-  font-size: 0.72rem;
+  font-size: 0.8125rem;
   padding: 3px 8px;
   border-radius: 50px;
   background: var(--color-bg);
@@ -1305,7 +1305,7 @@ img {
 
 .danger-card-type {
   display: inline-block;
-  font-size: 0.72rem;
+  font-size: 0.8125rem;
   padding: 2px 8px;
   border-radius: 50px;
   background: #FDECEA;
@@ -1455,7 +1455,7 @@ img {
 /* アフィリエイト表記（景表法のステマ規制対応・2026-09-10）。控えめに、ただし必ず見える位置に */
 .footer-affiliate-note {
   margin: 0 0 8px;
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   color: rgba(255, 255, 255, 0.55);
 }
 
