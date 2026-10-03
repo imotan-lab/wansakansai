@@ -217,8 +217,8 @@
     "id": "kobe-fruit-flower-park",
     "name": "道の駅 神戸フルーツ・フラワーパーク大沢",
     "address": "兵庫県神戸市北区大沢町上大沢2150",
-    "lat": 34.8537,
-    "lng": 135.2098,
+    "lat": 34.849738,
+    "lng": 135.190202,
     "category": "park",
     "dogSize": {
       "small": true,
