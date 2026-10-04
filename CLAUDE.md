@@ -430,7 +430,7 @@ Chrome MCPでSearch Consoleの「日」タブの画面テキストを取る → 
 - 記事ページ: `blog/` ディレクトリに個別HTMLで配置
 - ブログ用画像: `images/blog/{記事スラッグ}/` に配置
 - 下書き: `blog/drafts/` にMarkdownで保存
-- **現在3記事公開済み**（近つ飛鳥の桜、滋賀・琵琶湖1泊2日旅、和歌山1泊2日旅）
+- **★記事は公開前に運営者に見せ、OKをもらってから push する（2026-10-04）★** 現在4記事
 - **★記事HTMLの末尾に `renderHeader('blog'); renderFooter();` の呼び出しを必ず入れる★** 忘れるとヘッダー・フッターが出ない（和歌山記事で実際に発生）
 - **絵文字は使わない**（既存記事はすべて0件）
 - 記事追加手順: HTMLを `blog/` に配置（各スポットの節の見出しに `id="spot-{スポットID}"`）→ `blog/index.html` にカードを追加 → **`python scripts/add_blog_img_size.py` → `python generate_spot_pages.py` を流す**
