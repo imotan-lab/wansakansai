@@ -644,6 +644,7 @@ img {
 /* 訪問済みのカードは、住所とタグがスタンプの手前で折り返すよう右に余白を取る（2026-10-04）。
    タグの数や長さに関係なく、スタンプの下に文字が入らない */
 .spot-card:has(.visited-stamp) .spot-card-address,
+.spot-card:has(.visited-stamp) .spot-card-excerpt,
 .spot-card:has(.visited-stamp) .spot-card-tags {
   padding-right: 84px;
 }
@@ -661,6 +662,7 @@ img {
     right: -8px;
   }
   .spot-card:has(.visited-stamp) .spot-card-address,
+  .spot-card:has(.visited-stamp) .spot-card-excerpt,
   .spot-card:has(.visited-stamp) .spot-card-tags {
     padding-right: 68px;
   }
@@ -1789,4 +1791,21 @@ img {
 /* カードのハートは押しやすさのため44pxのまま、行の高さだけ取らないように上下へはみ出させる（2026-10-04） */
 .spot-card .fav-btn {
   margin: -10px -6px -10px 0;
+}
+
+/* テーマ別まとめの一覧で、スポットの備考の最初の一文を添える（generate_theme_pages.py・2026-10-04） */
+.spot-card-excerpt {
+  font-size: 0.8125rem;
+  color: var(--color-text);
+  line-height: 1.6;
+  margin-bottom: 6px;
+}
+
+/* トップの絞り込みの下に置く、テーマ別まとめへの文字リンク（大きなボタンの代わり・2026-10-04） */
+.theme-link {
+  font-size: 0.875rem;
+  margin: 0 0 8px;
+}
+.theme-link a {
+  color: var(--color-primary);
 }

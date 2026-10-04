@@ -619,7 +619,7 @@ def build_html(spot: dict, all_spots: list = None, blog_index: dict = None) -> s
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="../favicon.ico">
   <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
-  <link rel="stylesheet" href="../css/style.css?v=20261004">
+  <link rel="stylesheet" href="../css/style.css?v=2026100402">
   <script type="application/ld+json">{jsonld}</script>
 </head>
 <body>
@@ -730,7 +730,7 @@ def build_index_html(spots: list) -> str:
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="../favicon.ico">
   <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
-  <link rel="stylesheet" href="../css/style.css?v=20261004">
+  <link rel="stylesheet" href="../css/style.css?v=2026100402">
 </head>
 <body>
 
@@ -818,6 +818,10 @@ def main():
         f"spots/ 生成完了: {generated}件 + 一覧ページ1件"
         + (f" (削除: {deleted}件)" if deleted else "")
     )
+
+    # テーマ別まとめページの一覧も、同じスポットから作り直す（2026-10-04）
+    import generate_theme_pages
+    generate_theme_pages.build(spots)
 
 
 if __name__ == "__main__":

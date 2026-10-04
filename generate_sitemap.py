@@ -26,7 +26,7 @@ static_pages = [
     {"loc": f"{BASE_URL}/spots/index.html", "changefreq": "weekly", "priority": "0.9"},
 ]
 
-# テーマ別まとめページ（js/themes-data.js の THEMES と対応）
+# テーマ別まとめページ（generate_theme_pages.py の THEMES と対応）
 theme_slugs = ["dogrun-free", "dogrun", "sakura", "koyo", "water", "rain", "free"]
 static_pages.append({"loc": f"{BASE_URL}/themes/index.html", "changefreq": "weekly", "priority": "0.7"})
 for slug in theme_slugs:

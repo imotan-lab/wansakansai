@@ -19,7 +19,7 @@
 - スポットデータ: JSON管理（data/spots.json）
 - 地図: Google Maps iframe埋め込み（APIキー不要）
 - お問い合わせ: Googleフォーム埋め込み
-- ナビゲーション: common.jsのSITE_NAV定数で一元管理（ページ追加時は1行追加）。ヘッダーは主要4項目のみ（お気に入り/ブログ/このサイトについて/お問い合わせ）。トップ/テーマ別で探す/危険情報は `footerOnly: true` でフッターのみ掲載し、トップページ上部の「現在地から探す」「テーマ別で探す」ボタン＋危険情報バナーで導線を確保（ロゴ＝トップ）
+- ナビゲーション: common.jsのSITE_NAV定数で一元管理（ページ追加時は1行追加）。ヘッダーは主要4項目のみ（お気に入り/ブログ/このサイトについて/お問い合わせ）。トップ/テーマ別で探す/危険情報は `footerOnly: true` でフッターのみ掲載し、トップの「現在地から探す」ボタン・絞り込み下のテーマ別への文字リンク・危険情報バナーで導線を確保（ロゴ＝トップ）
 - 都道府県フィルター: spots.jsonの住所から自動抽出（ハードコードなし）
 - 個別対応は避け、テンプレート化・データ駆動を基本方針とする
 
@@ -175,7 +175,7 @@ JS描画だけだとレンダリング前HTMLにリンクが残らず、Google�
 - 各スポットページ … 「近くのスポット」6件への静的リンク（GPS距離順・ハバサイン）＋一覧ページへの導線。**spot.jsが `#spotDetail` を描き直すため表示は従来どおりで、生HTMLにリンクを残すのが目的**
 - **静的フッター（2026-09-02追加）** … 全ページの `</main>` 直後に `<footer class="site-footer">` を静的記述（spots/はgenerate_spot_pages.pyの`STATIC_FOOTER`定数）。`renderFooter()` は**既存フッターがあれば再利用**する
   - **★スクリプトタグより前に置くこと★** `</body>`直前だと`common.js`実行時にパーサーが未到達で**フッターが2つ描画される**
-  - `themes/index.html` の `#themeGrid` にも7テーマへの静的リンクあり。テーマ追加時は `js/themes-data.js` とあわせてここにも足す
+  - テーマ別の一覧と `themes/index.html` のカードは `generate_theme_pages.py` が生HTMLに書き込む（下の節）
 - 新しい一覧・カテゴリ系ページを作る時も、リンクをJS描画だけに置かない（生HTMLに必ず残す）
 - プッシュ後はデプロイ完了を待ち、本番サイト https://wansakansai.com を確認する
 - 本番確認はプレビューツールのヘッドレスブラウザで行う（Chromeに干渉しない）
@@ -442,12 +442,11 @@ Chrome MCPでSearch Consoleの「日」タブの画面テキストを取る → 
 - 目的・季節別に犬連れスポットを集約する固有URLのランディング群（SEO・AdSense審査でのページ厚み増を狙う）
 - 配置: `themes/` 配下に静的HTML。一覧hubは `themes/index.html`
 - 現在7テーマ: dogrun-free（無料ドッグラン）/ dogrun（ドッグラン全）/ sakura（桜）/ koyo（紅葉）/ water（水遊び）/ rain（雨でもOK）/ free（完全無料）
-- **テーマ定義は `js/themes-data.js` の `THEMES` 配列で一元管理**（slug・navTitle・lead・filter）。フィルタはここが唯一の定義で、各ページ・hubが共有する
-- 描画: `js/theme-page.js`（個別ページ。`window.THEME_SLUG` でテーマ指定）/ `js/themes-index.js`（hub）。一覧はspots.jsonから府県別に動的描画し件数も自動追従
+- **★一覧・件数は `generate_theme_pages.py` が生HTMLに書き込む（2026-10-04）★** テーマの定義（filter）はこのスクリプトの `THEMES` が唯一の正本。`generate_spot_pages.py` の最後から呼ばれるのでスポットの変更に自動で追従する。各ページの `THEME_LIST_START`〜`END`・index の `THEME_GRID_START`〜`END` の間だけを書き換え、導入文とmetaは手書き
 - 各テーマページは**固有の導入文＋選び方のポイント**を必ず置く（薄い量産ページ化を避けるため。文体はabout.html同様のです・ます調でOK＝spots.jsonのremarks文体ルールは適用しない）
 - 共通スタイルは `css/themes.css`
 - **パス解決**: `/themes/` は `js/common.js` の `getBasePath()`・`resolveNavHref()` に追加済み（blog/・spots/と同様）。新サブディレクトリを増やす時は同様に両関数へ追加すること
-- **新テーマ追加手順**: ①必要ならspots.jsonにtag追加 → ②`js/themes-data.js` の `THEMES` に1要素追加 → ③既存の `themes/{slug}.html` を複製して導入文・meta（title/description/canonical/og/THEME_SLUG）を差し替え → ④`generate_sitemap.py` の `theme_slugs` にslug追加 → ⑤`python generate_sitemap.py` 再生成 → commit & push
+- **新テーマ追加手順**: ①必要ならspots.jsonにtag追加 → ②`generate_theme_pages.py` の `THEMES` に1要素追加 → ③既存の `themes/{slug}.html` を複製して導入文・meta（title/description/canonical/og）を差し替え（印はそのまま）→ `python generate_theme_pages.py` → ④`generate_sitemap.py` の `theme_slugs` にslug追加 → ⑤`python generate_sitemap.py` 再生成 → commit & push
 - sitemapにテーマページも含む（`generate_sitemap.py` の static_pages で生成）
 
 ## セキュリティチェック
