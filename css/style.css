@@ -323,7 +323,7 @@ img {
 .pref-section {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 4px 12px;
   margin-bottom: 8px;
 }
 
@@ -479,7 +479,7 @@ img {
 
 .filter-group-btns {
   display: flex;
-  gap: 4px;
+  gap: 4px 12px;
   flex-wrap: wrap;
 }
 
@@ -495,48 +495,51 @@ img {
   }
 }
 
+/* 絞り込みの項目は枠で囲まず下線で示す（2026-10-04・運営者と比較画像で決定）。
+   選んでいる項目は太い色の下線＋太字＋薄い背景。検索ボックスだけ四角い枠を残す */
 .filter-btn {
-  padding: 3px 8px;
-  min-height: 30px;
+  padding: 6px 6px 4px;
+  min-height: 36px;
   display: inline-flex;
   align-items: center;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  font-size: 0.8rem;
+  border: none;
+  border-bottom: 2px solid var(--color-border);
+  border-radius: 0;
+  font-size: 0.875rem;
   font-family: inherit;
-  color: var(--color-text-light);
-  background: var(--color-bg-card);
+  color: var(--color-text);
+  background: transparent;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
 }
 
 .filter-btn:hover {
-  border-color: var(--color-accent, #D4A017);
-  color: var(--color-accent, #D4A017);
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary-light);
 }
 
 .filter-btn.active {
-  background: #D4A017;
-  color: #fff;
-  border-color: #D4A017;
+  background: #FBF1D3;
+  color: var(--color-primary);
+  font-weight: 700;
+  border-bottom: 3px solid #D4A017;
+  padding-bottom: 3px;
 }
 
+/* 「✕ 条件をクリア」: 枠のない文字だけのボタン。押せる高さはほかの項目と同じ36px */
 .filter-clear-btn {
-  padding: 6px 14px;
-  border: 1px solid var(--color-text-light);
-  border-radius: var(--radius);
-  font-size: 0.75rem;
+  padding: 6px 4px;
+  min-height: 36px;
+  border: none;
+  font-size: 0.875rem;
   font-family: inherit;
-  color: var(--color-text-light);
+  color: var(--color-primary);
   background: transparent;
   cursor: pointer;
-  transition: all 0.2s;
-  margin-left: 4px;
 }
 
 .filter-clear-btn:hover {
-  background: var(--color-text-light);
-  color: #fff;
+  text-decoration: underline;
 }
 
 /* 絞り込みの組み合わせ方の説明（2026-10-04） */

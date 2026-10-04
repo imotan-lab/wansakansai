@@ -103,7 +103,7 @@
           ).join('')}
         </div>
       </div>
-    `).join('') + '<button class="filter-clear-btn" id="filterClearBtn" style="display:none;">クリア</button>'
+    `).join('') + '<button class="filter-clear-btn" id="filterClearBtn" style="display:none;">✕ 条件をクリア</button>'
       + '<p class="filter-note">同じ段で複数押すと「どれか」に、別の段と組み合わせると「すべて」に当てはまるスポットを表示します。</p>';
 
     filterSection.querySelectorAll('.filter-btn').forEach(btn => {
