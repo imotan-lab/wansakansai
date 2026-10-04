@@ -643,6 +643,11 @@ img {
 .spot-card:has(.visited-stamp) .spot-card-tags {
   padding-right: 84px;
 }
+/* 名前が2行になる低いカードでは、スタンプが名前の2行目まで届く（2026-10-04）。
+   名前の右にはハート（44px）があるので、足りない分だけ余白を足す */
+.spot-card:has(.visited-stamp) .spot-card-name {
+  padding-right: 40px;
+}
 
 @media (max-width: 768px) {
   .visited-stamp {
@@ -654,6 +659,9 @@ img {
   .spot-card:has(.visited-stamp) .spot-card-address,
   .spot-card:has(.visited-stamp) .spot-card-tags {
     padding-right: 68px;
+  }
+  .spot-card:has(.visited-stamp) .spot-card-name {
+    padding-right: 24px;
   }
 }
 
