@@ -539,6 +539,15 @@ img {
   color: #fff;
 }
 
+/* 絞り込みの組み合わせ方の説明（2026-10-04） */
+.filter-note {
+  width: 100%;
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--color-text-light);
+  line-height: 1.6;
+}
+
 /* ===== Danger Banner ===== */
 .danger-banner {
   display: flex;

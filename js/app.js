@@ -103,7 +103,8 @@
           ).join('')}
         </div>
       </div>
-    `).join('') + '<button class="filter-clear-btn" id="filterClearBtn" style="display:none;">クリア</button>';
+    `).join('') + '<button class="filter-clear-btn" id="filterClearBtn" style="display:none;">クリア</button>'
+      + '<p class="filter-note">同じ段で複数押すと「どれか」に、別の段と組み合わせると「すべて」に当てはまるスポットを表示します。</p>';
 
     filterSection.querySelectorAll('.filter-btn').forEach(btn => {
       btn.addEventListener('click', () => {
@@ -180,10 +181,15 @@
       filtered = filtered.filter(s => activePrefs.has(getPrefecture(s.address)));
     }
 
-    // Filter by tags
+    // Filter by tags（2026-10-04）: 同じ段の中は「どれか」（OR）、段どうしは「すべて」（AND）。
+    // 以前は全部ANDだったため、駐車場の「無料」と「有料」のように同じ段で2つ押すと0件になっていた。
+    // 都道府県（上の段）も「どれか」なので、全部の段が同じ考え方になる。
     if (activeFilters.size > 0) {
+      const activeGroups = FILTER_GROUPS
+        .map(g => g.filters.filter(f => activeFilters.has(f.id)))
+        .filter(fs => fs.length > 0);
       filtered = filtered.filter(s =>
-        [...activeFilters].every(id => FILTERS.find(f => f.id === id).test(s))
+        activeGroups.every(fs => fs.some(f => f.test(s)))
       );
     }
 
