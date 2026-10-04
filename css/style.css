@@ -628,12 +628,23 @@ img {
   pointer-events: none;
 }
 
+/* 訪問済みのカードは、住所とタグがスタンプの手前で折り返すよう右に余白を取る（2026-10-04）。
+   タグの数や長さに関係なく、スタンプの下に文字が入らない */
+.spot-card:has(.visited-stamp) .spot-card-address,
+.spot-card:has(.visited-stamp) .spot-card-tags {
+  padding-right: 84px;
+}
+
 @media (max-width: 768px) {
   .visited-stamp {
     width: 72px;
     height: 72px;
     bottom: -8px;
     right: -8px;
+  }
+  .spot-card:has(.visited-stamp) .spot-card-address,
+  .spot-card:has(.visited-stamp) .spot-card-tags {
+    padding-right: 68px;
   }
 }
 
