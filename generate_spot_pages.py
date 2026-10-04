@@ -619,7 +619,7 @@ def build_html(spot: dict, all_spots: list = None, blog_index: dict = None) -> s
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="../favicon.ico">
   <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
-  <link rel="stylesheet" href="../css/style.css?v=2026100402">
+  <link rel="stylesheet" href="../css/style.css?v=2026100404">
   <script type="application/ld+json">{jsonld}</script>
 </head>
 <body>
@@ -730,7 +730,7 @@ def build_index_html(spots: list) -> str:
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="../favicon.ico">
   <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
-  <link rel="stylesheet" href="../css/style.css?v=2026100402">
+  <link rel="stylesheet" href="../css/style.css?v=2026100404">
 </head>
 <body>
 

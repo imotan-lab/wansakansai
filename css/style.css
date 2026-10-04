@@ -1809,3 +1809,20 @@ img {
 .theme-link a {
   color: var(--color-primary);
 }
+
+/* とても狭い画面（iPhone SE 初代など幅320px）では、ロゴが縮まずメニューボタンが画面外へ押し出されていた（2026-10-04）。
+   ロゴのアイコンと文字だけ小さくする */
+@media (max-width: 360px) {
+  .site-logo {
+    font-size: 1.1rem;
+    gap: 4px;
+  }
+  .site-logo .logo-icon {
+    height: 64px;
+    margin: -14px 0;
+  }
+  .header-inner {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
