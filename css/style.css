@@ -171,8 +171,8 @@ img {
 /* ===== Hero Section ===== */
 .hero {
   text-align: center;
-  padding: 32px 16px;
-  margin-bottom: 20px;
+  padding: 16px 16px 12px;
+  margin-bottom: 8px;
 }
 
 .hero h1 {
@@ -196,7 +196,7 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   flex-wrap: wrap;
 }
 
@@ -207,10 +207,10 @@ img {
   background: #fff;
   color: var(--color-primary);
   border: 2px solid var(--color-primary);
-  padding: 12px 30px;
+  padding: 9px 30px;
   font-size: 1rem;
   font-weight: 600;
-  border-radius: 50px;
+  border-radius: var(--radius);
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s, background 0.2s, color 0.2s;
 }
@@ -233,10 +233,10 @@ img {
   background: linear-gradient(135deg, var(--color-accent), var(--color-accent-light));
   color: #fff;
   border: none;
-  padding: 14px 32px;
+  padding: 11px 32px;
   font-size: 1rem;
   font-weight: 600;
-  border-radius: 50px;
+  border-radius: var(--radius);
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
   box-shadow: 0 4px 12px rgba(74, 124, 89, 0.3);
@@ -265,7 +265,7 @@ img {
 
 /* ===== Search Box ===== */
 .search-section {
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 
 .search-box {
@@ -276,7 +276,7 @@ img {
   width: 100%;
   padding: 12px 40px 12px 16px;
   border: 2px solid var(--color-border);
-  border-radius: 50px;
+  border-radius: var(--radius);
   font-size: 0.95rem;
   font-family: inherit;
   color: var(--color-text);
@@ -323,8 +323,8 @@ img {
 .pref-section {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 12px;
+  gap: 6px;
+  margin-bottom: 8px;
 }
 
 /* ===== Affiliate (Rakuten Travel) ===== */
@@ -460,8 +460,8 @@ img {
 .filter-section {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
-  margin-bottom: 20px;
+  gap: 8px;
+  margin-bottom: 12px;
 }
 
 .filter-group {
@@ -496,12 +496,12 @@ img {
 }
 
 .filter-btn {
-  padding: 8px 14px;
-  min-height: 40px;
+  padding: 6px 12px;
+  min-height: 36px;
   display: inline-flex;
   align-items: center;
   border: 2px solid var(--color-border);
-  border-radius: 50px;
+  border-radius: var(--radius);
   font-size: 0.8rem;
   font-family: inherit;
   color: var(--color-text-light);
@@ -524,7 +524,7 @@ img {
 .filter-clear-btn {
   padding: 6px 14px;
   border: 1px solid var(--color-text-light);
-  border-radius: 50px;
+  border-radius: var(--radius);
   font-size: 0.75rem;
   font-family: inherit;
   color: var(--color-text-light);
@@ -554,8 +554,8 @@ img {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 14px 20px;
-  margin-bottom: 20px;
+  padding: 10px 16px;
+  margin-bottom: 12px;
   background: #FDF2F0;
   border: 1px solid #E8C4BE;
   border-radius: var(--radius-sm);
@@ -598,7 +598,7 @@ img {
   gap: 4px;
   font-size: 0.78rem;
   color: var(--color-text-light);
-  margin-bottom: 12px;
+  margin-bottom: 4px;
 }
 
 .legend-stamp {
@@ -616,7 +616,7 @@ img {
 .spot-card {
   background: transparent;
   border-bottom: 1px solid var(--color-border);
-  padding: 18px 4px;
+  padding: 12px 4px;
   transition: background 0.2s;
   cursor: pointer;
   display: block;
@@ -684,7 +684,7 @@ img {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  margin-bottom: 8px;
+  margin-bottom: 2px;
 }
 
 .spot-card-name {
@@ -740,13 +740,14 @@ img {
 .spot-card-address {
   font-size: 0.8rem;
   color: var(--color-text-light);
-  margin-bottom: 10px;
+  margin-bottom: 6px;
+  line-height: 1.5;
 }
 
 .spot-card-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 4px;
 }
 
 .tag {
@@ -754,11 +755,12 @@ img {
   align-items: center;
   gap: 3px;
   font-size: 0.8125rem;
-  padding: 3px 8px;
-  border-radius: 50px;
+  padding: 1px 7px;
+  border-radius: var(--radius-sm);
   background: var(--color-bg);
   color: var(--color-text-light);
   border: 1px solid var(--color-border);
+  line-height: 1.5;
 }
 
 .tag-visited {
@@ -910,7 +912,7 @@ img {
   margin-bottom: 20px;
   padding: 7px 18px;
   border: 2px solid var(--color-border);
-  border-radius: 50px;
+  border-radius: var(--radius);
   background: none;
   font-size: 0.85rem;
   font-family: inherit;
@@ -1202,7 +1204,7 @@ img {
   padding: 6px 14px;
   font-size: 0.78rem;
   font-weight: 600;
-  border-radius: 50px;
+  border-radius: var(--radius);
   color: #fff;
   transition: opacity 0.2s;
 }
@@ -1328,7 +1330,7 @@ img {
   display: inline-block;
   font-size: 0.8125rem;
   padding: 2px 8px;
-  border-radius: 50px;
+  border-radius: var(--radius-sm);
   background: #FDECEA;
   color: var(--color-danger);
   margin-bottom: 8px;
@@ -1354,7 +1356,7 @@ img {
   font-size: 0.78rem;
   font-weight: 600;
   padding: 4px 12px;
-  border-radius: 50px;
+  border-radius: var(--radius);
   background: var(--color-bg);
   color: var(--color-primary);
   border: 1px solid var(--color-primary);
@@ -1543,7 +1545,7 @@ img {
   background: var(--color-primary);
   color: #fff;
   padding: 10px 24px;
-  border-radius: 50px;
+  border-radius: var(--radius);
   font-size: 0.9rem;
   font-weight: 600;
   text-decoration: none;
@@ -1770,4 +1772,9 @@ img {
 }
 @media (prefers-reduced-motion: reduce) {
   .has-reveal .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* カードのハートは押しやすさのため44pxのまま、行の高さだけ取らないように上下へはみ出させる（2026-10-04） */
+.spot-card .fav-btn {
+  margin: -10px -6px -10px 0;
 }
