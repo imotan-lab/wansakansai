@@ -298,13 +298,13 @@
         userLat = pos.coords.latitude;
         userLng = pos.coords.longitude;
         btnGps.classList.remove('loading');
-        btnGps.textContent = '現在地を更新';
-        gpsStatus.textContent = '現在地を取得しました。近い順に並べ替えました。';
+        btnGps.textContent = '現在地を更新して並べ替え';
+        gpsStatus.textContent = '現在地を取得しました。近い順に並べ替えました（選んでいる絞り込みはそのままです）。';
         renderSpots();
       },
       (err) => {
         btnGps.classList.remove('loading');
-        btnGps.textContent = '現在地から探す';
+        btnGps.textContent = '現在地から近い順に並べ替える';
         if (err.code === 1) {
           gpsStatus.textContent = '位置情報の使用が許可されていません。ブラウザの設定をご確認ください。';
         } else {
