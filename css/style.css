@@ -483,15 +483,16 @@ img {
   flex-wrap: wrap;
 }
 
+/* スマホは段の見出しを上に置くが、段の幅は中身の分だけにし、収まれば横に並べる（2026-10-04）。
+   以前は1段で1行を丸ごと使い、駐車場のように項目の少ない段の右が空いていた */
 @media (max-width: 768px) {
+  .filter-section {
+    column-gap: 24px;
+  }
   .filter-group {
     flex-direction: column;
     align-items: flex-start;
     gap: 4px;
-    width: 100%;
-  }
-  .filter-group-btns {
-    width: 100%;
   }
 }
 
