@@ -638,8 +638,8 @@ def build_html(spot: dict, all_spots: list = None, blog_index: dict = None) -> s
 
 {STATIC_FOOTER}
   <script>window.WANSAKA_SPOT_ID = "{sid_e}";</script>
-  <script src="../js/common.js?v=20260928"></script>
-  <script src="../js/spot.js?v=20260928"></script>
+  <script src="../js/common.js?v=2026100601"></script>
+  <script src="../js/spot.js?v=2026100601"></script>
 </body>
 </html>
 '''
@@ -752,7 +752,7 @@ def build_index_html(spots: list) -> str:
   </main>
 
 {STATIC_FOOTER}
-  <script src="../js/common.js?v=20260928"></script>
+  <script src="../js/common.js?v=2026100601"></script>
   <script>
     renderHeader('spots');
     renderFooter();

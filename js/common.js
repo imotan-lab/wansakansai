@@ -231,10 +231,22 @@ function isFavorite(spotId) {
   return getFavorites().has(spotId);
 }
 
-// Spot-Danger matching: check if spot name or any alias appears in text
-function spotNameMatchesText(spot, text) {
-  const names = [spot.name, ...(spot.aliases || [])];
-  return names.some(n => text.includes(n));
+// Spot-Danger matching: 危険情報の本文に、スポットの名前・別名が出てくるか
+// ★2026-10-06に「長い名前を優先」へ変更★ 単純な部分一致だと、京丹後の「かぶとやまこうえん」と
+// 書かれた危険情報に、西宮の甲山森林公園（別名「かぶとやま」）まで結び付いた（別名の包含は全体で25組）。
+// 別のスポットのもっと長い名前の一部としてしか出てこない名前は、一致に数えない。
+function spotsMatchingText(allSpots, text) {
+  const hits = allSpots
+    .map(s => ({ s, names: [s.name, ...(s.aliases || [])].filter(n => n && text.includes(n)) }))
+    .filter(h => h.names.length);
+  return hits
+    .filter(h => h.names.some(n => !hits.some(o => o !== h && o.names.some(m => m.length > n.length && m.includes(n)))))
+    .map(h => h.s);
+}
+
+function spotNameMatchesText(spot, text, allSpots) {
+  if (!allSpots) return [spot.name, ...(spot.aliases || [])].some(n => n && text.includes(n));
+  return spotsMatchingText(allSpots, text).some(s => s.id === spot.id);
 }
 
 

@@ -261,7 +261,7 @@ function paragraphize(text) {
         ${(() => {
           const related = dangers.filter(d => {
             const text = d.location + d.description;
-            return spotNameMatchesText(spot, text);
+            return spotNameMatchesText(spot, text, spots);
           });
           if (related.length === 0) return '';
           related.sort((a, b) => new Date(b.date) - new Date(a.date));
