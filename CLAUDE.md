@@ -248,6 +248,7 @@ JS描画だけだとレンダリング前HTMLにリンクが残らず、Google�
 - タスクID: wansakansai-spot-update-am（前半・昼12:10）/ wansakansai-spot-update-pm（後半・深夜2:37）
 - **チェック優先度はカウントベース**（`check_counts` で回数を管理し少ない順。新規は初期値0で最優先）。対象取得は `scripts/get_next_check_targets.py`、更新は `scripts/update_check_count.py`。詳細は各タスクのSKILL.md参照
 - 複数サイト突き合わせ + ブログ・SNS犬連れ実績確認
+- **トップの絞り込みに出る値（駐車場・ドッグラン・トイレ・入場料・tags・犬のサイズ）も毎回1つずつ見る**（2026-10-06。それまでClaude側の確認項目にtagsが無かった）
 - **有料施設・小規模施設はInstagramも確認する**。HPを持たない施設はInstagramが実質の公式で、料金改定・定休日がそこにしか出ないため
   - **★`dogRun.free` 単独で対象判定しないこと★** ドッグランが無いスポットもデフォルトで false のため、ほぼ全件が対象になりタスクが破綻する
   - 対象判定と歯止め（投稿日1年以上前は単独採用しない・Chrome MCPで原文未確認なら修正しない・一時的情報は書かない・アカウントの本人確認）の詳細は各タスクのSKILL.md参照
