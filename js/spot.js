@@ -46,7 +46,7 @@ function visitMemoHtml(spot) {
 function lastCheckedHtml(spot) {
   const d = jaDate(spot.lastChecked);
   if (!d) return '';
-  return `<p class="detail-checked">掲載情報の最終確認：${d}（<a href="${getBasePath()}editorial.html">確認のしかた</a>）</p>`;
+  return `<p class="detail-checked">掲載情報の最終確認：${d}</p>`;
 }
 
 // ===== Spot Detail Page =====

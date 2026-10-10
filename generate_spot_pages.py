@@ -468,7 +468,7 @@ def build_checked_html(spot: dict) -> str:
     d = ja_date(spot.get("lastChecked"))
     if not d:
         return ""
-    return f'<p class="detail-checked">掲載情報の最終確認：{d}（<a href="../editorial.html">確認のしかた</a>）</p>'
+    return f'<p class="detail-checked">掲載情報の最終確認：{d}</p>'
 
 
 def build_body_content(spot: dict, all_spots: list = None) -> str:

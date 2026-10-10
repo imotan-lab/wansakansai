@@ -1198,10 +1198,6 @@ img {
   color: var(--color-text-light);
 }
 
-.detail-checked a {
-  color: var(--color-text-light);
-}
-
 .back-link {
   display: inline-flex;
   align-items: center;
