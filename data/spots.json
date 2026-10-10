@@ -245,6 +245,10 @@
       "fee": ""
     },
     "visited": true,
+    "visit": {
+      "date": "2026-10-03",
+      "note": "こつぶの4歳の誕生日に、お昼から3時間半ほど過ごしました。いちばん楽しそうだったのはドッグランで、小型犬エリアと全犬種共用エリアの2つに分かれています。もう1つのお目当ては、犬と一緒に乗れるゴーカート。助手席の人が抱っこして乗る形で、実際にこつぶと乗りました。犬と乗れるゴーカートはほかではあまり見かけません。駐車場は広くて無料で、停めるのに困りませんでした。"
+    },
     "remarks": "入場料・駐車場・ドッグラン全て無料の道の駅。ドッグランは小型犬エリアと全犬種共用エリアの2区画。開放は土日の9:30〜16:00で、月〜金は休場（平日の祝日は事前確認推奨）。イルミネーション期間は開放時間が変わり、雨天や施設管理のため閉まる日もある。凶暴性のある犬・発情中のメス犬・伝染性の病気の犬・ワクチンや狂犬病予防接種を受けていない犬は入場不可で、接種証明書の提示を求められる場合があるため持参推奨。1人が同時に放せるのは1頭まで、場内でのおやつ・フードは控えること。園内はリード着用で散歩でき、フンは持ち帰り、マーキングはさせないこと。多目的広場では犬を放して走らせられない。果樹園エリアはペット不可。犬と一緒に乗れる珍しいゴーカートがあり、体高50cm以下の犬1匹まで、2人乗りで助手席の人が抱っこする場合に限り乗車可。テラス席犬同伴OKのレストランあり。駐車場とトイレは24時間利用可。",
     "imageUrl": "images/spots/kobe-fruit-flower-park/1r.jpg",
     "officialUrl": "https://fruit-flowerpark.jp/",
@@ -435,6 +439,7 @@
   },
   {
     "id": "hirakata-tobu-park",
+    "lastChecked": "2026-10-02",
     "name": "東部公園",
     "address": "大阪府枚方市大字尊延寺2987-1",
     "lat": 34.7961,
@@ -868,6 +873,7 @@
   },
   {
     "id": "kurotoriyama-park",
+    "lastChecked": "2026-09-21",
     "name": "黒鳥山公園",
     "address": "大阪府和泉市黒鳥町318",
     "lat": 34.486371,
@@ -910,6 +916,7 @@
   },
   {
     "id": "kuromaro-no-sato",
+    "lastChecked": "2026-09-21",
     "name": "道の駅 奥河内くろまろの郷",
     "address": "大阪府河内長野市高向1218-1",
     "lat": 34.4536,
@@ -962,6 +969,7 @@
   },
   {
     "id": "rinku-ice-park-dogrun",
+    "lastChecked": "2026-09-22",
     "name": "りんくうアイスパーク ドッグラン",
     "address": "大阪府泉佐野市りんくう往来北1-23",
     "lat": 34.4097,
@@ -1002,6 +1010,7 @@
   },
   {
     "id": "minami-neyagawa-park",
+    "lastChecked": "2026-09-22",
     "name": "南寝屋川公園",
     "address": "大阪府寝屋川市讃良東町6番1号",
     "lat": 34.7453,
@@ -1042,6 +1051,7 @@
   },
   {
     "id": "nakanoshima-park",
+    "lastChecked": "2026-09-22",
     "name": "中之島公園",
     "address": "大阪府大阪市北区中之島1",
     "lat": 34.6937,
@@ -1084,6 +1094,7 @@
   },
   {
     "id": "chikatsu-asuka-fudoki",
+    "lastChecked": "2026-09-22",
     "name": "近つ飛鳥風土記の丘",
     "address": "大阪府南河内郡河南町大字東山299",
     "lat": 34.50152,
@@ -1136,6 +1147,7 @@
   },
   {
     "id": "sennan-long-park",
+    "lastChecked": "2026-09-22",
     "name": "泉南りんくう公園（SENNAN LONG PARK）",
     "address": "大阪府泉南市りんくう南浜2-201",
     "lat": 34.3847,
@@ -1180,6 +1192,7 @@
   },
   {
     "id": "suminoe-park",
+    "lastChecked": "2026-09-22",
     "name": "住之江公園",
     "address": "大阪府大阪市住之江区南加賀屋1-1-117",
     "lat": 34.6167,
@@ -1220,6 +1233,7 @@
   },
   {
     "id": "ama-site-park",
+    "lastChecked": "2026-09-22",
     "name": "安満遺跡公園",
     "address": "大阪府高槻市八丁畷町12-3",
     "lat": 34.8489,
@@ -1263,6 +1277,7 @@
   },
   {
     "id": "utsubo-park",
+    "lastChecked": "2026-09-22",
     "name": "靭公園",
     "address": "大阪府大阪市西区靱本町2-1",
     "lat": 34.6828,
@@ -1303,6 +1318,7 @@
   },
   {
     "id": "nagai-park",
+    "lastChecked": "2026-09-22",
     "name": "長居公園",
     "address": "大阪府大阪市東住吉区長居公園1-1",
     "lat": 34.6114,
@@ -1345,6 +1361,7 @@
   },
   {
     "id": "grand-green-osaka",
+    "lastChecked": "2026-09-22",
     "name": "グラングリーン大阪（うめきた公園）",
     "address": "大阪府大阪市北区大深町1",
     "lat": 34.7045,
@@ -1389,6 +1406,7 @@
   },
   {
     "id": "minoo-park",
+    "lastChecked": "2026-09-23",
     "name": "箕面公園（箕面大滝）",
     "address": "大阪府箕面市箕面公園1-18",
     "lat": 34.8528,
@@ -1445,6 +1463,7 @@
   },
   {
     "id": "tsurumi-ryokuchi",
+    "lastChecked": "2026-09-23",
     "name": "鶴見緑地",
     "address": "大阪府大阪市鶴見区緑地公園2-163",
     "lat": 34.7078,
@@ -1490,6 +1509,7 @@
   },
   {
     "id": "yamada-ike-park",
+    "lastChecked": "2026-09-23",
     "name": "山田池公園",
     "address": "大阪府枚方市山田池公園1-1",
     "lat": 34.8064,
@@ -1533,6 +1553,7 @@
   },
   {
     "id": "shikinzan-park",
+    "lastChecked": "2026-09-23",
     "name": "紫金山公園",
     "address": "大阪府吹田市岸部北4丁目",
     "lat": 34.7832,
@@ -1576,6 +1597,7 @@
   },
   {
     "id": "saito-nishi-park",
+    "lastChecked": "2026-09-23",
     "name": "彩都西公園",
     "address": "大阪府茨木市彩都やまぶき1-3",
     "lat": 34.8536,
@@ -1616,6 +1638,7 @@
   },
   {
     "id": "fureai-ryokuchi",
+    "lastChecked": "2026-09-23",
     "name": "ふれあい緑地（服部ビオパーク）",
     "aliases": [
       "ふれあい緑地",
@@ -1658,6 +1681,7 @@
   },
   {
     "id": "satsukiyama-park",
+    "lastChecked": "2026-09-23",
     "name": "五月山公園",
     "address": "大阪府池田市綾羽2-5-33",
     "lat": 34.826,
@@ -1702,6 +1726,7 @@
   },
   {
     "id": "daisen-park",
+    "lastChecked": "2026-09-23",
     "name": "大仙公園",
     "address": "大阪府堺市堺区百舌鳥夕雲町2丁204",
     "lat": 34.5568,
@@ -1744,6 +1769,7 @@
   },
   {
     "id": "yahataya-park",
+    "lastChecked": "2026-09-24",
     "name": "八幡屋公園",
     "address": "大阪府大阪市港区田中3-1-40",
     "lat": 34.6605,
@@ -1784,6 +1810,7 @@
   },
   {
     "id": "ohasu-park",
+    "lastChecked": "2026-09-24",
     "name": "大蓮公園",
     "aliases": [
       "おおはす公園",
@@ -1825,6 +1852,7 @@
   },
   {
     "id": "sumiyoshi-park",
+    "lastChecked": "2026-09-24",
     "name": "住吉公園",
     "address": "大阪府大阪市住之江区浜口東1-1-13",
     "lat": 34.6128,
@@ -1867,6 +1895,7 @@
   },
   {
     "id": "kyuhoji-ryokuchi",
+    "lastChecked": "2026-09-24",
     "name": "久宝寺緑地",
     "address": "大阪府八尾市西久宝寺323",
     "lat": 34.63,
@@ -1909,6 +1938,7 @@
   },
   {
     "id": "kurondo-enchi",
+    "lastChecked": "2026-09-24",
     "name": "大阪府民の森 くろんど園地",
     "aliases": [
       "くろんど園地",
@@ -1954,6 +1984,7 @@
   },
   {
     "id": "otsu-nagisa-park",
+    "lastChecked": "2026-09-24",
     "name": "大津湖岸なぎさ公園",
     "address": "滋賀県大津市由美浜",
     "lat": 35.0065,
@@ -1995,6 +2026,7 @@
   },
   {
     "id": "yabase-kihan-park",
+    "lastChecked": "2026-09-24",
     "name": "矢橋帰帆島公園",
     "address": "滋賀県草津市矢橋町字帰帆2108",
     "lat": 35.0033,
@@ -2037,6 +2069,7 @@
   },
   {
     "id": "rokuha-park",
+    "lastChecked": "2026-09-24",
     "name": "草津市立ロクハ公園",
     "address": "滋賀県草津市追分7-11-2",
     "lat": 34.9919,
@@ -2078,6 +2111,7 @@
   },
   {
     "id": "houkoen-nagahama",
+    "lastChecked": "2026-09-24",
     "name": "豊公園",
     "address": "滋賀県長浜市公園町1325",
     "lat": 35.3847,
@@ -2122,6 +2156,7 @@
   },
   {
     "id": "shozakai-park",
+    "lastChecked": "2026-09-24",
     "name": "庄堺公園",
     "address": "滋賀県彦根市開出今町",
     "lat": 35.2563,
@@ -2163,6 +2198,7 @@
   },
   {
     "id": "togei-no-mori",
+    "lastChecked": "2026-09-25",
     "name": "滋賀県立陶芸の森",
     "address": "滋賀県甲賀市信楽町勅旨2188-7",
     "lat": 34.885776,
@@ -2204,6 +2240,7 @@
   },
   {
     "id": "zeze-castle-park",
+    "lastChecked": "2026-09-25",
     "name": "膳所城跡公園",
     "address": "滋賀県大津市本丸町7",
     "lat": 34.9938,
@@ -2248,6 +2285,7 @@
   },
   {
     "id": "kurokabe-square",
+    "lastChecked": "2026-09-25",
     "name": "黒壁スクエア",
     "address": "滋賀県長浜市元浜町12-38",
     "lat": 35.3816,
@@ -2291,6 +2329,7 @@
   },
   {
     "id": "taga-taisha",
+    "lastChecked": "2026-09-25",
     "name": "多賀大社",
     "address": "滋賀県犬上郡多賀町多賀604",
     "lat": 35.2274,
@@ -2332,6 +2371,7 @@
   },
   {
     "id": "biwako-hakodateyama",
+    "lastChecked": "2026-09-25",
     "name": "びわこ箱館山",
     "address": "滋賀県高島市今津町日置前4201-4",
     "lat": 35.4297,
@@ -2373,6 +2413,7 @@
   },
   {
     "id": "blumenooka",
+    "lastChecked": "2026-09-25",
     "name": "滋賀農業公園ブルーメの丘",
     "address": "滋賀県蒲生郡日野町西大路843",
     "lat": 35.012982,
@@ -2416,6 +2457,7 @@
   },
   {
     "id": "ojiyama-sports-park",
+    "lastChecked": "2026-09-25",
     "name": "皇子山総合運動公園",
     "address": "滋賀県大津市御陵町4-1",
     "lat": 35.0188,
@@ -2458,6 +2500,7 @@
   },
   {
     "id": "hachiman-park",
+    "lastChecked": "2026-09-25",
     "name": "八幡公園",
     "address": "滋賀県近江八幡市宮内町",
     "lat": 35.1239,
@@ -2500,6 +2543,7 @@
   },
   {
     "id": "ayukawa-senbonzakura",
+    "lastChecked": "2026-09-25",
     "name": "鮎河の千本桜（うぐい川公園）",
     "address": "滋賀県甲賀市土山町鮎河",
     "lat": 34.955576,
@@ -2545,6 +2589,7 @@
   },
   {
     "id": "shiki-no-sato-park",
+    "lastChecked": "2026-09-25",
     "name": "道の駅 四季の郷公園 FOOD HUNTER PARK",
     "address": "和歌山県和歌山市明王寺479-1",
     "lat": 34.215637,
@@ -2588,6 +2633,7 @@
   },
   {
     "id": "suiken-park",
+    "lastChecked": "2026-09-26",
     "name": "水軒公園",
     "address": "和歌山県和歌山市西浜1188",
     "lat": 34.19308,
@@ -2629,6 +2675,7 @@
   },
   {
     "id": "kinokawa-daiichi-ryokuchi",
+    "lastChecked": "2026-09-26",
     "name": "紀の川第1緑地",
     "address": "和歌山県和歌山市湊",
     "lat": 34.2441,
@@ -2671,6 +2718,7 @@
   },
   {
     "id": "bansho-yama-park",
+    "lastChecked": "2026-09-26",
     "name": "番所山公園",
     "address": "和歌山県西牟婁郡白浜町3601-1",
     "lat": 33.694038,
@@ -2712,6 +2760,7 @@
   },
   {
     "id": "shirasaki-kaiyo-park",
+    "lastChecked": "2026-09-26",
     "name": "白崎海洋公園",
     "address": "和歌山県日高郡由良町大引960-1",
     "lat": 33.9671,
@@ -2753,6 +2802,7 @@
   },
   {
     "id": "kataonanami-park",
+    "lastChecked": "2026-09-26",
     "name": "片男波公園",
     "address": "和歌山県和歌山市和歌浦南3-1700",
     "lat": 34.180322,
@@ -2795,6 +2845,7 @@
   },
   {
     "id": "shimin-no-mori-park",
+    "lastChecked": "2026-09-26",
     "name": "和歌山市森林公園 市民の森",
     "address": "和歌山県和歌山市深山600-1",
     "lat": 34.2835,
@@ -2840,6 +2891,7 @@
   },
   {
     "id": "oike-yuen",
+    "lastChecked": "2026-09-26",
     "name": "大池遊園",
     "address": "和歌山県紀の川市貴志川町長山1287番地の1",
     "lat": 34.204252,
@@ -2882,6 +2934,7 @@
   },
   {
     "id": "koyasan-okunoin",
+    "lastChecked": "2026-09-27",
     "name": "高野山 奥之院参道",
     "address": "和歌山県伊都郡高野町高野山550",
     "lat": 34.2145,
@@ -2924,6 +2977,7 @@
   },
   {
     "id": "michinoeki-kaki-kudoyama",
+    "lastChecked": "2026-09-27",
     "name": "道の駅 柿の郷くどやま",
     "address": "和歌山県伊都郡九度山町入郷5-5",
     "lat": 34.2936,
@@ -2965,6 +3019,7 @@
   },
   {
     "id": "michinoeki-manyo-sato",
+    "lastChecked": "2026-09-27",
     "name": "道の駅 紀の川万葉の里",
     "address": "和歌山県伊都郡かつらぎ町窪487-2",
     "lat": 34.2827,
@@ -3006,6 +3061,7 @@
   },
   {
     "id": "kizeppukyo",
+    "lastChecked": "2026-09-27",
     "name": "奇絶峡",
     "address": "和歌山県田辺市上秋津4392",
     "lat": 33.7616,
@@ -3048,6 +3104,7 @@
   },
   {
     "id": "ougigahama-park",
+    "lastChecked": "2026-09-27",
     "name": "扇ヶ浜公園",
     "address": "和歌山県田辺市扇ヶ浜2-20",
     "lat": 33.7329,
@@ -3088,6 +3145,7 @@
   },
   {
     "id": "shinjo-sogo-park",
+    "lastChecked": "2026-09-27",
     "name": "新庄総合公園",
     "address": "和歌山県田辺市たきない町24-16",
     "lat": 33.6965,
@@ -3128,6 +3186,7 @@
   },
   {
     "id": "gomadanzan-forest-park",
+    "lastChecked": "2026-09-27",
     "name": "護摩壇山森林公園",
     "address": "和歌山県田辺市龍神村龍神918-61",
     "lat": 34.040248,
@@ -3173,6 +3232,7 @@
   },
   {
     "id": "michinoeki-shimizu",
+    "lastChecked": "2026-09-27",
     "name": "道の駅 しみず",
     "address": "和歌山県有田郡有田川町大字清水607",
     "lat": 34.087711,
@@ -3223,6 +3283,7 @@
   },
   {
     "id": "washigamine-cosmos-park",
+    "lastChecked": "2026-09-27",
     "name": "鷲ヶ峰コスモスパーク",
     "address": "和歌山県有田郡有田川町長谷244-2",
     "lat": 34.092765,
@@ -3264,6 +3325,7 @@
   },
   {
     "id": "gobo-sogo-park",
+    "lastChecked": "2026-09-27",
     "name": "御坊総合運動公園",
     "address": "和歌山県御坊市塩屋町南塩屋1123",
     "lat": 33.8979,
@@ -3304,6 +3366,7 @@
   },
   {
     "id": "hashiguiiwa",
+    "lastChecked": "2026-09-28",
     "name": "橋杭岩",
     "address": "和歌山県東牟婁郡串本町鬮野川1549-8",
     "lat": 33.488099,
@@ -3345,6 +3408,7 @@
   },
   {
     "id": "shiono-misaki-bouro",
+    "lastChecked": "2026-09-28",
     "name": "潮岬 望楼の芝",
     "address": "和歌山県東牟婁郡串本町潮岬2706-26",
     "lat": 33.4374,
@@ -3387,6 +3451,7 @@
   },
   {
     "id": "kozagawa-ichimaiwa",
+    "lastChecked": "2026-09-28",
     "name": "古座川の一枚岩",
     "address": "和歌山県東牟婁郡古座川町相瀬290-2",
     "lat": 33.545935,
@@ -3430,6 +3495,7 @@
   },
   {
     "id": "jofuku-park",
+    "lastChecked": "2026-09-29",
     "name": "徐福公園",
     "address": "和歌山県新宮市徐福1-4-24",
     "lat": 33.7295,
@@ -3471,6 +3537,7 @@
   },
   {
     "id": "tankakujo-park",
+    "lastChecked": "2026-09-29",
     "name": "丹鶴城公園",
     "address": "和歌山県新宮市丹鶴3丁目7688-2",
     "lat": 33.7299,
@@ -3516,6 +3583,7 @@
   },
   {
     "id": "kuroshio-park",
+    "lastChecked": "2026-09-29",
     "name": "黒潮公園",
     "address": "和歌山県新宮市三輪崎300",
     "lat": 33.7145,
@@ -3558,6 +3626,7 @@
   },
   {
     "id": "kurosawa-farm",
+    "lastChecked": "2026-09-29",
     "name": "黒沢牧場",
     "address": "和歌山県海南市上谷603",
     "lat": 34.1299,
@@ -3606,6 +3675,7 @@
   },
   {
     "id": "seseragi-no-sato-koura",
+    "lastChecked": "2026-09-29",
     "name": "道の駅 せせらぎの里こうら",
     "address": "滋賀県犬上郡甲良町金屋1549-4",
     "lat": 35.201897,
@@ -3640,6 +3710,7 @@
   },
   {
     "id": "mitsui-outlet-shiga-ryuo",
+    "lastChecked": "2026-09-29",
     "name": "三井アウトレットパーク 滋賀竜王",
     "address": "滋賀県蒲生郡竜王町大字薬師1178-694",
     "lat": 35.058692,
@@ -3677,6 +3748,7 @@
   },
   {
     "id": "kusatsugawa-atochi-park",
+    "lastChecked": "2026-09-29",
     "name": "草津川跡地公園 ai彩ひろば",
     "address": "滋賀県草津市北山田町3268-1",
     "lat": 35.0098,
@@ -3711,6 +3783,7 @@
   },
   {
     "id": "hikone-castle",
+    "lastChecked": "2026-09-30",
     "name": "彦根城",
     "address": "滋賀県彦根市金亀町1-1",
     "lat": 35.275366,
@@ -3748,6 +3821,7 @@
   },
   {
     "id": "biwako-umenosato-dogrun",
+    "lastChecked": "2026-09-30",
     "name": "びわこ梅の郷ドッグラン",
     "address": "滋賀県野洲市吉川2425",
     "lat": 35.129267,
@@ -3781,6 +3855,7 @@
   },
   {
     "id": "takama-mizube-park",
+    "lastChecked": "2026-09-30",
     "name": "高間みずべ公園",
     "address": "滋賀県甲賀市甲賀町油日2216",
     "lat": 34.871759,
@@ -3815,6 +3890,7 @@
   },
   {
     "id": "enmei-park",
+    "lastChecked": "2026-09-30",
     "name": "延命公園",
     "address": "滋賀県東近江市八日市松尾町",
     "lat": 35.1125,
@@ -3849,6 +3925,7 @@
   },
   {
     "id": "obuchi-ike-park",
+    "lastChecked": "2026-09-30",
     "name": "大渕池公園",
     "address": "奈良県奈良市中山町西1丁目839-1",
     "lat": 34.7105,
@@ -3884,6 +3961,7 @@
   },
   {
     "id": "crossway-nakamachi",
+    "lastChecked": "2026-09-30",
     "name": "道の駅クロスウェイなかまち",
     "address": "奈良県奈良市中町4694-1",
     "lat": 34.6686,
@@ -3917,6 +3995,7 @@
   },
   {
     "id": "heijo-palace-park",
+    "lastChecked": "2026-09-30",
     "name": "平城宮跡歴史公園",
     "address": "奈良県奈良市二条大路南4-6-1",
     "lat": 34.6876,
@@ -3952,6 +4031,7 @@
   },
   {
     "id": "ikoma-sanroku-park",
+    "lastChecked": "2026-09-30",
     "name": "生駒山麓公園",
     "address": "奈良県生駒市俵口町2088",
     "lat": 34.6831,
@@ -3986,6 +4066,7 @@
   },
   {
     "id": "yamato-minzoku-park",
+    "lastChecked": "2026-09-30",
     "name": "大和民俗公園",
     "address": "奈良県大和郡山市矢田町545",
     "lat": 34.653872,
@@ -4021,6 +4102,7 @@
   },
   {
     "id": "yatayama-asobi-no-mori",
+    "lastChecked": "2026-09-30",
     "name": "矢田山遊びの森",
     "address": "奈良県大和郡山市矢田町2070",
     "lat": 34.6488,
@@ -4054,6 +4136,7 @@
   },
   {
     "id": "tenri-dam-fuchi-park",
+    "lastChecked": "2026-10-01",
     "name": "天理ダム風致公園",
     "address": "奈良県天理市下仁興町",
     "lat": 34.5625,
@@ -4090,6 +4173,7 @@
   },
   {
     "id": "kashihara-sports-park",
+    "lastChecked": "2026-10-01",
     "name": "橿原運動公園",
     "address": "奈良県橿原市雲梯町323-2",
     "lat": 34.5178,
@@ -4122,6 +4206,7 @@
   },
   {
     "id": "asuka-historical-park",
+    "lastChecked": "2026-10-01",
     "name": "国営飛鳥歴史公園",
     "address": "奈良県高市郡明日香村大字平田538",
     "lat": 34.4647,
@@ -4166,6 +4251,7 @@
   },
   {
     "id": "uda-animal-park",
+    "lastChecked": "2026-10-01",
     "name": "うだ・アニマルパーク",
     "address": "奈良県宇陀市大宇陀小附75-1",
     "lat": 34.4847,
@@ -4200,6 +4286,7 @@
   },
   {
     "id": "yoshimizu-shrine",
+    "lastChecked": "2026-10-01",
     "name": "吉水神社",
     "address": "奈良県吉野郡吉野町吉野山579",
     "lat": 34.3694,
@@ -4235,6 +4322,7 @@
   },
   {
     "id": "kyoto-gyoen",
+    "lastChecked": "2026-10-01",
     "name": "京都御苑",
     "address": "京都府京都市上京区京都御苑3",
     "lat": 35.024757,
@@ -4272,6 +4360,7 @@
   },
   {
     "id": "tetsugaku-no-michi",
+    "lastChecked": "2026-10-01",
     "name": "哲学の道",
     "address": "京都府京都市左京区銀閣寺町付近〜若王子町付近",
     "lat": 35.0273,
@@ -4307,6 +4396,7 @@
   },
   {
     "id": "kamogawa-park",
+    "lastChecked": "2026-10-01",
     "name": "鴨川公園",
     "address": "京都府京都市北区出雲路松ノ下町",
     "lat": 35.041846,
@@ -4345,6 +4435,7 @@
   },
   {
     "id": "takaraike-park",
+    "lastChecked": "2026-10-01",
     "name": "宝が池公園",
     "address": "京都府京都市左京区上高野流田町8",
     "lat": 35.058011,
@@ -4382,6 +4473,7 @@
   },
   {
     "id": "byodoin",
+    "lastChecked": "2026-10-01",
     "name": "平等院",
     "address": "京都府宇治市宇治蓮華116",
     "lat": 34.890138,
@@ -4420,6 +4512,7 @@
   },
   {
     "id": "keihanna-park",
+    "lastChecked": "2026-10-02",
     "name": "けいはんな記念公園",
     "address": "京都府相楽郡精華町精華台6-1",
     "lat": 34.746982,
@@ -4456,6 +4549,7 @@
   },
   {
     "id": "kasagi-camp",
+    "lastChecked": "2026-10-02",
     "name": "笠置キャンプ場",
     "address": "京都府相楽郡笠置町笠置",
     "lat": 34.754031,
@@ -4492,6 +4586,7 @@
   },
   {
     "id": "kameoka-sports-park",
+    "lastChecked": "2026-10-02",
     "name": "亀岡運動公園",
     "address": "京都府亀岡市曽我部町穴太土渕33-1",
     "lat": 35.006013,
@@ -4527,6 +4622,7 @@
   },
   {
     "id": "michinoeki-kyotanba-ajimunosato",
+    "lastChecked": "2026-10-02",
     "name": "道の駅 京丹波 味夢の里",
     "address": "京都府船井郡京丹波町曽根深シノ65-1",
     "lat": 35.155995,
@@ -4562,6 +4658,7 @@
   },
   {
     "id": "miyama-kayabuki-no-sato",
+    "lastChecked": "2026-10-02",
     "name": "美山かやぶきの里",
     "address": "京都府南丹市美山町北",
     "lat": 35.316434,
@@ -4598,6 +4695,7 @@
   },
   {
     "id": "fuminmori-hiyoshi",
+    "lastChecked": "2026-10-02",
     "name": "京都府立府民の森ひよし",
     "address": "京都府南丹市日吉町天若上ノ所25",
     "lat": 35.137478,
@@ -4633,6 +4731,7 @@
   },
   {
     "id": "tango-oukoku-shoku-no-miyako",
+    "lastChecked": "2026-10-02",
     "name": "丹後王国「食のみやこ」",
     "address": "京都府京丹後市弥栄町鳥取123",
     "lat": 35.674305,
@@ -4667,6 +4766,7 @@
   },
   {
     "id": "hitokura-park",
+    "lastChecked": "2026-10-02",
     "name": "兵庫県立一庫公園",
     "address": "兵庫県川西市国崎字知明1-6",
     "lat": 34.9078,
@@ -4702,6 +4802,7 @@
   },
   {
     "id": "denspo-dogrun",
+    "lastChecked": "2026-10-03",
     "name": "北神戸田園スポーツ公園（でんスポ）",
     "address": "兵庫県神戸市北区有野町二郎753-1",
     "lat": 34.8465,
@@ -4736,6 +4837,7 @@
   },
   {
     "id": "awaji-hanasajiki",
+    "lastChecked": "2026-10-03",
     "name": "あわじ花さじき",
     "address": "兵庫県淡路市楠本2805-7",
     "lat": 34.5535521,
@@ -4769,6 +4871,7 @@
   },
   {
     "id": "awajishima-park",
+    "lastChecked": "2026-10-03",
     "name": "兵庫県立淡路島公園",
     "address": "兵庫県淡路市楠本2425-2",
     "lat": 34.5893,
@@ -4805,6 +4908,7 @@
   },
   {
     "id": "ako-kaihin-park",
+    "lastChecked": "2026-10-03",
     "name": "兵庫県立赤穂海浜公園",
     "address": "兵庫県赤穂市御崎1857-5",
     "lat": 34.733165,
@@ -4838,6 +4942,7 @@
   },
   {
     "id": "ako-picnic-park",
+    "lastChecked": "2026-10-03",
     "name": "赤穂ピクニック公園",
     "address": "兵庫県赤穂市塩屋",
     "lat": 34.7713,
@@ -4871,6 +4976,7 @@
   },
   {
     "id": "michinoeki-chikusa",
+    "lastChecked": "2026-10-03",
     "name": "道の駅 ちくさ",
     "address": "兵庫県宍粟市千種町下河野745-5",
     "lat": 35.1349,
@@ -4906,6 +5012,7 @@
   },
   {
     "id": "shirotopia-park",
+    "lastChecked": "2026-10-03",
     "name": "シロトピア記念公園",
     "address": "兵庫県姫路市本町68",
     "lat": 34.8415,
@@ -4941,6 +5048,7 @@
   },
   {
     "id": "maiko-park",
+    "lastChecked": "2026-10-03",
     "name": "県立舞子公園",
     "address": "兵庫県神戸市垂水区東舞子町2051",
     "lat": 34.6309,
@@ -4974,6 +5082,7 @@
   },
   {
     "id": "mikiyama-forest-park",
+    "lastChecked": "2026-10-03",
     "name": "兵庫県立三木山森林公園",
     "address": "兵庫県三木市福井字三木山2465-1",
     "lat": 34.7947,
@@ -5009,6 +5118,7 @@
   },
   {
     "id": "shiawasenomura",
+    "lastChecked": "2026-10-03",
     "name": "しあわせの村",
     "address": "兵庫県神戸市北区しあわせの村1-1",
     "lat": 34.7104,
@@ -5041,6 +5151,7 @@
   },
   {
     "id": "amagasaki-mori-ryokuchi",
+    "lastChecked": "2026-10-04",
     "name": "兵庫県立尼崎の森中央緑地",
     "address": "兵庫県尼崎市扇町33-4",
     "lat": 34.709,
@@ -5075,6 +5186,7 @@
   },
   {
     "id": "everyones-cafe",
+    "lastChecked": "2026-10-04",
     "name": "Every one's cafe",
     "address": "滋賀県米原市磯1551",
     "lat": 35.314686,
@@ -5112,6 +5224,7 @@
   },
   {
     "id": "hotel-biwadog",
+    "lastChecked": "2026-10-04",
     "name": "ホテルビワドッグ",
     "address": "滋賀県彦根市新海町3260",
     "lat": 35.216278,
@@ -5152,6 +5265,7 @@
   },
   {
     "id": "kabata-resort",
+    "lastChecked": "2026-10-04",
     "name": "かばたリゾート",
     "address": "滋賀県高島市新旭町饗庭1657",
     "lat": 35.382076,
@@ -5196,6 +5310,7 @@
   },
   {
     "id": "oogoya",
+    "lastChecked": "2026-10-04",
     "name": "大小屋",
     "address": "滋賀県甲賀市信楽町勅旨2349",
     "lat": 34.88673,
@@ -5232,6 +5347,7 @@
   },
   {
     "id": "dog-cafe-three-c",
+    "lastChecked": "2026-10-04",
     "name": "Dog cafe three C",
     "address": "滋賀県甲賀市水口町水口6230-6",
     "lat": 34.964536,
@@ -5270,6 +5386,7 @@
   },
   {
     "id": "and-f-cafe",
+    "lastChecked": "2026-09-29",
     "name": "and F CAFE",
     "address": "滋賀県守山市二町町208-5",
     "lat": 35.04605,
@@ -5316,6 +5433,7 @@
   },
   {
     "id": "with-wan",
+    "lastChecked": "2026-10-04",
     "name": "ドッグラン&カフェ With わんっ!",
     "address": "滋賀県東近江市五個荘清水鼻町114-1",
     "lat": 35.138639,
@@ -5355,6 +5473,7 @@
   },
   {
     "id": "stellar-cafe",
+    "lastChecked": "2026-10-04",
     "name": "保護犬カフェ STELLAR",
     "address": "滋賀県大津市瀬田2丁目3-8 橋本ビル201",
     "lat": 34.972494,
@@ -5394,6 +5513,7 @@
   },
   {
     "id": "kinoshita-ryoriten",
+    "lastChecked": "2026-10-04",
     "name": "木のした料理店",
     "address": "滋賀県大津市北比良1036-34",
     "lat": 35.23425,
@@ -5431,6 +5551,7 @@
   },
   {
     "id": "izara-cafe",
+    "lastChecked": "2026-10-04",
     "name": "チョークアートCAFE&BAR 伊沙羅",
     "address": "滋賀県彦根市本町1-7-42",
     "lat": 35.270782,
@@ -5470,6 +5591,7 @@
   },
   {
     "id": "minori-farm",
+    "lastChecked": "2026-10-05",
     "name": "みのり農園（ドッグランminori）",
     "address": "滋賀県野洲市吉川5359",
     "lat": 35.129,
@@ -5509,6 +5631,7 @@
   },
   {
     "id": "kutsuki-asahiya",
+    "lastChecked": "2026-10-05",
     "name": "朽木旭屋",
     "address": "滋賀県高島市朽木岩瀬40-1",
     "lat": 35.3122,
@@ -5547,6 +5670,7 @@
   },
   {
     "id": "r-cafe",
+    "lastChecked": "2026-10-05",
     "name": "R cafe",
     "address": "滋賀県大津市北比良934-1",
     "lat": 35.225854,
@@ -5592,6 +5716,7 @@
   },
   {
     "id": "holiday-afternoon",
+    "lastChecked": "2026-10-05",
     "name": "ホリデーアフタヌーン",
     "address": "滋賀県大津市北比良948-10",
     "lat": 35.2268,
@@ -5637,6 +5762,7 @@
   },
   {
     "id": "takano-ichigo-en",
+    "lastChecked": "2026-10-05",
     "name": "高野いちご園",
     "address": "滋賀県蒲生郡竜王町山之上6603",
     "lat": 35.05,
@@ -5678,6 +5804,7 @@
   },
   {
     "id": "aguri-park-ryuo",
+    "lastChecked": "2026-10-05",
     "name": "道の駅 アグリパーク竜王",
     "address": "滋賀県蒲生郡竜王町山之上6526",
     "lat": 35.0547,
@@ -5723,6 +5850,7 @@
   },
   {
     "id": "shikinosato-yuraku",
+    "lastChecked": "2026-10-05",
     "name": "四季の郷 遊楽 〜天空のリゾート 四季〜",
     "aliases": [
       "四季の郷遊楽",
@@ -5775,6 +5903,7 @@
   },
   {
     "id": "cafe-chrp",
+    "lastChecked": "2026-10-05",
     "name": "cafe CHRP",
     "aliases": [
       "カフェチャープ",
@@ -5813,6 +5942,7 @@
   },
   {
     "id": "cafe-anera",
+    "lastChecked": "2026-10-05",
     "name": "Cafeアーネラ",
     "aliases": [
       "カフェアーネラ",
@@ -5851,6 +5981,7 @@
   },
   {
     "id": "dog-run-cafe-pic",
+    "lastChecked": "2026-10-05",
     "name": "Dog Run Cafe Pic",
     "aliases": [
       "ドッグランカフェピック",
@@ -5896,6 +6027,7 @@
   },
   {
     "id": "partners-house-yuasa",
+    "lastChecked": "2026-10-06",
     "name": "パートナーズハウスゆあさ",
     "aliases": [
       "ぱーとなーずはうすゆあさ",
@@ -5936,6 +6068,7 @@
   },
   {
     "id": "taiji-kujira-museum",
+    "lastChecked": "2026-10-06",
     "name": "太地町立くじらの博物館",
     "aliases": [
       "くじらの博物館",
@@ -5982,6 +6115,7 @@
   },
   {
     "id": "dog-hotel-shirahama",
+    "lastChecked": "2026-10-06",
     "name": "DOG HOTEL SHIRAHAMA",
     "aliases": [
       "ドッグホテル白浜",
@@ -6024,6 +6158,7 @@
   },
   {
     "id": "senjojiki-shirahama",
+    "lastChecked": "2026-10-06",
     "name": "千畳敷",
     "aliases": [
       "せんじょうじき",
@@ -6062,6 +6197,7 @@
   },
   {
     "id": "sandanbeki",
+    "lastChecked": "2026-10-06",
     "name": "三段壁",
     "aliases": [
       "さんだんべき",
@@ -6099,6 +6235,7 @@
   },
   {
     "id": "yuasa-machinami",
+    "lastChecked": "2026-10-06",
     "name": "湯浅町 重要伝統的建造物群保存地区",
     "aliases": [
       "ゆあさ",
@@ -6142,6 +6279,7 @@
   },
   {
     "id": "engetsuto",
+    "lastChecked": "2026-10-06",
     "name": "円月島（高嶋）",
     "aliases": [
       "えんげつとう",
@@ -6182,6 +6320,7 @@
   },
   {
     "id": "wakayama-marina-city",
+    "lastChecked": "2026-10-06",
     "name": "和歌山マリーナシティ",
     "aliases": [
       "わかやままりーなしてぃ",
@@ -6224,6 +6363,7 @@
   },
   {
     "id": "oishi-kogen",
+    "lastChecked": "2026-10-06",
     "name": "生石高原",
     "aliases": [
       "おいしこうげん",
@@ -6273,6 +6413,7 @@
   },
   {
     "id": "hirakusabaru-park",
+    "lastChecked": "2026-10-06",
     "name": "平草原公園",
     "aliases": [
       "ひらくさばらこうえん",
@@ -6318,6 +6459,7 @@
   },
   {
     "id": "aragijima",
+    "lastChecked": "2026-10-07",
     "name": "あらぎ島展望台",
     "aliases": [
       "あらぎじま",
@@ -6366,6 +6508,7 @@
   },
   {
     "id": "toretore-ichiba",
+    "lastChecked": "2026-10-07",
     "name": "とれとれ市場 南紀白浜",
     "aliases": [
       "とれとれいちば",
@@ -6409,6 +6552,7 @@
   },
   {
     "id": "shirarahama",
+    "lastChecked": "2026-10-07",
     "name": "白良浜",
     "aliases": [
       "しららはま",
@@ -6446,6 +6590,7 @@
   },
   {
     "id": "nanbu-bairin",
+    "lastChecked": "2026-10-07",
     "name": "南部梅林",
     "aliases": [
       "みなべばいりん",
@@ -6484,6 +6629,7 @@
   },
   {
     "id": "gomanninnomori-park",
+    "lastChecked": "2026-10-07",
     "name": "5万人の森公園",
     "address": "奈良県五條市北山町930-1",
     "lat": 34.3803,
@@ -6528,6 +6674,7 @@
   },
   {
     "id": "muroyama-art-forest",
+    "lastChecked": "2026-10-07",
     "name": "室生山上公園 芸術の森",
     "address": "奈良県宇陀市室生181",
     "lat": 34.538,
@@ -6572,6 +6719,7 @@
   },
   {
     "id": "ryuogabuchi",
+    "lastChecked": "2026-10-07",
     "name": "龍王ヶ渕（龍王ヶ淵）",
     "address": "奈良県宇陀市室生向渕",
     "lat": 34.5683,
@@ -6617,6 +6765,7 @@
   },
   {
     "id": "soni-kogen",
+    "lastChecked": "2026-10-07",
     "name": "曽爾高原",
     "address": "奈良県宇陀郡曽爾村太良路",
     "lat": 34.521,
@@ -6662,6 +6811,7 @@
   },
   {
     "id": "byobuiwa-koen",
+    "lastChecked": "2026-10-07",
     "name": "屏風岩公苑",
     "address": "奈良県宇陀郡曽爾村長野",
     "lat": 34.5073,
@@ -6706,6 +6856,7 @@
   },
   {
     "id": "katsuragisan-ropeway",
+    "lastChecked": "2026-10-07",
     "name": "葛城山ロープウェイ・葛城高原",
     "address": "奈良県御所市櫛羅2503-1",
     "lat": 34.463605,
@@ -6754,6 +6905,7 @@
   },
   {
     "id": "yoshinoyama",
+    "lastChecked": "2026-10-08",
     "name": "吉野山（千本桜）",
     "address": "奈良県吉野郡吉野町吉野山",
     "lat": 34.3628,
@@ -6803,6 +6955,7 @@
   },
   {
     "id": "tsukigase-baikei",
+    "lastChecked": "2026-10-08",
     "name": "月ヶ瀬梅渓",
     "address": "奈良県奈良市月ヶ瀬尾山",
     "lat": 34.7075,
@@ -6847,6 +7000,7 @@
   },
   {
     "id": "harvest-no-oka",
+    "lastChecked": "2026-10-08",
     "name": "堺・緑のミュージアム ハーベストの丘",
     "address": "大阪府堺市南区鉢ヶ峯寺2405-1",
     "lat": 34.4549,
@@ -6892,6 +7046,7 @@
   },
   {
     "id": "world-bokujo",
+    "lastChecked": "2026-10-08",
     "name": "ワールド牧場",
     "address": "大阪府南河内郡河南町白木1456-2",
     "lat": 34.4754,
@@ -6936,6 +7091,7 @@
   },
   {
     "id": "expo70-park",
+    "lastChecked": "2026-10-08",
     "name": "万博記念公園",
     "address": "大阪府吹田市千里万博公園1-1",
     "lat": 34.8083,
@@ -6982,6 +7138,7 @@
   },
   {
     "id": "sennan-satoumi-park",
+    "lastChecked": "2026-10-08",
     "name": "せんなん里海公園",
     "address": "大阪府泉南郡岬町淡輪地先",
     "lat": 34.3375,
@@ -7029,6 +7186,7 @@
   },
   {
     "id": "nishikinohama-park",
+    "lastChecked": "2026-10-08",
     "name": "二色の浜公園",
     "address": "大阪府貝塚市沢859-1",
     "lat": 34.439056,
@@ -7075,6 +7233,7 @@
   },
   {
     "id": "senri-minami-park",
+    "lastChecked": "2026-10-08",
     "name": "千里南公園",
     "address": "大阪府吹田市津雲台1-3",
     "lat": 34.796301,
@@ -7117,6 +7276,7 @@
   },
   {
     "id": "senri-chuo-park",
+    "lastChecked": "2026-10-08",
     "name": "千里中央公園",
     "address": "大阪府豊中市新千里東町3-9",
     "lat": 34.8111,
@@ -7161,6 +7321,7 @@
   },
   {
     "id": "suigetsu-park-ikeda",
+    "lastChecked": "2026-10-08",
     "name": "水月公園",
     "address": "大阪府池田市鉢塚3-6",
     "lat": 34.8161,
@@ -7204,6 +7365,7 @@
   },
   {
     "id": "kema-sakuranomiya-park",
+    "lastChecked": "2026-10-09",
     "name": "毛馬桜之宮公園",
     "address": "大阪府大阪市都島区中野町〜北区天満1丁目",
     "lat": 34.7028,
@@ -7249,6 +7411,7 @@
   },
   {
     "id": "hagitani-sogo-park",
+    "lastChecked": "2026-10-09",
     "name": "萩谷総合公園",
     "address": "大阪府高槻市大字萩谷111-1",
     "lat": 34.885,
@@ -7292,6 +7455,7 @@
   },
   {
     "id": "nagarebashi-kouzuyabashi",
+    "lastChecked": "2026-10-09",
     "name": "流れ橋（上津屋橋）",
     "address": "京都府八幡市上津屋里垣内56-1",
     "lat": 34.8681,
@@ -7340,6 +7504,7 @@
   },
   {
     "id": "yodogawa-sewaritei-sakuradeai",
+    "lastChecked": "2026-10-09",
     "name": "淀川河川公園 背割堤地区（さくらであい館）",
     "address": "京都府八幡市八幡在応寺地先",
     "lat": 34.8904,
@@ -7387,6 +7552,7 @@
   },
   {
     "id": "katsuragawa-ryokuchi-koen",
+    "lastChecked": "2026-10-09",
     "name": "桂川緑地公園（桂川河川敷）",
     "address": "京都府京都市南区吉祥院堤外町9",
     "lat": 34.9796,
@@ -7431,6 +7597,7 @@
   },
   {
     "id": "arashiyama-koen-kameyama",
+    "lastChecked": "2026-10-09",
     "name": "嵐山公園 亀山地区（亀山公園）",
     "address": "京都府京都市右京区嵯峨亀ノ尾町",
     "lat": 35.01514,
@@ -7479,6 +7646,7 @@
   },
   {
     "id": "tango-umihoshi-park",
+    "lastChecked": "2026-10-09",
     "name": "京都府立 丹後海と星の見える丘公園",
     "address": "京都府宮津市里波見",
     "lat": 35.622743,
@@ -7523,6 +7691,7 @@
   },
   {
     "id": "amanohashidate-park",
+    "lastChecked": "2026-10-09",
     "name": "天橋立公園（砂州）",
     "address": "京都府宮津市文珠",
     "lat": 35.569361,
@@ -7566,6 +7735,7 @@
   },
   {
     "id": "goro-ga-take-koen",
+    "lastChecked": "2026-10-09",
     "name": "五老ヶ岳公園",
     "address": "京都府舞鶴市字上安237",
     "lat": 35.4648,
@@ -7611,6 +7781,7 @@
   },
   {
     "id": "aobasanroku-koen",
+    "lastChecked": "2026-10-09",
     "name": "青葉山ろく公園",
     "address": "京都府舞鶴市岡安(無番地)",
     "lat": 35.499836,
@@ -7653,6 +7824,7 @@
   },
   {
     "id": "kabutoyama-koen",
+    "lastChecked": "2026-10-10",
     "name": "かぶと山公園",
     "address": "京都府京丹後市久美浜町向磯6",
     "lat": 35.61427,
@@ -7696,6 +7868,7 @@
   },
   {
     "id": "koshienhama-kaihin-park",
+    "lastChecked": "2026-10-10",
     "name": "甲子園浜海浜公園",
     "address": "兵庫県西宮市甲子園浜1-2-1",
     "lat": 34.7105,
@@ -7738,6 +7911,7 @@
   },
   {
     "id": "itami-skypark",
+    "lastChecked": "2026-10-10",
     "name": "伊丹スカイパーク",
     "address": "兵庫県伊丹市森本7丁目1-1",
     "lat": 34.77972,
@@ -7781,6 +7955,7 @@
   },
   {
     "id": "takarazuka-kita-sa-dogrun",
+    "lastChecked": "2026-10-10",
     "name": "宝塚北サービスエリア ドッグラン",
     "address": "兵庫県宝塚市玉瀬字奥之焼1-125",
     "lat": 34.8665,
@@ -7825,6 +8000,7 @@
   },
   {
     "id": "ishigaya-park-akashi",
+    "lastChecked": "2026-10-10",
     "name": "石ケ谷公園",
     "address": "兵庫県明石市大久保町松陰1126-47",
     "lat": 34.7073,
@@ -7869,6 +8045,7 @@
   },
   {
     "id": "okura-kaigan-koen",
+    "lastChecked": "2026-10-10",
     "name": "大蔵海岸公園",
     "address": "兵庫県明石市大蔵海岸通2-11",
     "lat": 34.642512,
@@ -7913,6 +8090,7 @@
   },
   {
     "id": "harima-chuo-park",
+    "lastChecked": "2026-10-10",
     "name": "兵庫県立播磨中央公園",
     "address": "兵庫県加東市下滝野1275-8",
     "lat": 34.9372,
@@ -7957,6 +8135,7 @@
   },
   {
     "id": "nishiki-sa-dogrun",
+    "lastChecked": "2026-10-10",
     "name": "西紀サービスエリア ドッグラン",
     "address": "兵庫県丹波篠山市東木之部1",
     "lat": 35.0906,
@@ -8004,6 +8183,7 @@
   },
   {
     "id": "izushi-castle",
+    "lastChecked": "2026-10-10",
     "name": "出石城跡・出石城下町",
     "address": "兵庫県豊岡市出石町内町",
     "lat": 35.46052865,
@@ -8055,6 +8235,7 @@
   },
   {
     "id": "ritsuunkyo",
+    "lastChecked": "2026-10-10",
     "name": "立雲峡",
     "address": "兵庫県朝来市和田山町竹田",
     "lat": 35.2867,
@@ -11033,6 +11214,7 @@
   },
   {
     "id": "asuka-inabuchi-tanada",
+    "lastChecked": "2026-09-20",
     "name": "稲渕の棚田（案山子ロード）",
     "address": "奈良県高市郡明日香村稲渕",
     "lat": 34.457079,
@@ -11096,6 +11278,7 @@
   },
   {
     "id": "hoshida-enchi",
+    "lastChecked": "2026-09-20",
     "name": "大阪府民の森 ほしだ園地（星のブランコ）",
     "address": "大阪府交野市星田5019-1",
     "lat": 34.752148,
@@ -11143,6 +11326,7 @@
   },
   {
     "id": "nishikori-park",
+    "lastChecked": "2026-09-20",
     "name": "錦織公園",
     "address": "大阪府富田林市錦織1560",
     "lat": 34.483586,
@@ -11187,6 +11371,7 @@
   },
   {
     "id": "iwawakisan",
+    "lastChecked": "2026-09-20",
     "name": "岩湧山（すすき草原）",
     "address": "大阪府河内長野市加賀田3822-1",
     "lat": 34.383444,
@@ -11231,6 +11416,7 @@
   },
   {
     "id": "kameoka-yume-cosmos-en",
+    "lastChecked": "2026-09-21",
     "name": "亀岡夢コスモス園",
     "address": "京都府亀岡市吉川町穴川野水",
     "lat": 35.014469,
@@ -11282,6 +11468,7 @@
   },
   {
     "id": "aramaki-rose-park",
+    "lastChecked": "2026-09-21",
     "name": "荒牧バラ公園",
     "address": "兵庫県伊丹市荒牧6丁目5",
     "lat": 34.811778,
@@ -11325,6 +11512,7 @@
   },
   {
     "id": "toyono-cosmos-no-sato",
+    "lastChecked": "2026-09-21",
     "name": "とよのコスモスの里",
     "address": "大阪府豊能郡豊能町牧下林2",
     "lat": 34.934567,
@@ -11376,6 +11564,7 @@
   },
   {
     "id": "inunakisan-shippoji",
+    "lastChecked": "2026-09-21",
     "name": "犬鳴山 七宝瀧寺の参道と渓谷",
     "address": "大阪府泉佐野市大木8",
     "lat": 34.338371,
@@ -11425,6 +11614,7 @@
   },
   {
     "id": "takihata",
+    "lastChecked": "2026-09-21",
     "name": "滝畑湖畔バーベキュー場",
     "address": "大阪府河内長野市滝畑1588-甲",
     "lat": 34.376583,
@@ -11471,6 +11661,7 @@
   },
   {
     "id": "ooedo-shirahama-gyoen",
+    "lastChecked": "2026-09-21",
     "name": "大江戸温泉物語Premium 白浜御苑",
     "aliases": [
       "おおえどおんせんものがたりぷれみあむしらはまぎょえん",
@@ -11523,6 +11714,7 @@
   },
   {
     "id": "whatawon-kishiwada",
+    "lastChecked": "2026-09-21",
     "name": "WHATAWON（ワタワン）",
     "address": "大阪府岸和田市岸の丘町1丁目32-1",
     "lat": 34.431496,
@@ -11572,6 +11764,7 @@
   },
   {
     "id": "bansyu-kiyomizudera",
+    "lastChecked": "2026-10-02",
     "name": "播州清水寺",
     "address": "兵庫県加東市平木1194",
     "lat": 34.972494,

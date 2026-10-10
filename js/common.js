@@ -108,6 +108,7 @@ const SITE_NAV = [
   { href: 'favorites.html', label: 'お気に入り', id: 'favorites' },
   { href: 'blog/index.html', label: 'ブログ', id: 'blog' },
   { href: 'about.html', label: 'このサイトについて', id: 'about' },
+  { href: 'editorial.html', label: '掲載情報について', id: 'editorial', footerOnly: true },
   { href: 'privacy.html', label: 'プライバシーポリシー', id: 'privacy', footerOnly: true },
   { href: 'contact.html', label: 'お問い合わせ', id: 'contact' },
 ];
