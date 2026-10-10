@@ -8281,6 +8281,7 @@
   },
   {
     "id": "okusuma-park",
+    "lastChecked": "2026-10-11",
     "name": "奥須磨公園",
     "address": "兵庫県神戸市須磨区多井畑字池の奥上18",
     "lat": 34.663028,
@@ -8324,6 +8325,7 @@
   },
   {
     "id": "sumotojo-ato",
+    "lastChecked": "2026-10-11",
     "name": "洲本城跡",
     "address": "兵庫県洲本市小路谷1272-2",
     "lat": 34.3377,
@@ -8377,6 +8379,7 @@
   },
   {
     "id": "logosland-dogrun",
+    "lastChecked": "2026-10-11",
     "name": "LOGOS LAND ドッグラン（鴻ノ巣山運動公園）",
     "address": "京都府城陽市寺田大川原24-4",
     "lat": 34.854917,
@@ -8427,6 +8430,7 @@
   },
   {
     "id": "maruyama-park-kyoto",
+    "lastChecked": "2026-10-11",
     "name": "円山公園",
     "address": "京都府京都市東山区円山町473",
     "lat": 35.003389,
@@ -8472,6 +8476,7 @@
   },
   {
     "id": "yodogawa-park-oyamazaki",
+    "lastChecked": "2026-10-11",
     "name": "淀川河川公園 大山崎地区",
     "address": "京都府乙訓郡大山崎町字下植野",
     "lat": 34.90285,

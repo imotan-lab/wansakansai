@@ -44,6 +44,7 @@ STATIC_FOOTER = """  <!-- 静的フッター: クローラーに内部リンク�
       <a href="../favorites.html">お気に入り</a>
       <a href="../blog/index.html">ブログ</a>
       <a href="../about.html">このサイトについて</a>
+      <a href="../editorial.html">掲載情報について</a>
       <a href="../privacy.html">プライバシーポリシー</a>
       <a href="../contact.html">お問い合わせ</a>
     </div>
