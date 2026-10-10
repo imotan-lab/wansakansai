@@ -1165,6 +1165,39 @@ img {
   margin-bottom: 8px;
 }
 
+/* 運営者の訪問メモ（2026-10-10）。備考（調べた情報）と区別がつくよう、
+   箱ではなく左の線だけで「運営者が書いたもの」と分かる形にする */
+.detail-visit {
+  margin-top: 20px;
+  padding: 2px 0 2px 14px;
+  border-left: 3px solid #D4A017;
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+.detail-visit h3 {
+  font-size: 0.85rem;
+  color: var(--color-primary);
+  margin-bottom: 4px;
+}
+
+.detail-visit-date {
+  font-size: 0.8rem;
+  color: var(--color-text-light);
+  margin: 0 0 4px;
+}
+
+.detail-visit-note {
+  margin: 0 0 8px;
+}
+
+/* 掲載情報の最終確認日（2026-10-10） */
+.detail-checked {
+  margin: 14px 0 0;
+  font-size: 0.8rem;
+  color: var(--color-text-light);
+}
+
 .back-link {
   display: inline-flex;
   align-items: center;

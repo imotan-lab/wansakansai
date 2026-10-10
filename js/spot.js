@@ -18,6 +18,37 @@ function paragraphize(text) {
   return paras.map(p => '<p class="danger-card-desc">' + escapeHtml(p) + '</p>').join('');
 }
 
+// "2026-10-03" → "2026年10月3日"。形が違えば空文字（表示しない）
+function jaDate(iso) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(iso || ''));
+  return m ? `${Number(m[1])}年${Number(m[2])}月${Number(m[3])}日` : '';
+}
+
+// 運営者の訪問メモ（2026-10-10）。visit は {date, note} か、その配列（新しい訪問を先に表示）。
+// generate_spot_pages.py の build_visit_html と同じ形にすること
+function visitMemoHtml(spot) {
+  const list = (Array.isArray(spot.visit) ? spot.visit : (spot.visit ? [spot.visit] : []))
+    .filter(v => v && v.note)
+    .sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')));
+  if (!list.length) return '';
+  return `
+    <div class="detail-visit">
+      <h3>運営者の訪問メモ</h3>
+      ${list.map(v => `
+        ${jaDate(v.date) ? `<p class="detail-visit-date">${jaDate(v.date)}に愛犬と訪問</p>` : ''}
+        <p class="detail-visit-note">${escapeHtml(v.note)}</p>
+      `).join('')}
+    </div>`;
+}
+
+// 掲載情報の最終確認日（2026-10-10）。スポット更新タスクが公式を見直した日。
+// generate_spot_pages.py の build_checked_html と同じ形にすること
+function lastCheckedHtml(spot) {
+  const d = jaDate(spot.lastChecked);
+  if (!d) return '';
+  return `<p class="detail-checked">掲載情報の最終確認：${d}</p>`;
+}
+
 // ===== Spot Detail Page =====
 
 (async function () {
@@ -251,6 +282,9 @@ function paragraphize(text) {
           </div>
         ` : ''}
 
+        ${visitMemoHtml(spot)}
+        ${lastCheckedHtml(spot)}
+
         <div class="share-buttons">
           <span class="share-label">シェア</span>
           <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(spot.name + ' - わんさかんさい')}&url=${encodeURIComponent(window.location.href)}" target="_blank" rel="noopener noreferrer" class="share-btn share-x">X</a>
@@ -457,8 +491,9 @@ function paragraphize(text) {
         ${showJalan ? `<img border="0" width="1" height="1" src="${jalanTracker}" alt="" style="display:none;">` : ''}
       `;
       }
-      // 備考（読み終えた直後）に置く。備考が無いスポットは従来どおり末尾
-      const remarksEl = container.querySelector('.detail-remarks');
+      // 備考（読み終えた直後）に置く。訪問メモ・最終確認日があればその後ろ（2026-10-10。
+      // 運営者のメモを広告の下に埋もれさせない）。備考が無いスポットは従来どおり末尾
+      const remarksEl = container.querySelector('.detail-checked') || container.querySelector('.detail-visit') || container.querySelector('.detail-remarks');
       if (remarksEl) {
         remarksEl.insertAdjacentElement('afterend', affEl);
       } else {

@@ -28,6 +28,8 @@
   NG12 tags が配列でない・決まった語以外・重複
   NG13 git HEAD にあったスポットの id が消えている … ページのURLが切れる。
        自動タスクはスポットを消さない。人が決めて対話セッションで消す時だけ --allow-removed を付ける
+  NG14 lastChecked が YYYY-MM-DD でない・今日より先／visit が {date, note}（または配列）でない・visited が true でない
+       （訪問メモは「運営者が訪れた」と書く欄なので、訪問済みマークと食い違わせない）
   ※ NG7 の範囲（緯度33.3〜35.9・経度134.2〜136.9）は今の掲載地域（近畿6府県）に合わせたもの。地域を広げる時はここも直す
 
 使い方:
@@ -44,7 +46,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 SPOTS = ROOT / "data" / "spots.json"
 ID_RE = re.compile(r"[a-z0-9][a-z0-9-]*")
-TAGS = {"sakura", "koyo", "water", "rain", "small-dog-only", "stay-ok", "stay-only"}
+DATE_RE = re.compile(r"\d{4}-\d{2}-\d{2}")
+import datetime as _dt
+TODAY = f"{_dt.date.today():%Y-%m-%d}"
+TAGS = {"sakura","koyo", "water", "rain", "small-dog-only", "stay-ok", "stay-only"}
 
 
 def in_kansai(lat, lng) -> bool:
@@ -123,6 +128,17 @@ def check(spots: list) -> list:
                 ngs.append(f"{sid}（{name}）: 画像のパスは images/spots/ の下に「/」区切りで書く（今: {p!r}）")
             elif not exact_file(p):
                 ngs.append(f"{sid}（{name}）: 画像ファイルが無いか、大文字小文字が違う {p}")
+        lc = s.get("lastChecked")
+        if lc is not None and (not isinstance(lc, str) or not DATE_RE.fullmatch(lc) or lc > TODAY):
+            ngs.append(f"{sid}（{name}）: lastChecked は今日までの YYYY-MM-DD（今: {lc!r}）")
+        if "visit" in s:
+            vs = s["visit"] if isinstance(s["visit"], list) else [s["visit"]]
+            for v in vs:
+                if not isinstance(v, dict) or not isinstance(v.get("note"), str) or not v["note"].strip() \
+                        or not isinstance(v.get("date"), str) or not DATE_RE.fullmatch(v["date"]) or v["date"] > TODAY:
+                    ngs.append(f"{sid}（{name}）: visit は {{date: 今日までのYYYY-MM-DD, note: 本文}}（今: {v!r}）")
+            if s.get("visited") is not True:
+                ngs.append(f"{sid}（{name}）: 訪問メモ（visit）があるのに visited が true でない")
         if imgs and s.get("imageUrl") and s["imageUrl"] != imgs[0]:
             ngs.append(f"{sid}（{name}）: imageUrl が images の1枚目と違う")
         sid, name = s.get("id"), s.get("name")

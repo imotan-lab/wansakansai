@@ -441,6 +441,36 @@ def build_blog_links_html(spot: dict, blog_index: dict) -> str:
     </section>'''
 
 
+def ja_date(iso) -> str:
+    """'2026-10-03' → '2026年10月3日'。形が違えば空文字（表示しない）。js/spot.js の jaDate と同じ"""
+    m = re.fullmatch(r"(\d{4})-(\d{2})-(\d{2})", str(iso or ""))
+    return f"{int(m.group(1))}年{int(m.group(2))}月{int(m.group(3))}日" if m else ""
+
+
+def build_visit_html(spot: dict) -> str:
+    """運営者の訪問メモ（2026-10-10）。visit は {date, note} かその配列。js/spot.js の visitMemoHtml と同じ形にすること"""
+    v = spot.get("visit")
+    items = v if isinstance(v, list) else ([v] if isinstance(v, dict) else [])
+    items = sorted([x for x in items if isinstance(x, dict) and x.get("note")], key=lambda x: str(x.get("date") or ""), reverse=True)
+    if not items:
+        return ""
+    parts = []
+    for x in items:
+        d = ja_date(x.get("date"))
+        if d:
+            parts.append(f'<p class="detail-visit-date">{d}に愛犬と訪問</p>')
+        parts.append(f'<p class="detail-visit-note">{html.escape(x["note"])}</p>')
+    return '<div class="detail-visit">\n          <h3>運営者の訪問メモ</h3>\n          ' + "\n          ".join(parts) + "\n        </div>"
+
+
+def build_checked_html(spot: dict) -> str:
+    """掲載情報の最終確認日（2026-10-10）。js/spot.js の lastCheckedHtml と同じ形にすること"""
+    d = ja_date(spot.get("lastChecked"))
+    if not d:
+        return ""
+    return f'<p class="detail-checked">掲載情報の最終確認：{d}</p>'
+
+
 def build_body_content(spot: dict, all_spots: list = None) -> str:
     """SEO的にbotがクロール時に読み取れる本文HTML（spot.jsが上書きするが、初期表示でも有意義）"""
     name = html.escape(spot["name"])
@@ -575,6 +605,7 @@ def build_body_content(spot: dict, all_spots: list = None) -> str:
 
         {extra_blocks}
         {remarks_html}
+        {"".join(b for b in (build_visit_html(spot), build_checked_html(spot)) if b)}
         {build_nearby_html(spot, all_spots or [])}
       </div>'''
 
@@ -622,7 +653,7 @@ def build_html(spot: dict, all_spots: list = None, blog_index: dict = None) -> s
   <link rel="icon" type="image/png" sizes="96x96" href="../images/favicon-96.png">
   <link rel="icon" type="image/png" sizes="192x192" href="../images/favicon-192.png">
   <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
-  <link rel="stylesheet" href="../css/style.css?v=2026100404">
+  <link rel="stylesheet" href="../css/style.css?v=2026101001">
   <script type="application/ld+json">{jsonld}</script>
 </head>
 <body>
@@ -638,8 +669,8 @@ def build_html(spot: dict, all_spots: list = None, blog_index: dict = None) -> s
 
 {STATIC_FOOTER}
   <script>window.WANSAKA_SPOT_ID = "{sid_e}";</script>
-  <script src="../js/common.js?v=2026100601"></script>
-  <script src="../js/spot.js?v=2026100601"></script>
+  <script src="../js/common.js?v=2026101001"></script>
+  <script src="../js/spot.js?v=2026101001"></script>
 </body>
 </html>
 '''
@@ -736,7 +767,7 @@ def build_index_html(spots: list) -> str:
   <link rel="icon" type="image/png" sizes="96x96" href="../images/favicon-96.png">
   <link rel="icon" type="image/png" sizes="192x192" href="../images/favicon-192.png">
   <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
-  <link rel="stylesheet" href="../css/style.css?v=2026100404">
+  <link rel="stylesheet" href="../css/style.css?v=2026101001">
 </head>
 <body>
 
@@ -752,7 +783,7 @@ def build_index_html(spots: list) -> str:
   </main>
 
 {STATIC_FOOTER}
-  <script src="../js/common.js?v=2026100601"></script>
+  <script src="../js/common.js?v=2026101001"></script>
   <script>
     renderHeader('spots');
     renderFooter();
