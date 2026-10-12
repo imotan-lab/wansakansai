@@ -28,7 +28,7 @@
   NG12 tags が配列でない・決まった語以外・重複
   NG13 git HEAD にあったスポットの id が消えている … ページのURLが切れる。
        自動タスクはスポットを消さない。人が決めて対話セッションで消す時だけ --allow-removed を付ける
-  NG14 lastChecked が YYYY-MM-DD でない・今日より先／visit が {date, note}（または配列）でない・visited が true でない
+  NG14 lastChecked が YYYY-MM-DD でない・今日より先／visit が {date（任意）, note}（または配列）でない・visited が true でない
        （訪問メモは「運営者が訪れた」と書く欄なので、訪問済みマークと食い違わせない）
   ※ NG7 の範囲（緯度33.3〜35.9・経度134.2〜136.9）は今の掲載地域（近畿6府県）に合わせたもの。地域を広げる時はここも直す
 
@@ -134,9 +134,10 @@ def check(spots: list) -> list:
         if "visit" in s:
             vs = s["visit"] if isinstance(s["visit"], list) else [s["visit"]]
             for v in vs:
+                # date は任意（訪問日が分からないメモがある。2026-10-13 白浜御苑）。書くなら今日までの YYYY-MM-DD
                 if not isinstance(v, dict) or not isinstance(v.get("note"), str) or not v["note"].strip() \
-                        or not isinstance(v.get("date"), str) or not DATE_RE.fullmatch(v["date"]) or v["date"] > TODAY:
-                    ngs.append(f"{sid}（{name}）: visit は {{date: 今日までのYYYY-MM-DD, note: 本文}}（今: {v!r}）")
+                        or ("date" in v and (not isinstance(v["date"], str) or not DATE_RE.fullmatch(v["date"]) or v["date"] > TODAY)):
+                    ngs.append(f"{sid}（{name}）: visit は {{date: 今日までのYYYY-MM-DD（任意）, note: 本文}}（今: {v!r}）")
             if s.get("visited") is not True:
                 ngs.append(f"{sid}（{name}）: 訪問メモ（visit）があるのに visited が true でない")
         if imgs and s.get("imageUrl") and s["imageUrl"] != imgs[0]:
