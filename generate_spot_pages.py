@@ -482,10 +482,14 @@ def build_body_content(spot: dict, all_spots: list = None) -> str:
     gallery_html = ""
     if images:
         first_img = html.escape("../" + images[0])
+        # 写真の説明文（2026-10-13）。js/spot.js と同じく、1枚目の説明を alt と写真の下に出す
+        caps = spot.get("captions") if isinstance(spot.get("captions"), list) else []
+        cap0 = caps[0].strip() if caps and isinstance(caps[0], str) else ""
+        cap_html = f'\n          <p class="spot-gallery-caption" id="galleryCaption">{html.escape(cap0)}</p>' if caps else ""
         gallery_html = f'''<div class="spot-gallery">
           <div class="spot-gallery-main">
-            <img src="{first_img}" alt="{name}" class="spot-gallery-img" id="galleryMainImg" loading="lazy">
-          </div>
+            <img src="{first_img}" alt="{html.escape(cap0) if cap0 else name}" class="spot-gallery-img" id="galleryMainImg" loading="lazy">
+          </div>{cap_html}
         </div>'''
 
     official = ""

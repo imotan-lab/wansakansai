@@ -30,6 +30,7 @@
        自動タスクはスポットを消さない。人が決めて対話セッションで消す時だけ --allow-removed を付ける
   NG14 lastChecked が YYYY-MM-DD でない・今日より先／visit が {date（任意）, note}（または配列）でない・visited が true でない
        （訪問メモは「運営者が訪れた」と書く欄なので、訪問済みマークと食い違わせない）
+  NG15 captions（写真の説明文）が images と同じ数の文字列の配列でない … 写真と説明がずれて別の写真の説明が出る
   ※ NG7 の範囲（緯度33.3〜35.9・経度134.2〜136.9）は今の掲載地域（近畿6府県）に合わせたもの。地域を広げる時はここも直す
 
 使い方:
@@ -140,6 +141,10 @@ def check(spots: list) -> list:
                     ngs.append(f"{sid}（{name}）: visit は {{date: 今日までのYYYY-MM-DD（任意）, note: 本文}}（今: {v!r}）")
             if s.get("visited") is not True:
                 ngs.append(f"{sid}（{name}）: 訪問メモ（visit）があるのに visited が true でない")
+        if "captions" in s:
+            cp = s["captions"]
+            if not isinstance(cp, list) or len(cp) != len(imgs) or not all(isinstance(c, str) for c in cp):
+                ngs.append(f"{sid}（{name}）: captions は images と同じ数の文字列の配列（images {len(imgs)}枚・captions {len(cp) if isinstance(cp, list) else type(cp).__name__}）")
         if imgs and s.get("imageUrl") and s["imageUrl"] != imgs[0]:
             ngs.append(f"{sid}（{name}）: imageUrl が images の1枚目と違う")
         sid, name = s.get("id"), s.get("name")

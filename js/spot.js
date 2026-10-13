@@ -178,17 +178,22 @@ function lastCheckedHtml(spot) {
     // Build gallery
     const rawImages = spot.images || (spot.imageUrl ? [spot.imageUrl] : []);
     const images = rawImages.map(img => imgBase + img);
+    // 写真の説明文（2026-10-13）。captions は images と同じ並びの文字列の配列（空文字は説明なし）。
+    // 画像の alt にも使う。generate_spot_pages.py の同じ処理と揃えること
+    const captions = Array.isArray(spot.captions) ? spot.captions : [];
+    const capOf = i => (typeof captions[i] === 'string' ? captions[i].trim() : '');
     let galleryHtml = '';
     if (images.length > 0) {
       galleryHtml = `
         <div class="spot-gallery">
           <div class="spot-gallery-main">
-            <img src="${images[0]}" alt="${escapeHtml(spot.name)}" class="spot-gallery-img" id="galleryMainImg">
+            <img src="${images[0]}" alt="${escapeHtml(capOf(0) || spot.name)}" class="spot-gallery-img" id="galleryMainImg">
             ${images.length > 1 ? `
               <button class="gallery-nav gallery-prev" id="galleryPrev">&lt;</button>
               <button class="gallery-nav gallery-next" id="galleryNext">&gt;</button>
             ` : ''}
           </div>
+          ${captions.length ? `<p class="spot-gallery-caption" id="galleryCaption">${escapeHtml(capOf(0))}</p>` : ''}
           ${images.length > 1 ? `
             <div class="spot-gallery-thumbs">
               ${images.map((img, i) => `<img src="${img}" alt="" class="spot-gallery-thumb${i === 0 ? ' active' : ''}" data-index="${i}">`).join('')}
@@ -324,9 +329,12 @@ function lastCheckedHtml(spot) {
       const prevBtn = document.getElementById('galleryPrev');
       const nextBtn = document.getElementById('galleryNext');
 
+      const capEl = document.getElementById('galleryCaption');
       function showImage(index) {
         currentIndex = index;
         mainImg.src = images[index];
+        mainImg.alt = capOf(index) || spot.name;
+        if (capEl) capEl.textContent = capOf(index);
         thumbs.forEach((t, i) => t.classList.toggle('active', i === index));
       }
 
