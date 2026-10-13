@@ -625,6 +625,14 @@
       "images/spots/umi-fureai-hiroba/shelter.jpg",
       "images/spots/umi-fureai-hiroba/office.jpg",
       "images/spots/umi-fureai-hiroba/notice.jpg"
+    ],
+    "captions": [
+      "ドッグラン。日曜の午後は犬連れでにぎわっていた",
+      "小型犬エリアの入口と利用規則",
+      "広い芝生の広場",
+      "広場の休憩所（屋根付き）",
+      "管理棟",
+      "掲示板。ヘビとセアカゴケグモに注意"
     ]
   },
   {
@@ -982,6 +990,12 @@
       "images/spots/kuromaro-no-sato/2.jpg",
       "images/spots/kuromaro-no-sato/3.jpg",
       "images/spots/kuromaro-no-sato/4.jpg"
+    ],
+    "captions": [
+      "道の駅の入口の看板",
+      "ドッグパークの入口。利用時間と、体高（足から背中まで）の測り方の札",
+      "河川広場の案内。4〜9月の土日祝は有料",
+      "ドッグパークの掲示。ライブカメラで中の様子を配信している"
     ]
   },
   {
@@ -1156,6 +1170,15 @@
       "images/spots/chikatsu-asuka/5.jpg",
       "images/spots/chikatsu-asuka/6.jpg",
       "images/spots/chikatsu-asuka/7.jpg"
+    ],
+    "captions": [
+      "「平成の通り抜け」の桜（4月上旬）",
+      "桜の遊歩道",
+      "桜並木の広場",
+      "丘側の駐車場の利用時間（9:30〜17:00）と博物館への案内",
+      "博物館側の駐車場",
+      "博物館側のトイレ",
+      "博物館の横から丘へ向かうスロープ"
     ],
     "officialUrl": "https://chikatsu-asuka.jp/fudokinooka/",
     "tags": [
@@ -3318,6 +3341,12 @@
       "images/spots/michinoeki-shimizu/2.jpg",
       "images/spots/michinoeki-shimizu/3.jpg",
       "images/spots/michinoeki-shimizu/4.jpg"
+    ],
+    "captions": [
+      "道の駅の駐車場",
+      "BBQ・グランピング施設の看板。犬と一緒に利用できる",
+      "大屋根の下の広いスペース",
+      "トイレ"
     ]
   },
   {
@@ -3714,6 +3743,12 @@
       "images/spots/kurosawa-farm/2.jpg",
       "images/spots/kurosawa-farm/3.jpg",
       "images/spots/kurosawa-farm/4.jpg"
+    ],
+    "captions": [
+      "広い芝生の広場",
+      "帰り道の放牧地の牛",
+      "牛のオブジェ。奥にドッグランがある",
+      "入口の受付。車に乗ったまま入園料を払う"
     ]
   },
   {
@@ -5351,6 +5386,12 @@
       "images/spots/kabata-resort/3.jpg",
       "images/spots/kabata-resort/4.jpg"
     ],
+    "captions": [
+      "受付の建物",
+      "屋内ドッグランの使い方の掲示。山側が中・大型犬用、湖側が小型犬用",
+      "屋内ドッグラン。人工芝で屋根付き",
+      "犬用プールの入口（夏季・予約制）"
+    ],
     "officialUrl": "https://kabataresort.com/",
     "rakutenHotelId": "143245",
     "jalanYadId": "321469"
@@ -5760,8 +5801,14 @@
       "images/spots/r-cafe/2.jpg",
       "images/spots/r-cafe/3.jpg",
       "images/spots/r-cafe/4.jpg",
-      "images/spots/r-cafe/5.jpg",
-      "images/spots/r-cafe/6.jpg"
+      "images/spots/r-cafe/5.jpg"
+    ],
+    "captions": [
+      "入口の看板",
+      "外観（雨の日）",
+      "屋根とビニール壁に囲まれたテラス席",
+      "テラス席のセルフコーナー。犬用のおむつ・マット・水飲みがある",
+      "ランチのプレート"
     ],
     "officialUrl": "https://www.r-cafe.net/"
   },
@@ -5811,6 +5858,14 @@
       "images/spots/holiday-afternoon/5.jpg",
       "images/spots/holiday-afternoon/6.jpg"
     ],
+    "captions": [
+      "道沿いの看板",
+      "別棟コテージの入口",
+      "天然芝のドッグラン",
+      "コテージ専用の温泉",
+      "コテージのリビング。ケージが置いてある",
+      "コテージが並ぶ中庭"
+    ],
     "officialUrl": "http://www.biwa.ne.jp/~maikoinn/",
     "rakutenHotelId": "13999",
     "jalanYadId": "315849"
@@ -5858,6 +5913,12 @@
       "images/spots/takano-ichigo-en/2.jpg",
       "images/spots/takano-ichigo-en/3.jpg",
       "images/spots/takano-ichigo-en/4.jpg"
+    ],
+    "captions": [
+      "受付の建物",
+      "犬連れのいちご狩りができる第2農園のハウス",
+      "ハウスの中のいちご",
+      "入口の看板。犬をカートに乗せたまま回れた"
     ],
     "officialUrl": "https://takano-ichigo.jp/"
   },
@@ -5909,6 +5970,11 @@
       "images/spots/aguri-park-ryuo/2.jpg",
       "images/spots/aguri-park-ryuo/3.jpg"
     ],
+    "captions": [
+      "チューリップとネモフィラの花畑（4月中旬）",
+      "ドッグランの入口（2026年4月。今は利用できない）",
+      "ドッグランの中（2026年4月。今は利用できない）"
+    ],
     "stayKeyword": "琵琶湖"
   },
   {
@@ -5959,6 +6025,12 @@
       "images/spots/shikinosato-yuraku/2.jpg",
       "images/spots/shikinosato-yuraku/3.jpg",
       "images/spots/shikinosato-yuraku/4.jpg"
+    ],
+    "captions": [
+      "入口の看板",
+      "コテージ棟。各棟に柵で囲った庭がある",
+      "コテージの室内。ケージが置いてある",
+      "コテージの庭とテラス"
     ],
     "officialUrl": "https://www.wakayama-shikinosato.com/",
     "tags": [
@@ -6480,6 +6552,17 @@
       "images/spots/oishi-kogen/8.jpg",
       "images/spots/oishi-kogen/9.jpg"
     ],
+    "captions": [
+      "山頂へ続く道とススキの原（9月下旬）",
+      "ススキの原と遠くの山並み",
+      "ススキの間の小道",
+      "園内の決まりの掲示。犬はリードを付け、フンは持ち帰る",
+      "第1駐車場の入口の案内",
+      "駐車場",
+      "公衆トイレ",
+      "山の家おいし",
+      "生石高原の周辺略図"
+    ],
     "officialUrl": "https://www.town.kimino.wakayama.jp/sagasu/sangyoka/kankosangyo/oishikogen/1822.html"
   },
   {
@@ -6528,6 +6611,13 @@
       "images/spots/hirakusabaru-park/3.jpg",
       "images/spots/hirakusabaru-park/4.jpg",
       "images/spots/hirakusabaru-park/5.jpg"
+    ],
+    "captions": [
+      "公園の入口の看板",
+      "ドッグランの入口",
+      "中・大型犬エリア（体重10kg以上が目安）",
+      "公園での犬の散歩の決まり",
+      "ドッグランの利用規約"
     ],
     "officialUrl": "https://www.town.shirahama.wakayama.jp/soshiki/kanko/koen/shisetsu/park/1454026568032.html",
     "stayKeyword": "白浜"
@@ -6633,6 +6723,10 @@
     "images": [
       "images/spots/toretore-ichiba/1.jpg",
       "images/spots/toretore-ichiba/2.jpg"
+    ],
+    "captions": [
+      "入口",
+      "食事処の丼"
     ],
     "officialUrl": "https://toretore.com/ichiba/",
     "dogArea": "outdoor-only",
@@ -10286,6 +10380,10 @@
     "images": [
       "images/spots/fujiwara-kyuseki/1.jpg",
       "images/spots/fujiwara-kyuseki/2.jpg"
+    ],
+    "captions": [
+      "一面の菜の花と奥の桜並木（4月中旬）",
+      "桜並木の小道"
     ]
   },
   {
@@ -11214,6 +11312,11 @@
       "images/spots/makio-komorebi-no-mori/1.jpg",
       "images/spots/makio-komorebi-no-mori/2.jpg",
       "images/spots/makio-komorebi-no-mori/3.jpg"
+    ],
+    "captions": [
+      "川原。8月は水が少なめだった",
+      "ボルダリングの壁",
+      "公園の案内図"
     ]
   },
   {
@@ -11272,6 +11375,12 @@
       "images/spots/mizukoshigawa/2.jpg",
       "images/spots/mizukoshigawa/3.jpg",
       "images/spots/mizukoshigawa/4.jpg"
+    ],
+    "captions": [
+      "砂防ダムから水が流れ落ちる場所",
+      "浅い沢の流れ（8月下旬）",
+      "上流の沢",
+      "水越川公共駐車場の看板"
     ]
   },
   {
@@ -11330,6 +11439,13 @@
       "images/spots/cafe-twotwo-dog-grass-field/3.jpg",
       "images/spots/cafe-twotwo-dog-grass-field/4.jpg",
       "images/spots/cafe-twotwo-dog-grass-field/5.jpg"
+    ],
+    "captions": [
+      "道沿いの案内看板",
+      "カフェのテラス",
+      "見晴らしのいいドッグラン",
+      "ドッグランの斜面の芝生",
+      "敷地の入口とカフェの建物"
     ]
   },
   {
@@ -11380,6 +11496,10 @@
     "images": [
       "images/spots/fishermans-wharf-shirahama/1.jpg",
       "images/spots/fishermans-wharf-shirahama/2.jpg"
+    ],
+    "captions": [
+      "外観",
+      "海鮮丼"
     ],
     "officialUrl": "https://fw-sh.com/",
     "stayKeyword": "白浜"
@@ -11736,6 +11856,16 @@
       "images/spots/toyono-cosmos-no-sato/5b.jpg",
       "images/spots/toyono-cosmos-no-sato/8.jpg",
       "images/spots/toyono-cosmos-no-sato/6b.jpg"
+    ],
+    "captions": [
+      "コスモスとキバナコスモス（9月下旬）",
+      "花畑の中の小道",
+      "入口のかかし",
+      "入園料の受付",
+      "駐車場",
+      "駐車場の入口の看板",
+      "花畑へ向かう道",
+      "小屋とコスモス"
     ]
   },
   {
@@ -11943,6 +12073,10 @@
     "images": [
       "images/spots/whatawon-kishiwada/1.jpg",
       "images/spots/whatawon-kishiwada/2.jpg"
+    ],
+    "captions": [
+      "広場の「W」のモニュメント",
+      "室内の席。犬をカートに乗せたまま休めた"
     ]
   },
   {
@@ -12000,6 +12134,14 @@
       "images/spots/bansyu-kiyomizudera/4.jpg",
       "images/spots/bansyu-kiyomizudera/5.jpg",
       "images/spots/bansyu-kiyomizudera/6.jpg"
+    ],
+    "captions": [
+      "紅葉とイチョウ（11月下旬）",
+      "滾浄水（おかげの井戸）",
+      "紅葉の参道",
+      "境内の紅葉",
+      "石畳の参道。犬と一緒に歩ける",
+      "境内の古いポスト"
     ]
   }
 ]
