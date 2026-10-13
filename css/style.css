@@ -856,6 +856,18 @@ img {
 .gallery-prev { left: 8px; }
 .gallery-next { right: 8px; }
 
+/* 写真の説明文（2026-10-13）。写真のすぐ下に小さく。説明の無い写真では空になるので高さを確保しない */
+.spot-gallery-caption {
+  margin: 6px 2px 0;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--color-text-light);
+}
+
+.spot-gallery-caption:empty {
+  display: none;
+}
+
 .spot-gallery-thumbs {
   display: flex;
   gap: 8px;
