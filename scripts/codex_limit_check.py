@@ -9,6 +9,8 @@
          （docs/codex_standin.md）。同じ実行の中でCodexを呼び直さない
     1  … 最終の答えが無い（出力が無い・空・接続エラー等で途中で終わった）。
          1回だけ呼び直し、それでも1なら代役に切り替える
+    30 … まだ書き込み中（答えが無く、出力ファイルが3分以内に更新されている）。
+         Codexは動いている。呼び直さず、コマンドの完了を待ってから点検し直す
 
 標準出力に1行で結果を書く（タスクはこの行をそのままログへ写す）。
 
@@ -19,7 +21,12 @@ codex exec は最後まで走ると `tokens used` の行と使用量の数字を
 """
 import re
 import sys
+import time
 from pathlib import Path
+
+# 最後の書き込みからこの秒数以内で答えがまだ無ければ「実行中」とみなす
+# （Codexは調べている間も web search の行を出し続ける。考えている間の空白は実測で2分弱まで）
+STILL_WRITING_SEC = 180
 
 # codex exec が制限に当たった時の文言。実例（2026-09-07）:
 #   ERROR: You've hit your usage limit. Upgrade to Pro ... or try again at 3:01 PM.
@@ -70,6 +77,12 @@ def main() -> int:
                   f" / 復帰: {when.group(1) if when else '不明'}")
             return 20
     answer = final_answer(lines)
+    if answer is None and time.time() - p.stat().st_mtime < STILL_WRITING_SEC:
+        # 2026-10-20: タスクがCodexをバックグラウンドで走らせ、終わる前に点検して「答えなし」と誤り、
+        # 呼び直しと代役まで走らせた（Codexは5分後に正常に答えていた）
+        print(f"[codex-limit-check] まだ書き込み中（{time.time() - p.stat().st_mtime:.0f}秒前に更新）。"
+              f"完了の通知を待ってから点検し直す（呼び直さない）: {p}")
+        return 30
     if answer is None:
         errors = [l.strip() for l in lines if l.lstrip().startswith("ERROR")]
         last_err = errors[-1][:150] if errors else "なし"
