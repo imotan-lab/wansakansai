@@ -260,18 +260,17 @@ JS描画だけだとレンダリング前HTMLにリンクが残らず、Google�
 - **保留の意味**: 種別・期限・要約が割れた場合は中身を公開してよい（項目はClaudeのまま・メールに併記）。**事実関係が割れた場合はそのエントリを公開しない**（誤った危険情報を出す方が害が大きい）
 - プロンプトは `scripts/build_codex_danger_prompt.py` が生成する。変更が無い日は終了コード2を返し、Codexを呼ばない
 
-## 週次SEOレポート（自動タスク・2026-09-02導入）
-タスクID: wansakansai-weekly-seo（毎週金曜の朝）。ログ: `.claude/logs/wansakansai_seo_YYYY-MM-DD.log`
-Chrome MCPでSearch Consoleの「日」タブの画面テキストを取る → `scripts/seo_ingest.py` で累積CSVへ → `scripts/seo_report.py` でPDF/PPTX → メール添付 → Dropbox退避。
-**金曜なのはデータ確定が4日遅れだから**（日曜ぶんが揃うのは木曜以降）。画面の開き方はSKILL.md参照。
-累積CSV `C:/Users/imao_/Documents/wansakansai/seo_daily.csv` は**ローカルのみ**なので毎回Dropbox（`Claude_backup/自動タスク/wansakansai-weekly-seo/`）へ退避する。成果物も同じ場所。
-
-- **★数字を作らない★** 画面テキストは各項目が区切りなしで連結される（`2026/08/29811,9764.1%9.2`）。**手で切り分けないこと**。`--expect-clicks` に画面の合計を渡して検算し、合わなければ取り込まず終了コード1で止まる
-- **★1週間の増減だけで語らない★** 週単位は天気やニュースで簡単に上下する。必ず直近12週の棒グラフと「12週中何番目か」を併記する
-- **★PDF生成にPowerPointを使わない★** COM自動操作は無人実行に耐えないと実測で判断（詳細はCLAUDE_history.md）。PDFはmatplotlibのPdfPages、PPTXはpython-pptx
-- 累積CSVは同じ日付を後から取った値で上書きする（数字は数日かけて確定するため）。直前の状態は `.bak` に1世代残る
-- **★Search Console は行数の変更が効かないが、URLのパラメータは効く（2026-09-12実測）★** 表の「1ページあたりの行数」は変えられない（上位10件しか見えない）が、**ページの中（DOM）には全行が入っている**ので `javascript_tool` で取れる（2026-09-25・スポット需要の取得で165件を確認）。URL の `&start_date=YYYYMMDD&end_date=YYYYMMDD` で任意の期間、`&query=*語` で語の絞り込み、`&breakdown=page` でページ別ができる
-- **未着手**: Search Console API（サービスアカウント）にすればChrome未起動でも動く。今はChrome未接続だとエラーメールになる
+## 週次SEOレポート（自動タスク・2026-09-02導入・10-20に3ページ版へ）
+タスクID: wansakansai-weekly-seo（毎週金曜の朝）。ログ: `.claude/logs/wansakansai_seo_YYYY-MM-DD.log`。**金曜なのはデータ確定が4日遅れだから**
+流れ: Search Consoleの日別 → `seo_ingest.py` で累積CSV → 今週・前の週の語句・ページとGA4（取り方は `docs/weekly_seo_capture.md`、URLは `seo_week_dates.py`）→ `seo_week_build.py` でdata → Claudeが読み取り（notes）→ **Codexが独立に読む → 1文ずつデータと照らす** → `seo_weekly_report.py` で3ページPDF → メール → Dropbox。構成はCodexと2巡相談して決めた（`Documents/wansakansai/weekly_report_redesign/`）。旧版 `seo_report.py` は取れなかった週の逃げ道
+- **読む人は運営者**（SEOに詳しくない）。専門用語を使わず、数字には何の数字かを添える。**Google（Search Console）とGA4（Yahoo!なども含む）を混ぜない**。事実と推測を分け、次にやることは0〜3件（根拠が弱ければ出さない）
+- **★前にやったことの記録 `C:/Users/imao_/Documents/wansakansai/weekly_actions.json`★** 検索の数字に効きそうな変更（題名・構成・写真・新しいページ）をしたら、対話でもタスクでも1行足す（`date`・`what`・`check`）。レポートの3ページ目がここから経過を書く
+- **★数字を作らない★** 画面テキストは区切りなしで連結される。手で切り分けず `--expect-clicks` で検算。語句の画面の合計とCSVの今週が合わなければ `seo_week_build.py` が止める
+- **★1週間の増減だけで語らない★** 12週の棒グラフと直近4週間の比較を必ず載せる
+- **★PDF生成にPowerPointを使わない★**（COM自動操作は無人実行に耐えない）。matplotlib の PdfPages
+- 累積CSVは同じ日付を後から取った値で上書きし、`.bak` に1世代残る。CSVと記録はローカルのみなので毎回Dropboxへ退避
+- **Search Console・GA4 は表の行数を変えなくても、ページの中（DOM）に全行が入っている**ので `javascript_tool` で取れる。期間はURLのパラメータで指定する（GA4は `_u.date00/01`（今週）と `_u.date10/11`（比べる週））。GA4のプロパティは表示名「犬阪んさい」（`a388917488p530354793`）
+- **未着手**: Search Console・GA4 のAPI化（今はChrome未接続だとエラーメール）
 
 ## X自動投稿（@wansakansai）
 - 危険情報・新スポット・ブログ記事・今日のおすすめ・季節特集を自動投稿（週次まとめは2026-09-08に廃止）
