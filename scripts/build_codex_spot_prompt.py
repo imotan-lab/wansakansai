@@ -31,7 +31,7 @@
 
 使い方:
     python scripts/build_codex_spot_prompt.py --ids id1,id2,... --out 出力先.txt
-    cat 出力先.txt | codex exec --skip-git-repo-check -
+    cat 出力先.txt | codex exec --skip-git-repo-check -c 'windows.sandbox="unelevated"' -
     （★プロンプトはファイルに書いてパイプで渡すこと。コマンド直書きはshell_guardに止められる★）
 """
 import argparse

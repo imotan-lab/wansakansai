@@ -9,7 +9,7 @@
 
 使い方:
     python scripts/build_codex_newspot_prompt.py --files a.json,b.json --out prompt.txt
-    cat prompt.txt | codex exec --skip-git-repo-check -
+    cat prompt.txt | codex exec --skip-git-repo-check -c 'windows.sandbox="unelevated"' -
 """
 import argparse, io, json, sys
 
