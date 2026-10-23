@@ -202,7 +202,7 @@ def main():
         T(fig, nm, x, 1.6, size=9, color=MUTE)
     HR(fig, 0.6, 1.88, 12.1)
     yy = 1.98
-    for f in n["followups"][:6]:   # 7件以上は1ページに収まらない。古い・判断の済んだものから外す
+    for f in n["followups"][:5]:   # 6件以上は1ページに収まらない（10/23に6件で下端が切れた）。古い・判断の済んだものから外す
         lines = textwrap.wrap(f[3], 46)
         what = textwrap.wrap(f[1], 19)
         st = f[2]
