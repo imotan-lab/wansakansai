@@ -206,12 +206,13 @@ def main():
         lines = textwrap.wrap(f[3], 46)
         what = textwrap.wrap(f[1], 19)
         st = f[2]
+        stl = textwrap.wrap(st, 10)   # 2026-10-23: 長い状態が右の欄に重なった
         col = GREEN if st in ("出始めた", "効果あり") else (ACCENT if "まだ" in st else MUTE)
         T(fig, f[0], 0.6, yy, size=9.5)
         T(fig, NL.join(what), 1.3, yy, size=9.5)
-        T(fig, st, 4.7, yy, size=9.5, color=col, weight="bold")
+        T(fig, NL.join(stl), 4.7, yy, size=9.5, color=col, weight="bold")
         T(fig, NL.join(lines), 6.6, yy, size=9)
-        yy += max(0.3, 0.26 * max(len(lines), len(what))) + 0.04
+        yy += max(0.3, 0.26 * max(len(lines), len(what), len(stl))) + 0.04
         HR(fig, 0.6, yy - 0.05, 12.1, color="#eee8de", lw=0.8)
     y0 = yy + 0.15
     T(fig, "AdSense再申請に向けた準備（運営者が決めた目標。達成しても合格が約束されるものではありません）", 0.6, y0, size=10.5, weight="bold", color=GREEN)
