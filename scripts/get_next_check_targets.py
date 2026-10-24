@@ -51,6 +51,8 @@ def main():
     # 1か月前から追いかけている情報にその遅れは効かない。
     parser.add_argument("--recheck-interval", type=int, default=3,
                         help="期限の再確認を割り込ませる最短の間隔（日）。前回から未満なら割り込ませない（既定3）")
+    parser.add_argument("--near-days", type=int, default=3,
+                        help="終わる日の前後この日数の間は、間隔を空けずに毎日割り込ませる（既定3）")
     parser.add_argument(
         "--no-expiry-priority", action="store_true",
         help="期限の再確認による割り込みを行わない（後半タスク用。日次1回で足りるため）",
@@ -84,7 +86,11 @@ def main():
         # 前回見た日から --recheck-interval 日たっていなければ割り込ませない。
         # 見た日の記録が無いもの（この仕組みより前に見たもの・新規）は割り込ませる。
         seen = last_checked.get(sid)
-        if seen:
+        # ★終わる日の前後3日は毎日見る（2026-10-24・運営者の提案）★
+        # 延長・前倒し終了・再開の告知は終わる日の直前直後に出ることが多く、
+        # 3日おきだとちょうどその間を見落とす。前後3日だけなら枠を食う日数も短い。
+        near_end = abs(item.get("days_left", 99)) <= args.near_days
+        if seen and not near_end:
             try:
                 days = (today - datetime.date.fromisoformat(seen)).days
             except ValueError:
