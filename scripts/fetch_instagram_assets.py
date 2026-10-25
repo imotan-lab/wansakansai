@@ -24,7 +24,7 @@ Instagramのプロフィールと投稿サムネイルは**ログインなしで
     出力先: C:/Users/imao_/.claude/logs/insta_{id}_{YYYY-MM-DD}/
 
 Codexへの渡し方（各SKILL.mdのSTEP 7参照）:
-    cat プロンプト.txt | codex exec --skip-git-repo-check -c 'windows.sandbox="unelevated"' -i 画像.jpg -
+    cat プロンプト.txt | codex exec --skip-git-repo-check --ignore-user-config --strict-config -c 'model_reasoning_effort="high"' -c 'windows.sandbox="unelevated"' -i 画像.jpg -
     ★-i の後ろにプロンプトを置くと引数として飲み込まれる。プロンプトは必ずstdinで渡すこと★
 """
 import argparse

@@ -8,7 +8,7 @@
 使い方:
   python scripts/build_codex_weekly_prompt.py --mode read  --data data.json --out prompt_read.md
   python scripts/build_codex_weekly_prompt.py --mode check --data data.json --notes notes.json --out prompt_check.md
-  cat prompt.md | codex exec --skip-git-repo-check -c 'windows.sandbox="unelevated"' - > out.txt 2>&1
+  cat prompt.md | codex exec --skip-git-repo-check --ignore-user-config --strict-config -c 'model_reasoning_effort="high"' -c 'windows.sandbox="unelevated"' - > out.txt 2>&1
 """
 import argparse
 import io

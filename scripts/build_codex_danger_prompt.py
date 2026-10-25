@@ -30,7 +30,7 @@
     python scripts/build_codex_danger_prompt.py --ids danger-025,danger-026 --out 出力先.md
     python scripts/build_codex_danger_prompt.py --round 2 --out 出力先.md   # 2巡目
 
-    cat 出力先.md | codex exec --skip-git-repo-check -c 'windows.sandbox="unelevated"' -
+    cat 出力先.md | codex exec --skip-git-repo-check --ignore-user-config --strict-config -c 'model_reasoning_effort="high"' -c 'windows.sandbox="unelevated"' -
     （★プロンプトはファイルに書いてパイプで渡すこと。コマンド直書きはshell_guardに止められる★）
 """
 import argparse
