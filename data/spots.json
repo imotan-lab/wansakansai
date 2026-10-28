@@ -4030,11 +4030,11 @@
   },
   {
     "id": "enmei-park",
-    "lastChecked": "2026-09-30",
+    "lastChecked": "2026-10-29",
     "name": "延命公園",
     "address": "滋賀県東近江市八日市松尾町",
-    "lat": 35.1125,
-    "lng": 136.200833,
+    "lat": 35.113024,
+    "lng": 136.193577,
     "parking": {
       "available": true,
       "free": true
@@ -4065,7 +4065,7 @@
   },
   {
     "id": "obuchi-ike-park",
-    "lastChecked": "2026-09-30",
+    "lastChecked": "2026-10-29",
     "name": "大渕池公園",
     "address": "奈良県奈良市中山町西1丁目839-1",
     "lat": 34.7105,
@@ -4101,11 +4101,11 @@
   },
   {
     "id": "crossway-nakamachi",
-    "lastChecked": "2026-09-30",
+    "lastChecked": "2026-10-29",
     "name": "道の駅クロスウェイなかまち",
     "address": "奈良県奈良市中町4694-1",
-    "lat": 34.6686,
-    "lng": 135.7617,
+    "lat": 34.669167,
+    "lng": 135.754117,
     "parking": {
       "available": true,
       "free": true
@@ -4135,7 +4135,7 @@
   },
   {
     "id": "heijo-palace-park",
-    "lastChecked": "2026-09-30",
+    "lastChecked": "2026-10-29",
     "name": "平城宮跡歴史公園",
     "address": "奈良県奈良市二条大路南4-6-1",
     "lat": 34.6876,
@@ -4171,11 +4171,11 @@
   },
   {
     "id": "ikoma-sanroku-park",
-    "lastChecked": "2026-09-30",
+    "lastChecked": "2026-10-29",
     "name": "生駒山麓公園",
     "address": "奈良県生駒市俵口町2088",
-    "lat": 34.6831,
-    "lng": 135.6889,
+    "lat": 34.702145,
+    "lng": 135.67759,
     "parking": {
       "available": true,
       "free": false
