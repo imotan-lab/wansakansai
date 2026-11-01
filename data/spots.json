@@ -328,6 +328,7 @@
   },
   {
     "id": "wakayama-castle",
+    "gear": ["carry"],
     "lastChecked": "2026-10-20",
     "name": "和歌山城公園",
     "address": "和歌山県和歌山市一番丁3",
@@ -1304,6 +1305,7 @@
   },
   {
     "id": "ama-site-park",
+    "gear": ["carry"],
     "lastChecked": "2026-10-22",
     "name": "安満遺跡公園",
     "address": "大阪府高槻市八丁畷町12-3",
@@ -1432,6 +1434,7 @@
   },
   {
     "id": "grand-green-osaka",
+    "gear": ["carry"],
     "lastChecked": "2026-10-23",
     "name": "グラングリーン大阪（うめきた公園）",
     "address": "大阪府大阪市北区大深町1",
@@ -1984,6 +1987,7 @@
   },
   {
     "id": "kyuhoji-ryokuchi",
+    "gear": ["manner"],
     "lastChecked": "2026-10-24",
     "name": "久宝寺緑地",
     "address": "大阪府八尾市西久宝寺323",
@@ -2252,6 +2256,7 @@
   },
   {
     "id": "shozakai-park",
+    "gear": ["carry"],
     "lastChecked": "2026-10-25",
     "name": "庄堺公園",
     "address": "滋賀県彦根市開出今町",
@@ -2428,6 +2433,7 @@
   },
   {
     "id": "taga-taisha",
+    "gear": ["manner"],
     "lastChecked": "2026-10-25",
     "name": "多賀大社",
     "address": "滋賀県犬上郡多賀町多賀604",
@@ -3849,6 +3855,7 @@
   },
   {
     "id": "mitsui-outlet-shiga-ryuo",
+    "gear": ["carry"],
     "lastChecked": "2026-10-28",
     "name": "三井アウトレットパーク 滋賀竜王",
     "address": "滋賀県蒲生郡竜王町大字薬師1178-694",
@@ -4101,6 +4108,7 @@
   },
   {
     "id": "crossway-nakamachi",
+    "gear": ["manner"],
     "lastChecked": "2026-10-29",
     "name": "道の駅クロスウェイなかまち",
     "address": "奈良県奈良市中町4694-1",
@@ -4918,6 +4926,7 @@
   },
   {
     "id": "hitokura-park",
+    "gear": ["manner"],
     "lastChecked": "2026-10-31",
     "name": "兵庫県立一庫公園",
     "address": "兵庫県川西市国崎字知明1-6",
@@ -5518,6 +5527,7 @@
   },
   {
     "id": "dog-cafe-three-c",
+    "gear": ["manner"],
     "lastChecked": "2026-11-02",
     "name": "Dog cafe three C",
     "address": "滋賀県甲賀市水口町水口6230-6",
@@ -5557,6 +5567,7 @@
   },
   {
     "id": "and-f-cafe",
+    "gear": ["manner"],
     "lastChecked": "2026-10-30",
     "name": "and F CAFE",
     "address": "滋賀県守山市二町町208-5",
@@ -5604,6 +5615,7 @@
   },
   {
     "id": "with-wan",
+    "gear": ["manner"],
     "lastChecked": "2026-11-02",
     "name": "ドッグラン&カフェ With わんっ!",
     "address": "滋賀県東近江市五個荘清水鼻町114-1",
@@ -5722,6 +5734,7 @@
   },
   {
     "id": "izara-cafe",
+    "gear": ["manner"],
     "lastChecked": "2026-10-04",
     "name": "チョークアートCAFE&BAR 伊沙羅",
     "address": "滋賀県彦根市本町1-7-42",
@@ -5762,6 +5775,7 @@
   },
   {
     "id": "minori-farm",
+    "gear": ["manner"],
     "lastChecked": "2026-10-05",
     "name": "みのり農園（ドッグランminori）",
     "address": "滋賀県野洲市吉川5359",
@@ -6125,6 +6139,7 @@
   },
   {
     "id": "cafe-chrp",
+    "gear": ["manner"],
     "lastChecked": "2026-10-05",
     "name": "cafe CHRP",
     "aliases": [
@@ -6164,6 +6179,7 @@
   },
   {
     "id": "cafe-anera",
+    "gear": ["manner"],
     "lastChecked": "2026-10-05",
     "name": "Cafeアーネラ",
     "aliases": [
@@ -6203,6 +6219,7 @@
   },
   {
     "id": "dog-run-cafe-pic",
+    "gear": ["manner"],
     "lastChecked": "2026-10-05",
     "name": "Dog Run Cafe Pic",
     "aliases": [
@@ -6290,6 +6307,7 @@
   },
   {
     "id": "taiji-kujira-museum",
+    "gear": ["carry"],
     "lastChecked": "2026-10-06",
     "name": "太地町立くじらの博物館",
     "aliases": [
@@ -6419,6 +6437,7 @@
   },
   {
     "id": "sandanbeki",
+    "gear": ["carry"],
     "lastChecked": "2026-10-06",
     "name": "三段壁",
     "aliases": [
@@ -7121,6 +7140,7 @@
   },
   {
     "id": "katsuragisan-ropeway",
+    "gear": ["carry"],
     "lastChecked": "2026-10-07",
     "name": "葛城山ロープウェイ・葛城高原",
     "address": "奈良県御所市櫛羅2503-1",
@@ -7963,6 +7983,7 @@
   },
   {
     "id": "amanohashidate-park",
+    "gear": ["carry"],
     "lastChecked": "2026-10-09",
     "name": "天橋立公園（砂州）",
     "address": "京都府宮津市文珠",
@@ -8894,6 +8915,7 @@
   },
   {
     "id": "maizuru-akarenga-park",
+    "gear": ["carry"],
     "lastChecked": "2026-10-11",
     "name": "舞鶴赤れんがパーク",
     "address": "京都府舞鶴市字北吸1039番地の2",
@@ -9134,6 +9156,7 @@
   },
   {
     "id": "tegarayama-heiwa-park",
+    "gear": ["carry"],
     "lastChecked": "2026-10-12",
     "name": "手柄山平和公園",
     "address": "兵庫県姫路市西延末440",
@@ -10173,6 +10196,7 @@
   },
   {
     "id": "kataokasan-darumaji",
+    "gear": ["manner"],
     "lastChecked": "2026-10-14",
     "name": "片岡山 達磨寺",
     "address": "奈良県北葛城郡王寺町本町2丁目1番40号",
@@ -11225,6 +11249,7 @@
   },
   {
     "id": "hasedera-nara",
+    "gear": ["carry"],
     "lastChecked": "2026-10-18",
     "name": "総本山 長谷寺",
     "address": "奈良県桜井市初瀬731-1",
@@ -11497,6 +11522,7 @@
   },
   {
     "id": "cafe-twotwo-dog-grass-field",
+    "gear": ["manner"],
     "lastChecked": "2026-10-18",
     "name": "Cafe TwoTwo & Dog Grass Field",
     "address": "大阪府南河内郡河南町鈴美台2丁目32-2",
@@ -11874,6 +11900,7 @@
   },
   {
     "id": "aramaki-rose-park",
+    "gear": ["carry"],
     "lastChecked": "2026-10-19",
     "name": "荒牧バラ公園",
     "address": "兵庫県伊丹市荒牧6丁目5",
@@ -12081,6 +12108,7 @@
   },
   {
     "id": "ooedo-shirahama-gyoen",
+    "gear": ["manner", "carry"],
     "lastChecked": "2026-10-19",
     "name": "大江戸温泉物語Premium 白浜御苑",
     "aliases": [
@@ -12137,6 +12165,7 @@
   },
   {
     "id": "whatawon-kishiwada",
+    "gear": ["manner"],
     "lastChecked": "2026-10-19",
     "name": "WHATAWON（ワタワン）",
     "address": "大阪府岸和田市岸の丘町1丁目32-1",

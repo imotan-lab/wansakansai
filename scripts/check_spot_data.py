@@ -31,6 +31,9 @@
   NG14 lastChecked が YYYY-MM-DD でない・今日より先／visit が {date（任意）, note}（または配列）でない・visited が true でない
        （訪問メモは「運営者が訪れた」と書く欄なので、訪問済みマークと食い違わせない）
   NG15 captions（写真の説明文）が images と同じ数の文字列の配列でない … 写真と説明がずれて別の写真の説明が出る
+  NG16 gear（そのスポットで要る持ち物）が manner / carry 以外・重複・配列でない／dogArea=carry-only なのに carry が無い
+       （spot.js が楽天の物販枠の商品をこれで選ぶ。manner＝マナーウェアが必須の場所がある、carry＝キャリー・カートが必須の場所がある。
+        「推奨」「どちらか選べる」「イベント時だけ」は付けない）
   ※ NG7 の範囲（緯度33.3〜35.9・経度134.2〜136.9）は今の掲載地域（近畿6府県）に合わせたもの。地域を広げる時はここも直す
 
 使い方:
@@ -51,6 +54,7 @@ DATE_RE = re.compile(r"\d{4}-\d{2}-\d{2}")
 import datetime as _dt
 TODAY = f"{_dt.date.today():%Y-%m-%d}"
 TAGS = {"sakura","koyo", "water", "rain", "small-dog-only", "stay-ok", "stay-only"}
+GEAR = {"manner", "carry"}
 
 
 def in_kansai(lat, lng) -> bool:
@@ -158,6 +162,12 @@ def check(spots: list) -> list:
             ngs.append(f"{sid}（{name}）: dogArea の値が想定外: {s.get('dogArea')!r}")
         if "carryLabel" in s and s.get("dogArea") != "carry-only":
             ngs.append(f"{sid}（{name}）: carryLabel は dogArea=carry-only の時だけ使う（今は {s.get('dogArea')!r}）")
+        if "gear" in s:
+            gr = s["gear"]
+            if not isinstance(gr, list) or not gr or any(x not in GEAR for x in gr) or len(set(gr)) != len(gr):
+                ngs.append(f"{sid}（{name}）: gear は {sorted(GEAR)} の語の配列（重複なし）（今: {gr!r}）")
+        if s.get("dogArea") == "carry-only" and "carry" not in (s.get("gear") or []):
+            ngs.append(f"{sid}（{name}）: dogArea=carry-only なのに gear に carry が無い（物販枠にキャリー・カートが出ない）")
         mx = (s.get("dogRun") or {}).get("maxSize")
         if mx not in (None, "small", "medium", "large"):
             ngs.append(f"{sid}（{name}）: dogRun.maxSize の値が想定外: {mx!r}")

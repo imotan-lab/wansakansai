@@ -475,16 +475,41 @@ function lastCheckedHtml(spot) {
           { name: 'BOS うんちが臭わない袋 ペット用', note: 'うんちの臭いを閉じ込める袋。帰りの車内が助かる',
             url: 'https://item.rakuten.co.jp/rcmdse/lp-4560224462757/' },
         ];
+        // そのスポットで要る物を先に出す（2026-11-02）。spot.gear（manner / carry）は公式で「必須」と
+        // 確かめたスポットにだけ付く（check_spot_data.py NG16）。water タグは水遊びができる場所。
+        // サイズや男女で選ぶ物なので、1商品に固定せず楽天の検索結果へつなぐ（売り切れ・終売で切れない）
+        const GEAR_GOODS = {
+          manner: [
+            { name: '犬用マナーウェア', note: 'このスポットはマナーウェアが要る場所がある。男の子用・女の子用とサイズで選ぶ', kw: 'マナーウェア 犬' },
+          ],
+          carry: [
+            { name: 'ペットカート', note: 'このスポットはカートかキャリーが要る場所がある', kw: 'ペットカート' },
+            { name: '犬用キャリーバッグ', note: '顔まで隠れるタイプでないと入れない場所もある', kw: '犬 キャリーバッグ' },
+          ],
+          water: [
+            { name: '犬用ライフジャケット', note: '川や海で泳がせる時に', kw: '犬 ライフジャケット' },
+            { name: '犬用の吸水タオル', note: '水遊びのあと、車に乗る前に', kw: '犬 吸水タオル' },
+          ],
+        };
+        const gear = Array.isArray(spot.gear) ? spot.gear.filter(g => g === 'manner' || g === 'carry') : [];
+        if (Array.isArray(spot.tags) && spot.tags.includes('water')) gear.push('water');
+        // 条件ごとの1つ目を先に並べ、次に2つ目、足りなければ定番で埋めて3点にする
+        const picked = [];
+        for (let i = 0; i < 2; i++) {
+          gear.forEach(g => { const it = GEAR_GOODS[g][i]; if (it) picked.push({ ...it, kind: 'rakuten-gear' }); });
+        }
+        const items = picked.concat(GOODS.map(g => ({ ...g, kind: 'rakuten-item' }))).slice(0, 3);
         const goodsLink = (u) => `https://hb.afl.rakuten.co.jp/hgc/${RAKUTEN_AFFILIATE_ID}/?pc=${encodeURIComponent(u)}&link_type=text`;
+        const itemUrl = (g) => g.url || `https://search.rakuten.co.jp/search/mall/${encodeURIComponent(g.kw)}/`;
         affEl.innerHTML = `
         <div class="affiliate-stay-head">
           <span class="affiliate-pr-tag">PR</span>
           <span class="affiliate-stay-text">犬とのお出かけに持っていくもの</span>
         </div>
         <ul class="affiliate-goods-list">
-          ${GOODS.map(g => `<li><a href="${goodsLink(g.url)}" target="_blank" rel="sponsored noopener" class="affiliate-btn affiliate-goods-link" data-aff="rakuten-item" data-aff-pref="${prefName || 'unknown'}" data-aff-page="spot:${spot.id}">${escapeHtml(g.name)}<span class="affiliate-goods-note">${escapeHtml(g.note)}</span></a></li>`).join('')}
+          ${items.map(g => `<li><a href="${goodsLink(itemUrl(g))}" target="_blank" rel="sponsored noopener" class="affiliate-btn affiliate-goods-link" data-aff="${g.kind}" data-aff-pref="${prefName || 'unknown'}" data-aff-page="spot:${spot.id}">${escapeHtml(g.name)}<span class="affiliate-goods-note">${escapeHtml(g.note)}</span></a></li>`).join('')}
         </ul>
-        <p class="affiliate-goods-foot">楽天市場の商品ページが開きます</p>
+        <p class="affiliate-goods-foot">楽天市場の${picked.length ? '商品ページ・検索結果' : '商品ページ'}が開きます</p>
       `;
       } else {
       affEl.innerHTML = `
