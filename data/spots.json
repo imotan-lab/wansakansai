@@ -2473,7 +2473,7 @@
   },
   {
     "id": "biwako-hakodateyama",
-    "lastChecked": "2026-10-25",
+    "lastChecked": "2026-11-01",
     "name": "びわこ箱館山",
     "address": "滋賀県高島市今津町日置前4201-4",
     "lat": 35.4297,
@@ -5311,11 +5311,11 @@
   },
   {
     "id": "amagasaki-mori-ryokuchi",
-    "lastChecked": "2026-10-04",
+    "lastChecked": "2026-11-01",
     "name": "兵庫県立尼崎の森中央緑地",
     "address": "兵庫県尼崎市扇町33-4",
-    "lat": 34.709,
-    "lng": 135.4063,
+    "lat": 34.695939,
+    "lng": 135.382393,
     "parking": {
       "available": true,
       "free": true
@@ -5346,7 +5346,7 @@
   },
   {
     "id": "everyones-cafe",
-    "lastChecked": "2026-10-04",
+    "lastChecked": "2026-11-01",
     "name": "Every one's cafe",
     "address": "滋賀県米原市磯1551",
     "lat": 35.314686,
@@ -11619,7 +11619,7 @@
   },
   {
     "id": "asuka-inabuchi-tanada",
-    "lastChecked": "2026-10-18",
+    "lastChecked": "2026-11-01",
     "name": "稲渕の棚田（案山子ロード）",
     "address": "奈良県高市郡明日香村稲渕",
     "lat": 34.457079,
