@@ -33,7 +33,20 @@ Claudeの判断を見せると引きずられて「Claudeが見落とした項�
       "urls": ["https://…"]}]
   claude の先頭は必ず「撤回」「修正」「維持」のどれかで始める。
 
-終了コード: 0=書いた / 2=渡す項目が無い / 1=入力が読めない
+  Instagramなど、Codexが自分で開けない出典を根拠にした項目がある時は --material を付ける（複数可・毎巡同じものを）:
+    --material "C:/Users/imao_/.claude/logs/insta_minori-farm_2026-11-03/post_0.jpg::項目1・公式Instagram minorifarm_shiga の最新投稿（2026年11月の営業日カレンダー）"
+  「パス::説明」の形。説明には取得元・何の資料か・どの項目の根拠かを書く（Claudeの解釈は書かない）。
+  .txt / .md は中身をそのままプロンプトに貼り、画像は一覧に載せて、codex に付ける -i の並びを表示する。
+  ★表示された -i の並びを codex exec の最後の - の前に必ず付ける★
+
+★2026-11-03に --material を足した★
+  みのり農園のドッグラン期間の修正は、公式Instagramの営業日カレンダーが根拠だった。Codexは自分ではInstagramを開けない。
+  STEP 7.5の呼び方に -i が無く、3巡とも「Instagramは開けない」で不支持のまま人に回った。
+  -i を付けて呼び直しても、この依頼文に「根拠にしてよいのは実際に開いたURLだけ」とあるため、
+  Codexは添付画像を根拠に数えなかった（Codexのレビューで指摘され、実際の出力でも画像に触れていなかった）。
+  そこで、渡した資料を番号付きで示し、根拠に使ってよいと明記する。
+
+終了コード: 0=書いた / 2=渡す項目が無い / 1=入力が読めない（--material のファイルが無い時も1）
 ★2026-09-23に「不支持」の定義を直した★
   以前は「修正前の内容が別のページに現存すれば不支持」と書いていた。Codexはこれを字義どおりに当てはめ、
   ①終わった休止期間の日付がお知らせページに残っているだけのもの（黒鳥山公園）
@@ -46,6 +59,7 @@ Claudeの判断を見せると引きずられて「Claudeが見落とした項�
 import argparse
 import io
 import json
+import os
 import sys
 
 PREAMBLE = """# 依頼: サイトの修正内容が出典に支持されるかの再検証
@@ -87,7 +101,7 @@ ASK_ROUND1 = """
 
 ```
 ### 項目1: 支持／不支持／確認できず
-根拠URL: （実際に開いたもの）
+根拠URL: （実際に開いたもの。添付資料を使ったら「資料n」も）
 理由: （2〜3文。不支持なら食い違いを1点に絞る）
 ```
 """
@@ -108,10 +122,48 @@ ASK_ROUND_N = """
 
 ```
 ### 項目1: 支持に変更／なお不支持／確認できず
-根拠URL: （実際に開いたもの）
+根拠URL: （実際に開いたもの。添付資料を使ったら「資料n」も）
 理由: （2〜3文）
 ```
 """
+
+
+MATERIAL_RULE = """
+# 添付資料（あなたが自分では開けない出典の原文）
+
+次の資料は、修正した側が出典から機械的に取った原文・画像です（**修正した側の解釈ではありません**）。
+画像はこの依頼に添付してあり、同じファイルをパスから読むこともできます。
+**上の「実際に開いて読んだURLだけ」に加えて、これらの資料も根拠に使ってかまいません。** 使った時は根拠の欄に「資料n」と書いてください。
+- 資料に**直接書いてあること**と、修正した側がそこから**推し量ったこと**は分けて判定してください。
+  資料が直接示さない日付・数値を推論で補っている部分は、その推論が妥当かを自分で判断してください
+- 資料が読めなかった・添付が見当たらない時は、その旨を書いてください（資料が無いことを理由に不支持にはしないでください）
+"""
+
+
+def parse_material(spec):
+    """「パス::説明」を (パス, 説明) に分ける。Windowsのドライブ文字の : と区別するため区切りは :: にした"""
+    if "::" in spec:
+        path, note = spec.split("::", 1)
+    else:
+        path, note = spec, ""
+    return path.strip(), note.strip()
+
+
+def fmt_materials(materials):
+    lines = [MATERIAL_RULE]
+    for n, (path, note) in enumerate(materials, 1):
+        if path.lower().endswith((".txt", ".md")):
+            body = io.open(path, encoding="utf-8", errors="replace").read().strip()
+            lines.append("## 資料{}（文字）: {}".format(n, note))
+            lines.append("- ファイル: {}".format(path))
+            lines.append("--- ここから原文 ---")
+            lines.append(body)
+            lines.append("--- ここまで原文 ---")
+        else:
+            lines.append("## 資料{}（画像・添付済み）: {}".format(n, note))
+            lines.append("- ファイル: {}".format(path))
+        lines.append("")
+    return "\n".join(lines)
 
 
 def load(path, what):
@@ -140,6 +192,8 @@ def main():
     ap.add_argument("--changes", required=True, help="--changes-file と同じJSON")
     ap.add_argument("--round", type=int, default=1, help="何巡目か（既定1）")
     ap.add_argument("--prior", help="2巡目以降: 前巡のCodexの判定とClaudeの答え（JSON）")
+    ap.add_argument("--material", action="append", default=[],
+                    help="Codexが自分で開けない出典の原文・画像（「パス::説明」・複数可・毎巡同じものを）")
     ap.add_argument("--out", required=True, help="プロンプトの出力先")
     a = ap.parse_args()
 
@@ -148,12 +202,20 @@ def main():
     except Exception:
         pass
 
+    materials = [parse_material(m) for m in a.material]
+    for path, _ in materials:
+        if not os.path.isfile(path):
+            print("!! --material のファイルが無い: {}".format(path))
+            sys.exit(1)
+
     changes = load(a.changes, "--changes")
     if not isinstance(changes, list) or not changes:
         print("渡す項目が無い（修正0件）")
         sys.exit(2)
 
     parts = [PREAMBLE]
+    if materials:
+        parts.append(fmt_materials(materials))
 
     if a.round <= 1:
         parts.append("# 修正の一覧（{}件）\n".format(len(changes)))
@@ -186,6 +248,11 @@ def main():
     io.open(a.out, "w", encoding="utf-8").write("\n".join(parts))
     print("書いた: {} （{}巡目・{}件）".format(a.out, a.round,
           len(changes) if a.round <= 1 else len(disputed)))
+    images = [p for p, _ in materials if not p.lower().endswith((".txt", ".md"))]
+    if materials:
+        print("資料: {}件（画像{}件）".format(len(materials), len(images)))
+    if images:
+        print("codex に付ける画像（最後の - の前に）: " + " ".join('-i "{}"'.format(p) for p in images))
     sys.exit(0)
 
 
