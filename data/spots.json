@@ -5560,54 +5560,6 @@
     "officialUrl": "https://three-c-dog.com/"
   },
   {
-    "id": "and-f-cafe",
-    "gear": ["manner"],
-    "lastChecked": "2026-10-30",
-    "name": "and F CAFE",
-    "address": "滋賀県守山市二町町208-5",
-    "lat": 35.04605,
-    "lng": 135.979617,
-    "parking": {
-      "available": true,
-      "free": true
-    },
-    "toilet": {
-      "available": true,
-      "western": true
-    },
-    "dogRun": {
-      "available": true,
-      "free": false,
-      "separated": false,
-      "detail": "犬連れ専用個室に併設されたミニドッグラン。カフェ利用者向けの小規模スペースで、利用条件は要確認"
-    },
-    "admission": {
-      "free": true,
-      "fee": ""
-    },
-    "visited": false,
-    "tags": [
-      "rain"
-    ],
-    "aliases": [
-      "アンドエフカフェ",
-      "あんどえふかふぇ"
-    ],
-    "remarks": "守山市、犬連れ専用の半個室「with Dogルーム」を備えたカフェ。仕切りで区切られた個室空間はノーリードで過ごせ、追加の個室料金もかからないため、ほかの客を気にせず愛犬とゆっくりくつろげる。個室にはミニドッグランが併設され、食事のあとに少し体を動かせる。犬同伴時はマナーベルトの着用が必須で、忘れた場合は店で購入できる。旬のフルーツを使ったパフェやワッフルなどのスイーツが中心で、犬用メニューも用意される。屋内なので雨の日でも快適。席はランチ2時間・カフェ90分制で、席数が限られるため電話かInstagramのDMで予約がおすすめ。支払いは現金のみ。営業11:30〜18:00、定休日は不定期のため公式Instagramの営業カレンダーで確認のこと。駐車場は無料で、車は1組1台の乗り合わせが求められる。",
-    "imageUrl": "",
-    "images": [],
-    "officialUrl": "https://www.instagram.com/cafe_andf/",
-    "stayKeyword": "琵琶湖",
-    "temporary": [
-      {
-        "note": "犬連れ席（with Dogルーム）は休止中で、10月に再開予定と告知されているが再開日は未発表。最新は公式Instagramで確認のこと",
-        "until": "2026-10-31",
-        "source": "https://www.instagram.com/cafe_andf/p/DckHEryPBL6/",
-        "onExpire": "公式Instagramで犬連れ席の再開を確かめる。再開していればこの要素を削除する。まだ休止中なら、再開日が分かった時点で until を延ばすか、日付が出るまで様子を見る"
-      }
-    ]
-  },
-  {
     "id": "with-wan",
     "gear": ["manner"],
     "lastChecked": "2026-11-02",
