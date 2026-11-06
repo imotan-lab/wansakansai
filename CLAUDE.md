@@ -135,7 +135,7 @@
   ```bash
   python scripts/check_x_posted.py {スポットID}
   ```
-  **サイトから消してもXのポストは残る**ので、該当があればXのポストも消すか判断する（犬NGで消したスポットが「犬連れOK」としてXに残る事故を防ぐ）。`--orphans` で過去の削除漏れを一括検出。履歴は `scripts/x_post_history.json`（.gitignore対象）。消す時は `python scripts/delete_x_post.py --match "文言" --scrolls 40 --delete`（ちょうど1件に絞れた時だけ消す。**消したら同じ手順で「0件」を確かめる**。数か月前の投稿で探索が安定しない時の手はCLAUDE_history.md）
+  **サイトから消してもXのポストは残る**ので、該当があればXのポストも消すか判断する（犬NGで消したスポットが「犬連れOK」としてXに残る事故を防ぐ）。`--orphans` で過去の削除漏れを一括検出。履歴は `scripts/x_post_history.json`（.gitignore対象）。消す時は `python scripts/delete_x_post.py --match "文言" --scrolls 40 --delete`（ちょうど1件に絞れた時だけ消す。**消したら同じ手順で「0件」を確かめる**。**2か月以上前の投稿は、プロフィールをたどる方式では届かない**（2026-11-06、60回スクロールで198件読んでも9月の投稿が0件だった）。**Xの検索 `from:wansakansai "文言"`（`f=live`）で探すと一発で見つかる**。`python scripts/delete_x_post_search.py --match "文言"`（探すだけ）→ `--delete`（見つけた分を消し、検索し直して0件を確かめる）。補足はCLAUDE_history.md）
 - スポット詳細ページのURLは `https://wansakansai.com/spots/{id}.html` が正規（旧 `spot.html?id=xxx` は自動リダイレクト）。内部リンクは `spots/{id}.html` 形式で書く
 - spots/ 配下のHTMLは `generate_spot_pages.py` の出力なので**手動編集禁止**。再生成で上書きされる（`spots/index.html` も同スクリプトが生成する全スポット一覧ページ。削除対象からは除外済み）
 
