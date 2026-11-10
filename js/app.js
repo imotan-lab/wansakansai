@@ -163,64 +163,118 @@
   }
 
   // ===== 絞り込みの画面（下から出る） =====
-  // 開く時は下からすっと出し、閉じる時は下へ引っ込めてから隠す（動きは css の sheet-in / sheet-out）
+  // 動きは css の transition（is-off＝画面の下に隠れた位置）。途中で閉じても開いても、その位置から引き返す。
+  // 開いている間は後ろのページを操作できなくし（inert）、Tab も画面の中で回す。
+  // 閉じ終わってから、開く前の場所へフォーカスを戻す（2026-11-11 Codex と自分の試験で見つけた抜けを直した）。
   let lastFocus = null;
   let closeTimer = null;
+  let focusAfterClose = null;
+  const sheetBackdrop = $('sheetBackdrop');
   const reduceMotion = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+  const noMotion = () => !!(reduceMotion && reduceMotion.matches);
   const isOpen = () => !filterPanel.hidden && !filterPanel.classList.contains('is-closing');
+  filterPanel.classList.add('is-off');
+
+  // 後ろのページ（絞り込みの画面と背景の幕以外）を操作できなくする
+  function setBackgroundInert(on) {
+    let el = filterPanel;
+    while (el && el !== document.body && el.parentElement) {
+      Array.from(el.parentElement.children).forEach(sib => {
+        if (sib === el || sib === sheetBackdrop || sib.tagName === 'SCRIPT') return;
+        if (on) sib.setAttribute('inert', ''); else sib.removeAttribute('inert');
+      });
+      el = el.parentElement;
+    }
+  }
+  function focusables() {
+    return Array.from(filterPanel.querySelectorAll('button, a[href], input, select, textarea, [tabindex]:not([tabindex="-1"])'))
+      .filter(el => !el.disabled && el.offsetParent !== null);
+  }
   function finishClose() {
     clearTimeout(closeTimer);
     closeTimer = null;
-    filterPanel.removeEventListener('animationend', onCloseEnd);
+    filterPanel.removeEventListener('transitionend', onCloseEnd);
     filterPanel.classList.remove('is-closing');
     filterPanel.hidden = true;
-    document.body.classList.remove('sheet-open', 'sheet-closing');
+    document.body.classList.remove('sheet-open');
+    // 後ろを操作できるようにするのは、画面が消えきってから（閉じる途中に Tab で後ろへ出ないように）
+    setBackgroundInert(false);
+    const target = focusAfterClose || lastFocus;
+    focusAfterClose = null;
+    if (target && target.focus) target.focus({ preventScroll: true });
   }
   function onCloseEnd(e) {
-    if (e.target === filterPanel) finishClose();
+    if (e.target === filterPanel && e.propertyName === 'transform') finishClose();
   }
   function openPanel() {
     if (closeTimer) {
-      // 閉じている途中で開き直した時は、引っ込める動きを取り消す
+      // 閉じている途中で開き直した時は、今の位置から引き返す（フォーカスの戻り先は最初に開いた時のまま）
       clearTimeout(closeTimer);
       closeTimer = null;
-      filterPanel.removeEventListener('animationend', onCloseEnd);
+      filterPanel.removeEventListener('transitionend', onCloseEnd);
       filterPanel.classList.remove('is-closing');
-      document.body.classList.remove('sheet-closing');
+      focusAfterClose = null;
     } else {
-      lastFocus = document.activeElement;
+      // iPhone の Safari はボタンを押してもフォーカスを移さないので、その時は「条件で絞り込む」へ戻す
+      const ae = document.activeElement;
+      lastFocus = ae && ae !== document.body && !filterPanel.contains(ae) ? ae : btnFilter;
+      filterPanel.classList.add('is-off');
+      filterPanel.hidden = false;
+      document.body.classList.add('sheet-open');
+      void filterPanel.offsetHeight; // 隠れた位置を一度描かせてから動かす
     }
-    filterPanel.hidden = false;
+    filterPanel.classList.remove('is-off');
+    document.body.classList.add('sheet-shown');
     btnFilter.setAttribute('aria-expanded', 'true');
-    document.body.classList.add('sheet-open');
+    setBackgroundInert(true);
     const first = filterPanel.querySelector('.filter-btn');
-    if (first) first.focus();
+    if (first) first.focus({ preventScroll: true });
   }
-  function closePanel() {
+  function closePanel(then) {
     if (!isOpen()) return;
+    focusAfterClose = then || null;
     btnFilter.setAttribute('aria-expanded', 'false');
-    if (lastFocus) lastFocus.focus();
-    if (reduceMotion && reduceMotion.matches) {
+    document.body.classList.remove('sheet-shown');
+    if (noMotion()) {
+      filterPanel.classList.add('is-off');
       finishClose();
       return;
     }
-    filterPanel.classList.add('is-closing');
-    document.body.classList.add('sheet-closing');
-    filterPanel.addEventListener('animationend', onCloseEnd);
-    // 動きの終わりの合図が来ない端末でも必ず隠す
+    filterPanel.classList.add('is-closing', 'is-off');
+    filterPanel.addEventListener('transitionend', onCloseEnd);
+    // 動きの終わりの合図が来ない端末でも必ず隠す（閉じる動きは0.38秒）
     closeTimer = setTimeout(finishClose, 700);
   }
   btnFilter.addEventListener('click', () => (isOpen() ? closePanel() : openPanel()));
-  $('sheetClose').addEventListener('click', closePanel);
-  $('sheetBackdrop').addEventListener('click', closePanel);
+  $('sheetClose').addEventListener('click', () => closePanel());
+  sheetBackdrop.addEventListener('click', () => closePanel());
   btnSeeResults.addEventListener('click', () => {
-    closePanel();
-    $('listHead').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // 一覧の見出しへ送り、閉じ終わったらフォーカスもそこへ（ボタンへ戻すと画面が上へ引き戻されるため）
+    const head = $('listHead');
+    closePanel(head);
+    head.scrollIntoView({ behavior: noMotion() ? 'auto' : 'smooth', block: 'start' });
   });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape' && isOpen()) closePanel(); });
+  document.addEventListener('keydown', e => {
+    if (filterPanel.hidden) return;
+    if (e.key === 'Escape') { if (isOpen()) closePanel(); return; }
+    if (e.key !== 'Tab') return; // Tab は閉じる途中も画面の中で回す（消えきるまでは後ろへ出さない）
+    const items = focusables();
+    if (!items.length) return;
+    const first = items[0];
+    const last = items[items.length - 1];
+    if (!filterPanel.contains(document.activeElement)) {
+      e.preventDefault(); first.focus();
+    } else if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault(); last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault(); first.focus();
+    }
+  });
 
   // ===== 一覧を描く =====
   function renderSpots() {
+    // 条件が変わるたびに、この履歴に状態を残す（ページを離れる時の保存は WebKit では効かないことがあるため）
+    saveSoon();
     let filtered = [...spots];
     if (activePrefs.size > 0) {
       filtered = filtered.filter(s => activePrefs.has(getPrefecture(s.address)));
@@ -321,23 +375,47 @@
     favBtn.setAttribute('aria-pressed', isNowFav);
   });
 
-  // ===== 詳細から戻った時に、絞り込み・並び・見ていた位置をそのまま出す（2026-11-10） =====
-  // ブラウザがページを残している時はそのまま戻るが、読み直す端末もあるので、このタブの中だけ覚えておく
-  // （sessionStorage。タブを閉じれば消える）。普通に開いた時は使わない。
-  const STATE_KEY = 'wansakan_top_state';
+  // ===== 詳細から戻った時に、絞り込み・並び・見ていた位置をそのまま出す（2026-11-10・11-11作り直し） =====
+  // ブラウザがページを残していればそのまま戻る。読み直す端末のために、このページの履歴の1件ずつに
+  // 状態を持たせる（history.state）。履歴の1件ごとなので、別の時に開いたトップの状態が混ざらない。
+  // 普通にトップを開いた時（ロゴ・リンク）は新しい履歴なので、何も出し直さない。
+  const STATE_KEY = 'wskTop';
+  function rowAnchor() {
+    // 画面の上端に見えている最初のスポットと、そのずれ。フォントの読み込みで行の高さが変わっても同じ行へ戻すため
+    const top = 64;
+    const rows = spotList.querySelectorAll('.spot-row');
+    for (const r of rows) {
+      const rect = r.getBoundingClientRect();
+      if (rect.bottom > top) {
+        const link = r.querySelector('.row-link');
+        return { href: link ? link.getAttribute('href') : '', off: Math.round(rect.top) };
+      }
+    }
+    return null;
+  }
+  let saveTimer = null;
   function saveState() {
+    clearTimeout(saveTimer);
+    saveTimer = null;
     try {
-      sessionStorage.setItem(STATE_KEY, JSON.stringify({
-        prefs: [...activePrefs], filters: [...activeFilters], q: activeSearch,
-        lat: userLat, lng: userLng, y: Math.round(window.scrollY),
-      }));
+      const st = Object.assign({}, history.state || {});
+      st[STATE_KEY] = {
+        prefs: [...activePrefs], filters: [...activeFilters],
+        q: searchInput.value.trim(), // 打ったばかりでまだ一覧に反映していない語も残す
+        lat: userLat, lng: userLng,
+        y: Math.round(window.scrollY), anchor: rowAnchor(),
+      };
+      history.replaceState(st, '');
     } catch (_) { /* 保存できない端末では覚えないだけ */ }
   }
-  let restoreY = null;
+  function saveSoon() {
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(saveState, 400);
+  }
+  let restore = null;
   try {
-    const nav = performance.getEntriesByType ? performance.getEntriesByType('navigation')[0] : null;
-    const saved = JSON.parse(sessionStorage.getItem(STATE_KEY) || 'null');
-    if (nav && nav.type === 'back_forward' && saved) {
+    const saved = history.state && history.state[STATE_KEY];
+    if (saved) {
       (saved.prefs || []).forEach(p => { if (prefList.includes(p)) activePrefs.add(p); });
       (saved.filters || []).forEach(id => { if (FILTERS.some(f => f.id === id)) activeFilters.add(id); });
       if (saved.q) {
@@ -350,18 +428,57 @@
         userLng = saved.lng;
         gpsLabel.textContent = '近い順に並べました';
       }
-      if (typeof saved.y === 'number') restoreY = saved.y;
+      restore = saved;
     }
   } catch (_) { /* 読めなければ最初の状態で出す */ }
+  // 位置はこちらで戻すので、ブラウザ任せの位置戻しは止める（順番が前後して一覧の描画前に戻されるため）
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   window.addEventListener('pagehide', saveState);
-  document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') saveState(); });
+  window.addEventListener('scroll', saveSoon, { passive: true });
   spotList.addEventListener('click', (e) => { if (e.target.closest('a')) saveState(); });
+
+  function jumpTo(y) {
+    // html の scroll-behavior: smooth を一時的に外して、すぐその位置へ
+    const html = document.documentElement;
+    const prev = html.style.scrollBehavior;
+    html.style.scrollBehavior = 'auto';
+    window.scrollTo(0, Math.max(0, y));
+    html.style.scrollBehavior = prev;
+  }
+  function restorePosition() {
+    if (!restore) return;
+    const a = restore.anchor;
+    const row = a && a.href ? Array.from(spotList.querySelectorAll('.row-link')).find(l => l.getAttribute('href') === a.href) : null;
+    if (row) {
+      const r = row.closest('.spot-row').getBoundingClientRect();
+      jumpTo(window.scrollY + r.top - a.off);
+    } else if (typeof restore.y === 'number') {
+      jumpTo(restore.y);
+    }
+  }
+
+  // ブラウザが残していたページに戻った時: 詳細で押したお気に入りを、一覧のハートに反映し直す
+  window.addEventListener('pageshow', (e) => {
+    if (!e.persisted) return;
+    const favs = getFavorites();
+    spotList.querySelectorAll('.fav-btn').forEach(b => {
+      const on = favs.has(b.dataset.id);
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-pressed', on);
+    });
+  });
 
   buildPrefButtons();
   buildFilterButtons();
   renderSpots();
-  if (restoreY !== null) {
-    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-    window.scrollTo(0, restoreY);
+  if (restore) {
+    restorePosition();
+    // 文字の読み込みで行の高さが変わったら、もう一度合わせる（その前に自分で動かし始めていたら触らない）
+    let userMoved = false;
+    ['touchstart', 'wheel', 'keydown', 'pointerdown'].forEach(ev =>
+      window.addEventListener(ev, () => { userMoved = true; }, { once: true, passive: true }));
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(() => { if (!userMoved) restorePosition(); });
+    }
   }
 })();

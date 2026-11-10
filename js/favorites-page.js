@@ -8,6 +8,13 @@
   const countEl = document.getElementById('spotCount');
   const favIds = getFavorites();
 
+  // 詳細でハートを押してから戻った時（ブラウザがページを残していた時）に、古い一覧のままにしない
+  const favKey = () => [...getFavorites()].sort().join(',');
+  let shownKey = favKey();
+  window.addEventListener('pageshow', (e) => {
+    if (e.persisted && favKey() !== shownKey) location.reload();
+  });
+
   if (favIds.size === 0) {
     countEl.textContent = '';
     container.innerHTML = `
@@ -27,6 +34,7 @@
 
   function renderFavList() {
     const current = getFavorites();
+    shownKey = favKey();
     const list = spots.filter(s => current.has(s.id));
 
     if (list.length === 0) {

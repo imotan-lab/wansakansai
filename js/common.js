@@ -320,17 +320,63 @@ function spotRowHTML(s, opts) {
 }
 
 // ===== 戻るリンク（スポット詳細の左上）=====
-// 一覧から来た時は履歴で戻す。絞り込み・並び・見ていた位置がそのまま残るため。
-// それ以外（検索・X・ブックマークから直接来た等）は、リンク先のトップへ進む。
-document.addEventListener('click', (e) => {
-  const a = e.target.closest && e.target.closest('a.back-link');
-  if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-  let ref;
-  try { ref = new URL(document.referrer); } catch (_) { return; }
-  if (ref.origin !== location.origin || history.length < 2) return;
-  const path = ref.pathname;
-  const fromList = /\/(index\.html)?$/.test(path) || /\/themes\//.test(path) || /\/favorites\.html$/.test(path);
-  if (!fromList) return;
-  e.preventDefault();
-  history.back();
-});
+// 一覧（トップ・テーマ別・お気に入り・府県別一覧）から同じタブで来た時は、履歴をさかのぼって一覧へ戻す。
+// 絞り込み・並び・見ていた位置がそのまま残るため。詳細から「近くのスポット」で詳細へ移っていても、最初の一覧まで戻す。
+// 何件さかのぼれば一覧かは、この詳細を初めて開いた時に決めて、この履歴の1件に持たせる（history.state）。
+// 一覧から来たと確かめられない時（検索・X・ブックマーク・新しいタブ）は、リンクどおりトップへ進む。
+// 2026-11-11 作り直し: 前の作りは「前のページが一覧か」を毎回 referrer で見ていたので、新しいタブで開いた後に
+// 戻れなくなる・詳細から詳細へ移ると一覧の状態を失う、という抜けがあった（Codex の見直しで分かった）。
+(function () {
+  const back = document.querySelector('a.back-link');
+  if (!back) return;
+  const KEY = 'wskBack';          // この詳細の履歴に持たせる「何件さかのぼれば一覧か」（0＝リンクどおり）
+  const HOP = 'wsk_spot_hop';     // 詳細から詳細へ移る時の受け渡し（このタブの中だけ）
+  const here = () => location.href.split('#')[0];
+  const isList = (u) => u.origin === location.origin &&
+    (/\/(index\.html)?$/.test(u.pathname) || /\/themes\/[^/]*$/.test(u.pathname) || /\/favorites\.html$/.test(u.pathname));
+  let depth = 0;
+  try {
+    const st = history.state || {};
+    if (typeof st[KEY] === 'number') {
+      depth = st[KEY];
+    } else {
+      let ref = null;
+      try { ref = new URL(document.referrer); } catch (_) { ref = null; }
+      if (ref && history.length > 1) {
+        if (isList(ref)) {
+          depth = 1;
+        } else {
+          let hop = null;
+          try { hop = JSON.parse(sessionStorage.getItem(HOP) || 'null'); } catch (_) { hop = null; }
+          if (hop && hop.href === document.referrer && hop.depth > 0 && hop.depth < 50) depth = hop.depth + 1;
+        }
+      }
+      history.replaceState(Object.assign({}, st, { [KEY]: depth }), '');
+    }
+  } catch (_) {
+    depth = 0;
+  }
+  // ページの中のリンク（「本文へスキップ」など # で始まるもの）は履歴を1件増やす。
+  // 増えた履歴には印が無いので、ここで「一覧までの件数」を1つ足して持たせる。履歴を戻って元の印のある所へ来たら、その値に戻す
+  window.addEventListener('hashchange', () => {
+    try {
+      const st = history.state || {};
+      if (typeof st[KEY] === 'number') {
+        depth = st[KEY];
+      } else {
+        depth = depth > 0 ? depth + 1 : 0;
+        history.replaceState(Object.assign({}, st, { [KEY]: depth }), '');
+      }
+    } catch (_) { /* 覚えられなければそのまま */ }
+  });
+  const remember = () => {
+    try { sessionStorage.setItem(HOP, JSON.stringify({ href: here(), depth })); } catch (_) { /* 覚えられなければリンクどおり */ }
+  };
+  window.addEventListener('pagehide', remember);
+  document.addEventListener('click', (e) => { if (e.target.closest && e.target.closest('a[href]')) remember(); });
+  back.addEventListener('click', (e) => {
+    if (!depth || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    e.preventDefault();
+    history.go(-depth);
+  });
+})();

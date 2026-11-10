@@ -531,23 +531,22 @@ img {
   border-top: 1px solid var(--color-border-strong);
   border-radius: 8px 8px 0 0;
   box-shadow: 0 -10px 30px rgba(43, 38, 33, 0.18);
-  /* 下からすっと出る（出どころを示す動き。飾りの動きではない）。
-     閉じる時は js が is-closing を付け、動き終わってから hidden にする */
-  animation: sheet-in 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  /* 下からすっと出る（出どころを示す動き。飾りの動きではない・2026-11-11 運営者「早すぎる」で0.5秒）。
+     js が is-off（画面の下に隠れた位置）を付け外しする。transition なので、出る途中で閉じても
+     その位置から引き返す。transform を使うのは、独立した translate に対応しない古い端末でも動かすため。
+     --sheet-x はパソコン幅で中央に置くための横のずらし */
+  --sheet-x: 0px;
+  transform: translate(var(--sheet-x), 0);
+  transition: transform 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.filter-panel.is-off {
+  transform: translate(var(--sheet-x), 100%);
 }
 
 .filter-panel.is-closing {
-  animation: sheet-out 380ms cubic-bezier(0.55, 0.085, 0.68, 0.53) forwards;
-}
-
-@keyframes sheet-in {
-  from { translate: 0 100%; }
-  to { translate: 0 0; }
-}
-
-@keyframes sheet-out {
-  from { translate: 0 0; }
-  to { translate: 0 100%; }
+  transition-duration: 380ms;
+  transition-timing-function: cubic-bezier(0.55, 0.085, 0.68, 0.53);
 }
 
 .filter-panel[hidden] {
@@ -559,7 +558,7 @@ img {
     left: 50%;
     right: auto;
     width: 560px;
-    transform: translateX(-50%);
+    --sheet-x: -50%;
   }
 }
 
@@ -586,6 +585,7 @@ img {
 
 .filter-section {
   overflow-y: auto;
+  overscroll-behavior: contain;
   padding: 14px 16px 4px;
 }
 
@@ -645,30 +645,20 @@ body.sheet-open .sheet-backdrop {
   inset: 0;
   z-index: 250;
   background: rgba(43, 38, 33, 0.35);
-  animation: backdrop-in 400ms ease-out;
+  opacity: 0;
+  transition: opacity 400ms ease-out;
 }
 
-body.sheet-closing .sheet-backdrop {
-  animation: backdrop-out 380ms ease-in forwards;
-}
-
-@keyframes backdrop-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes backdrop-out {
-  from { opacity: 1; }
-  to { opacity: 0; }
+body.sheet-shown .sheet-backdrop {
+  opacity: 1;
 }
 
 /* 動きを減らす設定の端末では、すぐ出してすぐ消す */
 @media (prefers-reduced-motion: reduce) {
   .filter-panel,
   .filter-panel.is-closing,
-  body.sheet-open .sheet-backdrop,
-  body.sheet-closing .sheet-backdrop {
-    animation: none;
+  body.sheet-open .sheet-backdrop {
+    transition: none;
   }
 }
 
