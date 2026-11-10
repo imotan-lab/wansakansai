@@ -6,7 +6,7 @@
 }
 .theme-content h1 {
   font-size: 1.4rem;
-  color: var(--color-primary);
+  color: var(--color-text);
   margin-bottom: 8px;
   line-height: 1.4;
 }
@@ -30,7 +30,7 @@
 .theme-intro p:last-child { margin-bottom: 0; }
 .theme-intro h2 {
   font-size: 1.05rem;
-  color: var(--color-primary);
+  color: var(--color-text);
   margin: 6px 0 10px;
 }
 .theme-intro ul {
@@ -52,7 +52,7 @@
 .theme-group { margin-bottom: 28px; }
 .theme-group-title {
   font-size: 1.15rem;
-  color: var(--color-primary);
+  color: var(--color-text);
   margin: 0 0 12px;
   padding-bottom: 6px;
   border-bottom: 2px solid var(--color-border);
@@ -84,22 +84,20 @@
 }
 .theme-card {
   display: block;
-  background: #fff;
+  background: var(--color-bg-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   padding: 16px 18px;
   text-decoration: none;
   color: var(--color-text);
-  transition: box-shadow 0.15s ease, transform 0.15s ease;
 }
 .theme-card:hover {
-  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-  transform: translateY(-2px);
+  border-color: var(--color-primary);
 }
 .theme-card-title {
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--color-primary);
+  color: var(--color-text);
   margin-bottom: 6px;
 }
 .theme-card-count {

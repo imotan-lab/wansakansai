@@ -23,7 +23,7 @@
   const spots = await loadJSON('data/spots.json');
   const favSpots = spots.filter(s => favIds.has(s.id));
 
-  countEl.textContent = `${favSpots.length} 件`;
+  countEl.innerHTML = `<b>${favSpots.length}</b>件`;
 
   function renderFavList() {
     const current = getFavorites();
@@ -41,35 +41,10 @@
       return;
     }
 
-    countEl.textContent = `${list.length} 件`;
+    countEl.innerHTML = `<b>${list.length}</b>件`;
 
-    container.innerHTML = list.map(s => {
-      const visitedStamp = s.visited ? '<img src="images/stamp-visited.png" alt="運営が実際に訪問済み" class="visited-stamp">' : '';
-      const tags = [];
-      if (s.parking.available) {
-        tags.push(`<span class="tag">P ${s.parking.free ? '無料' : '有料'}</span>`);
-      }
-      if (s.dogRun.available) {
-        let drText = 'ドッグラン';
-        if (s.dogRun.separated) drText += '(エリア分離)';
-        tags.push(`<span class="tag">${drText}</span>`);
-      }
-      if (s.admission.free) tags.push('<span class="tag">入場無料</span>');
-
-      return `
-        <a href="spots/${encodeURIComponent(s.id)}.html" class="spot-card">
-          ${visitedStamp}
-          <div class="spot-card-header">
-            <span class="spot-card-name">${escapeHtml(s.name)}</span>
-            <div class="spot-card-right">
-              <button class="fav-btn active" data-id="${escapeHtml(s.id)}" aria-label="お気に入りを解除">&#9829;</button>
-            </div>
-          </div>
-          <p class="spot-card-address">${escapeHtml(s.address)}</p>
-          <div class="spot-card-tags">${tags.join('')}</div>
-        </a>
-      `;
-    }).join('');
+    // 一覧1件の形はトップと同じ（common.js の spotRowHTML）
+    container.innerHTML = list.map(s => spotRowHTML(s)).join('');
   }
 
   renderFavList();

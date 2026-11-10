@@ -1,4 +1,6 @@
-// ===== Top Page: GPS, Prefecture Filter, Spot List =====
+// ===== Top Page: 検索・近い順・絞り込み・一覧 =====
+// 2026-11 デザイン刷新（行き先帳）: 絞り込みは「条件で絞り込む」を押すと画面の下から出る。
+// 選んでいる条件は一覧の上に出し、「すべて外す」で戻せる。一覧1件の形は common.js の spotRowHTML。
 
 (async function () {
   renderHeader('home');
@@ -11,53 +13,57 @@
   const activeFilters = new Set();
   let activeSearch = '';
 
-  const spotList = document.getElementById('spotList');
-  const spotCount = document.getElementById('spotCount');
-  const btnGps = document.getElementById('btnGps');
-  const gpsStatus = document.getElementById('gpsStatus');
-  const prefSection = document.getElementById('prefSection');
-  const filterSection = document.getElementById('filterSection');
-  const searchInput = document.getElementById('spotSearch');
-  const searchClear = document.getElementById('searchClear');
+  const $ = id => document.getElementById(id);
+  const spotList = $('spotList');
+  const spotCount = $('spotCount');
+  const btnGps = $('btnGps');
+  const gpsLabel = btnGps.querySelector('.gps-label');
+  const gpsStatus = $('gpsStatus');
+  const prefSection = $('prefSection');
+  const filterSection = $('filterSection');
+  const searchInput = $('spotSearch');
+  const searchClear = $('searchClear');
+  const btnFilter = $('btnFilter');
+  const filterPanel = $('filterPanel');
+  const btnSeeResults = $('btnSeeResults');
+  const summary = $('activeSummary');
+
+  document.querySelectorAll('[data-total]').forEach(el => { el.textContent = spots.length; });
+  document.querySelectorAll('[data-visited]').forEach(el => { el.textContent = spots.filter(s => s.visited).length; });
 
   // カタカナ→ひらがな変換
   function kataToHira(str) {
-    return str.replace(/[\u30A1-\u30F6]/g, ch =>
-      String.fromCharCode(ch.charCodeAt(0) - 0x60)
-    );
+    return str.replace(/[ァ-ヶ]/g, ch => String.fromCharCode(ch.charCodeAt(0) - 0x60));
   }
-
   // 検索用の正規化（カタカナ→ひらがな、記号除去、小文字化）
   function normalizeForSearch(str) {
     return kataToHira(str.toLowerCase()).replace(/[・\-\s　]/g, '');
   }
-
   // 検索マッチング（name, aliases, addressを対象）
   function matchesSearch(spot, query) {
     const q = normalizeForSearch(query);
-    const fields = [spot.name, ...(spot.aliases || []), spot.address];
-    return fields.some(f => normalizeForSearch(f).includes(q));
+    return [spot.name, ...(spot.aliases || []), spot.address].some(f => normalizeForSearch(f).includes(q));
   }
 
-  // 検索入力のデバウンス
   let searchTimer = null;
   searchInput.addEventListener('input', () => {
     clearTimeout(searchTimer);
     searchTimer = setTimeout(() => {
       activeSearch = searchInput.value.trim();
-      searchClear.style.display = activeSearch ? 'block' : 'none';
+      searchClear.hidden = !activeSearch;
       renderSpots();
     }, 200);
   });
-
   searchClear.addEventListener('click', () => {
     searchInput.value = '';
     activeSearch = '';
-    searchClear.style.display = 'none';
+    searchClear.hidden = true;
     renderSpots();
+    searchInput.focus();
   });
 
-  // Tag filter definitions (data-driven, grouped)
+  const has = (s, t) => (s.tags || []).includes(t);
+  // 絞り込みの定義（データ駆動・段ごと）
   const FILTER_GROUPS = [
     { label: '駐車場', filters: [
       { id: 'parking-free', label: '無料', test: s => s.parking.available && s.parking.free },
@@ -73,155 +79,144 @@
       { id: 'admission-paid', label: '入場有料', test: s => !s.admission.free },
     ]},
     { label: '特徴', filters: [
-      { id: 'sakura', label: '桜', test: s => (s.tags || []).includes('sakura') },
-      { id: 'koyo', label: '紅葉', test: s => (s.tags || []).includes('koyo') },
-      { id: 'water', label: '水遊び', test: s => (s.tags || []).includes('water') },
-      { id: 'rain', label: '雨でもOK', test: s => (s.tags || []).includes('rain') },
-      { id: 'stay-ok', label: '宿泊可', test: s => (s.tags || []).includes('stay-ok') },
-      { id: 'stay-only', label: '宿泊専用', test: s => (s.tags || []).includes('stay-only') },
+      { id: 'sakura', label: '桜', test: s => has(s, 'sakura') },
+      { id: 'koyo', label: '紅葉', test: s => has(s, 'koyo') },
+      { id: 'water', label: '水遊び', test: s => has(s, 'water') },
+      { id: 'rain', label: '雨でもOK', test: s => has(s, 'rain') },
+      { id: 'stay-ok', label: '宿泊可', test: s => has(s, 'stay-ok') },
+      { id: 'stay-only', label: '宿泊専用', test: s => has(s, 'stay-only') },
     ]},
     // 犬のサイズ（2026-09-21）。dogSize は「そのサイズの犬がスポットの目的を果たせるか」。
     // 「ドッグラン」と同時に押している時だけ、ドッグランだけの制限（dogRun.maxSize）も見る。
-    // 公園は歩けるがドッグランは小型専用、という所を、ドッグラン目当ての人にだけ外すため。
     { label: '犬のサイズ', filters: [
       { id: 'size-medium', label: '中型犬OK', test: s => dogSizeAllows(s, 'medium') && (!activeFilters.has('dogrun') || dogRunSizeAllows(s, 'medium')) },
       { id: 'size-large', label: '大型犬OK', test: s => dogSizeAllows(s, 'large') && (!activeFilters.has('dogrun') || dogRunSizeAllows(s, 'large')) },
       { id: 'small-dog-only', label: '小型犬のみ', test: s => !dogSizeAllows(s, 'medium') },
     ]},
   ];
-
-  // Flat list for filtering logic
   const FILTERS = FILTER_GROUPS.flatMap(g => g.filters);
 
   function buildFilterButtons() {
     filterSection.innerHTML = FILTER_GROUPS.map(g => `
-      <div class="filter-group">
-        <span class="filter-group-label">${g.label}</span>
+      <fieldset class="filter-group">
+        <legend class="filter-group-label">${g.label}</legend>
         <div class="filter-group-btns">
-          ${g.filters.map(f =>
-            `<button class="filter-btn" data-filter="${f.id}">${f.label}</button>`
-          ).join('')}
+          ${g.filters.map(f => `<button type="button" class="filter-btn" data-filter="${f.id}" aria-pressed="false">${f.label}</button>`).join('')}
         </div>
-      </div>
-    `).join('') + '<button class="filter-clear-btn" id="filterClearBtn" style="display:none;">✕ 条件をクリア</button>'
-      + '<p class="filter-note">同じ段で複数押すと「どれか」に、別の段と組み合わせると「すべて」に当てはまるスポットを表示します。</p>';
-
+      </fieldset>`).join('')
+      + '<p class="filter-note">同じ段で複数押すと「どれか」に、別の段と組み合わせると「すべて」に当てはまるスポットを出します。</p>';
     filterSection.querySelectorAll('.filter-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         const id = btn.dataset.filter;
-        if (activeFilters.has(id)) {
-          activeFilters.delete(id);
-          btn.classList.remove('active');
-        } else {
-          activeFilters.add(id);
-          btn.classList.add('active');
-        }
+        if (activeFilters.has(id)) activeFilters.delete(id); else activeFilters.add(id);
+        btn.setAttribute('aria-pressed', activeFilters.has(id));
         renderSpots();
       });
     });
-
-    document.getElementById('filterClearBtn').addEventListener('click', () => {
-      activeFilters.clear();
-      activePrefs.clear();
-      activeSearch = '';
-      searchInput.value = '';
-      searchClear.style.display = 'none';
-      filterSection.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      prefSection.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      renderSpots();
-    });
   }
 
-  // Extract prefecture list from spot data
-  // 「京都府」は最短一致だと「京都」で切れてしまうため、都府道を明示列挙してから県にフォールバックする
+  // 府県の一覧はデータから作る。「京都府」は最短一致だと「京都」で切れるので都府道を先に並べる
   const PREF_RE = /^(北海道|東京都|京都府|大阪府|.+?県)/;
   function getPrefecture(address) {
     const m = (address || '').match(PREF_RE);
     return m ? m[1] : 'その他';
   }
-
   const prefList = [...new Set(spots.map(s => getPrefecture(s.address)))].filter(p => p !== 'その他');
 
-  // Build prefecture buttons from actual data
   function buildPrefButtons() {
-    const prefCounts = {};
-    spots.forEach(s => {
-      const pref = getPrefecture(s.address);
-      prefCounts[pref] = (prefCounts[pref] || 0) + 1;
-    });
-
-    prefSection.innerHTML = prefList
-      .filter(pref => prefCounts[pref])
-      .map(pref => {
-        const shortName = pref.replace(/[府県]$/, '');
-        return `<button class="filter-btn" data-pref="${pref}">${shortName}(${prefCounts[pref]})</button>`;
-      }).join('');
-
+    const counts = {};
+    spots.forEach(s => { const p = getPrefecture(s.address); counts[p] = (counts[p] || 0) + 1; });
+    prefSection.innerHTML = prefList.filter(p => counts[p]).map(p =>
+      `<button type="button" class="filter-btn pref-btn" data-pref="${p}" aria-pressed="false">${p.replace(/[府県]$/, '')}<span class="pref-n">${counts[p]}</span></button>`
+    ).join('');
     prefSection.querySelectorAll('.filter-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        const pref = btn.dataset.pref;
-        if (activePrefs.has(pref)) {
-          activePrefs.delete(pref);
-          btn.classList.remove('active');
-        } else {
-          activePrefs.add(pref);
-          btn.classList.add('active');
-        }
+        const p = btn.dataset.pref;
+        if (activePrefs.has(p)) activePrefs.delete(p); else activePrefs.add(p);
+        btn.setAttribute('aria-pressed', activePrefs.has(p));
         renderSpots();
       });
     });
   }
 
-  // ===== Render spots =====
+  function clearAll() {
+    activeFilters.clear();
+    activePrefs.clear();
+    activeSearch = '';
+    searchInput.value = '';
+    searchClear.hidden = true;
+    document.querySelectorAll('.filter-btn').forEach(b => b.setAttribute('aria-pressed', 'false'));
+    renderSpots();
+  }
+
+  // ===== 絞り込みの画面（下から出る） =====
+  let lastFocus = null;
+  function openPanel() {
+    lastFocus = document.activeElement;
+    filterPanel.hidden = false;
+    btnFilter.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('sheet-open');
+    const first = filterPanel.querySelector('.filter-btn');
+    if (first) first.focus();
+  }
+  function closePanel() {
+    filterPanel.hidden = true;
+    btnFilter.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('sheet-open');
+    if (lastFocus) lastFocus.focus();
+  }
+  btnFilter.addEventListener('click', () => (filterPanel.hidden ? openPanel() : closePanel()));
+  $('sheetClose').addEventListener('click', closePanel);
+  $('sheetBackdrop').addEventListener('click', closePanel);
+  btnSeeResults.addEventListener('click', () => {
+    closePanel();
+    $('listHead').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !filterPanel.hidden) closePanel(); });
+
+  // ===== 一覧を描く =====
   function renderSpots() {
     let filtered = [...spots];
-
-    // Filter by prefecture
     if (activePrefs.size > 0) {
       filtered = filtered.filter(s => activePrefs.has(getPrefecture(s.address)));
     }
-
-    // Filter by tags（2026-10-04）: 同じ段の中は「どれか」（OR）、段どうしは「すべて」（AND）。
-    // 以前は全部ANDだったため、駐車場の「無料」と「有料」のように同じ段で2つ押すと0件になっていた。
-    // 都道府県（上の段）も「どれか」なので、全部の段が同じ考え方になる。
+    // 同じ段の中は「どれか」（OR）、段どうしは「すべて」（AND）（2026-10-04）
     if (activeFilters.size > 0) {
-      const activeGroups = FILTER_GROUPS
-        .map(g => g.filters.filter(f => activeFilters.has(f.id)))
-        .filter(fs => fs.length > 0);
-      filtered = filtered.filter(s =>
-        activeGroups.every(fs => fs.some(f => f.test(s)))
-      );
+      const groups = FILTER_GROUPS.map(g => g.filters.filter(f => activeFilters.has(f.id))).filter(fs => fs.length > 0);
+      filtered = filtered.filter(s => groups.every(fs => fs.some(f => f.test(s))));
     }
-
-    // Filter by search query
-    if (activeSearch) {
-      filtered = filtered.filter(s => matchesSearch(s, activeSearch));
-    }
-
-    // Sort by distance if GPS available
+    if (activeSearch) filtered = filtered.filter(s => matchesSearch(s, activeSearch));
     if (userLat !== null && userLng !== null) {
-      filtered.forEach(s => {
-        s._distance = calcDistance(userLat, userLng, s.lat, s.lng);
-      });
+      filtered.forEach(s => { s._distance = calcDistance(userLat, userLng, s.lat, s.lng); });
       filtered.sort((a, b) => a._distance - b._distance);
     }
 
-    const isFiltered = activePrefs.size > 0 || activeFilters.size > 0 || activeSearch;
-    const clearBtn = document.getElementById('filterClearBtn');
-    if (clearBtn) clearBtn.style.display = isFiltered ? 'inline-block' : 'none';
-    spotCount.textContent = isFiltered
-      ? `${filtered.length} 件のスポット（全${spots.length}件中）`
-      : `${filtered.length} 件のスポット`;
+    // 選んでいる条件
+    const chosen = [
+      ...(activeSearch ? ['「' + escapeHtml(activeSearch) + '」'] : []),
+      ...[...activePrefs].map(p => p.replace(/[府県]$/, '')),
+      ...FILTERS.filter(f => activeFilters.has(f.id)).map(f => f.label),
+    ];
+    const n = activeFilters.size;
+    btnFilter.querySelector('.btn-filter-n').textContent = n ? String(n) : '';
+    btnSeeResults.textContent = `${filtered.length}件を見る`;
+    if (chosen.length) {
+      summary.innerHTML = `<span class="sum-label">絞り込み中</span><span class="sum-items">${chosen.join('・')}</span><button type="button" class="sum-clear" id="sumClear">すべて外す</button>`;
+      $('sumClear').addEventListener('click', clearAll);
+    } else {
+      summary.innerHTML = '';
+    }
+    spotCount.innerHTML = `<b>${filtered.length}</b>件${chosen.length ? `（全${spots.length}件中）` : ''}${userLat !== null ? '・近い順' : ''}`;
 
     // 宿泊専用フィルター時の注意書き
-    let stayNote = document.getElementById('stayNote');
+    let stayNote = $('stayNote');
     if (activeFilters.has('stay-only')) {
       if (!stayNote) {
         stayNote = document.createElement('p');
         stayNote.id = 'stayNote';
         stayNote.className = 'stay-note';
-        stayNote.textContent = '※ 宿泊専用施設は、運営者が実際に宿泊した場所のみ掲載しています';
-        spotCount.parentNode.insertBefore(stayNote, spotCount.nextSibling);
+        stayNote.textContent = '宿泊専用の施設は、運営者が実際に泊まった場所だけを載せています。';
+        spotList.parentNode.insertBefore(stayNote, spotList);
       }
     } else if (stayNote) {
       stayNote.remove();
@@ -231,101 +226,56 @@
       spotList.innerHTML = `
         <div class="empty-state">
           <img src="images/chihuahua-notfound.png" alt="" class="empty-state-img">
-          <p>この地域のスポットはまだありません</p>
-        </div>
-      `;
+          <p>この条件に合うスポットはありません。条件を1つ外してみてください。</p>
+          <button type="button" class="sum-clear" id="emptyClear">条件をすべて外す</button>
+        </div>`;
+      $('emptyClear').addEventListener('click', clearAll);
       return;
     }
-
-    spotList.innerHTML = filtered.map(s => {
-      const distText = s._distance != null ? `<span class="spot-card-distance">${formatDistance(s._distance)}</span>` : '';
-      const visitedStamp = s.visited ? '<img src="images/stamp-visited.png" alt="運営が実際に訪問済み" class="visited-stamp">' : '';
-      const favClass = isFavorite(s.id) ? ' active' : '';
-      const tags = [];
-      if (s.parking.available) {
-        tags.push(`<span class="tag">P ${s.parking.free ? '無料' : '有料'}</span>`);
-      }
-      if (s.dogRun.available) {
-        let drText = 'ドッグラン';
-        if (s.dogRun.separated) drText += '(エリア分離)';
-        tags.push(`<span class="tag">${drText}</span>`);
-      }
-      if (s.admission.free) tags.push('<span class="tag">入場無料</span>');
-      if ((s.tags || []).includes('sakura')) tags.push('<span class="tag tag-feature">桜</span>');
-      if ((s.tags || []).includes('koyo')) tags.push('<span class="tag tag-feature">紅葉</span>');
-      if ((s.tags || []).includes('water')) tags.push('<span class="tag tag-feature">水遊び</span>');
-      if (!dogSizeAllows(s, 'small') && !dogSizeAllows(s, 'medium') && !dogSizeAllows(s, 'large')) tags.push('<span class="tag tag-warn">犬は入れません</span>');
-      else if (!dogSizeAllows(s, 'medium')) tags.push('<span class="tag tag-warn">小型犬のみ</span>');
-      else if (!dogSizeAllows(s, 'large')) tags.push('<span class="tag tag-warn">中型犬まで</span>');
-      if (s.dogRun && s.dogRun.available && s.dogRun.maxSize === 'small') tags.push('<span class="tag tag-warn">ランは小型犬のみ</span>');
-      else if (s.dogRun && s.dogRun.available && s.dogRun.maxSize === 'medium') tags.push('<span class="tag tag-warn">ランは中型犬まで</span>');
-      if ((s.tags || []).includes('rain')) tags.push('<span class="tag tag-feature">雨でもOK</span>');
-      const isStayOnly = (s.tags || []).includes('stay-only');
-      const isStayOk = (s.tags || []).includes('stay-ok');
-      if (isStayOnly) tags.push('<span class="tag tag-stay">宿泊専用</span>');
-      else if (isStayOk) tags.push('<span class="tag tag-stay">宿泊可</span>');
-
-      return `
-        <a href="spots/${s.id}.html" class="spot-card${isStayOnly ? ' spot-card-stay' : ''}">
-          ${visitedStamp}
-          <div class="spot-card-header">
-            <span class="spot-card-name">${escapeHtml(s.name)}</span>
-            <div class="spot-card-right">
-              ${distText}
-              <button class="fav-btn${favClass}" data-id="${escapeHtml(s.id)}" aria-label="お気に入り">&#9829;</button>
-            </div>
-          </div>
-          <p class="spot-card-address">${escapeHtml(s.address)}</p>
-          <div class="spot-card-tags">${tags.join('')}</div>
-        </a>
-      `;
-    }).join('');
+    spotList.innerHTML = filtered.map(s => spotRowHTML(s, { distance: s._distance })).join('');
   }
 
-  // ===== GPS =====
+  // ===== 現在地 =====
   btnGps.addEventListener('click', () => {
     if (!navigator.geolocation) {
-      gpsStatus.textContent = 'お使いのブラウザではGPS機能を利用できません';
+      gpsStatus.textContent = 'このブラウザでは現在地を使えません。府県やスポット名で探してください。';
       return;
     }
-
     btnGps.classList.add('loading');
-    btnGps.textContent = '取得中...';
+    btnGps.setAttribute('aria-busy', 'true');
+    gpsLabel.textContent = '現在地を取得中';
     gpsStatus.textContent = '';
-
     navigator.geolocation.getCurrentPosition(
       (pos) => {
         userLat = pos.coords.latitude;
         userLng = pos.coords.longitude;
         btnGps.classList.remove('loading');
-        btnGps.textContent = '現在地を更新して並べ替え';
-        gpsStatus.textContent = '現在地を取得しました。近い順に並べ替えました（選んでいる絞り込みはそのままです）。';
+        btnGps.removeAttribute('aria-busy');
+        gpsLabel.textContent = '近い順に並べました';
         renderSpots();
       },
       (err) => {
         btnGps.classList.remove('loading');
-        btnGps.textContent = '現在地から近い順に並べ替える';
-        if (err.code === 1) {
-          gpsStatus.textContent = '位置情報の使用が許可されていません。ブラウザの設定をご確認ください。';
-        } else {
-          gpsStatus.textContent = '位置情報の取得に失敗しました。もう一度お試しください。';
-        }
+        btnGps.removeAttribute('aria-busy');
+        gpsLabel.textContent = '現在地から近い順';
+        gpsStatus.textContent = err.code === 1
+          ? '位置情報の使用が許可されていません。府県やスポット名で探すこともできます。'
+          : '現在地を取れませんでした。もう一度押してください。';
       },
       { enableHighAccuracy: true, timeout: 10000 }
     );
   });
 
-  // Favorite button (event delegation)
+  // お気に入り（ハートはリンクの外にある）
   spotList.addEventListener('click', (e) => {
     const favBtn = e.target.closest('.fav-btn');
     if (!favBtn) return;
     e.preventDefault();
-    const id = favBtn.dataset.id;
-    const isNowFav = toggleFavorite(id);
+    const isNowFav = toggleFavorite(favBtn.dataset.id);
     favBtn.classList.toggle('active', isNowFav);
+    favBtn.setAttribute('aria-pressed', isNowFav);
   });
 
-  // Build buttons & initial render
   buildPrefButtons();
   buildFilterButtons();
   renderSpots();

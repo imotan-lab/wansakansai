@@ -130,7 +130,7 @@ function renderHeader(activePage) {
           ${headerNav.map(n => `<li><a href="${resolveNavHref(n.href, base)}" class="${activePage === n.id ? 'active' : ''}">${n.label}</a></li>`).join('')}
         </ul>
       </nav>
-      <button class="hamburger" aria-label="メニューを開く">☰</button>
+      <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">${MENU_ICON_OPEN}</button>
     </div>
   `;
 
@@ -152,7 +152,10 @@ function renderHeader(activePage) {
   const menu = header.querySelector('.nav-menu');
   hamburger.addEventListener('click', () => {
     menu.classList.toggle('open');
-    hamburger.textContent = menu.classList.contains('open') ? '✕' : '☰';
+    const isOpen = menu.classList.contains('open');
+    hamburger.innerHTML = isOpen ? MENU_ICON_CLOSE : MENU_ICON_OPEN;
+    hamburger.setAttribute('aria-expanded', isOpen);
+    hamburger.setAttribute('aria-label', isOpen ? 'メニューを閉じる' : 'メニューを開く');
   });
 }
 
@@ -250,103 +253,68 @@ function spotNameMatchesText(spot, text, allSpots) {
   return spotsMatchingText(allSpots, text).some(s => s.id === spot.id);
 }
 
+/* ===== 一覧1件の作り（2026-11 デザイン刷新「行き先帳」） =====
+   名前 → 府県・市区町村（と距離）→ 駐車場・入場・ドッグランを同じ位置に → 注意と特徴 → 訪問済なら判子と訪問メモ。
+   リンクは名前に付け、行全体を押せるようにする（::after）。ハートはリンクの外に置く（リンクの中にボタンを入れない）。
+   generate_theme_pages.py の card_html も同じ形を書くので、片方だけ直さないこと。 */
+const MENU_ICON_OPEN = '<svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><path d="M3 6h16M3 11h16M3 16h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+const MENU_ICON_CLOSE = '<svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><path d="M5 5l12 12M17 5L5 17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+const HEART_ICON = '<svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-9.2-9A5 5 0 0 1 12 6.2 5 5 0 0 1 21.2 11C19 15.6 12 20 12 20z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>';
 
-/* ===== スクロールで浮き上がる（2026-09-15導入） =====
-   今電のサイト（imaden-inc.com）と同じ考え方で、下から少し上がりながら現れる。
-   ・対象は下の SELECTOR。JSが後から描くカードも MutationObserver で拾う
-   ・一度現れたら監視をやめる（スクロールのたびに明滅しない）
-   ・端末が「動きを減らす」設定なら何もしない
-   ・IntersectionObserver が無い古い環境でも、何も起きないだけで表示は壊れない */
-(function revealInit() {
-  /* 対象は「スクロールした先に出てくるもの」だけ。
-     ページの主役（スポット詳細の本文など）は入れない。動きが出ない環境で
-     本文が見えなくなるため。 */
-  var SELECTOR = [
-    '.spot-card',          // トップと一覧のカード
-    '.danger-card',        // 危険情報
-    '.theme-card',         // テーマ別のカード
-    '.theme-spot',
-    '.blog-card',          // ブログ一覧
-    '.nearby-spots'        // スポット詳細の下の「近くのスポット」
-  ].join(',');
+const SPOT_PREF_RE = /^(北海道|東京都|京都府|大阪府|.+?県)/;
 
-  if (!('IntersectionObserver' in window)) return;
-  try {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  } catch (e) { /* matchMedia が無い環境では動きを入れる */ }
-
-  document.documentElement.classList.add('has-reveal');
-
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (!e.isIntersecting) return;
-      e.target.classList.add('is-in');
-      io.unobserve(e.target);
-    });
-  }, { rootMargin: '0px 0px -6% 0px', threshold: 0.06 });
-
-  function mark(el, i) {
-    if (el.classList.contains('reveal')) return;
-    el.classList.add('reveal');
-    // 続けて並ぶものは少しずつ遅らせる（最大8つぶんまで）
-    if (i) el.style.transitionDelay = (Math.min(i, 8) * 55) + 'ms';
-    io.observe(el);
+// 住所から「大阪・堺市西区」の形を作る（府県は府・県を外す。市は政令市なら区まで、郡なら町村まで）
+function spotPlace(address) {
+  const a = address || '';
+  const pm = a.match(SPOT_PREF_RE);
+  const pref = pm ? pm[1].replace(/[府県]$/, '') : '';
+  const rest = pm ? a.slice(pm[1].length) : a;
+  let city = '';
+  const m = rest.match(/^(.+?[市郡])(.+?[区町村])?/);
+  if (m) {
+    city = m[1];
+    if (m[2] && (m[1].endsWith('郡') || /区$/.test(m[2]))) city += m[2];
+  } else {
+    const m2 = rest.match(/^(.+?[町村])/);
+    city = m2 ? m2[1] : '';
   }
+  return pref && city ? pref + '・' + city : (pref || city);
+}
 
-  function scan(root) {
-    var list = (root || document).querySelectorAll(SELECTOR);
-    for (var i = 0; i < list.length; i++) mark(list[i], i);
-    // 描いた直後に画面へ入っているものは、すぐ出す（薄いまま残さない）
-    window.requestAnimationFrame(function () { sweep(); });
-  }
-
-  scan(document);
-
-  // 一覧は絞り込みのたびに描き直されるので、増えた分を拾う
-  var mo = new MutationObserver(function (records) {
-    for (var i = 0; i < records.length; i++) {
-      var added = records[i].addedNodes;
-      for (var j = 0; j < added.length; j++) {
-        var n = added[j];
-        if (n.nodeType !== 1) continue;
-        if (n.matches && n.matches(SELECTOR)) mark(n, j);
-        if (n.querySelectorAll) scan(n);
-      }
-    }
-  });
-  mo.observe(document.body, { childList: true, subtree: true });
-
-  document.addEventListener('DOMContentLoaded', function () { scan(document); });
-
-  /* スクロールのたびに位置を見て表示する。
-     IntersectionObserver が働かない場合でも、内容が薄いまま残らないようにする。 */
-  var ticking = false;
-  function sweep() {
-    ticking = false;
-    var h = window.innerHeight || document.documentElement.clientHeight;
-    var list = document.querySelectorAll('.reveal:not(.is-in)');
-    for (var i = 0; i < list.length; i++) {
-      var r = list[i].getBoundingClientRect();
-      if (r.top < h * 0.94 && r.bottom > 0) list[i].classList.add('is-in');
-    }
-  }
-  function onScroll() {
-    if (ticking) return;
-    ticking = true;
-    window.requestAnimationFrame(sweep);
-  }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll, { passive: true });
-  onScroll();
-
-  /* 保険: 3秒たってもまだ現れていないもののうち、画面内にあるものは表示する。 */
-  window.setTimeout(function () {
-    var left = document.querySelectorAll('.reveal:not(.is-in)');
-    if (!left.length) return;
-    var h = window.innerHeight || document.documentElement.clientHeight;
-    for (var i = 0; i < left.length; i++) {
-      var r = left[i].getBoundingClientRect();
-      if (r.top < h) left[i].classList.add('is-in');
-    }
-  }, 3000);
-})();
+function spotRowHTML(s, opts) {
+  const o = opts || {};
+  const base = o.base || '';
+  const has = t => (s.tags || []).includes(t);
+  const parking = s.parking && s.parking.available ? (s.parking.free ? '無料' : '有料') : 'なし';
+  const admission = s.admission && s.admission.free ? '無料' : '有料';
+  const dr = s.dogRun || {};
+  const dogrun = dr.available ? (dr.separated ? 'あり（大小別）' : 'あり') : 'なし';
+  const warns = [];
+  if (!dogSizeAllows(s, 'medium')) warns.push('小型犬のみ');
+  else if (!dogSizeAllows(s, 'large')) warns.push('中型犬まで');
+  if (dr.available && dr.maxSize === 'small') warns.push('ランは小型犬のみ');
+  else if (dr.available && dr.maxSize === 'medium') warns.push('ランは中型犬まで');
+  if (has('stay-only')) warns.push('宿泊専用');
+  const feats = [];
+  if (has('sakura')) feats.push('桜');
+  if (has('koyo')) feats.push('紅葉');
+  if (has('water')) feats.push('水遊び');
+  if (has('rain')) feats.push('雨でもOK');
+  if (has('stay-ok')) feats.push('宿泊可');
+  const more = warns.length || feats.length
+    ? `<p class="row-more">${warns.map(w => `<span class="row-warn">${w}</span>`).join('')}${feats.map(f => `<span class="row-feat">${f}</span>`).join('')}</p>` : '';
+  const dist = o.distance != null ? `<span class="row-dist">${formatDistance(o.distance)}</span>` : '';
+  const fav = o.fav === false ? '' :
+    `<button type="button" class="fav-btn${isFavorite(s.id) ? ' active' : ''}" data-id="${escapeHtml(s.id)}" aria-pressed="${isFavorite(s.id)}" aria-label="${escapeHtml(s.name)}をお気に入りに入れる">${HEART_ICON}</button>`;
+  const v = Array.isArray(s.visit) ? s.visit[0] : s.visit;
+  const memo = v && v.note ? `<span class="row-memo">${escapeHtml(v.note)}</span>` : '';
+  const visited = s.visited
+    ? `<p class="row-visit"><img src="${base}images/stamp-visited.png" alt="" class="row-stamp" width="34" height="34">運営者が訪問${memo}</p>` : '';
+  const excerpt = o.excerpt ? `<p class="row-excerpt">${escapeHtml(o.excerpt)}</p>` : '';
+  return `<article class="spot-row${s.visited ? ' is-visited' : ''}${has('stay-only') ? ' is-stay' : ''}">
+  <div class="row-head"><h2 class="row-name"><a href="${base}spots/${encodeURIComponent(s.id)}.html" class="row-link">${escapeHtml(s.name)}</a></h2>${fav}</div>
+  <p class="row-where">${escapeHtml(spotPlace(s.address))}${dist}</p>
+  <p class="row-facts">駐車場 <b>${parking}</b>　入場 <b>${admission}</b>　ドッグラン <b>${dogrun}</b></p>
+  ${more}${excerpt}${visited}
+</article>`;
+}

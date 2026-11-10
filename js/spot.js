@@ -189,8 +189,8 @@ function lastCheckedHtml(spot) {
           <div class="spot-gallery-main">
             <img src="${images[0]}" alt="${escapeHtml(capOf(0) || spot.name)}" class="spot-gallery-img" id="galleryMainImg">
             ${images.length > 1 ? `
-              <button class="gallery-nav gallery-prev" id="galleryPrev">&lt;</button>
-              <button class="gallery-nav gallery-next" id="galleryNext">&gt;</button>
+              <button class="gallery-nav gallery-prev" id="galleryPrev" aria-label="前の写真"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <button class="gallery-nav gallery-next" id="galleryNext" aria-label="次の写真"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
             ` : ''}
           </div>
           ${captions.length ? `<p class="spot-gallery-caption" id="galleryCaption">${escapeHtml(capOf(0))}</p>` : ''}
@@ -213,7 +213,7 @@ function lastCheckedHtml(spot) {
         </div>
         <p class="spot-detail-address">${escapeHtml(spot.address)}</p>
         <button class="detail-fav-btn${isFav ? ' active' : ''}" id="detailFavBtn">
-          &#9829; ${isFav ? 'お気に入り済み' : 'お気に入りに追加'}
+          ${HEART_ICON}<span>${isFav ? 'お気に入り済み' : 'お気に入りに追加'}</span>
         </button>
 
         ${hasCoords ? `
@@ -347,7 +347,7 @@ function lastCheckedHtml(spot) {
     const favBtn = document.getElementById('detailFavBtn');
     favBtn.addEventListener('click', () => {
       const isNow = toggleFavorite(spot.id);
-      favBtn.textContent = `♥ ${isNow ? 'お気に入り済み' : 'お気に入りに追加'}`;
+      favBtn.innerHTML = `${HEART_ICON}<span>${isNow ? 'お気に入り済み' : 'お気に入りに追加'}</span>`;
       favBtn.classList.toggle('active', isNow);
     });
 

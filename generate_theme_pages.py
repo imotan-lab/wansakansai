@@ -67,37 +67,75 @@ def excerpt(remarks, limit=80):
     return first
 
 
+def place(address):
+    """住所から「大阪・堺市西区」の形を作る（js/common.js の spotPlace と同じ決まり）"""
+    a = address or ""
+    m = PREF_RE.match(a)
+    pref = re.sub(r"[府県]$", "", m.group(1)) if m else ""
+    rest = a[len(m.group(1)):] if m else a
+    city = ""
+    m2 = re.match(r"^(.+?[市郡])(.+?[区町村])?", rest)
+    if m2:
+        city = m2.group(1)
+        if m2.group(2) and (m2.group(1).endswith("郡") or m2.group(2).endswith("区")):
+            city += m2.group(2)
+    else:
+        m3 = re.match(r"^(.+?[町村])", rest)
+        city = m3.group(1) if m3 else ""
+    return pref + "・" + city if pref and city else (pref or city)
+
+
+def _size_ok(s, size):
+    ds = s.get("dogSize") or {}
+    return ds.get(size, True) is not False
+
+
 def card_html(s):
+    """一覧1件（2026-11 行き先帳）。js/common.js の spotRowHTML と同じ形。片方だけ直さないこと。
+    テーマ別は静的ページなのでハートは出さず、備考の最初の一文を添える"""
     esc = html.escape
     dr = _dog_run(s)
-    tags = []
+    tags = _tags(s)
     p = s.get("parking") or {}
-    if p.get("available"):
-        tags.append('<span class="tag">P {}</span>'.format("無料" if p.get("free") else "有料"))
-    if dr.get("available"):
-        t = "ドッグラン"
-        if dr.get("separated"):
-            t += "(エリア分離)"
-        if dr.get("free"):
-            t += "・無料"
-        tags.append('<span class="tag">{}</span>'.format(t))
-    if (s.get("admission") or {}).get("free"):
-        tags.append('<span class="tag">入場無料</span>')
-    stamp = ('<img src="../images/stamp-visited.png" alt="運営が実際に訪問済み" class="visited-stamp">'
-             if s.get("visited") else "")
+    parking = ("無料" if p.get("free") else "有料") if p.get("available") else "なし"
+    admission = "無料" if (s.get("admission") or {}).get("free") else "有料"
+    dogrun = ("あり（大小別）" if dr.get("separated") else "あり") if dr.get("available") else "なし"
+    warns = []
+    if not _size_ok(s, "medium"):
+        warns.append("小型犬のみ")
+    elif not _size_ok(s, "large"):
+        warns.append("中型犬まで")
+    if dr.get("available") and dr.get("maxSize") == "small":
+        warns.append("ランは小型犬のみ")
+    elif dr.get("available") and dr.get("maxSize") == "medium":
+        warns.append("ランは中型犬まで")
+    if "stay-only" in tags:
+        warns.append("宿泊専用")
+    feats = [lbl for key, lbl in (("sakura", "桜"), ("koyo", "紅葉"), ("water", "水遊び"),
+                                  ("rain", "雨でもOK"), ("stay-ok", "宿泊可")) if key in tags]
+    more = ""
+    if warns or feats:
+        more = ('\n          <p class="row-more">' + "".join('<span class="row-warn">{}</span>'.format(w) for w in warns)
+                + "".join('<span class="row-feat">{}</span>'.format(f) for f in feats) + "</p>")
     ex = excerpt(s.get("remarks"))
-    ex_html = '\n          <p class="spot-card-excerpt">{}</p>'.format(esc(ex)) if ex else ""
+    ex_html = '\n          <p class="row-excerpt">{}</p>'.format(esc(ex)) if ex else ""
+    visited = ""
+    if s.get("visited"):
+        v = s.get("visit")
+        v = v[0] if isinstance(v, list) and v else v
+        note = (v or {}).get("note", "") if isinstance(v, dict) else ""
+        memo = '<span class="row-memo">{}</span>'.format(esc(note)) if note else ""
+        visited = ('\n          <p class="row-visit"><img src="../images/stamp-visited.png" alt="" class="row-stamp" width="34" height="34">'
+                   "運営者が訪問{}</p>".format(memo))
+    cls = "spot-row" + (" is-visited" if s.get("visited") else "") + (" is-stay" if "stay-only" in tags else "")
     return (
-        '        <a href="../spots/{id}.html" class="spot-card">\n'
-        '          {stamp}\n'
-        '          <div class="spot-card-header">\n'
-        '            <span class="spot-card-name">{name}</span>\n'
-        '          </div>\n'
-        '          <p class="spot-card-address">{addr}</p>{ex}\n'
-        '          <div class="spot-card-tags">{tags}</div>\n'
-        '        </a>'
-    ).format(id=esc(s["id"]), stamp=stamp, name=esc(s["name"]), addr=esc(s.get("address", "")),
-             ex=ex_html, tags="".join(tags))
+        '        <article class="{cls}">\n'
+        '          <div class="row-head"><h3 class="row-name"><a href="../spots/{id}.html" class="row-link">{name}</a></h3></div>\n'
+        '          <p class="row-where">{place}</p>\n'
+        '          <p class="row-facts">駐車場 <b>{parking}</b>　入場 <b>{admission}</b>　ドッグラン <b>{dogrun}</b></p>{more}{ex}{visited}\n'
+        '        </article>'
+    ).format(cls=cls, id=esc(s["id"]), name=esc(s["name"]), place=esc(place(s.get("address", ""))),
+             parking=parking, admission=admission, dogrun=dogrun, more=more, ex=ex_html, visited=visited)
 
 
 def list_html(matched):

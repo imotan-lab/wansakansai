@@ -6,19 +6,22 @@
 }
 
 :root {
-  --color-primary: #8B6914;
-  --color-primary-light: #B8941F;
-  --color-accent: #4A7C59;
-  --color-accent-light: #6BA37A;
-  --color-bg: #FFF8F0;
-  --color-bg-card: #FFFFFF;
-  --color-text: #333333;
-  --color-text-light: #777777;
-  --color-border: #E8DCC8;
-  --color-danger: #C0392B;
-  --color-visited: #E67E22;
+  /* 2026-11 デザイン刷新「行き先帳」: 生成りの紙に墨の文字、操作は深緑1色。グラデーション・色付きの影は使わない */
+  --color-primary: #33573F;        /* 操作・リンク（深緑） */
+  --color-primary-light: #4A6E55;
+  --color-accent: #33573F;
+  --color-accent-light: #4A6E55;
+  --color-bg: #FAF6EE;             /* 紙 */
+  --color-bg-card: #FFFDF8;        /* 紙より少し白い面（入力欄・訪問メモ） */
+  --color-text: #2B2621;           /* 墨 */
+  --color-text-light: #5E564C;     /* 補足（紙の上で 6.6:1） */
+  --color-border: #DDD3C3;         /* 区切り線 */
+  --color-border-strong: #B5A994;  /* 押せる物の枠 */
+  --color-act-soft: #E3ECE4;
+  --color-danger: #A03A24;
+  --color-visited: #9B4D32;        /* 判子の朱 */
   --shadow-card: none;
-  --shadow-hover: 0 2px 6px rgba(0, 0, 0, 0.08);
+  --shadow-hover: none;
   --radius: 4px;
   --radius-sm: 3px;
   --max-width: 960px;
@@ -38,6 +41,18 @@ body {
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
+  accent-color: var(--color-primary);
+  caret-color: var(--color-primary);
+}
+
+::selection {
+  background: var(--color-act-soft);
+  color: var(--color-text);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
 a {
@@ -74,19 +89,20 @@ img {
 }
 
 .site-header {
-  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
-  color: #fff;
+  background: var(--color-bg);
+  color: var(--color-text);
   padding: 0;
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .header-inner {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 12px 16px;
+  padding: 0 8px 0 16px;
+  min-height: 56px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -95,23 +111,23 @@ img {
 .site-logo {
   display: flex;
   align-items: center;
-  gap: 8px;
-  color: #fff;
-  font-size: 1.3rem;
+  gap: 6px;
+  color: var(--color-text);
+  font-size: 1.125rem;
   font-weight: 700;
+  letter-spacing: 0.02em;
   flex-shrink: 0;
   white-space: nowrap;
 }
 
 .site-logo:hover {
-  color: #fff;
-  opacity: 0.9;
+  color: var(--color-text);
 }
 
 .site-logo .logo-icon {
-  height: 80px;
+  height: 34px;
   width: auto;
-  margin: -20px 0;
+  margin: 0;
 }
 
 .site-logo .logo-sub {
@@ -127,10 +143,9 @@ img {
   display: none;
   background: none;
   border: none;
-  color: #fff;
-  font-size: 1.5rem;
+  color: var(--color-text);
   cursor: pointer;
-  padding: 4px;
+  padding: 0;
   margin-left: auto;
 }
 
@@ -144,19 +159,18 @@ img {
 }
 
 .nav-menu a {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 0.83rem;
+  color: var(--color-text);
+  font-size: 0.875rem;
   font-weight: 500;
   padding: 6px 9px;
   border-radius: var(--radius-sm);
-  transition: background 0.2s;
   white-space: nowrap;
 }
 
 .nav-menu a:hover,
 .nav-menu a.active {
-  background: rgba(255, 255, 255, 0.2);
-  color: #fff;
+  background: var(--color-act-soft);
+  color: var(--color-primary);
 }
 
 /* ===== Main ===== */
@@ -168,163 +182,174 @@ img {
   width: 100%;
 }
 
-/* ===== Hero Section ===== */
-.hero {
-  text-align: center;
-  padding: 16px 16px 12px;
-  margin-bottom: 8px;
+/* ===== トップの冒頭（2026-11 行き先帳） =====
+   中央寄せの「〜を探そう」と説明文・大きなボタンの組み立てをやめ、左寄せの見出し1行と事実の1文にした。
+   事実の1文（何か所・判子の何か所）は js/app.js がデータから数えて入れる */
+.intro {
+  margin: 4px 0 14px;
 }
 
-.hero h1 {
+.intro h1 {
   font-size: 1.5rem;
-  color: var(--color-primary);
-  margin-bottom: 8px;
+  line-height: 1.35;
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: 0.01em;
 }
 
-.hero p {
+.intro .lede {
+  margin-top: 6px;
+  font-size: 0.9375rem;
   color: var(--color-text-light);
-  font-size: 0.95rem;
+  line-height: 1.7;
 }
 
-/* ===== GPS Button ===== */
-.gps-section {
-  text-align: center;
-  margin-bottom: 24px;
+.intro .lede span {
+  font-weight: 700;
+  color: var(--color-text);
 }
 
-.hero-actions {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.btn-theme {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: #fff;
-  color: var(--color-primary);
-  border: 2px solid var(--color-primary);
-  padding: 9px 30px;
-  font-size: 1rem;
-  font-weight: 600;
-  border-radius: var(--radius);
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s, background 0.2s, color 0.2s;
-}
-
-.btn-theme:hover {
-  background: var(--color-primary);
-  color: #fff;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-}
-
-.btn-theme:active {
-  transform: translateY(0);
-}
-
-.btn-gps {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-light));
-  color: #fff;
-  border: none;
-  padding: 11px 32px;
-  font-size: 1rem;
-  font-weight: 600;
-  border-radius: var(--radius);
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 4px 12px rgba(74, 124, 89, 0.3);
-  font-family: inherit;
-}
-
-.btn-gps:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(74, 124, 89, 0.4);
-}
-
-.btn-gps:active {
-  transform: translateY(0);
-}
-
-.btn-gps.loading {
-  opacity: 0.7;
-  cursor: wait;
-}
-
-.gps-status {
-  margin-top: 8px;
-  font-size: 0.85rem;
-  color: var(--color-text-light);
-}
-
-/* ===== Search Box ===== */
-.search-section {
-  margin-bottom: 10px;
-}
-
+/* ===== 検索 ===== */
 .search-box {
   position: relative;
+  margin-bottom: 10px;
 }
 
 .search-input {
   width: 100%;
-  padding: 12px 40px 12px 16px;
-  border: 2px solid var(--color-border);
-  border-radius: var(--radius);
-  font-size: 0.95rem;
+  height: 48px;
+  padding: 0 44px 0 14px;
+  font-size: 1rem;
   font-family: inherit;
   color: var(--color-text);
   background: var(--color-bg-card);
-  outline: none;
-  transition: border-color 0.2s;
-  box-sizing: border-box;
-}
-
-.search-input:focus {
-  border-color: #D4A017;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius);
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .search-input::placeholder {
   color: var(--color-text-light);
-  font-size: 0.85rem;
+  font-size: 0.9375rem;
+}
+
+.search-input:focus {
+  border-color: var(--color-primary);
+  outline: 2px solid var(--color-act-soft);
+  outline-offset: 0;
+}
+
+.search-input::-webkit-search-cancel-button {
+  display: none;
 }
 
 .search-clear-btn {
   position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 28px;
-  height: 28px;
-  border: none;
-  border-radius: 50%;
-  background: var(--color-border);
+  right: 2px;
+  top: 2px;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  background: transparent;
   color: var(--color-text-light);
-  font-size: 1.1rem;
-  line-height: 1;
-  cursor: pointer;
-  display: flex;
+  border-radius: var(--radius);
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.2s;
+  cursor: pointer;
 }
 
-.search-clear-btn:hover {
-  background: #ccc;
+.search-clear-btn[hidden] {
+  display: none;
 }
 
-/* ===== Prefecture Buttons ===== */
+/* ===== 近い順・絞り込みの2つのボタン ===== */
+.tools {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.btn-gps,
+.btn-filter {
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 10px;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.btn-gps {
+  background: var(--color-primary);
+  color: #fff;
+  border: 1px solid var(--color-primary);
+}
+
+.btn-gps:hover {
+  background: var(--color-primary-light);
+  border-color: var(--color-primary-light);
+}
+
+.btn-gps.loading {
+  opacity: 0.75;
+  cursor: wait;
+}
+
+.btn-filter {
+  background: var(--color-bg-card);
+  color: var(--color-text);
+  border: 1px solid var(--color-border-strong);
+}
+
+.btn-filter:hover,
+.btn-filter[aria-expanded="true"] {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.btn-filter-n:not(:empty) {
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: var(--radius-sm);
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gps-status {
+  margin: 6px 0 0;
+  font-size: 0.8125rem;
+  color: var(--color-text-light);
+}
+
+.gps-status:empty {
+  display: none;
+}
+
+/* ===== 府県 ===== */
 .pref-section {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px 12px;
-  margin-bottom: 8px;
+  gap: 6px;
+  margin: 10px 0 8px;
+}
+
+.pref-n {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--color-text-light);
 }
 
 /* ===== Affiliate (Rakuten Travel) ===== */
@@ -456,363 +481,455 @@ img {
   }
 }
 
-/* ===== Filter Buttons ===== */
-.filter-section {
+/* ===== 府県・条件の札（2026-11 行き先帳） =====
+   押せる物は枠で示し、押すと深緑で塗る（以前の下線だけの札は、押せない札の方がボタンに見えていた）。
+   高さは44px（指で押しやすい大きさ）。押している状態は aria-pressed で伝える */
+.filter-btn {
+  min-height: 44px;
+  padding: 0 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--color-text);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.filter-btn:hover {
+  border-color: var(--color-primary);
+}
+
+.filter-btn[aria-pressed="true"] {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+  font-weight: 700;
+}
+
+.filter-btn[aria-pressed="true"] .pref-n {
+  color: inherit;
+  opacity: 0.85;
+}
+
+/* ===== 条件で絞り込む（画面の下から出る） ===== */
+.filter-panel {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 300;
+  max-height: 82vh;
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 12px;
+  flex-direction: column;
+  background: var(--color-bg-card);
+  border-top: 1px solid var(--color-border-strong);
+  border-radius: 8px 8px 0 0;
+  box-shadow: 0 -10px 30px rgba(43, 38, 33, 0.18);
+}
+
+.filter-panel[hidden] {
+  display: none;
+}
+
+@media (min-width: 769px) {
+  .filter-panel {
+    left: 50%;
+    right: auto;
+    width: 560px;
+    transform: translateX(-50%);
+  }
+}
+
+.sheet-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 8px 4px 16px;
+  border-bottom: 1px solid var(--color-border);
+  font-weight: 700;
+}
+
+.sheet-close {
+  min-height: 44px;
+  padding: 0 10px;
+  background: none;
+  border: 0;
+  color: var(--color-primary);
+  font-family: inherit;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.filter-section {
+  overflow-y: auto;
+  padding: 14px 16px 4px;
 }
 
 .filter-group {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  border: 0;
+  padding: 0;
+  margin: 0 0 14px;
+  min-width: 0;
 }
 
 .filter-group-label {
-  font-size: 0.75rem;
-  font-weight: 600;
+  padding: 0;
+  margin-bottom: 6px;
+  font-size: 0.8125rem;
+  font-weight: 700;
   color: var(--color-text-light);
-  white-space: nowrap;
 }
 
 .filter-group-btns {
   display: flex;
-  gap: 4px 12px;
   flex-wrap: wrap;
+  gap: 6px;
 }
 
-/* スマホは段の見出しを上に置くが、段の幅は中身の分だけにし、収まれば横に並べる（2026-10-04）。
-   以前は1段で1行を丸ごと使い、駐車場のように項目の少ない段の右が空いていた */
-@media (max-width: 768px) {
-  .filter-section {
-    column-gap: 24px;
-  }
-  .filter-group {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
-  }
-}
-
-/* 絞り込みの項目は枠で囲まず下線で示す（2026-10-04・運営者と比較画像で決定）。
-   選んでいる項目は太い色の下線＋太字＋薄い背景。検索ボックスだけ四角い枠を残す */
-.filter-btn {
-  padding: 6px 6px 4px;
-  min-height: 36px;
-  display: inline-flex;
-  align-items: center;
-  border: none;
-  border-bottom: 2px solid var(--color-border);
-  border-radius: 0;
-  font-size: 0.875rem;
-  font-family: inherit;
-  color: var(--color-text);
-  background: transparent;
-  cursor: pointer;
-  transition: color 0.2s, border-color 0.2s, background 0.2s;
-}
-
-.filter-btn:hover {
-  color: var(--color-primary);
-  border-bottom-color: var(--color-primary-light);
-}
-
-.filter-btn.active {
-  background: #FBF1D3;
-  color: var(--color-primary);
-  font-weight: 700;
-  border-bottom: 3px solid #D4A017;
-  padding-bottom: 3px;
-}
-
-/* 「✕ 条件をクリア」: 枠のない文字だけのボタン。押せる高さはほかの項目と同じ36px */
-.filter-clear-btn {
-  padding: 6px 4px;
-  min-height: 36px;
-  border: none;
-  font-size: 0.875rem;
-  font-family: inherit;
-  color: var(--color-primary);
-  background: transparent;
-  cursor: pointer;
-}
-
-.filter-clear-btn:hover {
-  text-decoration: underline;
-}
-
-/* 絞り込みの組み合わせ方の説明（2026-10-04） */
 .filter-note {
-  width: 100%;
-  margin: 0;
+  margin: 0 0 8px;
   font-size: 0.75rem;
   color: var(--color-text-light);
   line-height: 1.6;
 }
 
-/* ===== Danger Banner ===== */
-.danger-banner {
+.sheet-foot {
+  padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+  border-top: 1px solid var(--color-border);
+}
+
+.btn-see {
+  width: 100%;
+  height: 48px;
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--color-primary);
+  color: #fff;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.sheet-backdrop {
+  display: none;
+}
+
+body.sheet-open .sheet-backdrop {
+  display: block;
+  position: fixed;
+  inset: 0;
+  z-index: 250;
+  background: rgba(43, 38, 33, 0.35);
+}
+
+body.sheet-open {
+  overflow: hidden;
+}
+
+/* ===== 選んでいる条件 ===== */
+.active-summary:empty {
+  display: none;
+}
+
+.active-summary {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 10px 16px;
-  margin-bottom: 12px;
-  background: #FDF2F0;
-  border: 1px solid #E8C4BE;
-  border-radius: var(--radius-sm);
-  color: var(--color-danger);
-  font-size: 0.9rem;
-  font-weight: 600;
-  transition: all 0.2s;
-  box-shadow: 0 1px 3px rgba(192, 57, 43, 0.08);
+  gap: 2px 10px;
+  margin: 4px 0;
+  padding: 4px 0;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.875rem;
 }
 
-.danger-banner::before {
-  content: "\26A0";
-  font-size: 1.1rem;
+.sum-label {
+  font-size: 0.8125rem;
+  color: var(--color-text-light);
 }
 
-.danger-banner::after {
-  content: "\203A";
-  font-size: 1.2rem;
+.sum-items {
+  font-weight: 700;
+}
+
+.sum-clear {
   margin-left: auto;
-  opacity: 0.5;
+  min-height: 44px;
+  padding: 0 4px;
+  background: none;
+  border: 0;
+  color: var(--color-primary);
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
 }
 
-.danger-banner:hover {
-  background: #FBE8E4;
-  color: var(--color-danger);
-  box-shadow: 0 2px 6px rgba(192, 57, 43, 0.15);
-  transform: translateY(-1px);
-}
-
-/* ===== Spot Count ===== */
-.spot-count {
-  font-size: 0.85rem;
-  color: var(--color-text-light);
-  margin-bottom: 4px;
-}
-
-.spot-legend {
-  display: flex;
+/* ===== 危険情報への入口（1行の文字リンク） =====
+   薄い赤の箱に警告の印と矢印を重ねた帯をやめた（検索より目立っていた・3者の講評が一致） */
+.danger-link {
+  display: inline-flex;
   align-items: center;
-  gap: 4px;
-  font-size: 0.78rem;
+  gap: 8px;
+  min-height: 44px;
+  margin: 2px 0;
+  color: var(--color-danger);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.danger-link:hover {
+  color: var(--color-danger);
+}
+
+.danger-mark {
+  width: 8px;
+  height: 8px;
+  flex: none;
+  background: var(--color-danger);
+  border-radius: 1px;
+}
+
+/* ===== 一覧の見出し（件数とテーマ別へのリンク） ===== */
+.list-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 10px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--color-text);
+  scroll-margin-top: 64px;
+}
+
+.spot-count {
+  margin: 0;
+  font-size: 0.875rem;
   color: var(--color-text-light);
-  margin-bottom: 4px;
 }
 
-.legend-stamp {
-  width: 32px;
-  height: 32px;
+.spot-count b {
+  margin-right: 2px;
+  font-size: 1.125rem;
+  color: var(--color-text);
+  font-variant-numeric: tabular-nums;
 }
 
-/* ===== Spot Cards ===== */
-/* 2026-10-02: 枠で囲むのをやめ、下線1本と余白で区切る（雑誌の目次のような一覧） */
+.list-head-link {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.loading-spinner {
+  padding: 24px 0;
+  color: var(--color-text-light);
+}
+
+/* ===== 一覧1件（2026-11 行き先帳） =====
+   作りは js/common.js の spotRowHTML と generate_theme_pages.py の card_html（同じ形・片方だけ直さない）。
+   名前 → 府県・市区町村と距離 → 駐車場・入場・ドッグランを同じ位置に → 注意（朱）と特徴 → 訪問済なら判子と訪問メモ。
+   箱で囲まず、下線と余白で区切る。行全体を押せるようにリンクを広げ、ハートはその上に置く */
 .spot-list {
   display: grid;
   gap: 0;
 }
 
-.spot-card {
-  background: transparent;
-  border-bottom: 1px solid var(--color-border);
-  padding: 12px 4px;
-  transition: background 0.2s;
-  cursor: pointer;
-  display: block;
-  color: inherit;
-  text-decoration: none;
+.spot-row {
   position: relative;
-  overflow: hidden;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--color-border);
 }
 
-.visited-stamp {
+.row-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.row-name {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  font-size: 1.0625rem;
+  line-height: 1.45;
+  font-weight: 700;
+}
+
+.row-link {
+  color: var(--color-text);
+}
+
+.row-link::after {
+  content: "";
   position: absolute;
-  bottom: -10px;
-  right: -10px;
-  width: 88px;
-  height: 88px;
-  opacity: 0.85;
-  transform: rotate(15deg);
-  pointer-events: none;
+  inset: 0;
 }
 
-/* 訪問済みのカードは、住所とタグがスタンプの手前で折り返すよう右に余白を取る（2026-10-04）。
-   タグの数や長さに関係なく、スタンプの下に文字が入らない */
-.spot-card:has(.visited-stamp) .spot-card-address,
-.spot-card:has(.visited-stamp) .spot-card-excerpt,
-.spot-card:has(.visited-stamp) .spot-card-tags {
-  padding-right: 84px;
-}
-/* 名前が2行になる低いカードでは、スタンプが名前の2行目まで届く（2026-10-04）。
-   名前の右にはハート（44px）があるので、足りない分だけ余白を足す */
-.spot-card:has(.visited-stamp) .spot-card-name {
-  padding-right: 40px;
+.row-link:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
-@media (max-width: 768px) {
-  .visited-stamp {
-    width: 72px;
-    height: 72px;
-    bottom: -8px;
-    right: -8px;
-  }
-  .spot-card:has(.visited-stamp) .spot-card-address,
-  .spot-card:has(.visited-stamp) .spot-card-excerpt,
-  .spot-card:has(.visited-stamp) .spot-card-tags {
-    padding-right: 68px;
-  }
-  .spot-card:has(.visited-stamp) .spot-card-name {
-    padding-right: 24px;
-  }
+.spot-row .fav-btn {
+  position: relative;
+  z-index: 1;
+  margin: -10px -10px -10px 0;
 }
 
-.spot-card:hover {
-  background: rgba(139, 105, 20, 0.05);
-  color: inherit;
+.row-where {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 6px;
+  margin: 2px 0 0;
+  font-size: 0.8125rem;
+  color: var(--color-text-light);
 }
 
-/* 宿泊施設は区別のため薄紫の地を残す */
-.spot-card-stay {
-  background: #F5F0FA;
-  border-bottom-color: #D4C4E8;
-  padding-left: 12px;
-  padding-right: 12px;
+.row-dist {
+  margin-left: auto;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.row-facts {
+  margin: 6px 0 0;
+  font-size: 0.8125rem;
+  color: var(--color-text-light);
+}
+
+.row-facts b {
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.row-more {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 10px;
+  margin: 4px 0 0;
+  font-size: 0.8125rem;
+}
+
+.row-warn {
+  font-weight: 700;
+  color: var(--color-danger);
+}
+
+.row-feat {
+  color: var(--color-text-light);
+}
+
+.row-excerpt {
+  margin: 6px 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+/* 判子と訪問メモ（運営者が実際に行った場所だけ） */
+.row-visit {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  column-gap: 8px;
+  align-items: start;
+  margin: 10px 0 0;
+  padding: 8px 10px 8px 8px;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--color-visited);
+}
+
+.row-stamp {
+  grid-row: span 2;
+  width: 34px;
+  height: 34px;
+  transform: rotate(-8deg);
+}
+
+.row-memo {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-top: 1px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+/* 宿泊専用の施設 */
+.spot-row.is-stay .row-name::after {
+  content: "宿泊専用";
+  margin-left: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #5E3D8F;
+  vertical-align: 2px;
 }
 
 .stay-note {
-  font-size: 0.8rem;
-  color: #5E3D8F;
-  background: #F5F0FA;
-  border: 1px solid #D4C4E8;
-  border-radius: var(--radius-sm);
-  padding: 8px 12px;
-  margin: 8px 0 16px;
+  margin: 8px 0;
+  font-size: 0.8125rem;
+  color: var(--color-text-light);
 }
 
-.spot-card-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  margin-bottom: 2px;
-}
-
-.spot-card-name {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--color-text);
-  flex: 1;
-  min-width: 0;
-}
-
-.spot-card-right {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  flex-shrink: 0;
-  margin-left: 8px;
-}
-
-/* ===== Favorite Button (spot card) ===== */
+/* ===== お気に入りのハート（線の絵・押すと塗る） ===== */
 .fav-btn {
-  background: none;
-  border: none;
-  font-size: 1.15rem;
-  cursor: pointer;
-  color: var(--color-border);
-  padding: 0;
-  line-height: 1;
   min-width: 44px;
   min-height: 44px;
+  padding: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: color 0.15s, transform 0.1s;
+  background: none;
+  border: none;
+  color: var(--color-border-strong);
+  cursor: pointer;
 }
 
-.fav-btn:hover {
-  color: #E05555;
-  transform: scale(1.2);
-}
-
+.fav-btn:hover,
 .fav-btn.active {
-  color: #E05555;
+  color: var(--color-danger);
 }
 
-.spot-card-distance {
-  font-size: 0.82rem;
-  color: var(--color-accent);
-  font-weight: 600;
-  white-space: nowrap;
-  margin-left: 8px;
+.fav-btn.active svg path {
+  fill: currentColor;
 }
 
-.spot-card-address {
-  font-size: 0.8rem;
+/* ===== 空のとき ===== */
+.empty-state {
+  padding: 24px 0;
   color: var(--color-text-light);
-  margin-bottom: 6px;
-  line-height: 1.5;
 }
 
-.spot-card-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 3px;
-}
-
-.tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 3px;
-  font-size: 0.8125rem;
-  padding: 0 4px;
-  border-radius: var(--radius-sm);
-  background: var(--color-bg);
-  color: var(--color-text-light);
-  border: 1px solid var(--color-border);
-  line-height: 1.4;
-}
-
-.tag-visited {
-  background: var(--color-visited);
-  color: #fff;
-  border-color: var(--color-visited);
-  font-weight: 600;
-}
-
-.tag-feature {
-  background: #F0F8EC;
-  color: #5A8A3A;
-  border-color: #B8D9A0;
-}
-.tag-warn {
-  background: #FFF3E0;
-  color: #E65100;
-  border-color: #FFB74D;
-}
-.tag-stay {
-  background: #EEE8F5;
-  color: #5E3D8F;
-  border-color: #C4B0DE;
-}
 .detail-warn {
-  background: #FFF3E0;
-  color: #E65100;
-  border: 1px solid #FFB74D;
-  border-radius: 8px;
+  background: #FBF0EC;
+  color: var(--color-danger);
+  border: 1px solid #E2BBAE;
+  border-radius: var(--radius);
   padding: 10px 14px;
-  font-weight: bold;
+  font-weight: 700;
   margin-bottom: 16px;
-}
-
-.tag-category {
-  background: var(--color-accent);
-  color: #fff;
-  border-color: var(--color-accent);
 }
 
 /* ===== Spot Detail ===== */
@@ -1631,10 +1748,11 @@ img {
     top: 100%;
     left: 0;
     right: 0;
-    background: var(--color-primary);
+    background: var(--color-bg-card);
     flex-direction: column;
-    padding: 8px 16px 16px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 4px 8px 12px;
+    border-bottom: 1px solid var(--color-border);
+    box-shadow: 0 8px 20px rgba(43, 38, 33, 0.12);
   }
 
   .nav-menu.open {
@@ -1642,14 +1760,13 @@ img {
   }
 
   .nav-menu a {
-    padding: 10px 12px;
-    margin: 2px 0;
-    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 12px;
+    margin: 0;
+    font-size: 1rem;
     border-radius: var(--radius-sm);
-  }
-
-  .hero h1 {
-    font-size: 1.25rem;
   }
 
   .spot-detail-title {
@@ -1751,24 +1868,22 @@ img {
 
 /* トップページ・スポット詳細から一覧ページへの導線 */
 .all-spots-link {
-  margin: 24px 0 8px;
-  text-align: center;
-  font-size: 0.9rem;
+  margin: 20px 0 8px;
+  font-size: 0.9375rem;
 }
 
 .all-spots-link a {
-  display: inline-block;
-  padding: 12px 20px;
+  display: inline-flex;
+  align-items: center;
   min-height: 44px;
+  font-weight: 500;
   color: var(--color-primary);
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  background: var(--color-bg-card);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .all-spots-link a:hover {
-  background: var(--color-bg);
-  border-color: var(--color-primary-light);
+  color: var(--color-primary-light);
 }
 
 /* ===== 危険情報の要約と詳細トグル（2026-09-01） ===== */
@@ -1815,46 +1930,6 @@ img {
 .danger-detail .danger-card-desc:last-child { margin-bottom: 0; }
 
 
-/* ===== スクロールで浮き上がる（2026-09-15導入） =====
-   js/common.js が対象に .reveal を付け、画面に入ると .is-in が付く。
-   JavaScript が動かない環境では .has-reveal が付かないので、そのまま見える。 */
-.has-reveal .reveal {
-  opacity: 0;
-  transform: translateY(22px);
-  transition: opacity .9s cubic-bezier(.25, .46, .45, .94),
-              transform .9s cubic-bezier(.25, .46, .45, .94);
-  will-change: opacity, transform;
-}
-.has-reveal .reveal.is-in {
-  opacity: 1;
-  transform: none;
-}
-@media (prefers-reduced-motion: reduce) {
-  .has-reveal .reveal { opacity: 1; transform: none; transition: none; }
-}
-
-/* カードのハートは押しやすさのため44pxのまま、行の高さだけ取らないように上下へはみ出させる（2026-10-04） */
-.spot-card .fav-btn {
-  margin: -10px -6px -10px 0;
-}
-
-/* テーマ別まとめの一覧で、スポットの備考の最初の一文を添える（generate_theme_pages.py・2026-10-04） */
-.spot-card-excerpt {
-  font-size: 0.8125rem;
-  color: var(--color-text);
-  line-height: 1.6;
-  margin-bottom: 6px;
-}
-
-/* トップの絞り込みの下に置く、テーマ別まとめへの文字リンク（大きなボタンの代わり・2026-10-04） */
-.theme-link {
-  font-size: 0.875rem;
-  margin: 0 0 8px;
-}
-.theme-link a {
-  color: var(--color-primary);
-}
-
 /* とても狭い画面（iPhone SE 初代など幅320px）では、ロゴが縮まずメニューボタンが画面外へ押し出されていた（2026-10-04）。
    ロゴのアイコンと文字だけ小さくする */
 @media (max-width: 360px) {
@@ -1863,11 +1938,57 @@ img {
     gap: 4px;
   }
   .site-logo .logo-icon {
-    height: 64px;
-    margin: -14px 0;
+    height: 30px;
+    margin: 0;
   }
   .header-inner {
     padding-left: 12px;
     padding-right: 12px;
   }
+}
+
+/* ===== 2026-11 デザイン刷新「行き先帳」: 見出しは墨、操作とリンクは深緑 ===== */
+.spot-detail-title,
+.spot-blogs h3,
+.nearby-spots h3,
+.detail-remarks h3,
+.detail-visit h3,
+.page-title,
+.static-page h1,
+.page-404 h1,
+.all-spots-title {
+  color: var(--color-text);
+}
+
+.all-spots-group h2 {
+  color: var(--color-text);
+  border-bottom-color: var(--color-text);
+}
+
+/* フッターのリンクも指で押せる高さに */
+.footer-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+/* スポット詳細のお気に入り: 線のハートと文字を並べる。押してあれば塗る */
+.detail-fav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+}
+
+.detail-fav-btn.active svg path {
+  fill: currentColor;
+}
+
+/* 写真の前後ボタン（線の矢印） */
+.gallery-nav {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
 }
