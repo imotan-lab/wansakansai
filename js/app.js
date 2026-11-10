@@ -97,7 +97,12 @@
   const FILTERS = FILTER_GROUPS.flatMap(g => g.filters);
 
   function buildFilterButtons() {
-    filterSection.innerHTML = FILTER_GROUPS.map(g => `
+    // 府県は一覧の上と絞り込みの画面の両方に置く（どちらで押しても両方の札がそろう・2026-11-10）
+    filterSection.innerHTML = `
+      <fieldset class="filter-group">
+        <legend class="filter-group-label">府県</legend>
+        <div class="filter-group-btns">${prefButtonsHTML()}</div>
+      </fieldset>` + FILTER_GROUPS.map(g => `
       <fieldset class="filter-group">
         <legend class="filter-group-label">${g.label}</legend>
         <div class="filter-group-btns">
@@ -105,7 +110,10 @@
         </div>
       </fieldset>`).join('')
       + '<p class="filter-note">同じ段で複数押すと「どれか」に、別の段と組み合わせると「すべて」に当てはまるスポットを出します。</p>';
-    filterSection.querySelectorAll('.filter-btn').forEach(btn => {
+    filterSection.querySelectorAll('.filter-btn[data-pref]').forEach(btn => {
+      btn.addEventListener('click', () => togglePref(btn.dataset.pref));
+    });
+    filterSection.querySelectorAll('.filter-btn[data-filter]').forEach(btn => {
       btn.addEventListener('click', () => {
         const id = btn.dataset.filter;
         if (activeFilters.has(id)) activeFilters.delete(id); else activeFilters.add(id);
@@ -123,19 +131,24 @@
   }
   const prefList = [...new Set(spots.map(s => getPrefecture(s.address)))].filter(p => p !== 'その他');
 
-  function buildPrefButtons() {
-    const counts = {};
-    spots.forEach(s => { const p = getPrefecture(s.address); counts[p] = (counts[p] || 0) + 1; });
-    prefSection.innerHTML = prefList.filter(p => counts[p]).map(p =>
-      `<button type="button" class="filter-btn pref-btn" data-pref="${p}" aria-pressed="false">${p.replace(/[府県]$/, '')}<span class="pref-n">${counts[p]}</span></button>`
+  const prefCounts = {};
+  spots.forEach(s => { const p = getPrefecture(s.address); prefCounts[p] = (prefCounts[p] || 0) + 1; });
+  function prefButtonsHTML() {
+    return prefList.filter(p => prefCounts[p]).map(p =>
+      `<button type="button" class="filter-btn pref-btn" data-pref="${p}" aria-pressed="${activePrefs.has(p)}">${p.replace(/[府県]$/, '')}<span class="pref-n">${prefCounts[p]}</span></button>`
     ).join('');
-    prefSection.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const p = btn.dataset.pref;
-        if (activePrefs.has(p)) activePrefs.delete(p); else activePrefs.add(p);
-        btn.setAttribute('aria-pressed', activePrefs.has(p));
-        renderSpots();
-      });
+  }
+  function togglePref(p) {
+    if (activePrefs.has(p)) activePrefs.delete(p); else activePrefs.add(p);
+    document.querySelectorAll('.filter-btn[data-pref]').forEach(b => {
+      if (b.dataset.pref === p) b.setAttribute('aria-pressed', activePrefs.has(p));
+    });
+    renderSpots();
+  }
+  function buildPrefButtons() {
+    prefSection.innerHTML = prefButtonsHTML();
+    prefSection.querySelectorAll('.filter-btn[data-pref]').forEach(btn => {
+      btn.addEventListener('click', () => togglePref(btn.dataset.pref));
     });
   }
 
@@ -150,9 +163,33 @@
   }
 
   // ===== 絞り込みの画面（下から出る） =====
+  // 開く時は下からすっと出し、閉じる時は下へ引っ込めてから隠す（動きは css の sheet-in / sheet-out）
   let lastFocus = null;
+  let closeTimer = null;
+  const reduceMotion = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+  const isOpen = () => !filterPanel.hidden && !filterPanel.classList.contains('is-closing');
+  function finishClose() {
+    clearTimeout(closeTimer);
+    closeTimer = null;
+    filterPanel.removeEventListener('animationend', onCloseEnd);
+    filterPanel.classList.remove('is-closing');
+    filterPanel.hidden = true;
+    document.body.classList.remove('sheet-open', 'sheet-closing');
+  }
+  function onCloseEnd(e) {
+    if (e.target === filterPanel) finishClose();
+  }
   function openPanel() {
-    lastFocus = document.activeElement;
+    if (closeTimer) {
+      // 閉じている途中で開き直した時は、引っ込める動きを取り消す
+      clearTimeout(closeTimer);
+      closeTimer = null;
+      filterPanel.removeEventListener('animationend', onCloseEnd);
+      filterPanel.classList.remove('is-closing');
+      document.body.classList.remove('sheet-closing');
+    } else {
+      lastFocus = document.activeElement;
+    }
     filterPanel.hidden = false;
     btnFilter.setAttribute('aria-expanded', 'true');
     document.body.classList.add('sheet-open');
@@ -160,19 +197,27 @@
     if (first) first.focus();
   }
   function closePanel() {
-    filterPanel.hidden = true;
+    if (!isOpen()) return;
     btnFilter.setAttribute('aria-expanded', 'false');
-    document.body.classList.remove('sheet-open');
     if (lastFocus) lastFocus.focus();
+    if (reduceMotion && reduceMotion.matches) {
+      finishClose();
+      return;
+    }
+    filterPanel.classList.add('is-closing');
+    document.body.classList.add('sheet-closing');
+    filterPanel.addEventListener('animationend', onCloseEnd);
+    // 動きの終わりの合図が来ない端末でも必ず隠す
+    closeTimer = setTimeout(finishClose, 400);
   }
-  btnFilter.addEventListener('click', () => (filterPanel.hidden ? openPanel() : closePanel()));
+  btnFilter.addEventListener('click', () => (isOpen() ? closePanel() : openPanel()));
   $('sheetClose').addEventListener('click', closePanel);
   $('sheetBackdrop').addEventListener('click', closePanel);
   btnSeeResults.addEventListener('click', () => {
     closePanel();
     $('listHead').scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !filterPanel.hidden) closePanel(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && isOpen()) closePanel(); });
 
   // ===== 一覧を描く =====
   function renderSpots() {
@@ -197,7 +242,7 @@
       ...[...activePrefs].map(p => p.replace(/[府県]$/, '')),
       ...FILTERS.filter(f => activeFilters.has(f.id)).map(f => f.label),
     ];
-    const n = activeFilters.size;
+    const n = activeFilters.size + activePrefs.size;
     btnFilter.querySelector('.btn-filter-n').textContent = n ? String(n) : '';
     btnSeeResults.textContent = `${filtered.length}件を見る`;
     if (chosen.length) {

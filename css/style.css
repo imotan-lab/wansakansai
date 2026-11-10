@@ -531,6 +531,23 @@ img {
   border-top: 1px solid var(--color-border-strong);
   border-radius: 8px 8px 0 0;
   box-shadow: 0 -10px 30px rgba(43, 38, 33, 0.18);
+  /* 下からすっと出る（出どころを示す動き。飾りの動きではない）。
+     閉じる時は js が is-closing を付け、動き終わってから hidden にする */
+  animation: sheet-in 280ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.filter-panel.is-closing {
+  animation: sheet-out 200ms cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+@keyframes sheet-in {
+  from { translate: 0 100%; }
+  to { translate: 0 0; }
+}
+
+@keyframes sheet-out {
+  from { translate: 0 0; }
+  to { translate: 0 100%; }
 }
 
 .filter-panel[hidden] {
@@ -628,6 +645,31 @@ body.sheet-open .sheet-backdrop {
   inset: 0;
   z-index: 250;
   background: rgba(43, 38, 33, 0.35);
+  animation: backdrop-in 200ms ease-out;
+}
+
+body.sheet-closing .sheet-backdrop {
+  animation: backdrop-out 200ms ease-in forwards;
+}
+
+@keyframes backdrop-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes backdrop-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+/* 動きを減らす設定の端末では、すぐ出してすぐ消す */
+@media (prefers-reduced-motion: reduce) {
+  .filter-panel,
+  .filter-panel.is-closing,
+  body.sheet-open .sheet-backdrop,
+  body.sheet-closing .sheet-backdrop {
+    animation: none;
+  }
 }
 
 body.sheet-open {

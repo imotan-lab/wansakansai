@@ -658,7 +658,7 @@ def build_html(spot: dict, all_spots: list = None, blog_index: dict = None) -> s
   <link rel="icon" type="image/png" sizes="96x96" href="../images/favicon-96.png">
   <link rel="icon" type="image/png" sizes="192x192" href="../images/favicon-192.png">
   <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
-  <link rel="stylesheet" href="../css/style.css?v=2026111001">
+  <link rel="stylesheet" href="../css/style.css?v=2026111003">
   <script type="application/ld+json">{jsonld}</script>
 </head>
 <body>
@@ -772,7 +772,7 @@ def build_index_html(spots: list) -> str:
   <link rel="icon" type="image/png" sizes="96x96" href="../images/favicon-96.png">
   <link rel="icon" type="image/png" sizes="192x192" href="../images/favicon-192.png">
   <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
-  <link rel="stylesheet" href="../css/style.css?v=2026111001">
+  <link rel="stylesheet" href="../css/style.css?v=2026111003">
 </head>
 <body>
 
