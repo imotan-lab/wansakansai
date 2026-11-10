@@ -208,7 +208,7 @@
     document.body.classList.add('sheet-closing');
     filterPanel.addEventListener('animationend', onCloseEnd);
     // 動きの終わりの合図が来ない端末でも必ず隠す
-    closeTimer = setTimeout(finishClose, 400);
+    closeTimer = setTimeout(finishClose, 700);
   }
   btnFilter.addEventListener('click', () => (isOpen() ? closePanel() : openPanel()));
   $('sheetClose').addEventListener('click', closePanel);
