@@ -658,13 +658,13 @@ def build_html(spot: dict, all_spots: list = None, blog_index: dict = None) -> s
   <link rel="icon" type="image/png" sizes="96x96" href="../images/favicon-96.png">
   <link rel="icon" type="image/png" sizes="192x192" href="../images/favicon-192.png">
   <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
-  <link rel="stylesheet" href="../css/style.css?v=2026111003">
+  <link rel="stylesheet" href="../css/style.css?v=2026111004">
   <script type="application/ld+json">{jsonld}</script>
 </head>
 <body>
 
   <main class="main-content">
-    <a href="../index.html" class="back-link">スポット一覧に戻る</a>
+    <a href="../index.html" class="back-link"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M11 3.5 5.5 9l5.5 5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>スポット一覧に戻る</a>
     <div id="spotDetail">
       {body_content}
     </div>
@@ -674,7 +674,7 @@ def build_html(spot: dict, all_spots: list = None, blog_index: dict = None) -> s
 
 {STATIC_FOOTER}
   <script>window.WANSAKA_SPOT_ID = "{sid_e}";</script>
-  <script src="../js/common.js?v=2026111001"></script>
+  <script src="../js/common.js?v=2026111004"></script>
   <script src="../js/spot.js?v=2026111002"></script>
 </body>
 </html>
@@ -772,12 +772,12 @@ def build_index_html(spots: list) -> str:
   <link rel="icon" type="image/png" sizes="96x96" href="../images/favicon-96.png">
   <link rel="icon" type="image/png" sizes="192x192" href="../images/favicon-192.png">
   <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
-  <link rel="stylesheet" href="../css/style.css?v=2026111003">
+  <link rel="stylesheet" href="../css/style.css?v=2026111004">
 </head>
 <body>
 
   <main class="main-content">
-    <a href="../index.html" class="back-link">トップページに戻る</a>
+    <a href="../index.html" class="back-link"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M11 3.5 5.5 9l5.5 5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>トップページに戻る</a>
     <h1 class="all-spots-title">関西の犬連れスポット一覧</h1>
     <p class="all-spots-lead">
       掲載中の全{total}件を府県別に並べています。現在地から近い順に探す場合は
@@ -788,7 +788,7 @@ def build_index_html(spots: list) -> str:
   </main>
 
 {STATIC_FOOTER}
-  <script src="../js/common.js?v=2026111001"></script>
+  <script src="../js/common.js?v=2026111004"></script>
   <script>
     renderHeader('spots');
     renderFooter();

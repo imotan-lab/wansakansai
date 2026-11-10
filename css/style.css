@@ -1369,17 +1369,27 @@ body.sheet-open {
   color: var(--color-text-light);
 }
 
+/* 戻るリンク: 押せる物なので深緑・高さ44px・左向きの線の矢印（2026-11-10 運営者「戻るボタン無くない？」）。
+   一覧から来た時は common.js が履歴で戻す（絞り込みと位置がそのまま残る） */
 .back-link {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  margin-bottom: 16px;
-  font-size: 0.85rem;
-  color: var(--color-text-light);
+  gap: 2px;
+  min-height: 44px;
+  margin: -4px 0 8px -4px;
+  padding: 0 10px 0 2px;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.back-link svg {
+  flex: none;
 }
 
 .back-link:hover {
-  color: var(--color-primary);
+  text-decoration: underline;
 }
 
 /* ===== Rating (Stars / Bars) ===== */

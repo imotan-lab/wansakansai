@@ -318,3 +318,19 @@ function spotRowHTML(s, opts) {
   ${more}${excerpt}${visited}
 </article>`;
 }
+
+// ===== 戻るリンク（スポット詳細の左上）=====
+// 一覧から来た時は履歴で戻す。絞り込み・並び・見ていた位置がそのまま残るため。
+// それ以外（検索・X・ブックマークから直接来た等）は、リンク先のトップへ進む。
+document.addEventListener('click', (e) => {
+  const a = e.target.closest && e.target.closest('a.back-link');
+  if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+  let ref;
+  try { ref = new URL(document.referrer); } catch (_) { return; }
+  if (ref.origin !== location.origin || history.length < 2) return;
+  const path = ref.pathname;
+  const fromList = /\/(index\.html)?$/.test(path) || /\/themes\//.test(path) || /\/favorites\.html$/.test(path);
+  if (!fromList) return;
+  e.preventDefault();
+  history.back();
+});

@@ -106,7 +106,7 @@
       <fieldset class="filter-group">
         <legend class="filter-group-label">${g.label}</legend>
         <div class="filter-group-btns">
-          ${g.filters.map(f => `<button type="button" class="filter-btn" data-filter="${f.id}" aria-pressed="false">${f.label}</button>`).join('')}
+          ${g.filters.map(f => `<button type="button" class="filter-btn" data-filter="${f.id}" aria-pressed="${activeFilters.has(f.id)}">${f.label}</button>`).join('')}
         </div>
       </fieldset>`).join('')
       + '<p class="filter-note">同じ段で複数押すと「どれか」に、別の段と組み合わせると「すべて」に当てはまるスポットを出します。</p>';
@@ -321,7 +321,47 @@
     favBtn.setAttribute('aria-pressed', isNowFav);
   });
 
+  // ===== 詳細から戻った時に、絞り込み・並び・見ていた位置をそのまま出す（2026-11-10） =====
+  // ブラウザがページを残している時はそのまま戻るが、読み直す端末もあるので、このタブの中だけ覚えておく
+  // （sessionStorage。タブを閉じれば消える）。普通に開いた時は使わない。
+  const STATE_KEY = 'wansakan_top_state';
+  function saveState() {
+    try {
+      sessionStorage.setItem(STATE_KEY, JSON.stringify({
+        prefs: [...activePrefs], filters: [...activeFilters], q: activeSearch,
+        lat: userLat, lng: userLng, y: Math.round(window.scrollY),
+      }));
+    } catch (_) { /* 保存できない端末では覚えないだけ */ }
+  }
+  let restoreY = null;
+  try {
+    const nav = performance.getEntriesByType ? performance.getEntriesByType('navigation')[0] : null;
+    const saved = JSON.parse(sessionStorage.getItem(STATE_KEY) || 'null');
+    if (nav && nav.type === 'back_forward' && saved) {
+      (saved.prefs || []).forEach(p => { if (prefList.includes(p)) activePrefs.add(p); });
+      (saved.filters || []).forEach(id => { if (FILTERS.some(f => f.id === id)) activeFilters.add(id); });
+      if (saved.q) {
+        activeSearch = String(saved.q);
+        searchInput.value = activeSearch;
+        searchClear.hidden = false;
+      }
+      if (typeof saved.lat === 'number' && typeof saved.lng === 'number') {
+        userLat = saved.lat;
+        userLng = saved.lng;
+        gpsLabel.textContent = '近い順に並べました';
+      }
+      if (typeof saved.y === 'number') restoreY = saved.y;
+    }
+  } catch (_) { /* 読めなければ最初の状態で出す */ }
+  window.addEventListener('pagehide', saveState);
+  document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') saveState(); });
+  spotList.addEventListener('click', (e) => { if (e.target.closest('a')) saveState(); });
+
   buildPrefButtons();
   buildFilterButtons();
   renderSpots();
+  if (restoreY !== null) {
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    window.scrollTo(0, restoreY);
+  }
 })();
