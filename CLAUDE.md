@@ -29,6 +29,8 @@
   - プロパティ: https://wansakansai.com/（2026-04-08追加、HTMLファイル認証）
 - sitemap.xml / robots.txt 設置済み
 - sitemap.xmlのベースURLはwansakansai.com（generate_sitemap.pyのBASE_URL）
+- **sitemap.xml の更新日（lastmod）は「中身が実際に変わった日」**（2026-11-11）。読み込み番号（?v=）を除いたHTMLの指紋で比べ、変わった時だけ今日にする。指紋の控えは `C:/Users/imao_/Documents/wansakansai/sitemap_lastmod.json`（リポジトリの外。中に置くと自動タスクが「コミットされていない変更＝途絶の印」と取り違える）。控えが無くなったら今の sitemap.xml の日付を引き継ぐ。以前は毎回全ページを今日にしていて、Google が日付を当てにしていなかった
+- **★Search Console の登録リクエストを毎日10件★**（2026-11-11・運営者「毎日10件ずつタスクに入れよう」）。未登録のページは検索に一切出ない。11/11時点で登録済み180・「検出 - 未登録」105（追加から何か月もたったスポット。スポット一覧 spots/index.html まで未登録だった）。台帳 `C:/Users/imao_/Documents/wansakansai/index_request_queue.json` を `scripts/index_request_queue.py` で読み書きし、wansakansai-spot-update-am の STEP 10.5 が先頭から10件ずつ頼む（入口のページ → 検索で見られているスポット → 写真のあるスポット → 残り。頼んでから28日は出さない）。画面操作は `docs/search_console_request.js`（ページ内JSだけで動くのでPCがロック中でも可。javascript_tool は45秒で切れるので「始める → 1分おきに様子を見る」）。**Indexing API は使わない**（求人・ライブ配信専用で、ほかに使うと規約違反）。台帳が空になったら Search Console の一覧から `--seed` で補充する
 - OGPタグは各HTMLの `<head>` に静的記述で統一（画像: images/ogp.png）。**JSでの動的注入は禁止**。OGPを追加・変更する時は静的HTMLに直接書く（spots/はgenerate_spot_pages.pyが埋め込む）
 - **トップページのタイトルと説明文**: タイトル「関西で犬とお出かけ｜270か所以上から探せる｜わんさかんさい」。**件数は「270か所以上」と下限で書く**。**スポットが270を下回ると `generate_spot_pages.py` が★で警告する**ので、その時は index.html の title・description・og・構造化データを直す。300を超えたら数字を上げてよい。「穴場」「おすすめ」「実際に訪問」は入れない（根拠が無い）。経緯はCLAUDE_history.md
 - canonical URL: 全ページに設定済み（spot.htmlはJSで動的更新）
