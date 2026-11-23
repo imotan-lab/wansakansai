@@ -142,7 +142,7 @@
 - **スポットを追加・編集・削除したら** 以下2つを順に実行してからコミットすること
   - `python generate_spot_pages.py` で `spots/{id}.html` 静的ページを再生成（SEO的に必須）
   - `python generate_sitemap.py` で sitemap.xml を再生成
-- **★スポットを削除する前に必ずX投稿履歴を確認する★** `python scripts/check_x_posted.py {スポットID}`。**サイトから消してもXのポストは残る**ので、該当があればXのポストも消すか判断する（`--orphans` で過去の削除漏れを一括検出。履歴は `scripts/x_post_history.json`・.gitignore対象）。消す時は **`python scripts/delete_x_post_search.py --match "文言"`（Xの検索で探すだけ）→ `--delete`**（消したあと検索し直して0件を確かめる）。`scripts/delete_x_post.py`（プロフィールをたどる方式）は2か月以上前の投稿に届かない
+- **★スポットを削除する前に必ずX投稿履歴を確認する★** `python scripts/check_x_posted.py {スポットID}`。**サイトから消してもXのポストは残る**ので、該当があればXのポストも消すか判断する（`--orphans` で過去の削除漏れを一括検出。履歴は `scripts/x_post_history.json`・.gitignore対象）。消す時は **`python scripts/delete_x_post_search.py --match "文言"`（Xの検索で探すだけ）→ `--delete`**（消したあと検索し直して0件を確かめる）。**Xの検索は続けて流すと空を返すことがある**（2026-11-23・壷阪寺で5回続けて0件。投稿はあった）。`--delete` は最初の検索が空だと何もせず終わるので、0件なら90秒ほど空けて流し直す。`scripts/delete_x_post.py`（プロフィールをたどる方式）は2か月以上前の投稿に届かない
 - スポット詳細ページのURLは `https://wansakansai.com/spots/{id}.html` が正規（旧 `spot.html?id=xxx` は自動リダイレクト）。内部リンクは `spots/{id}.html` 形式で書く
 - spots/ 配下のHTMLは `generate_spot_pages.py` の出力なので**手動編集禁止**。再生成で上書きされる（`spots/index.html` も同スクリプトが生成する全スポット一覧ページ。削除対象からは除外済み）
 
