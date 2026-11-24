@@ -2082,7 +2082,7 @@
   },
   {
     "id": "otsu-nagisa-park",
-    "lastChecked": "2026-10-24",
+    "lastChecked": "2026-11-25",
     "name": "大津湖岸なぎさ公園",
     "address": "滋賀県大津市由美浜",
     "lat": 35.007118,
@@ -2167,7 +2167,7 @@
   },
   {
     "id": "rokuha-park",
-    "lastChecked": "2026-10-24",
+    "lastChecked": "2026-11-25",
     "name": "草津市立ロクハ公園",
     "address": "滋賀県草津市追分7-11-2",
     "lat": 34.996043,
@@ -2209,7 +2209,7 @@
   },
   {
     "id": "houkoen-nagahama",
-    "lastChecked": "2026-10-24",
+    "lastChecked": "2026-11-25",
     "name": "豊公園",
     "address": "滋賀県長浜市公園町1325",
     "lat": 35.376264,
@@ -2248,14 +2248,15 @@
       "ほうこうえん"
     ],
     "tags": [
-      "sakura"
+      "sakura",
+      "koyo"
     ],
     "stayKeyword": "長浜"
   },
   {
     "id": "shozakai-park",
     "gear": ["carry"],
-    "lastChecked": "2026-10-25",
+    "lastChecked": "2026-11-25",
     "name": "庄堺公園",
     "address": "滋賀県彦根市開出今町",
     "lat": 35.258912,
@@ -2297,7 +2298,7 @@
   },
   {
     "id": "togei-no-mori",
-    "lastChecked": "2026-10-25",
+    "lastChecked": "2026-11-25",
     "name": "滋賀県立陶芸の森",
     "address": "滋賀県甲賀市信楽町勅旨2188-7",
     "lat": 34.885776,
