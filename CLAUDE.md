@@ -390,6 +390,7 @@ JS描画だけだとレンダリング前HTMLにリンクが残らず、Google�
 - **★記事HTMLの末尾に `renderHeader('blog'); renderFooter();` の呼び出しを必ず入れる★** 忘れるとヘッダー・フッターが出ない
 - **絵文字は使わない**
 - 記事追加手順: HTMLを `blog/` に配置（各スポットの節の見出しに `id="spot-{スポットID}"`）→ `blog/index.html` にカードを追加 → **`python scripts/add_blog_img_size.py` → `python generate_spot_pages.py` を流す**
+- **ブログを書いた後でスポットを足した時は、そのスポットが出てくる記事の本文にも `spots/{id}.html` へのリンクと節の見出しの `id="spot-{id}"` を足して `generate_spot_pages.py` を流す**（2026-11-25・別館カワナツのページに記事へのリンクが出ていなかった）
 - **スポットのページから記事へのリンクは自動で出る**: `generate_spot_pages.py` が `blog/*.html` 本文の `spots/{id}.html` へのリンクを拾って出す（対応表なし）。記事の `<h1 class="blog-title">`・`<p class="blog-meta">`・`og:image` を使うので**この3つの形を崩さない**。仕組みの細部はCLAUDE_history.md
   - **★記事の中の「そのスポットの節の見出し」に `id="spot-{スポットID}"` を付ける★**（例: `<h3 id="spot-kabata-resort">`）。付いていればスポットのページのリンクがその節へ直接飛ぶ（1本の記事に複数のスポットが出るため）。無ければ記事の先頭へ飛ぶ。見出しがヘッダーの下に隠れないよう `css/style.css` の `[id^="spot-"] { scroll-margin-top }` で余白を取っている
   - **★記事の `<img>` には width / height を必ず入れる★** `python scripts/add_blog_img_size.py` が画像ファイルの実寸を書き込む（`--check` で残りを数える）。無いと写真の読み込み前は高さ0で並び、節へ飛んだあとで見出しが下へずれる
