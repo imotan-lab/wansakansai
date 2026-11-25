@@ -329,7 +329,9 @@
   },
   {
     "id": "wakayama-castle",
-    "gear": ["carry"],
+    "gear": [
+      "carry"
+    ],
     "lastChecked": "2026-11-20",
     "name": "和歌山城公園",
     "address": "和歌山県和歌山市一番丁3",
@@ -1306,7 +1308,9 @@
   },
   {
     "id": "ama-site-park",
-    "gear": ["carry"],
+    "gear": [
+      "carry"
+    ],
     "lastChecked": "2026-11-23",
     "name": "安満遺跡公園",
     "address": "大阪府高槻市八丁畷町12-3",
@@ -1435,7 +1439,9 @@
   },
   {
     "id": "grand-green-osaka",
-    "gear": ["carry"],
+    "gear": [
+      "carry"
+    ],
     "lastChecked": "2026-11-23",
     "name": "グラングリーン大阪（うめきた公園）",
     "address": "大阪府大阪市北区大深町5・6番",
@@ -1992,7 +1998,9 @@
   },
   {
     "id": "kyuhoji-ryokuchi",
-    "gear": ["manner"],
+    "gear": [
+      "manner"
+    ],
     "lastChecked": "2026-11-24",
     "name": "久宝寺緑地",
     "address": "大阪府八尾市西久宝寺323",
@@ -2163,7 +2171,9 @@
       "矢橋帰帆島",
       "やばせきはんとうこうえん"
     ],
-    "tags": ["sakura"]
+    "tags": [
+      "sakura"
+    ]
   },
   {
     "id": "rokuha-park",
@@ -2255,7 +2265,9 @@
   },
   {
     "id": "shozakai-park",
-    "gear": ["carry"],
+    "gear": [
+      "carry"
+    ],
     "lastChecked": "2026-11-25",
     "name": "庄堺公園",
     "address": "滋賀県彦根市開出今町",
@@ -2466,7 +2478,7 @@
       "fee": ""
     },
     "visited": true,
-    "remarks": "「お多賀さん」の愛称で親しまれる、延命長寿・縁結びの古社。伊勢神宮の祭神の親神とされるイザナギ・イザナミを祀る。全国でも珍しくペット連れ参拝を受け入れており、リードを短く持ち、マナーパンツを着用すれば屋外の境内や参道を一緒に歩ける（本殿・拝殿・授与所・待合所など建物内は不可）。健康長寿にあやかったペット用お守りも授与。太閤秀吉が寄進したと伝わる石の反り橋（太閤橋）も見どころ。表参道入口から徒歩5分ほどの多賀町観光駐車場（大駐車場）が通常は無料だが、正月の初詣期間などは有料になる場合あり。本殿裏手の参集殿駐車場も無料で利用でき、参拝に近いが台数は少なめ。",
+    "remarks": "「お多賀さん」の愛称で親しまれる、延命長寿・縁結びの古社。伊勢神宮の祭神の親神とされるイザナギ・イザナミを祀る。全国でも珍しくペット連れ参拝を受け入れており、リードを短く持ち、マナーパンツを着用すれば屋外の境内や参道を一緒に歩ける（本殿・拝殿・授与所・待合所など建物内は不可）。健康長寿にあやかったペット用お守りも授与。太閤秀吉が寄進したと伝わる石の反り橋（太閤橋）も見どころで、橋は竹の柵で通行止めになっていることあり。多賀町観光駐車場（大駐車場）は観光案内所とトイレがあり、鳥居まで徒歩10分ほど。通常は無料だが、正月の初詣期間などは有料になる場合あり。本殿裏の自動車お祓い所の一部も参拝者向けの駐車場として開放されていて、境内に直接停められるが台数は少なめ。入口の看板は参集殿の利用者・神社関係者向けの区画で、その奥に停める。本殿の裏手に出るため、正面の鳥居や太閤橋を通って参拝したいなら大駐車場から歩く。",
     "imageUrl": "images/spots/taga-taisha/1.jpg",
     "officialUrl": "https://www.tagataisya.or.jp/",
     "aliases": [
@@ -2483,15 +2495,17 @@
       "images/spots/taga-taisha/3.jpg",
       "images/spots/taga-taisha/4.jpg",
       "images/spots/taga-taisha/5.jpg",
-      "images/spots/taga-taisha/6.jpg"
+      "images/spots/taga-taisha/6.jpg",
+      "images/spots/taga-taisha/7.jpg"
     ],
     "captions": [
       "境内の入口の鳥居と社号標",
       "鳥居をくぐった先の境内。奥が拝殿で、犬は建物の外まで一緒に行ける",
-      "太閤橋。縄が張られていて渡れない（2026年11月）",
+      "太閤橋。竹の柵があって渡れない（2026年11月）",
       "神馬舎の前。境内の屋外はリードを短く持てば犬と歩ける",
       "門の開門・閉門の時刻の札。午前6時〜午後9時",
-      "参拝者駐車場の看板。参拝する人のための駐車場"
+      "大駐車場の看板。観光案内所とトイレがあり、鳥居まで歩いて10分ほど",
+      "本殿裏の駐車場の入口。手前の看板は参集殿の利用者・神社関係者向けの区画で、その奥に参拝者も停められる"
     ],
     "visit": {
       "date": "2026-11-01",
@@ -3162,8 +3176,8 @@
     "lastChecked": "2026-10-26",
     "name": "道の駅 紀の川万葉の里",
     "address": "和歌山県伊都郡かつらぎ町窪487-2",
-    "lat": 34.284500,
-    "lng": 135.464560,
+    "lat": 34.2845,
+    "lng": 135.46456,
     "category": "park",
     "dogSize": {
       "small": true,
@@ -3249,7 +3263,7 @@
     "name": "扇ヶ浜公園",
     "address": "和歌山県田辺市扇ヶ浜2-20",
     "lat": 33.723527,
-    "lng": 135.379200,
+    "lng": 135.3792,
     "category": "park",
     "dogSize": {
       "small": true,
@@ -3598,7 +3612,9 @@
       "本州最南端",
       "しおのみさきぼうろうのしば"
     ],
-    "tags": ["stay-ok"]
+    "tags": [
+      "stay-ok"
+    ]
   },
   {
     "id": "kozagawa-ichimaiwa",
@@ -3898,7 +3914,9 @@
   },
   {
     "id": "mitsui-outlet-shiga-ryuo",
-    "gear": ["carry"],
+    "gear": [
+      "carry"
+    ],
     "lastChecked": "2026-10-28",
     "name": "三井アウトレットパーク 滋賀竜王",
     "address": "滋賀県蒲生郡竜王町大字薬師1178-694",
@@ -4151,7 +4169,9 @@
   },
   {
     "id": "crossway-nakamachi",
-    "gear": ["manner"],
+    "gear": [
+      "manner"
+    ],
     "lastChecked": "2026-10-29",
     "name": "道の駅クロスウェイなかまち",
     "address": "奈良県奈良市中町4694-1",
@@ -4953,7 +4973,9 @@
   },
   {
     "id": "hitokura-park",
-    "gear": ["manner"],
+    "gear": [
+      "manner"
+    ],
     "lastChecked": "2026-10-31",
     "name": "兵庫県立一庫公園",
     "address": "兵庫県川西市国崎字知明1-6",
@@ -5554,7 +5576,9 @@
   },
   {
     "id": "dog-cafe-three-c",
-    "gear": ["manner"],
+    "gear": [
+      "manner"
+    ],
     "lastChecked": "2026-11-02",
     "name": "Dog cafe three C",
     "address": "滋賀県甲賀市水口町水口6230-6",
@@ -5594,7 +5618,9 @@
   },
   {
     "id": "with-wan",
-    "gear": ["manner"],
+    "gear": [
+      "manner"
+    ],
     "lastChecked": "2026-11-02",
     "name": "ドッグラン&カフェ With わんっ!",
     "address": "滋賀県東近江市五個荘清水鼻町114-1",
@@ -5713,7 +5739,9 @@
   },
   {
     "id": "izara-cafe",
-    "gear": ["manner"],
+    "gear": [
+      "manner"
+    ],
     "lastChecked": "2026-11-02",
     "name": "チョークアートCAFE&BAR 伊沙羅",
     "address": "滋賀県彦根市本町1-7-42",
@@ -5754,7 +5782,9 @@
   },
   {
     "id": "minori-farm",
-    "gear": ["manner"],
+    "gear": [
+      "manner"
+    ],
     "lastChecked": "2026-11-03",
     "name": "みのり農園（ドッグランminori）",
     "address": "滋賀県野洲市吉川5359",
@@ -5799,7 +5829,7 @@
     "name": "朽木旭屋",
     "address": "滋賀県高島市朽木岩瀬40-1",
     "lat": 35.348558,
-    "lng": 135.912690,
+    "lng": 135.91269,
     "parking": {
       "available": true,
       "free": true
@@ -6118,7 +6148,9 @@
   },
   {
     "id": "cafe-chrp",
-    "gear": ["manner"],
+    "gear": [
+      "manner"
+    ],
     "lastChecked": "2026-11-03",
     "name": "cafe CHRP",
     "aliases": [
@@ -6158,7 +6190,9 @@
   },
   {
     "id": "cafe-anera",
-    "gear": ["manner"],
+    "gear": [
+      "manner"
+    ],
     "lastChecked": "2026-11-04",
     "name": "Cafeアーネラ",
     "aliases": [
@@ -6198,7 +6232,9 @@
   },
   {
     "id": "dog-run-cafe-pic",
-    "gear": ["manner"],
+    "gear": [
+      "manner"
+    ],
     "lastChecked": "2026-11-04",
     "name": "Dog Run Cafe Pic",
     "aliases": [
@@ -6286,7 +6322,9 @@
   },
   {
     "id": "taiji-kujira-museum",
-    "gear": ["carry"],
+    "gear": [
+      "carry"
+    ],
     "lastChecked": "2026-11-04",
     "name": "太地町立くじらの博物館",
     "aliases": [
@@ -6424,7 +6462,9 @@
   },
   {
     "id": "sandanbeki",
-    "gear": ["carry"],
+    "gear": [
+      "carry"
+    ],
     "temporary": [
       {
         "note": "12月8日〜12月11日は館内総点検のため三段壁洞窟が終日休館",
@@ -6462,7 +6502,9 @@
       "fee": "展望エリアは無料。三段壁洞窟は大人（中学生以上）1,500円、小人（小学生）750円、小学生未満無料"
     },
     "visited": false,
-    "tags": ["rain"],
+    "tags": [
+      "rain"
+    ],
     "remarks": "高さ50〜60m・全長約2kmの断崖絶壁の絶景スポット（吉野熊野国立公園・ジオスポット）。【展望エリア】は24時間無料で犬連れ散策可能、町営駐車場（普通車30台・大型バス3台）・トイレ（多目的トイレ有）あり。柵はあるが断崖なので小型犬でも必ずリード・抱き上げ推奨。遊歩道は岩がゴツゴツで肉球注意、夏は照り返しで高温注意。【三段壁洞窟】（有料）は愛犬同伴可だが「抱っこするかカートに乗せる」「ケージ（キャリー）に入れる」ことが条件で、抱っこできない大型犬は断られる場合あり。洞窟内にトイレはなく、一度地上へ戻って公衆トイレを利用すること。湿度が高いので犬の体調注意。地上から地底36mまでエレベーターで約24秒、洞内は一周約200mの歩道でスロープ設置のためベビーカー・車椅子も見学可、車椅子の貸出2台あり。所要は洞内15〜20分、周辺散策を含めて40分程度。受付でペット用兜の貸出サービスあり（料金の記載はなく要確認）。営業時間8:00〜17:00（最終入場16:50）年中無休だが、12月中旬に洞内点検で臨時休館の場合あり。20人以上の団体割引あり。障がい者手帳提示で本人と同伴者大人1名が通常料金の半額（他の割引との併用不可）。敷地内に海を望むテイクアウトの「崖cafe」があり、カウンター席・テラス席を備える（犬同伴可否は要確認）。",
     "imageUrl": "",
     "images": [],
@@ -7134,7 +7176,9 @@
   },
   {
     "id": "katsuragisan-ropeway",
-    "gear": ["carry"],
+    "gear": [
+      "carry"
+    ],
     "lastChecked": "2026-11-06",
     "name": "葛城山ロープウェイ・葛城高原",
     "address": "奈良県御所市櫛羅2503-1",
@@ -7979,7 +8023,9 @@
   },
   {
     "id": "amanohashidate-park",
-    "gear": ["carry"],
+    "gear": [
+      "carry"
+    ],
     "lastChecked": "2026-11-09",
     "name": "天橋立公園（砂州）",
     "address": "京都府宮津市文珠",
@@ -8935,7 +8981,9 @@
   },
   {
     "id": "maizuru-akarenga-park",
-    "gear": ["carry"],
+    "gear": [
+      "carry"
+    ],
     "lastChecked": "2026-11-11",
     "name": "舞鶴赤れんがパーク",
     "address": "京都府舞鶴市字北吸1039番地の2",
@@ -9067,7 +9115,6 @@
     "officialUrl": "https://www.city.amagasaki.hyogo.jp/manabu/parks/083nougyoukouen/index.html",
     "aliases": [
       "あまがさきしのうぎょうこうえん",
-
       "尼崎農業公園",
       "田能農業公園"
     ],
@@ -9113,7 +9160,6 @@
       "かこがわかせんじきりょくち",
       "加古川河川敷",
       "加古川河川敷公園",
-
       "どうぶつの森広場",
       "加古川河川敷どうぶつの森広場",
       "加古川みなもロード",
@@ -9122,8 +9168,7 @@
     ],
     "tags": [
       "sakura"
-    ]
-,
+    ],
     "temporary": [
       {
         "note": "河原地区のJR山陽本線付近の河川敷の一部は、かわまちづくりの工事のため立ち入りできない（加古川バイパス寄りの駐車場とグラウンドは区域外）",
@@ -9182,7 +9227,9 @@
   },
   {
     "id": "tegarayama-heiwa-park",
-    "gear": ["carry"],
+    "gear": [
+      "carry"
+    ],
     "lastChecked": "2026-11-12",
     "name": "手柄山平和公園",
     "address": "兵庫県姫路市西延末440",
@@ -10236,7 +10283,9 @@
   },
   {
     "id": "kataokasan-darumaji",
-    "gear": ["manner"],
+    "gear": [
+      "manner"
+    ],
     "lastChecked": "2026-11-15",
     "name": "片岡山 達磨寺",
     "address": "奈良県北葛城郡王寺町本町2丁目1番40号",
@@ -11247,7 +11296,9 @@
   },
   {
     "id": "hasedera-nara",
-    "gear": ["carry"],
+    "gear": [
+      "carry"
+    ],
     "lastChecked": "2026-11-18",
     "name": "総本山 長谷寺",
     "address": "奈良県桜井市初瀬731-1",
@@ -11520,7 +11571,9 @@
   },
   {
     "id": "cafe-twotwo-dog-grass-field",
-    "gear": ["manner"],
+    "gear": [
+      "manner"
+    ],
     "lastChecked": "2026-11-18",
     "name": "Cafe TwoTwo & Dog Grass Field",
     "address": "大阪府南河内郡河南町鈴美台2丁目32-2",
@@ -11569,7 +11622,9 @@
       "Dog Grass Field",
       "カフェツーツーアンドドッググラスフィールド"
     ],
-    "tags": ["rain"],
+    "tags": [
+      "rain"
+    ],
     "images": [
       "images/spots/cafe-twotwo-dog-grass-field/1.jpg",
       "images/spots/cafe-twotwo-dog-grass-field/2.jpg",
@@ -11882,7 +11937,9 @@
   },
   {
     "id": "aramaki-rose-park",
-    "gear": ["carry"],
+    "gear": [
+      "carry"
+    ],
     "lastChecked": "2026-11-19",
     "name": "荒牧バラ公園",
     "address": "兵庫県伊丹市荒牧6丁目5",
@@ -12098,7 +12155,10 @@
   },
   {
     "id": "ooedo-shirahama-gyoen",
-    "gear": ["manner", "carry"],
+    "gear": [
+      "manner",
+      "carry"
+    ],
     "lastChecked": "2026-10-19",
     "name": "大江戸温泉物語Premium 白浜御苑",
     "aliases": [
@@ -12155,7 +12215,9 @@
   },
   {
     "id": "whatawon-kishiwada",
-    "gear": ["manner"],
+    "gear": [
+      "manner"
+    ],
     "lastChecked": "2026-11-19",
     "name": "WHATAWON（ワタワン）",
     "address": "大阪府岸和田市岸の丘町1丁目32-1",
@@ -12275,6 +12337,190 @@
       "境内の紅葉",
       "石畳の参道。犬と一緒に歩ける",
       "境内の古いポスト"
+    ]
+  },
+  {
+    "id": "tajima-kogen-botanical-garden",
+    "name": "但馬高原植物園",
+    "address": "兵庫県美方郡香美町村岡区和池709",
+    "lat": 35.421008,
+    "lng": 134.572247,
+    "category": "garden",
+    "dogSize": {
+      "small": true,
+      "medium": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": null
+    },
+    "dogRun": {
+      "available": true,
+      "free": false,
+      "separated": false,
+      "detail": "イベント広場の有料ドッグラン。前日までの予約で1組貸切（2時間3,500円＋犬1匹300円）、予約の無い日は一般開放（使用料とペット入園料を合わせて犬1匹600円）。大きさを問わず利用可。過去1年以内の狂犬病・混合ワクチン接種が条件で、ヒート中・体調の悪い犬は利用不可。リードはエリアに入って出入口を閉めてから外す。"
+    },
+    "admission": {
+      "free": false,
+      "fee": "大人520円・高校生420円・小中学生100円。犬は1匹300円（大きさを問わず一律）。駐車場は無料"
+    },
+    "visited": true,
+    "remarks": "瀞川平の高原に開かれた自然植物園。標高約680mの敷地のうち7haを公開し、自生植物約2,000種のほか、樹齢1,000年といわれる天然記念物の和池の大カツラと、そのそばに湧く千年水が見どころ。犬は入園料1匹300円（大きさを問わず一律）で一緒に入園でき、園内の散策路をリード着用で歩ける。リードは短く持ち、フンは持ち帰りが決まり。屋内レストランには犬は入れないが、屋内アトリウムと受付には入れる。イベント広場に有料ドッグランがあり、前日までの予約で1組貸切（2時間3,500円＋犬1匹300円）、予約の無い日は一般開放（使用料とペット入園料を合わせて犬1匹600円）。ドッグランは過去1年以内の狂犬病・混合ワクチン接種が条件で、ヒート中は利用不可。入園料は大人520円・高校生420円・小中学生100円。開園は4月〜11月で、期間中は無休の9:00〜17:00。冬季（12月〜3月）は休園。無料駐車場とトイレあり。秋は園内の森の紅葉が見頃。最新情報は公式サイトで確認のこと。",
+    "imageUrl": "images/spots/tajima-kogen-botanical-garden/1.jpg",
+    "officialUrl": "https://tajima-garden.jp/",
+    "tags": [
+      "koyo"
+    ],
+    "aliases": [
+      "たじまこうげんしょくぶつえん",
+      "たじま高原植物園",
+      "但馬高原植物園 瀞川平",
+      "和池の大カツラ",
+      "わちのおおかつら",
+      "桂の千年水",
+      "千年水"
+    ],
+    "images": [
+      "images/spots/tajima-kogen-botanical-garden/1.jpg",
+      "images/spots/tajima-kogen-botanical-garden/2.jpg",
+      "images/spots/tajima-kogen-botanical-garden/3.jpg",
+      "images/spots/tajima-kogen-botanical-garden/4.jpg",
+      "images/spots/tajima-kogen-botanical-garden/5.jpg",
+      "images/spots/tajima-kogen-botanical-garden/6.jpg",
+      "images/spots/tajima-kogen-botanical-garden/7.jpg",
+      "images/spots/tajima-kogen-botanical-garden/8.jpg",
+      "images/spots/tajima-kogen-botanical-garden/9.jpg",
+      "images/spots/tajima-kogen-botanical-garden/10.jpg"
+    ],
+    "captions": [
+      "入口の看板",
+      "入園券売場の料金表。犬は1匹300円（2026年11月）",
+      "園内の散策路の入口の門",
+      "森の中の散策路。リードを付ければ犬と歩ける",
+      "天然記念物の和池の大カツラ。手前の木道まで犬と行ける",
+      "和池の大カツラの標柱",
+      "大カツラの近くに湧く千年水の流れ",
+      "イベント広場の大型ドッグラン",
+      "ドッグランの料金と決まりの案内（2026年11月）",
+      "入口のレストラン。店内は犬は入れない"
+    ]
+  },
+  {
+    "id": "hamasaka-sun-beach",
+    "name": "浜坂県民サンビーチ",
+    "address": "兵庫県美方郡新温泉町芦屋",
+    "lat": 35.628678,
+    "lng": 134.447441,
+    "category": "beach",
+    "dogSize": {
+      "small": true,
+      "medium": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": false
+    },
+    "toilet": {
+      "available": true,
+      "western": null
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": true,
+    "remarks": "山陰海岸国立公園（山陰海岸ユネスコ世界ジオパーク）の中にある、白い砂浜と黒松林が続く海水浴場。入場は無料。海水浴場の開設期間（例年7月上旬〜8月中旬）以外は、リードを付けて犬と砂浜を散歩できる。開設期間中に犬を連れて砂浜に入れるかは浜坂観光協会への事前確認推奨。駐車場と砂浜の間には道路があり、乗り降りの際は車に注意。駐車場は約200台で、夏期と特別日は普通車1日1,500円（キャンプ等で1泊2日の場合は2倍）、それ以外の時期は無料。公衆トイレは2棟で、9月〜翌6月は西側の1棟のみ。温水シャワーは1分100円。浜でのバーベキューとキャンプは禁止で、キャンピングカーは利用不可。フンは持ち帰りのこと。浜の背後の松林は松の庭キャンプ場で、キャンプ場の利用は別料金。最新情報は浜坂観光協会の公式サイトで確認のこと。",
+    "imageUrl": "images/spots/hamasaka-sun-beach/1.jpg",
+    "officialUrl": "https://www.hamasaka.com/?page_id=2194",
+    "tags": [],
+    "aliases": [
+      "はまさかけんみんさんびーち",
+      "浜坂サンビーチ",
+      "はまさかさんびーち",
+      "浜坂海水浴場"
+    ],
+    "images": [
+      "images/spots/hamasaka-sun-beach/1.jpg",
+      "images/spots/hamasaka-sun-beach/2.jpg",
+      "images/spots/hamasaka-sun-beach/3.jpg",
+      "images/spots/hamasaka-sun-beach/4.jpg"
+    ],
+    "captions": [
+      "浜坂県民サンビーチの砂浜",
+      "海水浴の時期以外は、リードを付けて犬と砂浜を歩ける",
+      "砂浜の運営者の愛犬、チワワのこつぶ",
+      "道路の向かいの駐車場とトイレの建物"
+    ]
+  },
+  {
+    "id": "yamayoshi-shunsen-ichiba",
+    "name": "ヤマヨシ 旬鮮市場",
+    "address": "兵庫県豊岡市城崎町来日1-1",
+    "lat": 35.603441,
+    "lng": 134.801936,
+    "category": "other",
+    "dogSize": {
+      "small": true,
+      "medium": true,
+      "large": true
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": null
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": true,
+      "fee": ""
+    },
+    "visited": true,
+    "remarks": "城崎温泉の南、円山川沿いにある海産物の土産店と食事処。香住の水産会社（株）ヤマヨシの直営で、柴山港・津居山港などで揚がるカニや鮮魚、但馬の土産物を扱い、店の奥の食事処で海鮮丼や定食を食べられる。店内の入口側に屋内のペット同伴スペースがあり、犬と一緒にテーブル席で食事や休憩ができる。犬連れであることを店員に伝えて同伴スペースへ案内してもらう形。売り場へは犬をカートに乗せれば一緒に入って買い物ができ、入れる範囲は店員の案内に従う。駐車場の中は犬の散歩をしてよいが、それ以外の場所での散歩は控えること。営業は8:30〜17:00で、食事処の開始時間と定休日は事前確認推奨。無料駐車場あり。季節ごとに扱うカニや魚が変わる。最新情報は公式サイトで確認のこと。",
+    "imageUrl": "images/spots/yamayoshi-shunsen-ichiba/1.jpg",
+    "officialUrl": "https://www.shunsenichiba.net/",
+    "tags": [
+      "rain"
+    ],
+    "aliases": [
+      "やまよししゅんせんいちば",
+      "ヤマヨシ旬鮮市場",
+      "城崎温泉ヤマヨシ旬鮮市場",
+      "旬鮮市場",
+      "しゅんせんいちば"
+    ],
+    "images": [
+      "images/spots/yamayoshi-shunsen-ichiba/1.jpg",
+      "images/spots/yamayoshi-shunsen-ichiba/2.jpg",
+      "images/spots/yamayoshi-shunsen-ichiba/3.jpg",
+      "images/spots/yamayoshi-shunsen-ichiba/4.jpg",
+      "images/spots/yamayoshi-shunsen-ichiba/5.jpg"
+    ],
+    "captions": [
+      "国道沿いの看板と駐車場の入口",
+      "店の入口。ペット同伴で食事ができると案内が出ている",
+      "店内のペット同伴お食事スペースの札",
+      "犬と一緒に使える食事テーブルの札",
+      "店内の貼り紙。犬の散歩は駐車場の中だけにする"
     ]
   }
 ]
