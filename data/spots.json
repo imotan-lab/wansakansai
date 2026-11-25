@@ -2432,7 +2432,9 @@
   },
   {
     "id": "taga-taisha",
-    "gear": ["manner"],
+    "gear": [
+      "manner"
+    ],
     "lastChecked": "2026-11-25",
     "name": "多賀大社",
     "address": "滋賀県犬上郡多賀町多賀604",
@@ -2463,9 +2465,9 @@
       "free": true,
       "fee": ""
     },
-    "visited": false,
+    "visited": true,
     "remarks": "「お多賀さん」の愛称で親しまれる、延命長寿・縁結びの古社。伊勢神宮の祭神の親神とされるイザナギ・イザナミを祀る。全国でも珍しくペット連れ参拝を受け入れており、リードを短く持ち、マナーパンツを着用すれば屋外の境内や参道を一緒に歩ける（本殿・拝殿・授与所・待合所など建物内は不可）。健康長寿にあやかったペット用お守りも授与。太閤秀吉が寄進したと伝わる石の反り橋（太閤橋）も見どころ。表参道入口から徒歩5分ほどの多賀町観光駐車場（大駐車場）が通常は無料だが、正月の初詣期間などは有料になる場合あり。本殿裏手の参集殿駐車場も無料で利用でき、参拝に近いが台数は少なめ。",
-    "imageUrl": "",
+    "imageUrl": "images/spots/taga-taisha/1.jpg",
     "officialUrl": "https://www.tagataisya.or.jp/",
     "aliases": [
       "お多賀さん",
@@ -2474,7 +2476,27 @@
     "tags": [
       "sakura",
       "koyo"
-    ]
+    ],
+    "images": [
+      "images/spots/taga-taisha/1.jpg",
+      "images/spots/taga-taisha/2.jpg",
+      "images/spots/taga-taisha/3.jpg",
+      "images/spots/taga-taisha/4.jpg",
+      "images/spots/taga-taisha/5.jpg",
+      "images/spots/taga-taisha/6.jpg"
+    ],
+    "captions": [
+      "境内の入口の鳥居と社号標",
+      "鳥居をくぐった先の境内。奥が拝殿で、犬は建物の外まで一緒に行ける",
+      "太閤橋。縄が張られていて渡れない（2026年11月）",
+      "神馬舎の前。境内の屋外はリードを短く持てば犬と歩ける",
+      "門の開門・閉門の時刻の札。午前6時〜午後9時",
+      "参拝者駐車場の看板。参拝する人のための駐車場"
+    ],
+    "visit": {
+      "date": "2026-11-01",
+      "note": "運営者の愛犬、チワワのこつぶと日曜の午後に参拝し、念のためマナーパンツをはかせて境内を一緒に歩きました。境内はそれほど広くなくすぐに回れ、並んでいたのはお賽銭の列くらいで、駐車場も比較的空いていました。"
+    }
   },
   {
     "id": "biwako-hakodateyama",
@@ -3839,7 +3861,7 @@
       "free": true,
       "fee": ""
     },
-    "visited": false,
+    "visited": true,
     "tags": [],
     "aliases": [
       "せせらぎの里こうら",
@@ -3847,7 +3869,32 @@
       "みちのえきせせらぎのさとこうら"
     ],
     "remarks": "甲良町にある、滋賀県の道の駅では初のドッグランを備えた犬連れに人気の道の駅。天然芝のドッグランは小型犬（10kg以下）・中大型犬（10kg超）・貸切の3区画で、貸切以外は1人2頭まで無料（9:30〜17:00、11〜2月は16:00まで）。雨の後など地面が緩い日は閉鎖の場合あり。石窯ピザ店「ピッツェリアUNO」では犬用のわんちゃんピザも焼きたてで販売し、屋外テーブルで一緒に味わえる。地元野菜の直売所やクレープ店も併設。ドッグランは混合ワクチン・狂犬病予防接種済みの犬のみ利用でき、ロングリード・フレキシブルリードは使用不可。ドッグラン内に水場はなく、直売所軒下の水道を使う。敷地内はリード着用で散策でき、屋内へは同伴不可。テント屋根の休憩スペースはペット同伴可の表示がある席を使い、イス・テーブルに犬を乗せないこと。無料駐車場は普通車59台・大型車20台ほか計82台。毎月第2月曜定休で、8月と11月は無休、月曜が祝日の場合は翌火曜が休み。",
-    "officialUrl": "https://m-koura.jp/"
+    "officialUrl": "https://m-koura.jp/",
+    "images": [
+      "images/spots/seseragi-no-sato-koura/2.jpg",
+      "images/spots/seseragi-no-sato-koura/1.jpg",
+      "images/spots/seseragi-no-sato-koura/5.jpg",
+      "images/spots/seseragi-no-sato-koura/6.jpg",
+      "images/spots/seseragi-no-sato-koura/4.jpg",
+      "images/spots/seseragi-no-sato-koura/3.jpg",
+      "images/spots/seseragi-no-sato-koura/7.jpg",
+      "images/spots/seseragi-no-sato-koura/8.jpg"
+    ],
+    "imageUrl": "images/spots/seseragi-no-sato-koura/2.jpg",
+    "captions": [
+      "直売所・食堂・ピザ店が並ぶ建物と、手前の無料駐車場",
+      "道の駅の看板",
+      "ドッグランの入口。中大型犬と小型犬で入口が分かれている",
+      "広場の一角をフェンスで囲ったドッグラン。この日は地面の状態が悪く閉鎖されていた（2026年11月）",
+      "屋外の休憩スペースの、犬と一緒に座れる席の札",
+      "屋外のテーブル・イスの決まりの掲示。犬と座れる席と座れない席が分かれている",
+      "敷地の中を流れる小川",
+      "小川の横の注意書き。犬はリードを付ける"
+    ],
+    "visit": {
+      "date": "2026-11-01",
+      "note": "運営者の愛犬、チワワのこつぶと立ち寄り、外の犬と座れる席でクレープを食べました。この日は地面の状態が悪いという張り紙があってドッグランは終日閉鎖だったので、雨の後はドッグランを使えないことがあります。"
+    }
   },
   {
     "id": "mitsui-outlet-shiga-ryuo",
@@ -8414,9 +8461,9 @@
       "free": true,
       "fee": "無料"
     },
-    "visited": false,
+    "visited": true,
     "remarks": "舞鶴若狭自動車道唯一のサービスエリアにある無料ドッグラン。上り線・下り線それぞれに1区画約230〜240平米のフェンス囲いのドッグランを備え、ノーリードで利用できる。利用時間は上下線とも8:00〜18:00。料金は無料。水飲み場・ペット用トイレ・排泄物用ゴミ箱・ベンチ・木陰があり、ドライブ休憩に手軽。ワクチン接種・狂犬病予防接種を受けていない犬、鑑札と注射済票を着けていない犬、凶暴な犬、発情中のメス犬、伝染性の病気の犬は入場不可で、ラン内での飲食と犬へのエサやりは不可。サイズ別のエリア分けの有無は事前確認推奨。所在地は下り線が東木之部1、上り線が西木之部580。駐車場・トイレ（洋式・おむつ交換台あり）完備で24時間立ち寄り可。SAの店舗内は犬同伴不可。丹波黒豆を使った黒豆パン・黒豆ソフトクリームが名物。一般道からも無料で立ち寄れる手軽さが魅力。",
-    "imageUrl": "",
+    "imageUrl": "images/spots/nishiki-sa-dogrun/2.jpg",
     "officialUrl": "https://www.nishiki-sa.jp/",
     "aliases": [
       "にしきさーびすえりあ どっぐらん",
@@ -8430,7 +8477,29 @@
       "舞鶴若狭自動車道 西紀SA"
     ],
     "tags": [],
-    "stayKeyword": "丹波"
+    "stayKeyword": "丹波",
+    "images": [
+      "images/spots/nishiki-sa-dogrun/2.jpg",
+      "images/spots/nishiki-sa-dogrun/1.jpg",
+      "images/spots/nishiki-sa-dogrun/3.jpg",
+      "images/spots/nishiki-sa-dogrun/4.jpg",
+      "images/spots/nishiki-sa-dogrun/5.jpg",
+      "images/spots/nishiki-sa-dogrun/6.jpg",
+      "images/spots/nishiki-sa-dogrun/7.jpg"
+    ],
+    "captions": [
+      "下り線のドッグラン。フェンスで囲まれた1区画",
+      "ドッグランへの案内板（下り線）",
+      "利用時間の掲示（8:00〜18:00）",
+      "ドッグランの利用規程の掲示",
+      "入口の横の水飲み場と、犬のフン専用のゴミ箱",
+      "ペット用トイレの標識",
+      "ドッグランで遊ぶ運営者の愛犬、チワワのこつぶ"
+    ],
+    "visit": {
+      "date": "2026-11-11",
+      "note": "運営者の愛犬、チワワのこつぶと平日のお昼に、浜坂へ向かう途中で下り線のドッグランに寄りました。ほかの犬は最初に1匹いただけですぐに帰り、あとは貸し切りの状態でした。"
+    }
   },
   {
     "id": "izushi-castle",
