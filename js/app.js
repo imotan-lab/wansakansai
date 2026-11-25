@@ -224,6 +224,8 @@
       lastFocus = ae && ae !== document.body && !filterPanel.contains(ae) ? ae : btnFilter;
       filterPanel.classList.add('is-off');
       filterPanel.hidden = false;
+      // 開くたびに一番上から（2026-11-25・運営者の依頼。前に下までスクロールした位置で開くのは不自然）
+      filterSection.scrollTop = 0;
       document.body.classList.add('sheet-open');
       void filterPanel.offsetHeight; // 隠れた位置を一度描かせてから動かす
     }
