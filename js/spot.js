@@ -341,6 +341,44 @@ function lastCheckedHtml(spot) {
       prevBtn.addEventListener('click', () => showImage((currentIndex - 1 + images.length) % images.length));
       nextBtn.addEventListener('click', () => showImage((currentIndex + 1) % images.length));
       thumbs.forEach(t => t.addEventListener('click', () => showImage(Number(t.dataset.index))));
+
+      // スワイプでも写真を切り替える（2026-11-25・運営者の依頼）。
+      // 指1本で横に40px以上、かつ縦の動きより十分大きく動いた時だけ切り替える。
+      // 縦のスクロールやピンチ拡大は邪魔しない（preventDefault しない・2本指は数えない）。
+      const swipeArea = mainImg.closest('.spot-gallery-main');
+      let sx = null, sy = null, decided = false;
+      swipeArea.addEventListener('touchstart', e => {
+        if (e.touches.length !== 1 || e.target.closest('.gallery-nav')) { sx = null; return; }
+        sx = e.touches[0].clientX;
+        sy = e.touches[0].clientY;
+        decided = false;
+      }, { passive: true });
+      swipeArea.addEventListener('touchmove', e => {
+        if (sx === null) return;
+        if (e.touches.length !== 1) { sx = null; return; }
+        if (decided) return;
+        // 動き始め（合計16px）の向きで一度だけ決める。縦が勝っていればスクロールとみなして追わない。
+        // 横で決まったら、途中で少し縦にぶれても追い続ける（最後の判定は touchend で行う）
+        const mx = Math.abs(e.touches[0].clientX - sx);
+        const my = Math.abs(e.touches[0].clientY - sy);
+        if (mx + my < 16) return;
+        decided = true;
+        if (my > mx) sx = null;
+      }, { passive: true });
+      // 写真の外に2本目の指を置いた時も追うのをやめる（ピンチなど）
+      document.addEventListener('touchstart', e => {
+        if (sx !== null && e.touches.length > 1) sx = null;
+      }, { passive: true, capture: true });
+      swipeArea.addEventListener('touchcancel', () => { sx = null; }, { passive: true });
+      swipeArea.addEventListener('touchend', e => {
+        if (sx === null || e.changedTouches.length !== 1) { sx = null; return; }
+        const dx = e.changedTouches[0].clientX - sx;
+        const dy = e.changedTouches[0].clientY - sy;
+        sx = null;
+        if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
+        const n = images.length;
+        showImage(dx < 0 ? (currentIndex + 1) % n : (currentIndex - 1 + n) % n);
+      }, { passive: true });
     }
 
     // Favorite button
