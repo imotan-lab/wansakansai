@@ -93,6 +93,10 @@
       { id: 'size-large', label: '大型犬OK', test: s => dogSizeAllows(s, 'large') && (!activeFilters.has('dogrun') || dogRunSizeAllows(s, 'large')) },
       { id: 'small-dog-only', label: '小型犬のみ', test: s => !dogSizeAllows(s, 'medium') },
     ]},
+    // 運営者が実際に行った場所だけ（2026-11-25・運営者の依頼。判子の付いたスポット）
+    { label: '訪問', filters: [
+      { id: 'visited', label: '運営者が行った場所', test: s => s.visited === true },
+    ]},
   ];
   const FILTERS = FILTER_GROUPS.flatMap(g => g.filters);
 
