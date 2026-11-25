@@ -32,6 +32,56 @@ function summaryOf(d) {
   return out || text.slice(0, 70);
 }
 
+// ===== 季節の注意（毎年同じ時期に来るもの・2026-11-25） =====
+// 日付で追いかける危険情報とは別に、data/seasonal_notes.json を常に出す。
+// いまの月を含むものを上に、ほかは「ほかの時期の注意」に畳む。
+// 1〜12の整数だけにそろえ、重複を除く（表示と「いまの時期か」の判定で同じものを使う）
+function normMonths(months) {
+  if (!Array.isArray(months)) return [];
+  // 数か、数字だけの文字列だけを月として扱う（true や配列・オブジェクトは捨てる）
+  const ok = months.filter(v => typeof v === 'number' || (typeof v === 'string' && /^\d{1,2}$/.test(v)));
+  return [...new Set(ok.map(Number).filter(m => Number.isInteger(m) && m >= 1 && m <= 12))];
+}
+
+function monthsLabel(months) {
+  const ms = normMonths(months);
+  if (ms.length >= 12) return '通年';
+  if (ms.length === 0) return '';
+  const set = new Set(ms);
+  // 年をまたぐ範囲（10〜2月など）も1つにまとめる。並びの始まり＝前の月が無い月
+  const starts = ms.filter(m => !set.has(m === 1 ? 12 : m - 1));
+  return starts.map(st => {
+    let end = st;
+    while (set.has(end === 12 ? 1 : end + 1) && (end === 12 ? 1 : end + 1) !== st) end = end === 12 ? 1 : end + 1;
+    return st === end ? `${st}月` : `${st}〜${end}月`;
+  }).join('・');
+}
+
+async function renderSeasonNotes() {
+  const box = document.getElementById('seasonNotes');
+  if (!box) return;
+  let notes;
+  try { notes = await loadJSON('data/seasonal_notes.json'); } catch (e) { return; }
+  if (!Array.isArray(notes)) return;
+  notes = notes.filter(n => n && typeof n.title === 'string' && typeof n.text === 'string');
+  if (notes.length === 0) return;
+  const m = new Date().getMonth() + 1;
+  const inSeason = n => normMonths(n.months).includes(m);
+  const card = n => `
+    <div class="season-note">
+      <p class="season-note-head"><span class="season-note-title">${escapeHtml(n.title)}</span><span class="season-note-months">${escapeHtml(monthsLabel(n.months))}</span></p>
+      <p class="season-note-text">${escapeHtml(n.text)}</p>
+    </div>`;
+  const now = notes.filter(inSeason);
+  const other = notes.filter(n => !inSeason(n));
+  document.getElementById('seasonNotesNow').innerHTML = now.map(card).join('');
+  if (other.length) {
+    document.getElementById('seasonNotesOther').innerHTML = other.map(card).join('');
+    document.getElementById('seasonNotesMore').hidden = false;
+  }
+  box.hidden = false;
+}
+
 // ===== Danger Page =====
 
 (async function () {
@@ -39,6 +89,7 @@ function summaryOf(d) {
   renderFooter();
 
   const container = document.getElementById('dangerList');
+  renderSeasonNotes();
 
   try {
     const [dangers, spots] = await Promise.all([

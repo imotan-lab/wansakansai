@@ -60,6 +60,11 @@ PREF_KEYWORDS = {
 
 
 def detect_prefecture(location: str) -> str | None:
+    # 府県名がそのまま書いてあればそれを先に使う（2026-11-25。「近江八幡市」が京都の「八幡」に当たっていた）
+    full = {"大阪府": "大阪", "兵庫県": "兵庫", "京都府": "京都", "奈良県": "奈良", "滋賀県": "滋賀", "和歌山県": "和歌山"}
+    hits = sorted((location.find(k), v) for k, v in full.items() if k in location)
+    if hits:
+        return hits[0][1]
     for pref, keywords in PREF_KEYWORDS.items():
         for k in keywords:
             if k in location:

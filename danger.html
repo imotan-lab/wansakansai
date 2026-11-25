@@ -24,7 +24,7 @@
   <link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96.png">
   <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-  <link rel="stylesheet" href="css/style.css?v=2026112502">
+  <link rel="stylesheet" href="css/style.css?v=2026112503">
 </head>
 <body>
 
@@ -34,6 +34,16 @@
     <div class="danger-list" id="dangerList">
       <div class="loading-spinner">読み込み中...</div>
     </div>
+
+    <section class="season-notes" id="seasonNotes" aria-labelledby="seasonNotesTitle" hidden>
+      <h2 class="season-notes-title" id="seasonNotesTitle">散歩・お出かけの注意（毎年）</h2>
+      <p class="season-notes-desc">毎年同じ時期に気をつけたいことです。いまの時期のものを上にしています。月は特に気をつけたい時期の目安で、ほかの時期でも油断はできません。</p>
+      <div id="seasonNotesNow"></div>
+      <details class="season-notes-more" id="seasonNotesMore" hidden>
+        <summary>ほかの時期の注意</summary>
+        <div id="seasonNotesOther"></div>
+      </details>
+    </section>
   </main>
 
   <!-- 静的フッター: クローラーに内部リンクを残すために生HTMLへ置いている。
@@ -57,6 +67,6 @@
     <p>&copy; 2026 わんさかんさい All rights reserved.</p>
   </footer>
   <script src="js/common.js?v=2026111104"></script>
-  <script src="js/danger.js?v=2026111001"></script>
+  <script src="js/danger.js?v=2026112503"></script>
 </body>
 </html>

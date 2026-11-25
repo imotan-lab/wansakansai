@@ -12530,5 +12530,72 @@
       "date": "2026-11-12",
       "note": "運営者の愛犬、チワワのこつぶと平日の夕方に寄ると、店の前にいた店員さんがペット同伴スペースの入口を教えてくれました。こつぶはカートに乗せて売り場も一緒に回れ、遅い時間だったので同伴スペースはほかにお客さんがいませんでした。"
     }
+  },
+  {
+    "id": "bekkan-kawanatsu",
+    "name": "別館カワナツ",
+    "aliases": [
+      "べっかんかわなつ",
+      "カワナツ",
+      "浜坂温泉 別館カワナツ",
+      "お宿 別館カワナツ"
+    ],
+    "address": "兵庫県美方郡新温泉町浜坂2854-1",
+    "lat": 35.626654,
+    "lng": 134.449929,
+    "category": "other",
+    "dogSize": {
+      "small": true,
+      "medium": false,
+      "large": false
+    },
+    "parking": {
+      "available": true,
+      "free": true
+    },
+    "toilet": {
+      "available": true,
+      "western": true
+    },
+    "dogRun": {
+      "available": false,
+      "free": false,
+      "separated": false,
+      "detail": ""
+    },
+    "admission": {
+      "free": false,
+      "fee": "宿泊料金はプラン・時期により変わるため予約サイトで確認のこと。小型犬の同宿は無料"
+    },
+    "visited": true,
+    "remarks": "浜坂温泉にある小さな温泉宿。小型犬と猫に限り（目安は10kg程度）、追加料金なしで同じ部屋に泊まれる。ペット専用の宿ではなく犬連れでない客も泊まるため、客室と食事処以外では犬を抱っこすること。客室は全室畳の和室。ペット用の設備は無いので、ケージ・フード・トイレなど犬用のものは持参のこと。布団や座布団の上で犬を寝かせない決まり。犬を連れて行く時は予約の際に宿へ連絡が必要。食事処は完全個室で、夕食・朝食とも犬を連れて入れるが、配膳でスタッフが出入りする時は犬から手を離さないこと。料理はカニに力を入れていて、冬は浜坂漁港であがった松葉ガニのコースがある。お風呂は浜坂温泉の天然温泉で、夜は22:30まで・朝は5:00から入れる（入湯税別途）。チェックイン15:00〜・チェックアウト〜10:00。駐車場は無料で、台数は少なめ。JR浜坂駅から徒歩約10〜15分、浜坂県民サンビーチまで歩いて数分。最新情報は公式サイトで確認のこと。",
+    "imageUrl": "images/spots/bekkan-kawanatsu/1.jpg",
+    "officialUrl": "https://hamasaka-kawanatsu.com/",
+    "tags": [
+      "stay-only",
+      "small-dog-only"
+    ],
+    "rakutenHotelId": "40728",
+    "jalanYadId": "331372",
+    "images": [
+      "images/spots/bekkan-kawanatsu/1.jpg",
+      "images/spots/bekkan-kawanatsu/2.jpg",
+      "images/spots/bekkan-kawanatsu/3.jpg",
+      "images/spots/bekkan-kawanatsu/4.jpg",
+      "images/spots/bekkan-kawanatsu/5.jpg",
+      "images/spots/bekkan-kawanatsu/6.jpg"
+    ],
+    "captions": [
+      "宿の外観と入口までの石畳",
+      "道路沿いの看板",
+      "個室の食事処での夕食（2026年11月・カニのコース）",
+      "ゆでたカニ",
+      "カニの盛り合わせ",
+      "朝食。朝も個室の食事処でいただく"
+    ],
+    "visit": {
+      "date": "2026-11-11",
+      "note": "運営者の愛犬、チワワのこつぶと1泊しました。夕食も朝食も個室の食事処で、こつぶも一緒に入れました。配膳で人が出入りするので、その間はこつぶから手を離さないようにしていました。"
+    }
   }
 ]

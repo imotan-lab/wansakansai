@@ -1601,6 +1601,70 @@ body.sheet-open {
   color: var(--color-text-light);
 }
 
+/* ===== 季節の注意（毎年同じ時期に来るもの・2026-11-25） =====
+   日付の危険情報の下に、下線と余白で区切って並べる（箱で囲まない） */
+.season-notes {
+  margin-top: 40px;
+  border-top: 2px solid var(--color-text);
+  padding-top: 14px;
+}
+
+.season-notes-title {
+  font-size: 1.125rem;
+  color: var(--color-text);
+  margin: 0 0 4px;
+}
+
+.season-notes-desc {
+  font-size: 0.85rem;
+  color: var(--color-text-light);
+  margin: 0 0 8px;
+}
+
+.season-note {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.season-note-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0 0 4px;
+}
+
+.season-note-title {
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.season-note-months {
+  flex: none;
+  font-size: 0.8rem;
+  color: var(--color-text-light);
+}
+
+.season-note-text {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.season-notes-more {
+  margin-top: 12px;
+}
+
+.season-notes-more > summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  color: var(--color-primary);
+  cursor: pointer;
+  font-weight: 500;
+}
+
 /* ===== Static Pages ===== */
 .static-page {
   background: var(--color-bg-card);

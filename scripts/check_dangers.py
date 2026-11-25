@@ -76,7 +76,12 @@ def check_entries(entries):
     today = datetime.date.today()
 
     for e in entries:
-        eid = e.get("id") or "(idなし)"
+        eid = e.get("id") if isinstance(e.get("id"), str) and e.get("id") else "(idなし)"
+        for k in ("id", "date", "location", "type", "summary", "description"):
+            if k in e and e[k] is not None and not isinstance(e[k], str):
+                ng.append(f"{eid}: {k} が文字列でない -> {e[k]!r}")
+        if "expires" in e and e["expires"] not in (None, "") and not isinstance(e["expires"], str):
+            ng.append(f"{eid}: expires が文字列でない -> {e['expires']!r}")
 
         for k in REQUIRED:
             if not str(e.get(k) or "").strip():
@@ -84,25 +89,49 @@ def check_entries(entries):
 
         if not re.fullmatch(r"danger-\d{3}", str(e.get("id") or "")):
             ng.append(f"{eid}: idの書式が違う（danger-000 の形）")
-        if e.get("id") in seen:
+        if eid in seen:
             ng.append(f"{eid}: idが重複している")
-        seen.add(e.get("id"))
+        seen.add(eid)
 
         date = str(e.get("date") or "")
-        if not re.fullmatch(r"\d{4}-\d{2}", date):
-            ng.append(f"{eid}: dateの書式が違う（YYYY-MM）-> {date!r}")
+        if not re.fullmatch(r"20\d{2}-(0[1-9]|1[0-2])", date):
+            ng.append(f"{eid}: dateの書式が違う（YYYY-MM・月は01〜12）-> {date!r}")
 
         exp = str(e.get("expires") or "").strip()
+        d = None
         if exp:
             if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", exp):
                 ng.append(f"{eid}: expiresの書式が違う（YYYY-MM-DD）-> {exp!r}")
             else:
-                d = datetime.date.fromisoformat(exp)
+                try:
+                    d = datetime.date.fromisoformat(exp)
+                except ValueError:
+                    ng.append(f"{eid}: expiresが実在しない日付 -> {exp!r}")
+                    d = None
+            if exp and d is not None:
                 if re.fullmatch(r"\d{4}-\d{2}", date) and exp[:7] < date:
                     ng.append(f"{eid}: expires({exp})がdate({date})より前を向いている")
                 if d < today:
                     # 期限切れをそのまま公開している状態。expire_dangers.py の実行漏れ
                     ng.append(f"{eid}: expires({exp})が過ぎている。expire_dangers.py --apply を実行すること")
+
+        # 確かめ直しの項目（2026-11-25）。basis は必須、checked は無ければ「次の実行で確かめ直す」扱い
+        basis = str(e.get("basis") or "")
+        if basis not in ("official", "report"):
+            ng.append(f"{eid}: basis が無いか語彙外 -> {basis!r}（official=公式が出している / report=報道やSNSの報告）")
+        chk_raw = e.get("checked")
+        if chk_raw is not None and not isinstance(chk_raw, str):
+            ng.append(f"{eid}: checked が文字列でない -> {chk_raw!r}")
+        chk = chk_raw.strip() if isinstance(chk_raw, str) else ""
+        if chk:
+            try:
+                cd = datetime.date.fromisoformat(chk) if re.fullmatch(r"\d{4}-\d{2}-\d{2}", chk) else None
+            except ValueError:
+                cd = None
+            if cd is None:
+                ng.append(f"{eid}: checked が実在する日付（YYYY-MM-DD）でない -> {chk!r}")
+            elif cd > today:
+                ng.append(f"{eid}: checked({chk})が未来の日付")
 
         t = str(e.get("type") or "")
         if t not in ALLOWED_TYPES:
@@ -178,8 +207,33 @@ def main():
     except Exception:
         pass
 
-    entries = json.load(io.open(a.path, encoding="utf-8"))
+    try:
+        entries = json.load(io.open(a.path, encoding="utf-8-sig"))
+    except (OSError, ValueError) as ex:
+        print(f"[ERROR] dangers.json を読めない（JSONの書き方の誤りなど）: {ex}")
+        return 1
+    if not isinstance(entries, list) or not all(isinstance(e, dict) for e in entries):
+        print("[NG] dangers.json は「行（{…}）の配列」でなければならない")
+        print("[key] 機械チェック=NG 件数=0 投稿予定=0")
+        return 1
     ng = check_entries(entries)
+    # 台帳（data/dangers_ledger.json）と照らす: 消したidを使い回していないか・next_id より大きい番号を使っていないか
+    try:
+        led = json.load(io.open(BASE / "data" / "dangers_ledger.json", encoding="utf-8-sig"))
+        removed_ids = {r.get("id") for r in led.get("removed", []) if isinstance(r, dict)}
+        next_id = int(led.get("next_id"))
+        for e in entries:
+            i = e.get("id")
+            if isinstance(i, str) and re.fullmatch(r"danger-\d{3}", i):
+                if i in removed_ids:
+                    ng.append(f"{i}: 消した事案のidを使い回している（台帳 data/dangers_ledger.json の removed にある）")
+                if int(i[7:]) >= next_id:
+                    ng.append(f"{i}: 台帳の next_id（{next_id}）を進めていない。新しいidを振ったら next_id を次の番号にする")
+    except Exception as ex:
+        ng.append(f"台帳 data/dangers_ledger.json を読めない: {type(ex).__name__}: {ex}")
+    if ng:
+        # 形が壊れている時は投稿文を組み立てない（組み立てる途中で落ちるため）
+        a.no_post_check = True
 
     texts = []
     if not a.no_post_check:

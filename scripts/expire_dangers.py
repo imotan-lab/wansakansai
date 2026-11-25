@@ -41,23 +41,39 @@ def main():
     except Exception:
         pass
 
-    today = (datetime.date.fromisoformat(a.today) if a.today
-             else datetime.date.today())
+    try:
+        today = (datetime.date.fromisoformat(a.today) if a.today
+                 else datetime.date.today())
+    except ValueError:
+        ap.error(f"--today は YYYY-MM-DD の実在する日付で: {a.today!r}")
 
-    entries = json.load(io.open(a.path, encoding="utf-8"))
+    try:
+        entries = json.load(io.open(a.path, encoding="utf-8-sig"))
+    except (OSError, ValueError) as ex:
+        print(f"[ERROR] dangers.json を読めない（JSONの書き方の誤りなど）: {ex}")
+        return 1
+    if not isinstance(entries, list) or not all(isinstance(e, dict) for e in entries):
+        # 形が壊れている時は何も消さずに止める（壊れた行を抱えたまま書き換えない）
+        print("[ERROR] dangers.json が「行（{…}）の配列」になっていない。何も消さずに止める")
+        return 1
     keep, drop, bad = [], [], []
 
     for e in entries:
-        exp = (e.get("expires") or "").strip()
-        if not exp:
+        exp_raw = e.get("expires") if isinstance(e, dict) else None
+        if exp_raw in (None, ""):
             keep.append(e)
             continue
-        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", exp):
-            # 形式がおかしい時は消さない。消す方に倒すと事故になるため
-            bad.append((e.get("id"), exp))
+        exp = exp_raw.strip() if isinstance(exp_raw, str) else ""
+        try:
+            exp_d = datetime.date.fromisoformat(exp) if re.fullmatch(r"\d{4}-\d{2}-\d{2}", exp) else None
+        except ValueError:
+            exp_d = None
+        if exp_d is None:
+            # 形式がおかしい・実在しない日付の時は消さない。消す方に倒すと事故になるため
+            bad.append((e.get("id"), exp_raw))
             keep.append(e)
             continue
-        if datetime.date.fromisoformat(exp) < today:
+        if exp_d < today:
             drop.append(e)
         else:
             keep.append(e)
@@ -80,6 +96,14 @@ def main():
     if not a.apply:
         print("\n（確認のみ。実際に消すには --apply）")
         return 0
+
+    # 壊れた行が1つでもある時は書き換えない（壊れた行を抱えたまま消さない・2026-11-25）
+    broken = [e.get("id") for e in entries
+              if not (isinstance(e.get("id"), str) and e.get("id")
+                      and all(isinstance(e.get(k), str) and e.get(k).strip() for k in ("date", "location", "type", "summary", "description")))]
+    if bad or broken:
+        print(f"[ERROR] 形の壊れた行があるので削除しない（期限の書式不正={[i for i, _ in bad]} 必須項目の不備={broken}）。check_dangers.py で直してから流し直す")
+        return 1
 
     io.open(a.path, "w", encoding="utf-8", newline="\n").write(
         json.dumps(keep, ensure_ascii=False, indent=2) + "\n"
