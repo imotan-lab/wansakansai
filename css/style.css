@@ -524,7 +524,10 @@ img {
   right: 0;
   bottom: 0;
   z-index: 300;
+  /* 高さは「いま見えている画面」を基準にする（2026-11-25）。vh はスマホのアドレスバーが隠れた時の
+     高さなので、バーが出ていると画面からはみ出し、上の「閉じる」が見えない所へ行っていた */
   max-height: 82vh;
+  max-height: 82dvh;
   display: flex;
   flex-direction: column;
   background: var(--color-bg-card);
