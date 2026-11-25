@@ -707,32 +707,38 @@ body.sheet-open {
   cursor: pointer;
 }
 
-/* ===== 危険情報への入口（1行の文字リンク） =====
-   薄い赤の箱に警告の印と矢印を重ねた帯をやめた（検索より目立っていた・3者の講評が一致） */
+/* ===== 危険情報への入口（2026-11-25・運営者の依頼で、線で描いた警告の印付きのボタンに） =====
+   中身（個々の危険情報）はトップに出さず、danger.html への入口だけ。
+   薄い色で塗った帯にはしない（枠だけ・地は他のボタンと同じ）。印は記号の文字ではなく線のSVG */
 .danger-link {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 8px;
-  min-height: 44px;
-  margin: 2px 0;
+  min-height: 48px;
+  margin: 14px 0 6px;
+  padding: 0 14px;
+  background: var(--color-bg-card);
   color: var(--color-danger);
+  border: 1px solid var(--color-danger);
+  border-radius: var(--radius);
   font-size: 0.9375rem;
   font-weight: 700;
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 4px;
+  text-decoration: none;
 }
 
 .danger-link:hover {
   color: var(--color-danger);
+  background: var(--color-bg);
 }
 
-.danger-mark {
-  width: 8px;
-  height: 8px;
+.danger-icon {
   flex: none;
-  background: var(--color-danger);
-  border-radius: 1px;
+}
+
+.danger-sub {
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: var(--color-text-light);
 }
 
 /* ===== 一覧の見出し（件数とテーマ別へのリンク） ===== */
