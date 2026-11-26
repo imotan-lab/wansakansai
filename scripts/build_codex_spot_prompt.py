@@ -35,6 +35,7 @@
     （★プロンプトはファイルに書いてパイプで渡すこと。コマンド直書きはshell_guardに止められる★）
 """
 import argparse
+import datetime
 import io
 import json
 import subprocess
@@ -42,6 +43,8 @@ import sys
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(BASE / "scripts"))
+from season_windows import seasons_for_spot, season_note  # noqa: E402
 
 # 検証してほしい項目。spots.json の全フィールドを投げると量が多すぎるので、
 # 「変わりやすく、間違っていると利用者が困る」ものに絞る。
@@ -192,13 +195,44 @@ def load_spots_at_head():
         return None
 
 
+# ★シーズン前の見直し（2026-11-26）★ 紅葉・桜の期間中は、そのタグのスポットに
+# 「混む時期だけの決まり」を事実の質問として足す。期間は season_windows.py が正本
+SEASON_ASK = """
+### この時期に見てほしいこと（{label}の名所・今日は{label}の見直し期間 {window}）
+
+今年の{label}の時期に、ふだんと違う決まりが発表されていないか調べてください。
+探すもの: 臨時の駐車料金・臨時駐車場・満車や混雑の時に入庫を断る・駐車場へ行く道の交通規制や通行止め・
+混む時期の犬の扱い（抱っこやカートが要る、入れる範囲が狭くなる、など）。
+
+1. まず、公式（施設・駐車場の管理者・自治体）で確認できた今年の決まりを、内容・適用される期間（いつからいつまで）・根拠URLの形で書いてください。
+   期間を区切らない「混雑時は〜することがある」の決まりも、公式に書いてあれば書いてください。
+   そのとき、次のどれに当たるかも書いてください:
+   (a) 毎年続く常の運用として書いてある (b) 今年の期間（いつまで）が書いてある (c) 今年限りの告知なのに終わる日が書いていない
+   ((c) はこちらでは掲載を見送るので、「足りない」ではなく (c) とだけ書いてください)
+2. 次に、それを掲載データ（`temporary` と `remarks`）と比べて、次のどれかを書いてください。
+   - 足りない（掲載データに無い）
+   - 違う（金額・日付・条件が違う）
+   - もう終わった・中止になった（掲載データに残っている）
+   - 掲載済み（同じ内容がある）
+   今も有効な期間付きの運用は、上の「恒常的な事柄だけを書きます」の例外として `temporary` に入れてあります。
+   期間付きであることだけを理由に「削除すべき」とはしないでください（終わった・中止になったものは「もう終わった・中止」と書いてください）。
+3. 「足りない」「違う」「もう終わった・中止」のどれかが1つでもあれば、スポット全体の「総合」は「要修正」にしてください。
+   「確認できず」は、今年の発表も毎年の常の運用も、公式で確かめられなかった時だけです（この段だけ「確認できず」とし、「総合」はほかの項目の結果で決めてください）。
+   今年の発表が無くても、毎年の常の運用（(a)）を公式で確かめられたなら、それを掲載データと比べて上の 2. で書いてください。
+   去年の発表を今年のものとして扱わないでください。
+- 祭り・ライトアップ・催し物そのものは挙げなくて構いません（犬の扱いや駐車に関わる場合だけ）。
+"""
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--ids", required=True, help="対象スポットIDをカンマ区切りで")
     ap.add_argument("--out", required=True, help="プロンプトの出力先")
     ap.add_argument("--from-working", action="store_true",
                     help="git HEAD ではなく作業ツリーの spots.json を使う（通常は使わない）")
+    ap.add_argument("--today", default=None, help="今日の日付 YYYY-MM-DD（テスト用。季節の期間の判定に使う）")
     a = ap.parse_args()
+    today = datetime.date.fromisoformat(a.today) if a.today else datetime.date.today()
 
     try:
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -242,6 +276,9 @@ def main():
         body += f"## {i}\n\n```json\n"
         body += json.dumps(trimmed, ensure_ascii=False, indent=2)
         body += "\n```\n\n"
+        for ssn in seasons_for_spot(s, today):
+            n = season_note(ssn)
+            body += SEASON_ASK.format(label=n["label"], window=n["window"]) + "\n"
 
     # ★先に消してから書くこと★ 出力先は固定名なので、生成に失敗すると
     # 前回のプロンプトが残り、それがCodexに渡る恐れがある（2026-09-07のレビューで判明）。
